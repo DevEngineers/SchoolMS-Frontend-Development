@@ -1,11 +1,5 @@
-.size{
-    width: 50%;
-}
-
 #form-style-timeSlot{
-    max-width: 270px !important;
-    padding: 10px 20px;
-    background: #f4f7f8;
+    max-width: 270px;
     padding: 20px;
     background: #f2f2f2;
     float:left;
@@ -15,8 +9,6 @@
 
 #form-style-Week{
     width: 197px;
-    padding: 10px 20px;
-    background: #f4f7f8;
     padding: 20px;
     background: #f2f2f2;
     float: left;
@@ -35,5 +27,36 @@
 #timeID{
     padding: 5px 20px 0 20px;
     display: inline-block;
-    font-weight: bold;
 }
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+#form-style-classDetails{
+    width: 95%;
+    padding: 20px;
+    background: #f2f2f2;
+    float:left;
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+#classLabelDiv{
+    width: 150px;
+}
+
+.classLabel{
+    display: inline-block;
+    float: left;
+    padding: 20px;
+}
+
+#classSelectOpt{
+    width: 300px;
+    margin-left: 150px;
+}
+
+.classSize{
+    width: 80%;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++*/

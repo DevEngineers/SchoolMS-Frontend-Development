@@ -1,7 +1,7 @@
 import React from "react";
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
-import {MenuItem} from "@material-ui/core";
+import {MenuItem,Switch} from "@material-ui/core";
 import '../../styles/classTimetableStyles/ClassTimetableCommon.css';
 
 class CreateClassTimetable extends React.Component{
@@ -17,28 +17,47 @@ class CreateClassTimetable extends React.Component{
             wednesday:[],
             thursday:[],
             friday:[],
-            subjects:['hello','hi']
+            subjects:['hello','hi'],
+
+            checkedTimeSlot:true,
+            checkedSubject:true,
+
+            class:'',
+            classType:'',
+            Year:''
         }
     }
 
+    /**
+     * this function is to capture data in the input fields
+     */
     onChange(event){
         const { name, value } = event.target;
         this.setState({ [name] : value });
     }
 
-    onChangeCheck(event){
-        if(this.state.checkedA === true){
-            this.setState({ checkedA : false });
+    /**
+     * this function is handling edit switch for timeslot
+     */
+    onChangeCheckSlot(){
+        if(this.state.checkedTimeSlot === true){
+            this.setState({ checkedTimeSlot : false });
         }
-        else if(this.state.checkedA === false){
-            this.setState({ checkedA : true });
+        else if(this.state.checkedTimeSlot === false){
+            this.setState({ checkedTimeSlot : true });
         }
     }
 
-    submitResearchPaper(event) {
-        event.preventDefault();
-        console.log(this.state.email)
-        console.log(this.state.checkedA)
+    /**
+     * this function is handling edit switch for subjects
+     */
+    onChangeCheckSubject(){
+        if(this.state.checkedSubject === true){
+            this.setState({ checkedSubject : false });
+        }
+        else if(this.state.checkedSubject === false){
+            this.setState({ checkedSubject : true });
+        }
     }
 
     /**
@@ -57,7 +76,7 @@ class CreateClassTimetable extends React.Component{
         this.setState({ endSlot });
     }
 
-    handleChange(i,value, event) {
+    handleSubjectChange(i,value, event) {
         console.log(value)
         if(value === 'monday'){
             let monday = [...this.state.monday];
@@ -147,70 +166,82 @@ class CreateClassTimetable extends React.Component{
         this.setState({ friday });
     }
 
+    submitResearchPaper(event) {
+        event.preventDefault();
+        console.log(this.state.email)
+        console.log(this.state.checkedTimeSlot)
+    }
+
+
     render() {
-        /*return <div>
-            <form noValidate autoComplete="off">
-                <TextField className={'size'} id="standard-basic" label="Standard" name={'authorName'}
-                           onChange={event => this.onChange(event)} value={this.state.authorName} /><br/><br/>
-
-                <InputLabel id="demo-simple-select-label">Age</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={this.state.email}
-                    onChange={event => this.onChange(event)}
-                    name={'email'}
-                    className={'size'}
-                    disabled={this.state.checkedA === true}
-                >
-                    <MenuItem value={10} >Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                </Select>
-                <TextField
-                    id="time"
-                    label="Alarm clock"
-                    type="time"
-                    value={this.state.timeT}
-                    onChange={event => this.onChange(event)}
-                    name={'timeT'}
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                />
-
-                <Button variant="contained" color="secondary" onClick={ event => this.submitResearchPaper(event)}>submit</Button>
-            </form>
-            <Switch
-                checked={this.state.checkedA}
-                onChange={event => this.onChangeCheck(event)}
-                name="checkedA"
-                inputProps={{ 'aria-label': 'secondary checkbox' }}
-            />
-
-        </div>*/
         console.log(this.state.startSlot)
         console.log(this.state.endSlot)
         return <div>
             <div>
                 <form>
+                    <div id={'form-style-classDetails'}>
+                        <div id={'classLabelDiv'}>
+                            <label className={'classLabel'}>Class</label>
+                            <label className={'classLabel'}>Class Type</label>
+                            <label className={'classLabel'}>Year</label>
+                        </div>
+                        <div id={'classSelectOpt'}>
+                            <Select labelId="demo-simple-select-label" id="demo-simple-select"
+                                    className={'classSize'} onChange={event => this.onChange(event)}>
+                                {
+                                    this.state.subjects.map(subject =>
+                                            <MenuItem key={subject} value={subject}>{subject}</MenuItem>
+                                    )
+                                }
+                            </Select>
+                            <Select labelId="demo-simple-select-label" id="demo-simple-select"
+                                    className={'classSize'} onChange={event => this.onChange(event)}>
+                                {
+                                    this.state.subjects.map(subject =>
+                                             <MenuItem key={subject} value={subject}>{subject}</MenuItem>
+                                    )
+                                }
+                            </Select>
+                            <Select labelId="demo-simple-select-label" id="demo-simple-select"
+                                     className={'classSize'} onChange={event => this.onChange(event)}>
+                                {
+                                    this.state.subjects.map(subject =>
+                                             <MenuItem key={subject} value={subject}>{subject}</MenuItem>
+                                    )
+                                }
+                            </Select>
+                        </div>
+                    </div>
+
                     <div id={'form-style-timeSlot'}>
+                        <Switch
+                            checked={this.state.checkedTimeSlot}
+                            onChange={event => this.onChangeCheckSlot(event)}
+                            name="checkedTimeSlot"
+                            inputProps={{ 'aria-label': 'secondary checkbox' }}
+                        />
                         <label id={'timeSlotTitle'}>Time Slot</label>
                         {
                             this.state.startSlot.map((el,i) =>
                                 <div key={i}>
-                                    <TextField type="time" value={el||''} onChange={this.handleChangeOnStartSlot.bind(this,i)}/>
+                                    <TextField type="time" value={el||''} disabled={this.state.checkedTimeSlot === true} onChange={this.handleChangeOnStartSlot.bind(this,i)}/>
                                     <label id={'timeID'}> to </label>
-                                    <TextField  type="time" value={this.state.endSlot[i] || ''} onChange={this.handleChangeOnEndSlot.bind(this,i)}/>
+                                    <TextField  type="time" value={this.state.endSlot[i] || ''} disabled={this.state.checkedTimeSlot === true} onChange={this.handleChangeOnEndSlot.bind(this,i)}/>
                                     {
                                         (this.state.startSlot.length - 1) === i ?(
-                                            <input type='button' value='-' onClick={this.removeClick.bind(this, i)}/>
+                                            (this.state.checkedTimeSlot === false)?(
+                                                <input type='button' value='-' onClick={this.removeClick.bind(this, i)}/>
+                                            ):null
                                         ):null
                                     }
                                 </div>
                             )
                         }
-                        <input type='button' value='Add' onClick={this.addClickOnSlot.bind(this)}/>
+                        {
+                            (this.state.checkedTimeSlot === false)?(
+                                <input type='button' value='Add' onClick={this.addClickOnSlot.bind(this)}/>
+                            ):null
+                        }
                     </div>
                     <div id={'form-style-Week'}>
                         <label id={'timeSlotTitle'}>Monday</label>
@@ -218,7 +249,7 @@ class CreateClassTimetable extends React.Component{
                             this.state.monday.map((el, i) =>
                                 <div key={i}>
                                     <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                            value={el||''} onChange={this.handleChange.bind(this, i,'monday')} className={'size'}>
+                                            value={el||''} onChange={this.handleSubjectChange.bind(this, i,'monday')} className={'size'}>
                                         {
                                             this.state.subjects.map(subject =>
                                                 <MenuItem key={subject} value={subject}>{subject}</MenuItem>
@@ -235,7 +266,7 @@ class CreateClassTimetable extends React.Component{
                             this.state.tuesday.map((el, i) =>
                                 <div key={i}>
                                     <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                            value={el||''} onChange={this.handleChange.bind(this, i,'tuesday')} className={'size'}>
+                                            value={el||''} onChange={this.handleSubjectChange.bind(this, i,'tuesday')} className={'size'}>
                                         {
                                             this.state.subjects.map(subject =>
                                                 <MenuItem key={subject} value={subject}>{subject}</MenuItem>
@@ -252,7 +283,7 @@ class CreateClassTimetable extends React.Component{
                             this.state.wednesday.map((el, i) =>
                                 <div key={i}>
                                     <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                            value={el||''} onChange={this.handleChange.bind(this, i,'wednesday')} className={'size'}>
+                                            value={el||''} onChange={this.handleSubjectChange.bind(this, i,'wednesday')} className={'size'}>
                                         {
                                             this.state.subjects.map(subject =>
                                                 <MenuItem key={subject} value={subject}>{subject}</MenuItem>
@@ -269,7 +300,7 @@ class CreateClassTimetable extends React.Component{
                             this.state.thursday.map((el, i) =>
                                 <div key={i}>
                                     <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                            value={el||''} onChange={this.handleChange.bind(this, i,'thursday')} className={'size'}>
+                                            value={el||''} onChange={this.handleSubjectChange.bind(this, i,'thursday')} className={'size'}>
                                         {
                                             this.state.subjects.map(subject =>
                                                 <MenuItem key={subject} value={subject}>{subject}</MenuItem>
@@ -281,12 +312,18 @@ class CreateClassTimetable extends React.Component{
                         }
                     </div>
                     <div id={'form-style-Week'}>
+                        <Switch
+                            checked={this.state.checkedSubject}
+                            onChange={event => this.onChangeCheckSubject(event)}
+                            name="checkedTimeSlot"
+                            inputProps={{ 'aria-label': 'secondary checkbox' }}
+                        />
                         <label id={'timeSlotTitle'}>Friday</label>
                         {
                             this.state.friday.map((el, i) =>
                                 <div key={i}>
                                     <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                            value={el||''} onChange={this.handleChange.bind(this, i,'friday')} className={'size'}>
+                                            value={el||''} onChange={this.handleSubjectChange.bind(this, i,'friday')} className={'size'}>
                                         {
                                             this.state.subjects.map(subject =>
                                                 <MenuItem key={subject} value={subject}>{subject}</MenuItem>
@@ -298,7 +335,9 @@ class CreateClassTimetable extends React.Component{
                                          * this also be icon and appear at last subjects
                                          */
                                         (this.state.friday.length - 1) === i ?(
-                                            <input type='button' value='-' onClick={this.removeClickOnDay.bind(this, i)}/>
+                                            (this.state.checkedSubject === false)?(
+                                                <input type='button' value='-' onClick={this.removeClickOnDay.bind(this, i)}/>
+                                            ):null
                                         ):null
                                     }
                                 </div>
@@ -308,7 +347,12 @@ class CreateClassTimetable extends React.Component{
                          * This should be a icon and it should be in bottom of all the days
                          */
                         }
-                        <input type='button' value='Add' onClick={this.addClickOn.bind(this)}/>
+                        {
+                            (this.state.checkedSubject === false)?(
+                                <input type='button' value='Add' onClick={this.addClickOn.bind(this)}/>
+                            ):null
+                        }
+
                     </div>
                 </form>
             </div>
