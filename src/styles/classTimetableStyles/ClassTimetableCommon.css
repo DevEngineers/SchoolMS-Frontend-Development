@@ -1,0 +1,39 @@
+.size{
+    width: 50%;
+}
+
+#form-style-timeSlot{
+    max-width: 270px !important;
+    padding: 10px 20px;
+    background: #f4f7f8;
+    padding: 20px;
+    background: #f2f2f2;
+    float:left;
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+#form-style-Week{
+    width: 197px;
+    padding: 10px 20px;
+    background: #f4f7f8;
+    padding: 20px;
+    background: #f2f2f2;
+    float: left;
+    margin-left: 5px;
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+
+#timeSlotTitle{
+    display: block;
+    margin-bottom: 8px;
+    padding: 10px;
+}
+
+#timeID{
+    padding: 5px 20px 0 20px;
+    display: inline-block;
+    font-weight: bold;
+}

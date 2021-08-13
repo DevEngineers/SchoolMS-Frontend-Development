@@ -10,7 +10,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/login" component={Login}/>
-        <Route path="/createClassTimetable" component={CreateClassTimetable}/>
+        <Route exact path="/createClassTimetable" component={CreateClassTimetable}/>
         <Route path="/createExamTimetable" component={CreateExamTimetable}/>
         <Route path="/storeResults" component={CreateClassTimetable}/>
       </Switch>
