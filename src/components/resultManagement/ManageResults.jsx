@@ -1,6 +1,6 @@
 import React from "react";
 
-class CreateUserAccount extends React.Component{
+class ManageResults extends React.Component{
     constructor(props) {
         super(props);
 
@@ -14,6 +14,7 @@ class CreateUserAccount extends React.Component{
 
         </div>
     }
+
 }
 
-export default CreateUserAccount;
+export default ManageResults;

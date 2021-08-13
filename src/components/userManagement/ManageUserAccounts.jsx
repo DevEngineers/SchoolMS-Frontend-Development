@@ -1,7 +1,6 @@
 import React from "react";
 
 class ManageUserAccounts extends React.Component{
-
     constructor(props) {
         super(props);
 

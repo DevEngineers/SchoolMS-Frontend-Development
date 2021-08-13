@@ -1,7 +1,6 @@
 import React from "react";
 
 class UpdateExamTimetable extends React.Component{
-
     constructor(props) {
         super(props);
 
