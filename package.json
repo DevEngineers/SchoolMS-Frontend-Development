@@ -1,7 +1,17 @@
 {
   "name": "spmfrontend",
+  "description": "SPM Frontend Project",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevEngineers/SchoolMS-Frontend-Development.git"
+  },
+  "authors": "M.N.M Akeel, A.M Zumry, M.A.M Nusky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DevEngineers/SchoolMS-Frontend-Development/issues"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
