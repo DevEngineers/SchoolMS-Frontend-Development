@@ -5,16 +5,18 @@ import React, {Component} from 'react';
  * Registration Number : IT19175126
  */
 
-class Header extends Component {
+class Footer extends Component {
     // constructor(props){
     //     super(props);
     // }
 
     render() {
-        return <div>
-            <h1>Hello Words</h1>
-        </div>
+        return (
+            <div>
+                
+            </div>
+        );
     }
 }
 
-export default Header;
+export default Footer;
