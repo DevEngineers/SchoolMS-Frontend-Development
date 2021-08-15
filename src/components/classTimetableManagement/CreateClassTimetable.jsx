@@ -214,12 +214,15 @@ class CreateClassTimetable extends React.Component{
                     </div>
 
                     <div id={'form-style-timeSlot'}>
-                        <Switch
-                            checked={this.state.checkedTimeSlot}
-                            onChange={event => this.onChangeCheckSlot(event)}
-                            name="checkedTimeSlot"
-                            inputProps={{ 'aria-label': 'secondary checkbox' }}
-                        />
+                        <div id={'timeSwitch'}>
+                            <Switch
+                                checked={this.state.checkedTimeSlot}
+                                onChange={event => this.onChangeCheckSlot(event)}
+                                name="checkedTimeSlot"
+                                inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                className={'Switch'}
+                            />
+                        </div>
                         <label id={'timeSlotTitle'}>Time Slot</label>
                         {
                             this.state.startSlot.map((el,i) =>
@@ -243,117 +246,120 @@ class CreateClassTimetable extends React.Component{
                             ):null
                         }
                     </div>
-                    <div id={'form-style-Week'}>
-                        <label id={'timeSlotTitle'}>Monday</label>
-                        {
-                            this.state.monday.map((el, i) =>
-                                <div key={i}>
-                                    <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                            value={el||''} onChange={this.handleSubjectChange.bind(this, i,'monday')} className={'size'}>
-                                        {
-                                            this.state.subjects.map(subject =>
-                                                <MenuItem key={subject} value={subject}>{subject}</MenuItem>
-                                            )
-                                        }
-                                    </Select>
-                                </div>
-                            )
-                        }
-                    </div>
-                    <div id={'form-style-Week'}>
-                        <label id={'timeSlotTitle'}>Tuesday</label>
-                        {
-                            this.state.tuesday.map((el, i) =>
-                                <div key={i}>
-                                    <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                            value={el||''} onChange={this.handleSubjectChange.bind(this, i,'tuesday')} className={'size'}>
-                                        {
-                                            this.state.subjects.map(subject =>
-                                                <MenuItem key={subject} value={subject}>{subject}</MenuItem>
-                                            )
-                                        }
-                                    </Select>
-                                </div>
-                            )
-                        }
-                    </div>
-                    <div id={'form-style-Week'}>
-                        <label id={'timeSlotTitle'}>Wednesday</label>
-                        {
-                            this.state.wednesday.map((el, i) =>
-                                <div key={i}>
-                                    <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                            value={el||''} onChange={this.handleSubjectChange.bind(this, i,'wednesday')} className={'size'}>
-                                        {
-                                            this.state.subjects.map(subject =>
-                                                <MenuItem key={subject} value={subject}>{subject}</MenuItem>
-                                            )
-                                        }
-                                    </Select>
-                                </div>
-                            )
-                        }
-                    </div>
-                    <div id={'form-style-Week'}>
-                        <label id={'timeSlotTitle'}>Thursday</label>
-                        {
-                            this.state.thursday.map((el, i) =>
-                                <div key={i}>
-                                    <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                            value={el||''} onChange={this.handleSubjectChange.bind(this, i,'thursday')} className={'size'}>
-                                        {
-                                            this.state.subjects.map(subject =>
-                                                <MenuItem key={subject} value={subject}>{subject}</MenuItem>
-                                            )
-                                        }
-                                    </Select>
-                                </div>
-                            )
-                        }
-                    </div>
-                    <div id={'form-style-Week'}>
-                        <Switch
-                            checked={this.state.checkedSubject}
-                            onChange={event => this.onChangeCheckSubject(event)}
-                            name="checkedTimeSlot"
-                            inputProps={{ 'aria-label': 'secondary checkbox' }}
-                        />
-                        <label id={'timeSlotTitle'}>Friday</label>
-                        {
-                            this.state.friday.map((el, i) =>
-                                <div key={i}>
-                                    <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                            value={el||''} onChange={this.handleSubjectChange.bind(this, i,'friday')} className={'size'}>
-                                        {
-                                            this.state.subjects.map(subject =>
-                                                <MenuItem key={subject} value={subject}>{subject}</MenuItem>
-                                            )
-                                        }
-                                    </Select>
-                                    {
-                                        /**
-                                         * this also be icon and appear at last subjects
-                                         */
-                                        (this.state.friday.length - 1) === i ?(
-                                            (this.state.checkedSubject === false)?(
-                                                <input type='button' value='-' onClick={this.removeClickOnDay.bind(this, i)}/>
-                                            ):null
-                                        ):null
-                                    }
-                                </div>
-                            )
-                        }
-                        {/**
-                         * This should be a icon and it should be in bottom of all the days
-                         */
-                        }
-                        {
-                            (this.state.checkedSubject === false)?(
-                                <input type='button' value='Add' onClick={this.addClickOn.bind(this)}/>
-                            ):null
-                        }
+                    <div id={'form-style-Week'} >
+                        <div id={'form-style-Week-inside'}>
+                            <label id={'dayTitle'}>Monday</label>
+                            {
+                                this.state.monday.map((el, i) =>
+                                    <div key={i}>
+                                        <Select labelId="demo-simple-select-label" id="demo-simple-select"
+                                                value={el||''} onChange={this.handleSubjectChange.bind(this, i,'monday')} className={'daySize'}>
+                                            {
+                                                this.state.subjects.map(subject =>
+                                                    <MenuItem key={subject} value={subject}>{subject}</MenuItem>
+                                                )
+                                            }
+                                        </Select>
+                                    </div>
+                                )
+                            }
+                        </div>
+                        <div id={'form-style-Week-inside'}>
+                            <label id={'dayTitle'}>Tuesday</label>
+                            {
+                                this.state.tuesday.map((el, i) =>
+                                    <div key={i}>
+                                        <Select labelId="demo-simple-select-label" id="demo-simple-select"
+                                                value={el||''} onChange={this.handleSubjectChange.bind(this, i,'tuesday')} className={'daySize'}>
+                                            {
+                                                this.state.subjects.map(subject =>
+                                                    <MenuItem key={subject} value={subject}>{subject}</MenuItem>
+                                                )
+                                            }
+                                        </Select>
+                                    </div>
+                                )
+                            }
+                        </div>
+                        <div id={'form-style-Week-inside'}>
+                            <label id={'dayTitle'}>Wednesday</label>
+                            {
+                                this.state.wednesday.map((el, i) =>
+                                    <div key={i}>
+                                        <Select labelId="demo-simple-select-label" id="demo-simple-select"
+                                                value={el||''} onChange={this.handleSubjectChange.bind(this, i,'wednesday')} className={'daySize'}>
+                                            {
+                                                this.state.subjects.map(subject =>
+                                                    <MenuItem key={subject} value={subject}>{subject}</MenuItem>
+                                                )
+                                            }
+                                        </Select>
+                                    </div>
+                                )
+                            }
+                        </div>
+                        <div id={'form-style-Week-inside'}>
+                            <label id={'dayTitle'}>Thursday</label>
+                            {
+                                this.state.thursday.map((el, i) =>
+                                    <div key={i}>
+                                        <Select labelId="demo-simple-select-label" id="demo-simple-select"
+                                                value={el||''} onChange={this.handleSubjectChange.bind(this, i,'thursday')} className={'daySize'}>
+                                            {
+                                                this.state.subjects.map(subject =>
+                                                    <MenuItem key={subject} value={subject}>{subject}</MenuItem>
+                                                )
+                                            }
+                                        </Select>
+                                    </div>
+                                )
+                            }
+                        </div>
+                        <div id={'form-style-Week-inside'}>
+                            <div id={'daySwitch'}>
+                                <Switch
+                                    checked={this.state.checkedSubject}
+                                    onChange={event => this.onChangeCheckSubject(event)}
+                                    name="checkedTimeSlot"
+                                    inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                />
+                            </div>
+                            <label id={'timeSlotTitle'}>Friday</label>
+                            {
+                                this.state.friday.map((el, i) =>
+                                    <div key={i}>
+                                        <Select labelId="demo-simple-select-label" id="demo-simple-select"
+                                                value={el||''} onChange={this.handleSubjectChange.bind(this, i,'friday')} className={'daySize'}>
+                                            {
+                                                this.state.subjects.map(subject =>
+                                                    <MenuItem key={subject} value={subject}>{subject}</MenuItem>
+                                                )
+                                            }
+                                        </Select>
+                                    </div>
+                                )
+                            }
+                            {/**
+                             * This should be a icon and it should be in bottom of all the days
+                             */
 
+                                this.state.friday.map((el, i) =>
+                                    (this.state.friday.length - 1) === i ?(
+                                        (this.state.checkedSubject === false)?(
+                                            <input type='button' value='-'  className={'delSub'} onClick={this.removeClickOnDay.bind(this, i)}/>
+                                        ):null
+                                    ):null
+                                )
+                            }
+                            {
+                                (this.state.checkedSubject === false)?(
+                                    <input type='button' value='Add' onClick={this.addClickOn.bind(this)}/>
+                                ):null
+                            }
+
+                        </div>
                     </div>
+
                 </form>
             </div>
         </div>
