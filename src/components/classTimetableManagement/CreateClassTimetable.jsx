@@ -184,6 +184,11 @@ class CreateClassTimetable extends React.Component{
         console.log(this.state.monday)
         return <div>
             <div>
+                <div className={'box'}>
+                    <label className={'custom-underline'}>GENERATE CLASS TIMETABLE</label>
+                </div>
+            </div>
+            <div id={'largeDiv'}>
                 <form>
                     <div id={'form-style-classDetails'}>
                         <div id={'classLabelDiv'}>
@@ -227,6 +232,7 @@ class CreateClassTimetable extends React.Component{
                                 name="checkedTimeSlot"
                                 inputProps={{ 'aria-label': 'secondary checkbox' }}
                                 className={'Switch'}
+                                color={'primary'}
                             />
                         </div>
                         <label id={'timeSlotTitle'}>Time Slot</label>
@@ -394,6 +400,7 @@ class CreateClassTimetable extends React.Component{
                                     onChange={event => this.onChangeCheckSubject(event)}
                                     name="checkedTimeSlot"
                                     inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                    color={'primary'}
                                 />
                             </div>
                             <label id={'timeSlotTitle'}>Friday</label>
@@ -448,6 +455,10 @@ class CreateClassTimetable extends React.Component{
                             }
 
                         </div>
+                    </div>
+                    <div className={'btnDiv'}>
+                        <input type={'submit'} id={'submitBtn'} value={'Generate Timetable'}/>
+                        <input type={'reset'} id={'restBtn'} value={'Reset'}/>
                     </div>
 
                 </form>
