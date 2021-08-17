@@ -3,6 +3,7 @@ import {Box, Grid, MenuItem} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
+import '../../styles/subjectManagment/subjects.css';
 
 /**
  * @author : A.M Zumry
@@ -13,7 +14,7 @@ class CreateSubject extends Component {
     constructor(props){
         super(props);
         this.state= {
-            grade:['A','B','C'],
+            grade:['5','6','7'],
             teacher:['Nimal', 'Kumar', 'Kasun']
         }
     }
@@ -32,7 +33,7 @@ class CreateSubject extends Component {
 
                 <div className={"subject-row"}>
                     <div className={"subject-section-title"}>
-                        <h2 className={"subject-custom-underline"}> CREATE CLASS </h2>
+                        <h2 className={"subject-custom-underline"}> CREATE SUBJECT </h2>
                     </div>
                 </div>
 
@@ -44,10 +45,10 @@ class CreateSubject extends Component {
                                 <div className="subject-form-div">
                                     <Grid container direction="row" direction="row" justifyContent="space-evenly" alignItems="center" >
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
-                                            <label htmlFor={'class'} > Class </label>
+                                            <label htmlFor={'name'} > Name </label>
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                            <TextField id="filled-basic" label="Class" variant="filled" style={{ width: 220 }} />
+                                            <TextField id="filled-basic" label="Subject Name" variant="filled" style={{ width: 220 }} />
                                         </Box>
                                     </Grid>
                                 </div>
@@ -55,7 +56,7 @@ class CreateSubject extends Component {
                                 <div className="subject-form-div">
                                     <Grid container direction="row" direction="row" justifyContent="space-evenly" alignItems="center" >
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
-                                            <label htmlFor={'classType'}> Class Type </label>
+                                            <label htmlFor={'classType'}> Grade </label>
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
                                             <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }}
@@ -73,7 +74,7 @@ class CreateSubject extends Component {
                                 <div className="subject-form-div">
                                     <Grid container direction="row" direction="row" justifyContent="space-evenly" alignItems="center" >
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
-                                            <label htmlFor={'teacher'}> Teacher  </label>
+                                            <label htmlFor={'teacher'}> Teacher </label>
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
                                             <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }}

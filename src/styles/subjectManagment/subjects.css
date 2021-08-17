@@ -1,0 +1,119 @@
+/*
+**************************************************************
+  @author : A.M Zumry
+  Registration Number : IT19175126
+************************************************************
+*/
+
+.outer-shadow-class {
+    box-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
+}
+
+/* --------------------
+Class title section
+-------------------- */
+.subject-section-title {
+    padding: 0 15px;
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 60px;
+}
+.subject-section-title h2 {
+    display: inline-block;
+    font-size: 30px;
+    font-weight: 700;
+    color: #000000;
+    text-transform: uppercase;
+    margin: 0;
+}
+.subject-section .subject-section-title {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.subject-section .subject-custom-underline {
+    position: relative;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Raleway", sans-serif;
+}
+
+.subject-custom-underline,
+.subject-custom-underline:hover,
+.subject-custom-underline:focus,
+.subject-custom-underline:active {
+    color: black;
+    text-decoration: none;
+}
+.subject-custom-underline::after {
+    content: "";
+    position: absolute;
+}
+
+.subject-section .subject-section-title{
+    height:125px;
+    display: inline-block;
+    font-size: 30px;
+    margin:30px 0 0 0px;
+    text-align: center;
+}
+
+.subject-section-title .subject-custom-underline::after {
+    top: 65%;
+    height: 2px !important;
+    width: 40%;
+    left: 31% ;
+    margin-top: 20px;
+    background-color: black;
+    transition: 0.4s ease-out all .1s;
+}
+
+.subject-section-title:hover .subject-custom-underline::after {
+    width: 90%;
+    left: 5%;
+    transition: 0.5s ease all;
+}
+
+/* --------------------
+Class section
+-------------------- */
+
+.subject-section{
+    padding: 0 0 80px;
+    min-height: 88vh;
+    background-color: #F0F0F0;
+}
+.subject-container {
+    max-width: 1140px;
+    margin: auto;
+}
+.subject-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+.subject-row .subject-item {
+    flex: 0 0 50%;
+    max-width: 100%;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+}
+.subject-row .subject-item-inner{
+    padding: 50px 15px;
+    border-radius: 5px;
+    width: 100%;
+    /*box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.3);*/
+}
+
+.subject-form-div{
+    padding-top: 20px;
+}
+
+/**
+  ************************************************************************************
+ */
