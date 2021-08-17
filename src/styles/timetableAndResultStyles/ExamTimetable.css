@@ -1,22 +1,23 @@
-#largeResultDiv{
-    width: 51%;
+#largeExamDiv{
+    width: 54%;
     padding: 20px;
     float:left;
     box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
     font-family: Georgia, "Times New Roman", Times, serif;
-    margin-left: 350px;
+    margin-left: 340px;
     background-color: #f4f7f8;
 }
 
-#form-style-marksR{
+#form-style-timeSlotE{
     max-width: 270px;
     padding: 20px;
     float:left;
     font-family: Georgia, "Times New Roman", Times, serif;
+    margin-left: -25px;
 }
 
 
-#form-style-result{
+#form-style-examR{
     width: 200px;
     padding: 20px;
     float: left;
@@ -46,15 +47,6 @@
     text-align: center;
 }
 
-#timeSwitch{
-    width: 50px;
-    margin-left: 230px;
-}
-
-#daySwitch{
-    width: 50px;
-    margin-left: 130px;
-}
 
 #timeID{
     padding: 5px 20px 0 20px;
@@ -69,52 +61,25 @@
     margin-top: 20px;
 }
 
-#intervalDiv{
-    width: 1020px;
-    border: 4px groove;
-    border-radius: 5px;
-    text-align: center;
-    z-index: 0;
-    position: absolute;
-    padding: 10px;
-    margin-left: -10px;
-    margin-top: -60px;
-    font-weight: bold;
-}
-
-#insideInterval{
-    color: #f2f2f2;
-    margin-bottom: 60px;
-}
-
-#timeslotInterval{
-    padding: 24px;
-    width: 270px;
-    margin-left: -25px;
-}
-
-.selectRName{
+.selectPName{
     font-size:14px;
 }
 
 /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-#secondSDiv{
+#secondDiv{
     padding: 20px;
     float:left;
-    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
     font-family: Georgia, "Times New Roman", Times, serif;
     background-color: #f2f2f2;
     margin-left: 8px;
 }
-#form-style-resultClass{
-    width: 731px;
+#form-style-examClass{
+    width: 777px;
     padding: 15px;
     float:left;
-    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.3);
     font-family: Georgia, "Times New Roman", Times, serif;
     margin-bottom: 3px;
-    background: #f2f2f2;
     margin-left: 8px;
 }
 
@@ -139,21 +104,21 @@
     margin-bottom: 10px;
 }
 
-.timeslotIconRB{
+.timeslotIconEB{
     background-color: #f44336;
     padding: 10px;
     border-radius: 50px;
     color: white;
-    margin-left: -320px;
+    margin-left: -380px;
     margin-top: 5px;
 }
 
-.timeslotIconRA{
+.timeslotIconEA{
     background-color: #00e676;
     padding: 10px;
     border-radius: 50px;
     color: white;
-    margin-left: -320px;
+    margin-left: -380px;
     margin-top: 5px;
 }
 
@@ -182,10 +147,10 @@
     padding: 20px;
     width: 94%;
     float: left;
-    margin-left: 28px;
+    margin-left: 35px;
 }
 
-#submitRBtn{
+#submitEBtn{
     position: relative;
     display: block;
     padding: 10px 5px 10px 5px;
@@ -201,12 +166,12 @@
 
 }
 
-#submitRBtn:hover{
+#submitEBtn:hover{
     background: #ff6801;
     cursor: pointer;
 }
 
-#restRBtn{
+#restEBtn{
     position: relative;
     display: block;
     padding: 10px 5px 10px 5px;
@@ -221,7 +186,7 @@
     margin-right: 5px;
 }
 
-#restRBtn:hover{
+#restEBtn:hover{
     background: #ff6801;
     cursor: pointer;
 }

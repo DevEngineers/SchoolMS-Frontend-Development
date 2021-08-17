@@ -1,23 +1,22 @@
-#largeExamDiv{
-    width: 54%;
+#largeResultDiv{
+    width: 51%;
     padding: 20px;
     float:left;
     box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
     font-family: Georgia, "Times New Roman", Times, serif;
-    margin-left: 340px;
+    margin-left: 350px;
     background-color: #f4f7f8;
 }
 
-#form-style-timeSlotE{
+#form-style-marksR{
     max-width: 270px;
     padding: 20px;
     float:left;
     font-family: Georgia, "Times New Roman", Times, serif;
-    margin-left: -25px;
 }
 
 
-#form-style-examR{
+#form-style-result{
     width: 200px;
     padding: 20px;
     float: left;
@@ -70,52 +69,31 @@
     margin-top: 20px;
 }
 
-#intervalDiv{
-    width: 1020px;
-    border: 4px groove;
-    border-radius: 5px;
-    text-align: center;
-    z-index: 0;
-    position: absolute;
-    padding: 10px;
-    margin-left: -10px;
-    margin-top: -60px;
-    font-weight: bold;
-}
-
-#insideInterval{
-    color: #f2f2f2;
-    margin-bottom: 60px;
-}
-
 #timeslotInterval{
     padding: 24px;
     width: 270px;
     margin-left: -25px;
 }
 
-.selectPName{
+.selectRName{
     font-size:14px;
 }
 
 /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-#secondDiv{
+#secondSDiv{
     padding: 20px;
     float:left;
-    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
     font-family: Georgia, "Times New Roman", Times, serif;
     background-color: #f2f2f2;
     margin-left: 8px;
 }
-#form-style-examClass{
-    width: 777px;
+#form-style-resultClass{
+    width: 731px;
     padding: 15px;
     float:left;
-    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.3);
     font-family: Georgia, "Times New Roman", Times, serif;
     margin-bottom: 3px;
-    background: #f2f2f2;
     margin-left: 8px;
 }
 
@@ -140,21 +118,21 @@
     margin-bottom: 10px;
 }
 
-.timeslotIconEB{
+.timeslotIconRB{
     background-color: #f44336;
     padding: 10px;
     border-radius: 50px;
     color: white;
-    margin-left: -380px;
+    margin-left: -320px;
     margin-top: 5px;
 }
 
-.timeslotIconEA{
+.timeslotIconRA{
     background-color: #00e676;
     padding: 10px;
     border-radius: 50px;
     color: white;
-    margin-left: -380px;
+    margin-left: -320px;
     margin-top: 5px;
 }
 
@@ -183,10 +161,10 @@
     padding: 20px;
     width: 94%;
     float: left;
-    margin-left: 35px;
+    margin-left: 28px;
 }
 
-#submitEBtn{
+#submitRBtn{
     position: relative;
     display: block;
     padding: 10px 5px 10px 5px;
@@ -202,12 +180,12 @@
 
 }
 
-#submitEBtn:hover{
+#submitRBtn:hover{
     background: #ff6801;
     cursor: pointer;
 }
 
-#restEBtn{
+#restRBtn{
     position: relative;
     display: block;
     padding: 10px 5px 10px 5px;
@@ -222,7 +200,7 @@
     margin-right: 5px;
 }
 
-#restEBtn:hover{
+#restRBtn:hover{
     background: #ff6801;
     cursor: pointer;
 }

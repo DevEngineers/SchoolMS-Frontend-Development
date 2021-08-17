@@ -4,7 +4,7 @@ import Select from '@material-ui/core/Select';
 import { IconButton, MenuItem, Switch} from "@material-ui/core";
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
-import '../../styles/TimetableAndResultStyles/ClassTimetable.css';
+import '../../styles/timetableAndResultStyles/ClassTimetable.css';
 
 class CreateClassTimetable extends React.Component{
     constructor(props) {

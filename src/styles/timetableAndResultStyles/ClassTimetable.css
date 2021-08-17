@@ -13,7 +13,6 @@
     background: #f2f2f2;
     padding: 20px;
     float:left;
-    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.3);
     font-family: Georgia, "Times New Roman", Times, serif;
 }
 
@@ -21,7 +20,6 @@
     background: #f2f2f2;
     float: left;
     margin-left: 5px;
-    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.3);
     font-family: Georgia, "Times New Roman", Times, serif;
 }
 
@@ -123,10 +121,8 @@
     width: 1350px;
     padding: 15px;
     float:left;
-    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.3);
     font-family: Georgia, "Times New Roman", Times, serif;
     margin-bottom: 3px;
-    background: #f2f2f2;
 }
 
 #classLabelDiv{

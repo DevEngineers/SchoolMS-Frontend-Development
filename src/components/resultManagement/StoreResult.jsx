@@ -4,7 +4,7 @@ import {IconButton, MenuItem} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import DeleteIcon from "@material-ui/icons/Delete";
 import AddIcon from "@material-ui/icons/Add";
-import '../../styles/TimetableAndResultStyles/Results.css';
+import '../../styles/timetableAndResultStyles/Results.css';
 
 class StoreResult extends React.Component{
     constructor(props) {
