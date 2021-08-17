@@ -1,10 +1,13 @@
 import React from "react";
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
-import { IconButton, MenuItem, Switch} from "@material-ui/core";
+import {IconButton, MenuItem, Snackbar, Switch} from "@material-ui/core";
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
+import { ToastContainer, toast } from 'material-react-toastify';
+import 'material-react-toastify/dist/ReactToastify.css';
 import '../../styles/timetableAndResultStyles/ClassTimetable.css';
+import ClassTimetableService from "../../services/ClassTimetableService";
 
 
 /**
@@ -12,37 +15,67 @@ import '../../styles/timetableAndResultStyles/ClassTimetable.css';
  * Registration Number : IT19153414
  */
 
+//Setting default values for start time,end time and subject slot in the time table form
+const defStartTimeSlot = ['07:50','08:30','09:10','09:50','10:30','10:50','11:30','12:10','12:50'];
+const defEndTimeSlot = ['08:30','09:10','09:50','10:30','10:50','11:30','12:10','12:50','01:30'];
+const defDayValues = ['','','','','interval','','','',''];
 
+//Toast Message Configuration
+const options = {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: false
+}
 
 class CreateClassTimetable extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-
-            startSlot:['07:50','08:30','09:10','09:50','10:30','10:50','11:30','12:10','12:50'],
-            endSlot:['08:30','09:10','09:50','10:30','10:50','11:30','12:10','12:50','01:30'],
-            monday:['','','','','interval','','','',''],
-            tuesday:['','','','','interval','','','',''],
-            wednesday:['','','','','interval','','','',''],
-            thursday:['','','','','interval','','','',''],
-            friday:['','','','','interval','','','',''],
+            startSlot:[],
+            endSlot:[],
+            monday:[],
+            tuesday:[],
+            wednesday:[],
+            thursday:[],
+            friday:[],
             subjects:['Mathematics','hi'],
 
             checkedTimeSlot:true,
             checkedSubject:true,
 
-            class:'',
-            classType:'',
-            Year:'',
+            sClass:'',
+            sClassType:'',
+            year:'',
 
-            classes:[],
-            classTypes:[],
-            years:[]
+            classes:['hello'],
+            classTypes:['a'],
+            years:['2020']
         }
     }
 
 
     componentDidMount() {
+            this.setDefaultValuesInState();
+    }
+
+    setDefaultValuesInState(){
+        this.setState({startSlot:defStartTimeSlot})
+        this.setState({endSlot:defEndTimeSlot})
+        this.setState({monday:defDayValues})
+        this.setState({tuesday:defDayValues})
+        this.setState({wednesday:defDayValues})
+        this.setState({thursday:defDayValues})
+        this.setState({friday:defDayValues})
+    }
+
+    restAllValuesInForm(){
+        this.setDefaultValuesInState()
+        this.setState({sClass:''})
+        this.setState({sClassType:''})
+        this.setState({year:''})
 
     }
 
@@ -95,7 +128,6 @@ class CreateClassTimetable extends React.Component{
     }
 
     handleSubjectChange(i,value, event) {
-        console.log(value)
         if(value === 'monday'){
             let monday = [...this.state.monday];
             monday[i] = event.target.value;
@@ -184,17 +216,60 @@ class CreateClassTimetable extends React.Component{
         this.setState({ friday });
     }
 
-    submitResearchPaper(event) {
+    validateSubjectSelections(array){
+        let dArray = arr => arr.filter((item,index) => arr.indexOf(item) !== index);
+        return dArray(array)
+    }
+
+    generateClassTimetable(event) {
         event.preventDefault();
-        console.log(this.state.email)
-        console.log(this.state.checkedTimeSlot)
+        let classTimetable ={
+            class:this.state.sClass,
+            classType:this.state.sClassType,
+            year: this.state.year,
+            startSlot: this.state.startSlot,
+            endSlot: this.state.endSlot,
+            monday: this.state.monday,
+            tuesday: this.state.tuesday,
+            wednesday: this.state.wednesday,
+            thursday: this.state.thursday,
+            friday: this.state.friday
+        }
+
+        if(classTimetable.class === ''){
+            toast.warn('Select the Class',options)
+        }else if(classTimetable.classType === ''){
+            toast.warn('Select the Class Type',options)
+        }else if(classTimetable.year === ''){
+            toast.warn('Select the Year',options)
+        }else if (classTimetable.monday.includes('')){
+            toast.warn('Select Subjects in Monday',options)
+        }else if (classTimetable.tuesday.includes('')){
+            toast.warn('Select Subjects in Tuesday',options)
+        }else if (classTimetable.wednesday.includes('')){
+            toast.warn('Select Subjects in Wednesday',options)
+        }else if (classTimetable.thursday.includes('')){
+            toast.warn('Select Subjects in Thursday',options)
+        }else if (classTimetable.friday.includes('')){
+            toast.warn('Select Subjects in Friday',options)
+        }else{
+            console.log(JSON.stringify(classTimetable))
+            /*ClassTimetableService.generateClassTimetable(classTimetable)
+                .then(res => {
+                    if(res.status === 200){
+                        toast.success("Class Timetable Generated Successfully",options)
+                        setTimeout(()=>{this.props.history.push("/")},3000)
+                    }else{
+                        toast.error("Something went wrong!! Try again.",options)
+                    }
+                })*/
+        }
     }
 
 
     render() {
-        console.log(this.state.startSlot)
-        console.log(this.state.monday)
         return <div>
+            <ToastContainer/>
             <div>
                 <div className={'box'}>
                     <label className={'custom-underline'}>GENERATE CLASS TIMETABLE</label>
@@ -209,7 +284,7 @@ class CreateClassTimetable extends React.Component{
                             <label className={'classLabel'}>Year</label>
                         </div>
                         <div id={'classSelectOpt'}>
-                            <Select labelId="demo-simple-select-label" id="demo-simple-select"
+                            <Select labelId="demo-simple-select-label" id="demo-simple-select" value={this.state.sClass} name={'sClass'}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
                                 <MenuItem><span className={'selectCName'}>Select Class</span></MenuItem>
                                 {
@@ -218,7 +293,7 @@ class CreateClassTimetable extends React.Component{
                                     )
                                 }
                             </Select>
-                            <Select labelId="demo-simple-select-label" id="demo-simple-select"
+                            <Select labelId="demo-simple-select-label" id="demo-simple-select" value={this.state.sClassType} name={'sClassType'}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
                                 <MenuItem><span className={'selectCName'}>Select Class Type</span></MenuItem>
                                 {
@@ -227,7 +302,7 @@ class CreateClassTimetable extends React.Component{
                                     )
                                 }
                             </Select>
-                            <Select labelId="demo-simple-select-label" id="demo-simple-select"
+                            <Select labelId="demo-simple-select-label" id="demo-simple-select" value={this.state.year} name={'year'}
                                      className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
                                 <MenuItem><span className={'selectCName'}>Select Year</span></MenuItem>
                                 {
@@ -463,8 +538,8 @@ class CreateClassTimetable extends React.Component{
                         </div>
                     </div>
                     <div className={'btnDiv'}>
-                        <input type={'submit'} id={'submitBtn'} value={'Generate Timetable'}/>
-                        <input type={'reset'} id={'restBtn'} value={'Reset'}/>
+                        <input type={'submit'} id={'submitBtn'} value={'Generate Timetable'} onClick={this.generateClassTimetable.bind(this)}/>
+                        <input type={'reset'} id={'restBtn'} value={'Reset'} onClick={this.restAllValuesInForm.bind(this)}/>
                     </div>
 
                 </form>
