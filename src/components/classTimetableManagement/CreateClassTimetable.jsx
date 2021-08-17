@@ -11,7 +11,6 @@ class CreateClassTimetable extends React.Component{
         super(props);
         this.state = {
 
-            timeSlot:[],
             startSlot:['07:50','08:30','09:10','09:50','10:30','10:50','11:30','12:10','12:50'],
             endSlot:['08:30','09:10','09:50','10:30','10:50','11:30','12:10','12:50','01:30'],
             monday:['','','','','interval','','','',''],
@@ -198,7 +197,8 @@ class CreateClassTimetable extends React.Component{
                         </div>
                         <div id={'classSelectOpt'}>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                    className={'classSize'} onChange={event => this.onChange(event)}>
+                                    className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                <MenuItem><span className={'selectCName'}>Select Class</span></MenuItem>
                                 {
                                     this.state.classes.map(classes =>
                                             <MenuItem key={classes} value={classes}>{classes}</MenuItem>
@@ -206,7 +206,8 @@ class CreateClassTimetable extends React.Component{
                                 }
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                    className={'classSize'} onChange={event => this.onChange(event)}>
+                                    className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                <MenuItem><span className={'selectCName'}>Select Class Type</span></MenuItem>
                                 {
                                     this.state.classTypes.map(classType =>
                                              <MenuItem key={classType} value={classType}>{classType}</MenuItem>
@@ -214,7 +215,8 @@ class CreateClassTimetable extends React.Component{
                                 }
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                     className={'classSize'} onChange={event => this.onChange(event)}>
+                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                <MenuItem><span className={'selectCName'}>Select Year</span></MenuItem>
                                 {
                                     this.state.years.map(year =>
                                              <MenuItem key={year} value={year}>{year}</MenuItem>
@@ -327,10 +329,7 @@ class CreateClassTimetable extends React.Component{
                                             (el === 'interval') ? (
                                                 <div id={'insideInterval'}>interval</div>
                                             ) : (
-                                                <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                                        value={el || ''}
-                                                        onChange={this.handleSubjectChange.bind(this, i, 'tuesday')}
-                                                        className={'daySize'}>
+                                                <Select labelId="demo-simple-select-label" id="demo-simple-select" value={el || ''} onChange={this.handleSubjectChange.bind(this, i, 'tuesday')} className={'daySize'}>
                                                     {
                                                         this.state.subjects.map(subject =>
                                                             <MenuItem key={subject} value={subject}>{subject}</MenuItem>
@@ -352,10 +351,8 @@ class CreateClassTimetable extends React.Component{
                                             (el === 'interval') ? (
                                                 <div id={'insideInterval'}>interval</div>
                                             ) : (
-                                                <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                                        value={el || ''}
-                                                        onChange={this.handleSubjectChange.bind(this, i, 'wednesday')}
-                                                        className={'daySize'}>
+                                                <Select labelId="demo-simple-select-label" id="demo-simple-select" value={el || ''}
+                                                        onChange={this.handleSubjectChange.bind(this, i, 'wednesday')} className={'daySize'}>
                                                     {
                                                         this.state.subjects.map(subject =>
                                                             <MenuItem key={subject} value={subject}>{subject}</MenuItem>
@@ -377,10 +374,8 @@ class CreateClassTimetable extends React.Component{
                                             (el === 'interval') ? (
                                                 <div id={'insideInterval'}>interval</div>
                                             ) : (
-                                                <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                                        value={el || ''}
-                                                        onChange={this.handleSubjectChange.bind(this, i, 'thursday')}
-                                                        className={'daySize'}>
+                                                <Select labelId="demo-simple-select-label" id="demo-simple-select" value={el || ''}
+                                                        onChange={this.handleSubjectChange.bind(this, i, 'thursday')} className={'daySize'}>
                                                     {
                                                         this.state.subjects.map(subject =>
                                                             <MenuItem key={subject} value={subject}>{subject}</MenuItem>
@@ -411,10 +406,8 @@ class CreateClassTimetable extends React.Component{
                                             (el === 'interval') ? (
                                                 <div id={'insideInterval'}>interval</div>
                                             ) : (
-                                                <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                                        value={el || ''}
-                                                        onChange={this.handleSubjectChange.bind(this, i, 'friday')}
-                                                        className={'daySize'}>
+                                                <Select labelId="demo-simple-select-label" id="demo-simple-select" value={el || ''}
+                                                        onChange={this.handleSubjectChange.bind(this, i, 'friday')} className={'daySize'}>
                                                     {
                                                         this.state.subjects.map(subject =>
                                                             <MenuItem key={subject} value={subject}>{subject}</MenuItem>

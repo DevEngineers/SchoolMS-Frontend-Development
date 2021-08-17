@@ -114,13 +114,16 @@
     margin-top: -10px;
 }
 
+.selectCName{
+    font-size:14px;
+}
 
     /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 #form-style-classDetails{
     width: 1350px;
     padding: 15px;
     float:left;
-    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.3);
     font-family: Georgia, "Times New Roman", Times, serif;
     margin-bottom: 3px;
     background: #f2f2f2;
