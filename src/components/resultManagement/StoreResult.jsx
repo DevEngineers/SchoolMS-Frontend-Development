@@ -14,6 +14,7 @@ class StoreResult extends React.Component{
             examMarks:['','','','',''],
             examSubjects:['','','','','last'],
             subjects:['Mathematics','hi'],
+            grades:['','','','',''],
 
             class:'',
             classType:'',
@@ -38,21 +39,29 @@ class StoreResult extends React.Component{
     }
 
 
-    handleChange(i,event) {
+    handleChangeSubject(i,event) {
         let examSubjects = [...this.state.examSubjects];
         examSubjects[i] = event.target.value;
         this.setState({ examSubjects });
+    }
 
+    handleChangeMarks(i,event) {
         let examMarks = [...this.state.examMarks];
         examMarks[i] = event.target.value;
         this.setState({ examMarks });
     }
+
+    handleChangeGrade(i,event) {
+        let grades = [...this.state.grades];
+        grades[i] = event.target.value;
+        this.setState({ grades });
+    }
+
     /**
      * this function is to dynamically create time input field in the subjects timeslot
      */
     addClickOn(){
-        this.setState(prevState => ({ startSlot: [...prevState.startSlot, '']}))
-        this.setState(prevState => ({ endSlot: [...prevState.endSlot, '']}))
+        this.setState(prevState => ({ grades: [...prevState.grades, '']}))
         this.setState(prevState => ({ examSubjects: [...prevState.examSubjects, '']}))
         this.setState(prevState => ({ examMarks: [...prevState.examMarks, '']}))
 
@@ -62,13 +71,9 @@ class StoreResult extends React.Component{
      * this function is to remove dynamically created time input field in subjects timeslot
      */
     removeClick(i){
-        let startSlot = [...this.state.startSlot];
-        startSlot.splice(i,1);
-        this.setState({ startSlot });
-
-        let endSlot = [...this.state.endSlot];
-        endSlot.splice(i,1);
-        this.setState({ endSlot });
+        let grades = [...this.state.grades];
+        grades.splice(i,1);
+        this.setState({ grades });
 
         let examSubjects = [...this.state.examSubjects];
         examSubjects.splice(i,1);
@@ -92,7 +97,7 @@ class StoreResult extends React.Component{
         return <div>
             <div>
                 <div className={'box'}>
-                    <label className={'custom-underline'}>GENERATE EXAM TIMETABLE</label>
+                    <label className={'custom-underline'}>STORE EXAM RESULTS</label>
                 </div>
             </div>
             <div id={'largeResultDiv'}>
@@ -103,41 +108,51 @@ class StoreResult extends React.Component{
                             <label className={'classELabel'}>Class Type</label>
                             <label className={'classELabel'}>Year</label>
                             <label className={'classELabel'}>Term</label>
+                            <label className={'classELabel'}>Student ID</label>
                         </div>
                         <div id={'classSelectOpt'}>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select"
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem><span className={'selectPName'}>Select Class</span></MenuItem>
+                                <MenuItem><span className={'selectRName'}>Select Class</span></MenuItem>
                                 {
                                     this.state.classes.map(classes =>
-                                        <MenuItem key={classes} value={classes} className={'selectPName'}>{classes}</MenuItem>
+                                        <MenuItem key={classes} value={classes} className={'selectRName'}>{classes}</MenuItem>
                                     )
                                 }
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select"
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem><span className={'selectPName'}>Select Class Type</span></MenuItem>
+                                <MenuItem><span className={'selectRName'}>Select Class Type</span></MenuItem>
                                 {
                                     this.state.classTypes.map(classType =>
-                                        <MenuItem key={classType} value={classType} className={'selectPName'}>{classType}</MenuItem>
+                                        <MenuItem key={classType} value={classType} className={'selectRName'}>{classType}</MenuItem>
                                     )
                                 }
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select"
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem><span className={'selectPName'}>Select Year</span></MenuItem>
+                                <MenuItem><span className={'selectRName'}>Select Year</span></MenuItem>
                                 {
                                     this.state.years.map(year =>
-                                        <MenuItem key={year} value={year} className={'selectPName'}>{year}</MenuItem>
+                                        <MenuItem key={year} value={year} className={'selectRName'}>{year}</MenuItem>
                                     )
                                 }
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select"
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem><span className={'selectPName'}>Select Term</span></MenuItem>
+                                <MenuItem><span className={'selectRName'}>Select Term</span></MenuItem>
                                 {
                                     this.state.eTerms.map(term =>
-                                        <MenuItem key={term} value={term} className={'selectPName'}>{term}</MenuItem>
+                                        <MenuItem key={term} value={term} className={'selectRName'}>{term}</MenuItem>
+                                    )
+                                }
+                            </Select>
+                            <Select labelId="demo-simple-select-label" id="demo-simple-select"
+                                    className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                <MenuItem><span className={'selectRName'}>Select Student</span></MenuItem>
+                                {
+                                    this.state.students.map(student =>
+                                        <MenuItem key={student} value={student} className={'selectRName'}>{student}</MenuItem>
                                     )
                                 }
                             </Select>
@@ -151,7 +166,7 @@ class StoreResult extends React.Component{
                                     this.state.examSubjects.map((el, i) =>
                                         <div key={i}>
                                             <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                                    value={el || ''} onChange={this.handleChange.bind(this, i)} className={'daySize'} >
+                                                    value={el || ''} onChange={this.handleChangeSubject.bind(this, i)} className={'daySize'} >
                                                 {
                                                     this.state.subjects.map(subject =>
                                                         <MenuItem key={subject} value={subject}>{subject}</MenuItem>
@@ -168,7 +183,7 @@ class StoreResult extends React.Component{
                             {
                                 this.state.examMarks.map((el,i) =>
                                     <div key={i}>
-                                        <TextField type="input" value={el||''} onChange={this.handleChange.bind(this,i)}/>
+                                        <TextField type="text" value={el||''} onChange={this.handleChangeMarks.bind(this,i)}/>
                                     </div>
                                 )
                             }
@@ -177,10 +192,10 @@ class StoreResult extends React.Component{
                             <div id={'form-style-examR-inside'}>
                                 <label id={'timeSlotTitle'}>Grade</label>
                                 {
-                                    this.state.examSubjects.map((el, i) =>
+                                    this.state.grades.map((el, i) =>
                                         <div key={i}>
                                             <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                                    value={el || ''} onChange={this.handleChange.bind(this, i)} className={'daySize'} >
+                                                    value={el || ''} onChange={this.handleChangeGrade.bind(this, i)} className={'daySize'} >
                                                 {
                                                     this.state.subjects.map(subject =>
                                                         <MenuItem key={subject} value={subject}>{subject}</MenuItem>
@@ -196,7 +211,7 @@ class StoreResult extends React.Component{
                                             (el !== 'last')?(
                                                 <div>
                                                     <IconButton aria-label="delete" style={{backgroundColor:"transparent"}} onClick={this.removeClick.bind(this, i)}>
-                                                        <DeleteIcon className={'timeslotIconEB'}/>
+                                                        <DeleteIcon className={'timeslotIconRB'}/>
                                                     </IconButton>
                                                 </div>
                                             ):null
@@ -205,7 +220,7 @@ class StoreResult extends React.Component{
                                 }
                                 <div >
                                     <IconButton aria-label="add" style={{backgroundColor:"transparent"}} onClick={this.addClickOn.bind(this)}>
-                                        <AddIcon className={'timeslotIconEA'} />
+                                        <AddIcon className={'timeslotIconRA'} />
                                     </IconButton>
                                 </div>
 
@@ -214,8 +229,8 @@ class StoreResult extends React.Component{
                         </div>
                     </div>
                     <div className={'btnEDiv'}>
-                        <input type={'submit'} id={'submitEBtn'} value={'Generate Timetable'}/>
-                        <input type={'reset'} id={'restEBtn'} value={'Reset'}/>
+                        <input type={'submit'} id={'submitRBtn'} value={'Store Results'}/>
+                        <input type={'reset'} id={'restRBtn'} value={'Reset'}/>
                     </div>
 
                 </form>

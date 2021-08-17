@@ -1,10 +1,10 @@
 #largeResultDiv{
-    width: 54%;
+    width: 51%;
     padding: 20px;
     float:left;
     box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
     font-family: Georgia, "Times New Roman", Times, serif;
-    margin-left: 340px;
+    margin-left: 350px;
     background-color: #f4f7f8;
 }
 
@@ -93,7 +93,7 @@
     margin-left: -25px;
 }
 
-.selectPName{
+.selectRName{
     font-size:14px;
 }
 
@@ -108,7 +108,7 @@
     margin-left: 8px;
 }
 #form-style-resultClass{
-    width: 777px;
+    width: 731px;
     padding: 15px;
     float:left;
     box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.3);
@@ -139,21 +139,21 @@
     margin-bottom: 10px;
 }
 
-.timeslotIconEB{
+.timeslotIconRB{
     background-color: #f44336;
     padding: 10px;
     border-radius: 50px;
     color: white;
-    margin-left: -380px;
+    margin-left: -320px;
     margin-top: 5px;
 }
 
-.timeslotIconEA{
+.timeslotIconRA{
     background-color: #00e676;
     padding: 10px;
     border-radius: 50px;
     color: white;
-    margin-left: -380px;
+    margin-left: -320px;
     margin-top: 5px;
 }
 
@@ -182,10 +182,10 @@
     padding: 20px;
     width: 94%;
     float: left;
-    margin-left: 35px;
+    margin-left: 28px;
 }
 
-#submitEBtn{
+#submitRBtn{
     position: relative;
     display: block;
     padding: 10px 5px 10px 5px;
@@ -201,12 +201,12 @@
 
 }
 
-#submitEBtn:hover{
+#submitRBtn:hover{
     background: #ff6801;
     cursor: pointer;
 }
 
-#restEBtn{
+#restRBtn{
     position: relative;
     display: block;
     padding: 10px 5px 10px 5px;
@@ -221,7 +221,7 @@
     margin-right: 5px;
 }
 
-#restEBtn:hover{
+#restRBtn:hover{
     background: #ff6801;
     cursor: pointer;
 }
