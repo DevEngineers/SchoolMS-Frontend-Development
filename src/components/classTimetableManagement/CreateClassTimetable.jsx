@@ -249,8 +249,8 @@ class CreateClassTimetable extends React.Component{
                                                     (this.state.startSlot.length - 1) === i ?(
                                                         (this.state.checkedTimeSlot === false)?(
                                                             <div className={'timeslotIcon'}>
-                                                                <IconButton aria-label="delete" style={{backgroundColor:"transparent"}}>
-                                                                    <DeleteIcon className={'timeslotIconB'} onClick={this.removeClick.bind(this, i)}/>
+                                                                <IconButton aria-label="delete" style={{backgroundColor:"transparent"}} onClick={this.removeClick.bind(this, i)}>
+                                                                    <DeleteIcon className={'timeslotIconB'}/>
                                                                 </IconButton>
                                                             </div>
                                                         ):null
@@ -267,8 +267,8 @@ class CreateClassTimetable extends React.Component{
                                                         (this.state.checkedTimeSlot === false)?(
                                                             /*<input type='button' value='-' onClick={this.removeClick.bind(this, i)}/>*/
                                                             <div className={'timeslotIcon'}>
-                                                                <IconButton aria-label="delete" style={{backgroundColor:"transparent"}}>
-                                                                    <DeleteIcon className={'timeslotIconB'} onClick={this.removeClick.bind(this, i)}/>
+                                                                <IconButton aria-label="delete" style={{backgroundColor:"transparent"}} onClick={this.removeClick.bind(this, i)}>
+                                                                    <DeleteIcon className={'timeslotIconB'}/>
                                                                 </IconButton>
                                                             </div>
                                                         ):null
@@ -284,8 +284,8 @@ class CreateClassTimetable extends React.Component{
                             (this.state.checkedTimeSlot === false)?(
                                /* <input type='button' value='Add' onClick={this.addClickOnSlot.bind(this)}/>*/
                                 <div className={'timeslotIcon'}>
-                                    <IconButton aria-label="add" style={{backgroundColor:"transparent"}}>
-                                        <AddIcon className={'timeslotIconA'} onClick={this.addClickOnSlot.bind(this)}/>
+                                    <IconButton aria-label="add" style={{backgroundColor:"transparent"}} onClick={this.addClickOnSlot.bind(this)}>
+                                        <AddIcon className={'timeslotIconA'}/>
                                     </IconButton>
                                 </div>
                             ):null
@@ -434,8 +434,8 @@ class CreateClassTimetable extends React.Component{
                                     (this.state.friday.length - 1) === i ?(
                                         (this.state.checkedSubject === false)?(
                                                 <div className={'timeslotIcon'}>
-                                                    <IconButton aria-label="delete" style={{backgroundColor:"transparent"}}>
-                                                        <DeleteIcon className={'timeslotIconSB'} onClick={this.removeClickOnDay.bind(this, i)}/>
+                                                    <IconButton aria-label="delete" style={{backgroundColor:"transparent"}} onClick={this.removeClickOnDay.bind(this, i)}>
+                                                        <DeleteIcon className={'timeslotIconSB'} />
                                                     </IconButton>
                                                 </div>
                                             /*<input type='button' value='-'  className={'delSub'} onClick={this.removeClickOnDay.bind(this, i)}/>*/
@@ -447,8 +447,8 @@ class CreateClassTimetable extends React.Component{
                                 (this.state.checkedSubject === false)?(
                                     /*<input type='button' value='Add' onClick={this.addClickOn.bind(this)}/>*/
                                     <div className={'timeslotIcon'}>
-                                        <IconButton aria-label="add" style={{backgroundColor:"transparent"}}>
-                                            <AddIcon className={'timeslotIconSA'} onClick={this.addClickOn.bind(this)}/>
+                                        <IconButton aria-label="add" style={{backgroundColor:"transparent"}} onClick={this.addClickOn.bind(this)}>
+                                            <AddIcon className={'timeslotIconSA'}/>
                                         </IconButton>
                                     </div>
                                 ):null
