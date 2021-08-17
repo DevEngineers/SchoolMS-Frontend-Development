@@ -1,7 +1,7 @@
 import React from "react";
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
-import {IconButton, MenuItem, Snackbar, Switch} from "@material-ui/core";
+import {IconButton, MenuItem, Switch} from "@material-ui/core";
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
 import { ToastContainer, toast } from 'material-react-toastify';
