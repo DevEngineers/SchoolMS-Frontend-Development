@@ -1,0 +1,186 @@
+#largeResultDiv{
+    width: 51%;
+    padding: 20px;
+    float:left;
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
+    font-family: Georgia, "Times New Roman", Times, serif;
+    margin-left: 350px;
+    background-color: #f4f7f8;
+}
+
+#form-style-marksR{
+    max-width: 270px;
+    padding: 20px;
+    float:left;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+
+#form-style-result{
+    width: 200px;
+    padding: 20px;
+    float: left;
+    margin-left: 3px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+
+#timeSlotTitle{
+    display: block;
+    margin-bottom: 8px;
+    padding: 10px 0 0 0;
+    text-align: center;
+}
+
+#timeSlotETitle{
+    display: block;
+    margin-bottom: 8px;
+    padding: 10px 0 0 0;
+    margin-left: 55px;
+}
+
+#dayTitle{
+    display: block;
+    margin-bottom: 8px;
+    padding: 50px 0 0 0 ;
+    text-align: center;
+}
+
+#timeSwitch{
+    width: 50px;
+    margin-left: 230px;
+}
+
+#daySwitch{
+    width: 50px;
+    margin-left: 130px;
+}
+
+#timeID{
+    padding: 5px 20px 0 20px;
+    display: inline-block;
+}
+
+.daySize{
+    width: 100%;
+}
+
+.delSub{
+    margin-top: 20px;
+}
+
+
+#timeslotInterval{
+    padding: 24px;
+    width: 270px;
+    margin-left: -25px;
+}
+
+.selectRName{
+    font-size:14px;
+}
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+#form-style-user{
+    width: 731px;
+    padding: 15px;
+    float:left;
+    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.3);
+    font-family: Georgia, "Times New Roman", Times, serif;
+    margin-bottom: 3px;
+    background: #f2f2f2;
+    margin-left: 8px;
+}
+
+#examLabelEDiv{
+    width: 130px;
+}
+
+.classELabel{
+    display: inline-block;
+    float: left;
+    padding: 15px;
+}
+
+#classSelectOpt{
+    width: 300px;
+    margin-left: 150px;
+}
+
+.classSize{
+    width: 80%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+.box {
+    position: relative;
+    width: 100%;
+    height:80px;
+    display: inline-block;
+    margin:30px 0 0 0px;
+    text-align: center;
+}
+
+.custom-underline {
+    position: relative;
+    display: inline-block;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Raleway", sans-serif;
+}
+
+.btnEDiv{
+    padding: 20px;
+    width: 94%;
+    float: left;
+    margin-left: 28px;
+}
+
+#submitRBtn{
+    position: relative;
+    display: block;
+    padding: 10px 5px 10px 5px;
+    color: #FFF;
+    background: #ff6801;
+    font-size: 16px;
+    font-style: normal;
+    width: 25%;
+    border: 1px solid #ff6801;
+    border-radius: 3px;
+    float: right;
+    margin-right: 5px;
+
+}
+
+#submitRBtn:hover{
+    background: #ff6801;
+    cursor: pointer;
+}
+
+#restRBtn{
+    position: relative;
+    display: block;
+    padding: 10px 5px 10px 5px;
+    color: #FFF;
+    background: #ff6801;
+    font-size: 16px;
+    font-style: normal;
+    width: 10%;
+    border: 1px solid #ff6801;
+    border-radius: 3px;
+    float: right;
+    margin-right: 5px;
+}
+
+#restRBtn:hover{
+    background: #ff6801;
+    cursor: pointer;
+}
+
