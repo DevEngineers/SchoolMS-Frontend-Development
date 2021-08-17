@@ -41,31 +41,52 @@ class CreateClass extends Component {
                     <div className={"class-item"}>
                         <div className={"class-item-inner outer-shadow-class"}>
                             <form>
+
                                 <div className="class-form-div">
-                                    <label htmlFor={'class'}> Class </label>
-                                    <TextField id="filled-basic" label="Class" variant="filled" />
+                                    <Grid container direction="row" direction="row" justifyContent="space-evenly" alignItems="center" >
+                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
+                                            <label htmlFor={'class'} > Class </label>
+                                        </Box>
+                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
+                                            <TextField id="filled-basic" label="Class" variant="filled" style={{ width: 220 }} />
+                                        </Box>
+                                    </Grid>
                                 </div>
+
                                 <div className="class-form-div">
-                                    <label htmlFor={'classType'}> Class Type </label>
-                                    <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                            className={'classSize'} onChange={event => this.onChange(event)}>
-                                        {
-                                            this.state.classType.map(type =>
-                                                <MenuItem key={type} value={type}>{type}</MenuItem>
-                                            )
-                                        }
-                                    </Select>
+                                    <Grid container direction="row" direction="row" justifyContent="space-evenly" alignItems="center" >
+                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
+                                            <label htmlFor={'classType'}> Class Type </label>
+                                        </Box>
+                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
+                                            <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }}
+                                                    className={'classSize'} onChange={event => this.onChange(event)}>
+                                                {
+                                                    this.state.classType.map(type =>
+                                                        <MenuItem key={type} value={type}>{type}</MenuItem>
+                                                    )
+                                                }
+                                            </Select>
+                                        </Box>
+                                    </Grid>
                                 </div>
+
                                 <div className="class-form-div">
-                                    <label htmlFor={'teacher'}> Teacher  </label>
-                                    <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                            className={'classSize'} onChange={event => this.onChange(event)}>
-                                        {
-                                            this.state.teacher.map(Teacher =>
-                                                <MenuItem key={Teacher} value={Teacher}>{Teacher}</MenuItem>
-                                            )
-                                        }
-                                    </Select>
+                                    <Grid container direction="row" direction="row" justifyContent="space-evenly" alignItems="center" >
+                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
+                                            <label htmlFor={'teacher'}> Teacher  </label>
+                                        </Box>
+                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
+                                            <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }}
+                                                    className={'classSize'} onChange={event => this.onChange(event)}>
+                                                {
+                                                    this.state.teacher.map(Teacher =>
+                                                        <MenuItem key={Teacher} value={Teacher}>{Teacher}</MenuItem>
+                                                    )
+                                                }
+                                            </Select>
+                                        </Box>
+                                    </Grid>
                                 </div>
 
                                 {/*<Grid container xs={12}>*/}
