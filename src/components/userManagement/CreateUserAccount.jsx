@@ -8,8 +8,10 @@ class CreateUserAccount extends React.Component{
         super(props);
         this.state = {
 
+            smBranch:'',
             username:'',
             email:'',
+            uType:'',
             password:'',
             rePassword:'',
             sBranch:[],
@@ -34,53 +36,60 @@ class CreateUserAccount extends React.Component{
 
 
     render() {
-        console.log(this.state.examMarks)
+        console.log(this.state.uType)
         return <div>
             <div>
                 <div className={'box'}>
                     <label className={'custom-underline'}>CREATE USER ACCOUNTS</label>
                 </div>
             </div>
-            <div id={'largeResultDiv'}>
+            <div id={'largeUserDiv'}>
                 <form>
                     <div id={'form-style-user'}>
-                        <div id={'examLabelEDiv'}>
-                            <label className={'classELabel'}>Branch</label>
-                            <label className={'classELabel'}>Username</label>
-                            <label className={'classELabel'}>Email</label>
-                            <label className={'classELabel'}>Account Type</label>
-                            <label className={'classELabel'}>Password</label>
-                            <label className={'classELabel'}>Re-Password</label>
+                        <div id={'userLabelEDiv'}>
+                            <label className={'classULabel'}>Branch</label>
+                            <label className={'classULabel'}>Username</label>
+                            <label className={'classULabel'}>Email</label>
+                            <label className={'classULabel'}>Account Type</label>
+                            <label className={'classULabel'}>Password</label>
+                            <label className={'classULabel'}>Renter-Password</label>
                         </div>
-                        <div id={'classSelectOpt'}>
-                            <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                    className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem><span className={'selectRName'}>Select Class</span></MenuItem>
+                        <div id={'userSelectOpt'}>
+                            <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'smBranch'}
+                                    className={'userSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                <MenuItem><span className={'selectUName'}>Select Class</span></MenuItem>
                                 {
                                     this.state.sBranch.map(branch =>
-                                        <MenuItem key={branch} value={branch} className={'selectRName'}>{branch}</MenuItem>
+                                        <MenuItem key={branch} value={branch} className={'selectUName'}>{branch}</MenuItem>
                                     )
                                 }
                             </Select>
-                            <TextField type={'text'} className={'classSize'}/>
-                            <TextField type={'text'} className={'classSize'}/>
-
-                            <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                    className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem><span className={'selectRName'}>Select Year</span></MenuItem>
+                            <div className={'textFieldAc'}>
+                                <TextField type={'text'} className={'userSize'}  name={'username'} value={this.state.username} onChange={event => this.onChange(event)}/>
+                            </div>
+                            <div className={'textFieldAc'}>
+                                <TextField type={'text'} className={'userSize'}  name={'email'} value={this.state.email} onChange={event => this.onChange(event)}/>
+                            </div>
+                            <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'uType'}
+                                    className={'userSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                <MenuItem><span className={'selectUName'}>Select Account Type</span></MenuItem>
                                 {
                                     this.state.userType.map(type =>
-                                        <MenuItem key={type} value={type} className={'selectRName'}>{type}</MenuItem>
+                                        <MenuItem key={type} value={type} className={'selectUName'}>{type}</MenuItem>
                                     )
                                 }
                             </Select>
-                            <TextField type={'text'} className={'classSize'}/>
-                            <TextField type={'text'} className={'classSize'}/>
+                            <div className={'textFieldAc'}>
+                                <TextField type={'text'} className={'userSize'} name={'password'} value={this.state.password}  onChange={event => this.onChange(event)}/>
+                            </div>
+                            <div className={'textFieldAc'}>
+                                <TextField type={'text'} className={'userSize'} name={'rePassword'} value={this.state.rePassword} onChange={event => this.onChange(event)}/>
+                            </div>
                         </div>
                     </div>
                     <div className={'btnEDiv'}>
-                        <input type={'submit'} id={'submitRBtn'} value={'Store Results'}/>
-                        <input type={'reset'} id={'restRBtn'} value={'Reset'}/>
+                        <input type={'submit'} id={'submitUBtn'} value={'Store Results'}/>
+                        <input type={'reset'} id={'restUBtn'} value={'Reset'}/>
                     </div>
 
                 </form>

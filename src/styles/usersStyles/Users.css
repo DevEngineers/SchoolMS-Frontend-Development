@@ -1,10 +1,10 @@
-#largeResultDiv{
-    width: 51%;
+#largeUserDiv{
+    width: 40%;
     padding: 20px;
     float:left;
     box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
     font-family: Georgia, "Times New Roman", Times, serif;
-    margin-left: 350px;
+    margin-left: 440px;
     background-color: #f4f7f8;
 }
 
@@ -76,7 +76,7 @@
     margin-left: -25px;
 }
 
-.selectRName{
+.selectUName{
     font-size:14px;
 }
 
@@ -86,32 +86,34 @@
     width: 731px;
     padding: 15px;
     float:left;
-    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.3);
     font-family: Georgia, "Times New Roman", Times, serif;
     margin-bottom: 3px;
-    background: #f2f2f2;
     margin-left: 8px;
 }
 
-#examLabelEDiv{
-    width: 130px;
+#userLabelEDiv{
+    width: 150px;
 }
 
-.classELabel{
+.classULabel{
     display: inline-block;
     float: left;
-    padding: 15px;
+    padding: 12px;
 }
 
-#classSelectOpt{
+#userSelectOpt{
     width: 300px;
-    margin-left: 150px;
+    margin-left: 160px;
 }
 
-.classSize{
+.userSize{
     width: 80%;
     margin-top: 5px;
-    margin-bottom: 10px;
+}
+
+.textFieldAc{
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
 
@@ -140,10 +142,10 @@
     padding: 20px;
     width: 94%;
     float: left;
-    margin-left: 28px;
+    margin-left: 25px;
 }
 
-#submitRBtn{
+#submitUBtn{
     position: relative;
     display: block;
     padding: 10px 5px 10px 5px;
@@ -159,12 +161,12 @@
 
 }
 
-#submitRBtn:hover{
+#submitUBtn:hover{
     background: #ff6801;
     cursor: pointer;
 }
 
-#restRBtn{
+#restUBtn{
     position: relative;
     display: block;
     padding: 10px 5px 10px 5px;
@@ -172,14 +174,14 @@
     background: #ff6801;
     font-size: 16px;
     font-style: normal;
-    width: 10%;
+    width: 15%;
     border: 1px solid #ff6801;
     border-radius: 3px;
     float: right;
     margin-right: 5px;
 }
 
-#restRBtn:hover{
+#restUBtn:hover{
     background: #ff6801;
     cursor: pointer;
 }
