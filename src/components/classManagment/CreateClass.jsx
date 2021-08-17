@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import {Box, Grid, MenuItem} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-import '../../styles/classManagment/CreateClass.css';
+import '../../styles/classManagment/Class.css';
 
 /**
  * @author : A.M Zumry
