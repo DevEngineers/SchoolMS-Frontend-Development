@@ -54,10 +54,14 @@ class CreateExamTimetable extends React.Component{
         this.setState({ endSlot });
     }
 
-    handleSubjectChange(i,value, event) {
+    handleChange(i,event) {
             let examSubjects = [...this.state.examSubjects];
             examSubjects[i] = event.target.value;
             this.setState({ examSubjects });
+
+            let examDates = [...this.state.examDates];
+            examDates[i] = event.target.value;
+            this.setState({ examDates });
     }
     /**
      * this function is to dynamically create time input field in the subjects timeslot
@@ -100,10 +104,11 @@ class CreateExamTimetable extends React.Component{
 
 
     render() {
+        console.log(this.state.examDates)
         return <div>
             <div>
                 <div className={'box'}>
-                    <label className={'custom-underline'}>EXAM CLASS TIMETABLE</label>
+                    <label className={'custom-underline'}>GENERATE EXAM TIMETABLE</label>
                 </div>
             </div>
             <div id={'largeExamDiv'}>
@@ -117,34 +122,38 @@ class CreateExamTimetable extends React.Component{
                         </div>
                         <div id={'classSelectOpt'}>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                    className={'classSize'} onChange={event => this.onChange(event)}>
+                                    className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                <MenuItem><span className={'selectPName'}>Select Class</span></MenuItem>
                                 {
                                     this.state.classes.map(classes =>
-                                        <MenuItem key={classes} value={classes}>{classes}</MenuItem>
+                                        <MenuItem key={classes} value={classes} className={'selectPName'}>{classes}</MenuItem>
                                     )
                                 }
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                    className={'classSize'} onChange={event => this.onChange(event)}>
+                                    className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                <MenuItem><span className={'selectPName'}>Select Class Type</span></MenuItem>
                                 {
                                     this.state.classTypes.map(classType =>
-                                        <MenuItem key={classType} value={classType}>{classType}</MenuItem>
+                                        <MenuItem key={classType} value={classType} className={'selectPName'}>{classType}</MenuItem>
                                     )
                                 }
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                    className={'classSize'} onChange={event => this.onChange(event)}>
+                                    className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                <MenuItem><span className={'selectPName'}>Select Year</span></MenuItem>
                                 {
                                     this.state.years.map(year =>
-                                        <MenuItem key={year} value={year}>{year}</MenuItem>
+                                        <MenuItem key={year} value={year} className={'selectPName'}>{year}</MenuItem>
                                     )
                                 }
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                    className={'classSize'} onChange={event => this.onChange(event)}>
+                                    className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                <MenuItem><span className={'selectPName'}>Select Term</span></MenuItem>
                                 {
                                     this.state.eTerms.map(term =>
-                                        <MenuItem key={term} value={term}>{term}</MenuItem>
+                                        <MenuItem key={term} value={term} className={'selectPName'}>{term}</MenuItem>
                                     )
                                 }
                             </Select>
@@ -156,7 +165,7 @@ class CreateExamTimetable extends React.Component{
                                 {
                                     this.state.examDates.map((el, i) =>
                                         <div className={'dateInput'} key={i}>
-                                            <TextField type="date" />
+                                            <TextField type="date" id='date' value={el || ''} onChange={this.handleChange.bind(this, i)} />
                                         </div>
                                     )
                                 }
@@ -180,9 +189,7 @@ class CreateExamTimetable extends React.Component{
                                     this.state.examSubjects.map((el, i) =>
                                         <div key={i}>
                                             <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                                    value={el || ''}
-                                                    onChange={this.handleSubjectChange.bind(this, i, 'examSubjects')}
-                                                    className={'daySize'}>
+                                                    value={el || ''} onChange={this.handleChange.bind(this, i)} className={'daySize'} >
                                                 {
                                                     this.state.subjects.map(subject =>
                                                         <MenuItem key={subject} value={subject}>{subject}</MenuItem>
@@ -197,8 +204,8 @@ class CreateExamTimetable extends React.Component{
                                         (this.state.examSubjects.length - 1) === i ?(
                                             (el !== 'last')?(
                                                 <div>
-                                                    <IconButton aria-label="delete" style={{backgroundColor:"transparent"}}>
-                                                        <DeleteIcon className={'timeslotIconEB'} onClick={this.removeClick.bind(this, i)}/>
+                                                    <IconButton aria-label="delete" style={{backgroundColor:"transparent"}} onClick={this.removeClick.bind(this, i)}>
+                                                        <DeleteIcon className={'timeslotIconEB'}/>
                                                     </IconButton>
                                                 </div>
                                             ):null
@@ -206,8 +213,8 @@ class CreateExamTimetable extends React.Component{
                                     )
                                 }
                                         <div >
-                                            <IconButton aria-label="add" style={{backgroundColor:"transparent"}}>
-                                                <AddIcon className={'timeslotIconEA'} onClick={this.addClickOn.bind(this)}/>
+                                            <IconButton aria-label="add" style={{backgroundColor:"transparent"}} onClick={this.addClickOn.bind(this)}>
+                                                <AddIcon className={'timeslotIconEA'} />
                                             </IconButton>
                                         </div>
 
@@ -215,9 +222,9 @@ class CreateExamTimetable extends React.Component{
                             </div>
                         </div>
                     </div>
-                    <div className={'btnDiv'}>
-                        <input type={'submit'} id={'submitBtn'} value={'Generate Timetable'}/>
-                        <input type={'reset'} id={'restBtn'} value={'Reset'}/>
+                    <div className={'btnEDiv'}>
+                        <input type={'submit'} id={'submitEBtn'} value={'Generate Timetable'}/>
+                        <input type={'reset'} id={'restEBtn'} value={'Reset'}/>
                     </div>
 
                 </form>

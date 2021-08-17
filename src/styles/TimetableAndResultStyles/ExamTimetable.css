@@ -1,10 +1,10 @@
 #largeExamDiv{
-    width: 55%;
+    width: 54%;
     padding: 20px;
     float:left;
     box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
     font-family: Georgia, "Times New Roman", Times, serif;
-    margin-left: 50px;
+    margin-left: 340px;
     background-color: #f4f7f8;
 }
 
@@ -13,6 +13,7 @@
     padding: 20px;
     float:left;
     font-family: Georgia, "Times New Roman", Times, serif;
+    margin-left: -25px;
 }
 
 
@@ -93,6 +94,9 @@
     margin-left: -25px;
 }
 
+.selectPName{
+    font-size:14px;
+}
 
 /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
@@ -102,15 +106,17 @@
     box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
     font-family: Georgia, "Times New Roman", Times, serif;
     background-color: #f2f2f2;
+    margin-left: 8px;
 }
 #form-style-examClass{
-    width: 803px;
+    width: 777px;
     padding: 15px;
     float:left;
     box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.3);
     font-family: Georgia, "Times New Roman", Times, serif;
     margin-bottom: 3px;
     background: #f2f2f2;
+    margin-left: 8px;
 }
 
 #examLabelEDiv{
@@ -139,7 +145,7 @@
     padding: 10px;
     border-radius: 50px;
     color: white;
-    margin-left: -400px;
+    margin-left: -380px;
     margin-top: 5px;
 }
 
@@ -148,7 +154,7 @@
     padding: 10px;
     border-radius: 50px;
     color: white;
-    margin-left: -400px;
+    margin-left: -380px;
     margin-top: 5px;
 }
 
@@ -173,14 +179,14 @@
     font-family: "Raleway", sans-serif;
 }
 
-.btnDiv{
+.btnEDiv{
     padding: 20px;
     width: 94%;
     float: left;
-    margin-left: 50px;
+    margin-left: 35px;
 }
 
-#submitBtn{
+#submitEBtn{
     position: relative;
     display: block;
     padding: 10px 5px 10px 5px;
@@ -188,7 +194,7 @@
     background: #ff6801;
     font-size: 16px;
     font-style: normal;
-    width: 15%;
+    width: 25%;
     border: 1px solid #ff6801;
     border-radius: 3px;
     float: right;
@@ -196,12 +202,12 @@
 
 }
 
-#submitBtn:hover{
+#submitEBtn:hover{
     background: #ff6801;
     cursor: pointer;
 }
 
-#restBtn{
+#restEBtn{
     position: relative;
     display: block;
     padding: 10px 5px 10px 5px;
@@ -209,14 +215,14 @@
     background: #ff6801;
     font-size: 16px;
     font-style: normal;
-    width: 8%;
+    width: 10%;
     border: 1px solid #ff6801;
     border-radius: 3px;
     float: right;
     margin-right: 5px;
 }
 
-#restBtn:hover{
+#restEBtn:hover{
     background: #ff6801;
     cursor: pointer;
 }
