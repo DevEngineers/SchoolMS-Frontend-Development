@@ -5,6 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import DeleteIcon from "@material-ui/icons/Delete";
 import AddIcon from "@material-ui/icons/Add";
 import '../../styles/timetableAndResultStyles/ExamTimetable.css'
+import {toast, ToastContainer} from "material-react-toastify";
 
 
 /**
@@ -12,29 +13,61 @@ import '../../styles/timetableAndResultStyles/ExamTimetable.css'
  * Registration Number : IT19153414
  */
 
+//Setting default values for subjects,end time and subject slot in the time table form
+const defValues = ['','','','',''];
+const defTerms = ['1st Term','2nd Term','3rd Term'];
+
+//Toast Message Configuration
+const options = {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: false
+}
 
 class CreateExamTimetable extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
 
-            timeSlot:[],
-            startSlot:['','','','',''],
-            endSlot:['','','','',''],
-            examDates:['','','','',''],
-            examSubjects:['','','','','last'],
+            startSlot:[],
+            endSlot:[],
+            examDates:[],
+            examSubjects:[],
             subjects:['Mathematics','hi'],
 
-            class:'',
-            classType:'',
+            eClass:'',
+            eClassType:'',
             year:'',
             term:'',
 
             classes:[],
             classTypes:[],
             years:[],
-            eTerms:['1st Term','2nd Term','3rd Term']
+            eTerms:[]
         }
+    }
+
+    componentDidMount() {
+        this.setDefaultValuesInState();
+    }
+
+    setDefaultValuesInState(){
+        this.setState({startSlot:defValues})
+        this.setState({endSlot:defValues})
+        this.setState({examDates:defValues})
+        this.setState({examSubjects:defValues})
+        this.setState({eTerms:defTerms})
+    }
+
+    restAllValuesInForm(){
+        this.setDefaultValuesInState()
+        this.setState({eClass:''})
+        this.setState({eClassType:''})
+        this.setState({year:''})
+
     }
 
     /**
@@ -105,16 +138,40 @@ class CreateExamTimetable extends React.Component{
     }
 
 
-    submitResearchPaper(event) {
+    generateExamTimetable(event) {
         event.preventDefault();
-        console.log(this.state.email)
-        console.log(this.state.checkedTimeSlot)
+        let examTimetable ={
+            class:this.state.eClass,
+            classType:this.state.eClassType,
+            year: this.state.year,
+            term: this.state.term,
+            startSlot: this.state.startSlot,
+            endSlot: this.state.endSlot,
+            examDates: this.state.examDates,
+            examSubjects: this.state.examSubjects,
+        }
+
+        if(examTimetable.class === ''){
+            toast.warn('Select the Class',options)
+        }else if(examTimetable.classType === ''){
+            toast.warn('Select the Class Type',options)
+        }else if(examTimetable.year === ''){
+            toast.warn('Select the Year',options)
+        }else if(examTimetable.term === ''){
+            toast.warn('Select the Term',options)
+        }else if (examTimetable.examDates.includes('')){
+            toast.warn('Select Exam Dates',options)
+        }else if (examTimetable.examSubjects.includes('')){
+            toast.warn('Select Subjects',options)
+        }else {
+            console.log(JSON.stringify(examTimetable))
+        }
     }
 
 
     render() {
-        console.log(this.state.examDates)
         return <div>
+            <ToastContainer/>
             <div>
                 <div className={'box'}>
                     <label className={'custom-underline'}>GENERATE EXAM TIMETABLE</label>
@@ -130,7 +187,7 @@ class CreateExamTimetable extends React.Component{
                             <label className={'classELabel'}>Term</label>
                         </div>
                         <div id={'classSelectOpt'}>
-                            <Select labelId="demo-simple-select-label" id="demo-simple-select"
+                            <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'eClass'} value={this.state.eClass}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
                                 <MenuItem><span className={'selectPName'}>Select Class</span></MenuItem>
                                 {
@@ -139,7 +196,7 @@ class CreateExamTimetable extends React.Component{
                                     )
                                 }
                             </Select>
-                            <Select labelId="demo-simple-select-label" id="demo-simple-select"
+                            <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'eClassType'} value={this.state.eClassType}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
                                 <MenuItem><span className={'selectPName'}>Select Class Type</span></MenuItem>
                                 {
@@ -148,7 +205,7 @@ class CreateExamTimetable extends React.Component{
                                     )
                                 }
                             </Select>
-                            <Select labelId="demo-simple-select-label" id="demo-simple-select"
+                            <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'year'} value={this.state.year}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
                                 <MenuItem><span className={'selectPName'}>Select Year</span></MenuItem>
                                 {
@@ -157,7 +214,7 @@ class CreateExamTimetable extends React.Component{
                                     )
                                 }
                             </Select>
-                            <Select labelId="demo-simple-select-label" id="demo-simple-select"
+                            <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'term'} value={this.state.term}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
                                 <MenuItem><span className={'selectPName'}>Select Term</span></MenuItem>
                                 {
@@ -211,7 +268,7 @@ class CreateExamTimetable extends React.Component{
                                 {
                                     this.state.examSubjects.map((el, i) =>
                                         (this.state.examSubjects.length - 1) === i ?(
-                                            (el !== 'last')?(
+                                            (i !== 4)?(
                                                 <div>
                                                     <IconButton aria-label="delete" style={{backgroundColor:"transparent"}} onClick={this.removeClick.bind(this, i)}>
                                                         <DeleteIcon className={'timeslotIconEB'}/>
@@ -232,8 +289,8 @@ class CreateExamTimetable extends React.Component{
                         </div>
                     </div>
                     <div className={'btnEDiv'}>
-                        <input type={'submit'} id={'submitEBtn'} value={'Generate Timetable'}/>
-                        <input type={'reset'} id={'restEBtn'} value={'Reset'}/>
+                        <input type={'submit'} id={'submitEBtn'} value={'Generate Timetable'} onClick={this.generateExamTimetable.bind(this)}/>
+                        <input type={'reset'} id={'restEBtn'} value={'Reset'} onClick={this.restAllValuesInForm.bind(this)}/>
                     </div>
 
                 </form>
