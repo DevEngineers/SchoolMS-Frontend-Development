@@ -6,6 +6,13 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import AddIcon from "@material-ui/icons/Add";
 import '../../styles/timetableAndResultStyles/ExamTimetable.css'
 
+
+/**
+ * @author : M.N.M Akeel
+ * Registration Number : IT19153414
+ */
+
+
 class CreateExamTimetable extends React.Component{
     constructor(props) {
         super(props);

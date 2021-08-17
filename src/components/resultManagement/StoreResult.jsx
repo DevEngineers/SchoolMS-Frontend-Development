@@ -6,6 +6,12 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import AddIcon from "@material-ui/icons/Add";
 import '../../styles/timetableAndResultStyles/Results.css';
 
+/**
+ * @author : M.N.M Akeel
+ * Registration Number : IT19153414
+ */
+
+
 class StoreResult extends React.Component{
     constructor(props) {
         super(props);

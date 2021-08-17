@@ -6,6 +6,14 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
 import '../../styles/timetableAndResultStyles/ClassTimetable.css';
 
+
+/**
+ * @author : M.N.M Akeel
+ * Registration Number : IT19153414
+ */
+
+
+
 class CreateClassTimetable extends React.Component{
     constructor(props) {
         super(props);
@@ -31,6 +39,11 @@ class CreateClassTimetable extends React.Component{
             classTypes:[],
             years:[]
         }
+    }
+
+
+    componentDidMount() {
+
     }
 
     /**
