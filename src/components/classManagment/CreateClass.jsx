@@ -95,7 +95,7 @@ class CreateClass extends Component {
 
                                         <Box ccomponent="div" display="inline" style={{ padding: 10 }} >
                                             <Button variant="contained" color="secondary">
-                                                Reset
+                                                Cancel
                                             </Button>
                                         </Box>
 
