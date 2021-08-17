@@ -4,6 +4,7 @@ import './App.css';
 import Login from "./components/Login";
 import CreateClassTimetable from "./components/classTimetableManagement/CreateClassTimetable";
 import CreateExamTimetable from "./components/examTimetableManagement/CreateExamTimetable";
+import StoreResult from "./components/resultManagement/StoreResult";
 
 function App() {
   return <div>
@@ -12,7 +13,7 @@ function App() {
         <Route path="/login" component={Login}/>
         <Route exact path="/createClassTimetable" component={CreateClassTimetable}/>
         <Route path="/createExamTimetable" component={CreateExamTimetable}/>
-        <Route path="/storeResults" component={CreateClassTimetable}/>
+        <Route path="/storeResults" component={StoreResult}/>
       </Switch>
     </Router>
   </div>
