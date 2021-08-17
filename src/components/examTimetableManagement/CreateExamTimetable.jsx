@@ -54,11 +54,13 @@ class CreateExamTimetable extends React.Component{
         this.setState({ endSlot });
     }
 
-    handleChange(i,event) {
-            let examSubjects = [...this.state.examSubjects];
-            examSubjects[i] = event.target.value;
-            this.setState({ examSubjects });
+    handleChangeSubjects(i,event) {
+        let examSubjects = [...this.state.examSubjects];
+        examSubjects[i] = event.target.value;
+        this.setState({examSubjects});
+    }
 
+    handleChangeDate(i,event){
             let examDates = [...this.state.examDates];
             examDates[i] = event.target.value;
             this.setState({ examDates });
@@ -165,7 +167,7 @@ class CreateExamTimetable extends React.Component{
                                 {
                                     this.state.examDates.map((el, i) =>
                                         <div className={'dateInput'} key={i}>
-                                            <TextField type="date" id='date' value={el || ''} onChange={this.handleChange.bind(this, i)} />
+                                            <TextField type="date" id='date' value={el || ''} onChange={this.handleChangeDate.bind(this, i)} />
                                         </div>
                                     )
                                 }
@@ -189,7 +191,7 @@ class CreateExamTimetable extends React.Component{
                                     this.state.examSubjects.map((el, i) =>
                                         <div key={i}>
                                             <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                                    value={el || ''} onChange={this.handleChange.bind(this, i)} className={'daySize'} >
+                                                    value={el || ''} onChange={this.handleChangeSubjects.bind(this, i)} className={'daySize'} >
                                                 {
                                                     this.state.subjects.map(subject =>
                                                         <MenuItem key={subject} value={subject}>{subject}</MenuItem>
