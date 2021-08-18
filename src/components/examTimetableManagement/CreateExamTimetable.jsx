@@ -1,5 +1,6 @@
 import React from "react";
 import Select from "@material-ui/core/Select";
+import NativeSelect from "@material-ui/core/NativeSelect";
 import {IconButton, MenuItem} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -189,37 +190,37 @@ class CreateExamTimetable extends React.Component{
                         <div id={'classSelectOpt'}>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'eClass'} value={this.state.eClass}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem><span className={'selectPName'}>Select Class</span></MenuItem>
+                                <MenuItem value={''}><span className={'selectPName'}>Select Class</span></MenuItem>
                                 {
                                     this.state.classes.map(classes =>
-                                        <MenuItem key={classes} value={classes} className={'selectPName'}>{classes}</MenuItem>
+                                        <MenuItem key={classes} value={classes}><span className={'selectPName'}>{classes}</span></MenuItem>
                                     )
                                 }
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'eClassType'} value={this.state.eClassType}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem><span className={'selectPName'}>Select Class Type</span></MenuItem>
+                                <MenuItem value={''}><span className={'selectPName'}>Select Class Type</span></MenuItem>
                                 {
                                     this.state.classTypes.map(classType =>
-                                        <MenuItem key={classType} value={classType} className={'selectPName'}>{classType}</MenuItem>
+                                        <MenuItem key={classType} value={classType}><span className={'selectPName'}>{classType}</span></MenuItem>
                                     )
                                 }
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'year'} value={this.state.year}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem><span className={'selectPName'}>Select Year</span></MenuItem>
+                                <MenuItem value={''}><span className={'selectPName'}>Select Year</span></MenuItem>
                                 {
                                     this.state.years.map(year =>
-                                        <MenuItem key={year} value={year} className={'selectPName'}>{year}</MenuItem>
+                                        <MenuItem key={year} value={year} ><span className={'selectPName'}>{year}</span></MenuItem>
                                     )
                                 }
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'term'} value={this.state.term}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem><span className={'selectPName'}>Select Term</span></MenuItem>
+                                <MenuItem value={''}><span className={'selectPName'}>Select Term</span></MenuItem>
                                 {
                                     this.state.eTerms.map(term =>
-                                        <MenuItem key={term} value={term} className={'selectPName'}>{term}</MenuItem>
+                                        <MenuItem key={term} value={term} ><span className={'selectPName'}>{term}</span></MenuItem>
                                     )
                                 }
                             </Select>
