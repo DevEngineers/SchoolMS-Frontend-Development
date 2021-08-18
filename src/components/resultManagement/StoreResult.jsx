@@ -5,6 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import DeleteIcon from "@material-ui/icons/Delete";
 import AddIcon from "@material-ui/icons/Add";
 import '../../styles/timetableAndResultStyles/Results.css';
+import {toast} from "material-react-toastify";
 
 /**
  * @author : M.N.M Akeel
@@ -129,8 +130,36 @@ class StoreResult extends React.Component{
 
     storeResults(event) {
         event.preventDefault();
-        console.log(this.state.email)
-        console.log(this.state.checkedTimeSlot)
+        let result = {
+            class:this.state.rClass,
+            classType:this.state.rClassType,
+            year: this.state.year,
+            term:this.state.term,
+            studentID: this.state.studentID,
+            examSubjects: this.state.examSubjects,
+            eGrades:this.state.eGrades,
+            examMarks: this.state.examMarks
+        }
+
+        if(result.class === ''){
+            toast.warn('Select the Class',options)
+        }else if(result.classType === ''){
+            toast.warn('Select the Class Type',options)
+        }else if(result.year === ''){
+            toast.warn('Select the Year',options)
+        }else if(result.term === '') {
+            toast.warn('Select the Term', options)
+        }else if(result.studentID === '') {
+            toast.warn('Select the Student ID', options)
+        }else if (result.examSubjects.includes('')){
+            toast.warn('Select Exam Subjects',options)
+        }else if (result.examMarks.includes('')){
+            toast.warn('Enter Exam Marks',options)
+        }else if (result.eGrades.includes('')){
+            toast.warn('Select Exam Grade',options)
+        }else {
+            console.log(JSON.stringify(result))
+        }
     }
 
 
