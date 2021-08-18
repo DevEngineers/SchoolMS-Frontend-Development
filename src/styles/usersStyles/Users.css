@@ -150,11 +150,11 @@
     display: block;
     padding: 10px 5px 10px 5px;
     color: #FFF;
-    background: #ff6801;
+    background: #36988c;
     font-size: 16px;
     font-style: normal;
     width: 25%;
-    border: 1px solid #ff6801;
+    border: 1px solid #36988c;
     border-radius: 3px;
     float: right;
     margin-right: 5px;
@@ -162,7 +162,7 @@
 }
 
 #submitUBtn:hover{
-    background: #ff6801;
+    background: #359083;
     cursor: pointer;
 }
 
@@ -171,18 +171,18 @@
     display: block;
     padding: 10px 5px 10px 5px;
     color: #FFF;
-    background: #ff6801;
+    background: #f44336;
     font-size: 16px;
     font-style: normal;
     width: 15%;
-    border: 1px solid #ff6801;
+    border: 1px solid #f44336;
     border-radius: 3px;
     float: right;
     margin-right: 5px;
 }
 
 #restUBtn:hover{
-    background: #ff6801;
+    background: #d32f2f;
     cursor: pointer;
 }
 

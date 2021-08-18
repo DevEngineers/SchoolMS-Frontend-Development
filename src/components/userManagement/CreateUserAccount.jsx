@@ -1,6 +1,6 @@
 import React from "react";
 import Select from "@material-ui/core/Select";
-import {MenuItem, TextField} from "@material-ui/core";
+import {Container, Grid, MenuItem, TextField} from "@material-ui/core";
 import '../../styles/usersStyles/Users.css'
 
 /**
@@ -51,7 +51,7 @@ class CreateUserAccount extends React.Component{
             </div>
             <div id={'largeUserDiv'}>
                 <form>
-                    <div id={'form-style-user'}>
+                    <Container id={'form-style-user'}>
                         <div id={'userLabelEDiv'}>
                             <label className={'classULabel'}>Branch</label>
                             <label className={'classULabel'}>Username</label>
@@ -71,10 +71,10 @@ class CreateUserAccount extends React.Component{
                                 }
                             </Select>
                             <div className={'textFieldAc'}>
-                                <TextField type={'text'} className={'userSize'}  name={'username'} value={this.state.username} onChange={event => this.onChange(event)}/>
+                                <TextField type={'password'} className={'userSize'}  name={'username'} value={this.state.username} onChange={event => this.onChange(event)}/>
                             </div>
                             <div className={'textFieldAc'}>
-                                <TextField type={'text'} className={'userSize'}  name={'email'} value={this.state.email} onChange={event => this.onChange(event)}/>
+                                <TextField type={'password'} className={'userSize'}  name={'email'} value={this.state.email} onChange={event => this.onChange(event)}/>
                             </div>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'uType'} value={this.state.uType}
                                     className={'userSize'} onChange={event => this.onChange(event)} displayEmpty>
@@ -86,13 +86,13 @@ class CreateUserAccount extends React.Component{
                                 }
                             </Select>
                             <div className={'textFieldAc'}>
-                                <TextField type={'text'} className={'userSize'} name={'password'} value={this.state.password}  onChange={event => this.onChange(event)}/>
+                                <TextField type={'password'} className={'userSize'} name={'password'} value={this.state.password}  onChange={event => this.onChange(event)}/>
                             </div>
                             <div className={'textFieldAc'}>
-                                <TextField type={'text'} className={'userSize'} name={'rePassword'} value={this.state.rePassword} onChange={event => this.onChange(event)}/>
+                                <TextField type={'password'} className={'userSize'} name={'rePassword'} value={this.state.rePassword} onChange={event => this.onChange(event)}/>
                             </div>
                         </div>
-                    </div>
+                    </Container>
                     <div className={'btnEDiv'}>
                         <input type={'submit'} id={'submitUBtn'} value={'Store Results'}/>
                         <input type={'reset'} id={'restUBtn'} value={'Reset'}/>
