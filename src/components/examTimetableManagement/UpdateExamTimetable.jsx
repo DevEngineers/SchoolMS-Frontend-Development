@@ -11,9 +11,6 @@ import AddIcon from "@material-ui/icons/Add";
  * Registration Number : IT19153414
  */
 
-//Setting default values for subjects,end time and subject slot in the time table form
-const defValues = ['','','','',''];
-const defTerms = ['1st Term','2nd Term','3rd Term'];
 
 //Toast Message Configuration
 const options = {
@@ -34,7 +31,7 @@ class UpdateExamTimetable extends React.Component{
             endSlot:[],
             examDates:[],
             examSubjects:[],
-            subjects:['Mathematics','hi'],
+            subjects:[],
 
             eClass:'',
             eClassType:'',
@@ -49,23 +46,6 @@ class UpdateExamTimetable extends React.Component{
     }
 
     componentDidMount() {
-        this.setDefaultValuesInState();
-    }
-
-    setDefaultValuesInState(){
-        this.setState({startSlot:defValues})
-        this.setState({endSlot:defValues})
-        this.setState({examDates:defValues})
-        this.setState({examSubjects:defValues})
-        this.setState({eTerms:defTerms})
-    }
-
-    restAllValuesInForm(){
-        this.setDefaultValuesInState()
-        this.setState({eClass:''})
-        this.setState({eClassType:''})
-        this.setState({year:''})
-
     }
 
     /**
@@ -136,7 +116,7 @@ class UpdateExamTimetable extends React.Component{
     }
 
 
-    generateExamTimetable(event) {
+    updateExamTimetable(event) {
         event.preventDefault();
         let examTimetable ={
             class:this.state.eClass,
@@ -172,7 +152,7 @@ class UpdateExamTimetable extends React.Component{
             <ToastContainer/>
             <div>
                 <div className={'box'}>
-                    <label className={'custom-underline'}>GENERATE EXAM TIMETABLE</label>
+                    <label className={'custom-underline'}>UPDATE EXAM TIMETABLE</label>
                 </div>
             </div>
             <div id={'largeExamDiv'}>
@@ -287,8 +267,8 @@ class UpdateExamTimetable extends React.Component{
                         </div>
                     </div>
                     <div className={'btnEDiv'}>
-                        <input type={'submit'} id={'submitEBtn'} value={'Generate Timetable'} onClick={this.generateExamTimetable.bind(this)}/>
-                        <input type={'reset'} id={'restEBtn'} value={'Reset'} onClick={this.restAllValuesInForm.bind(this)}/>
+                        <input type={'submit'} id={'submitEBtn'} value={'Update Timetable'} onClick={this.updateExamTimetable.bind(this)}/>
+                        <input type={'reset'} id={'restEBtn'} value={'Cancel'} />
                     </div>
 
                 </form>

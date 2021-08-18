@@ -55,25 +55,6 @@ class UpdateClassTimetable extends React.Component{
 
 
     componentDidMount() {
-        this.setDefaultValuesInState();
-    }
-
-    setDefaultValuesInState(){
-        this.setState({startSlot:defStartTimeSlot})
-        this.setState({endSlot:defEndTimeSlot})
-        this.setState({monday:defDayValues})
-        this.setState({tuesday:defDayValues})
-        this.setState({wednesday:defDayValues})
-        this.setState({thursday:defDayValues})
-        this.setState({friday:defDayValues})
-    }
-
-    restAllValuesInForm(){
-        this.setDefaultValuesInState()
-        this.setState({sClass:''})
-        this.setState({sClassType:''})
-        this.setState({year:''})
-
     }
 
     /**
@@ -531,8 +512,8 @@ class UpdateClassTimetable extends React.Component{
                         </div>
                     </div>
                     <div className={'btnDiv'}>
-                        <input type={'submit'} id={'submitBtn'} value={'Generate Timetable'} onClick={this.generateClassTimetable.bind(this)}/>
-                        <input type={'reset'} id={'restBtn'} value={'Reset'} onClick={this.restAllValuesInForm.bind(this)}/>
+                        <input type={'submit'} id={'submitBtn'} value={'Update Timetable'} onClick={this.updateClassTimetable.bind(this)}/>
+                        <input type={'reset'} id={'restBtn'} value={'Cancel'} />
                     </div>
 
                 </form>

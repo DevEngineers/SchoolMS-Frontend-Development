@@ -34,7 +34,7 @@ class CreateUserAccount extends React.Component{
     }
 
 
-    submitResearchPaper(event) {
+    createUserAccount(event) {
         event.preventDefault();
         console.log(this.state.email)
         console.log(this.state.checkedTimeSlot)
