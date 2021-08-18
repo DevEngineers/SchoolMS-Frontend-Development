@@ -88,13 +88,6 @@ class UpdateTeacher extends Component {
         this.props.history.push('/teachers');
     }
 
-    getTitle(){
-        if(this.state.id === '_add'){
-            return <h3 className="text-center">Add Teacher</h3>
-        }else{
-            return <h3 className="text-center">Update Teacher</h3>
-        }
-    }
     render() {
         return (
             <div>
