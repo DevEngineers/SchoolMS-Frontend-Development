@@ -61,9 +61,9 @@ class CreateUserAccount extends React.Component{
                             <label className={'classULabel'}>Renter-Password</label>
                         </div>
                         <div id={'userSelectOpt'}>
-                            <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'smBranch'}
+                            <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'smBranch'} value={this.state.smBranch}
                                     className={'userSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem><span className={'selectUName'}>Select Class</span></MenuItem>
+                                <MenuItem value={''}><span className={'selectUName'}>Select Class</span></MenuItem>
                                 {
                                     this.state.sBranch.map(branch =>
                                         <MenuItem key={branch} value={branch} className={'selectUName'}>{branch}</MenuItem>
@@ -76,12 +76,12 @@ class CreateUserAccount extends React.Component{
                             <div className={'textFieldAc'}>
                                 <TextField type={'text'} className={'userSize'}  name={'email'} value={this.state.email} onChange={event => this.onChange(event)}/>
                             </div>
-                            <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'uType'}
+                            <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'uType'} value={this.state.uType}
                                     className={'userSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem><span className={'selectUName'}>Select Account Type</span></MenuItem>
+                                <MenuItem value={''}><span className={'selectUName'}>Select Account Type</span></MenuItem>
                                 {
                                     this.state.userType.map(type =>
-                                        <MenuItem key={type} value={type} className={'selectUName'}>{type}</MenuItem>
+                                        <MenuItem key={type} value={type}><span className={'selectUName'}>{type}</span></MenuItem>
                                     )
                                 }
                             </Select>
