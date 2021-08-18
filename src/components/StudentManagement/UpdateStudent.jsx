@@ -3,7 +3,7 @@ import StudentService from "../../Services/StudentService";
 import '../../styles/Teacher.css';
 
 /*
-*  Registration number: IT 19167442
+*  Registration number: IT19167442
 *  @Author :Nusky M.A.M
 * */
 
