@@ -89,7 +89,6 @@ class CreateSubject extends Component {
                                     </Grid>
                                 </div>
 
-                                {/*<Grid container xs={12}>*/}
                                 <div className="subject-form-div">
                                     <Grid container item direction="row" justifyContent="flex-end" alignItems="baseline" >
 
@@ -107,7 +106,6 @@ class CreateSubject extends Component {
 
                                     </Grid>
                                 </div>
-                                {/*</Grid>*/}
 
                             </form>
                         </div>
