@@ -6,13 +6,15 @@ import CreateClassTimetable from "./components/classTimetableManagement/CreateCl
 import CreateExamTimetable from "./components/examTimetableManagement/CreateExamTimetable";
 import StoreResult from "./components/resultManagement/StoreResult";
 import CreateUserAccount from "./components/userManagement/CreateUserAccount";
+import UpdateClassTimetable from "./components/classTimetableManagement/UpdateClassTimetable";
 
 function App() {
   return <div>
     <Router>
       <Switch>
         <Route path="/login" component={Login}/>
-        <Route exact path="/createClassTimetable" component={CreateClassTimetable}/>
+        <Route path="/createClassTimetable" component={CreateClassTimetable}/>
+        <Route exact path="/updateClassTimetable" component={UpdateClassTimetable}/>
         <Route path="/createExamTimetable" component={CreateExamTimetable}/>
         <Route path="/storeResults" component={StoreResult}/>
         <Route path="/createUsers" component={CreateUserAccount}/>
