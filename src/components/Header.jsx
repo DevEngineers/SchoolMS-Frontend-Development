@@ -6,9 +6,21 @@ import React, {Component} from 'react';
  */
 
 class Header extends Component {
-    // constructor(props){
-    //     super(props);
-    // }
+    constructor(props){
+        super(props);
+
+        this.state = {
+            type:'Administrator',
+        }
+    }
+
+    forAdministratorView(){
+        return <div>
+            <div id="HeadDiv">
+
+            </div>
+        </div>
+    }
 
     render() {
         return <div>
