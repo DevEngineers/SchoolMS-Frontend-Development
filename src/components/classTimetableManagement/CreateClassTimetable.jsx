@@ -50,9 +50,9 @@ class CreateClassTimetable extends React.Component{
             sClassType:'',
             year:'',
 
-            classes:['hello'],
-            classTypes:['a'],
-            years:['2020']
+            classes:[],
+            classTypes:[],
+            years:[]
         }
     }
 
@@ -286,7 +286,7 @@ class CreateClassTimetable extends React.Component{
                         <div id={'classSelectOpt'}>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" value={this.state.sClass} name={'sClass'}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem><span className={'selectCName'}>Select Class</span></MenuItem>
+                                <MenuItem value={''}><span className={'selectCName'}>Select Class</span></MenuItem>
                                 {
                                     this.state.classes.map(classes =>
                                             <MenuItem key={classes} value={classes}>{classes}</MenuItem>
@@ -295,7 +295,7 @@ class CreateClassTimetable extends React.Component{
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" value={this.state.sClassType} name={'sClassType'}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem><span className={'selectCName'}>Select Class Type</span></MenuItem>
+                                <MenuItem value={''}><span className={'selectCName'}>Select Class Type</span></MenuItem>
                                 {
                                     this.state.classTypes.map(classType =>
                                              <MenuItem key={classType} value={classType}>{classType}</MenuItem>
@@ -304,7 +304,7 @@ class CreateClassTimetable extends React.Component{
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" value={this.state.year} name={'year'}
                                      className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem><span className={'selectCName'}>Select Year</span></MenuItem>
+                                <MenuItem value={''}><span className={'selectCName'}>Select Year</span></MenuItem>
                                 {
                                     this.state.years.map(year =>
                                              <MenuItem key={year} value={year}>{year}</MenuItem>
