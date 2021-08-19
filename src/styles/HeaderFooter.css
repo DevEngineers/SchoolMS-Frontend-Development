@@ -118,6 +118,26 @@ nav ul li {
     z-index: 1;
 }
 
+/* Styling the nav for home */
+#homeID{
+    margin: 0px;
+    display:inline-block;
+    float: left;
+    background-color: #254441;
+    width: 90px;
+    z-index: 1;
+}
+
+/* Styling the nav for class,Exam timetable */
+#liBigID{
+    margin: 0px;
+    display:inline-block;
+    float: left;
+    background-color: #254441;
+    width: 180px;
+    z-index: 1;
+}
+
 /* Styling the links */
 nav a {
     display:block;
@@ -222,6 +242,10 @@ li > a:only-child:after { content: ''; }
 
     /* Change menu item's width to 100% */
     nav ul li {
+        display: block;
+        width: 100%;
+    }
+    #liBigID{
         display: block;
         width: 100%;
     }
