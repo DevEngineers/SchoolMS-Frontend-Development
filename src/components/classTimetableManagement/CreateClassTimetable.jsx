@@ -50,9 +50,9 @@ class CreateClassTimetable extends React.Component{
             sClassType:'',
             year:'',
 
-            classes:[],
-            classTypes:[],
-            years:[]
+            classes:[''],
+            classTypes:[''],
+            years:['']
         }
     }
 
@@ -252,17 +252,19 @@ class CreateClassTimetable extends React.Component{
             toast.warn('Select Subjects in Thursday',options)
         }else if (classTimetable.friday.includes('')){
             toast.warn('Select Subjects in Friday',options)
-        }else{
-            console.log(JSON.stringify(classTimetable))
-            /*ClassTimetableService.generateClassTimetable(classTimetable)
+        }else {
+            ClassTimetableService.generateClassTimetable(classTimetable)
                 .then(res => {
-                    if(res.status === 200){
-                        toast.success("Class Timetable Generated Successfully",options)
-                        setTimeout(()=>{this.props.history.push("/")},3000)
-                    }else{
-                        toast.error("Something went wrong!! Try again.",options)
+                    if (res.status === 200) {
+                        toast.success("Class Timetable Generated Successfully", options)
+                        /*setTimeout(()=>{this.props.history.push("/")},3000)*/
+                    } else {
+                        throw Error('Something went wrong!! Try again.' + res);
                     }
-                })*/
+                })
+                .catch((error) => {
+                    toast.error(error.message, options)
+                })
         }
     }
 
