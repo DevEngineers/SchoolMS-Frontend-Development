@@ -7,6 +7,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import AddIcon from "@material-ui/icons/Add";
 import '../../styles/timetableAndResultStyles/ExamTimetable.css'
 import {toast, ToastContainer} from "material-react-toastify";
+import ExamTimetableService from "../../services/ExamTimetableService";
 
 
 /**
@@ -37,7 +38,7 @@ class CreateExamTimetable extends React.Component{
             endSlot:[],
             examDates:[],
             examSubjects:[],
-            subjects:['Mathematics','hi'],
+            subjects:[],
 
             eClass:'',
             eClassType:'',
@@ -165,7 +166,18 @@ class CreateExamTimetable extends React.Component{
         }else if (examTimetable.examSubjects.includes('')){
             toast.warn('Select Subjects',options)
         }else {
-            console.log(JSON.stringify(examTimetable))
+            ExamTimetableService.generateExamTimetable(examTimetable)
+                .then(res => {
+                    if (res.status === 200) {
+                        toast.success("Exam Timetable Generated Successfully", options)
+                        /*setTimeout(()=>{this.props.history.push("/")},3000)*/
+                    } else {
+                        throw Error('Something went wrong!! Try again.');
+                    }
+                })
+                .catch((error) => {
+                    toast.error(error.message, options)
+                })
         }
     }
 
