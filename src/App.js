@@ -7,6 +7,7 @@ import CreateExamTimetable from "./components/examTimetableManagement/CreateExam
 import StoreResult from "./components/resultManagement/StoreResult";
 import CreateUserAccount from "./components/userManagement/CreateUserAccount";
 import UpdateClassTimetable from "./components/classTimetableManagement/UpdateClassTimetable";
+import ManageResults from "./components/resultManagement/ManageResults";
 
 function App() {
   return <div>
@@ -18,6 +19,7 @@ function App() {
         <Route path="/createExamTimetable" component={CreateExamTimetable}/>
         <Route path="/storeResults" component={StoreResult}/>
         <Route path="/createUsers" component={CreateUserAccount}/>
+        <Route path="/manageResults" component={ManageResults}/>
       </Switch>
     </Router>
   </div>
