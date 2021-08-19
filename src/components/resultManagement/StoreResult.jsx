@@ -6,6 +6,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import AddIcon from "@material-ui/icons/Add";
 import '../../styles/timetableAndResultStyles/Results.css';
 import {toast} from "material-react-toastify";
+import ResultService from "../../services/ResultService";
 
 /**
  * @author : M.N.M Akeel
@@ -158,7 +159,18 @@ class StoreResult extends React.Component{
         }else if (result.eGrades.includes('')){
             toast.warn('Select Exam Grade',options)
         }else {
-            console.log(JSON.stringify(result))
+            ResultService.storeResult(result)
+                .then(res => {
+                    if (res.status === 200) {
+                        toast.success("Student Result Successfully", options)
+                        /*setTimeout(()=>{this.props.history.push("/")},3000)*/
+                    } else {
+                        throw Error('Something went wrong!! Try again.' + res);
+                    }
+                })
+                .catch((error) => {
+                    toast.error(error.message, options)
+                })
         }
     }
 
