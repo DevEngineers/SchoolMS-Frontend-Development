@@ -93,7 +93,7 @@ class CreateSubject extends Component {
                                     <Grid container item direction="row" justifyContent="flex-end" alignItems="baseline" >
 
                                         <Box ccomponent="div" display="inline" style={{ padding: 10 }} >
-                                            <Button variant="contained" color="secondary">
+                                            <Button variant="contained" style={{ backgroundColor: "#36988c" }}>
                                                 Reset
                                             </Button>
                                         </Box>
