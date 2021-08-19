@@ -1,4 +1,4 @@
-const RESULT_API_BASE_URI='';
+const RESULT_API_BASE_URI='http://localhost:5000/results';
 
 /**
  * @author : M.N.M Akeel
@@ -29,7 +29,7 @@ class ResultService{
      *  This service function is to Get All results from backend
      */
     async getResults(){
-        return await fetch(RESULT_API_BASE_URI+"/",{
+        return await fetch(RESULT_API_BASE_URI,{
             method:'GET',
         }).then(response =>{
             return response.json();
@@ -47,8 +47,8 @@ class ResultService{
             method:'GET',
         }).then(response =>{
             return response.json();
-        }).catch(reason => {
-            return reason;
+        }).catch(error => {
+            console.log(error.message);
         })
 
     }
