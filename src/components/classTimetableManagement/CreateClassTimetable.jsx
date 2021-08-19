@@ -41,7 +41,7 @@ class CreateClassTimetable extends React.Component{
             wednesday:[],
             thursday:[],
             friday:[],
-            subjects:['Mathematics','hi'],
+            subjects:[],
 
             checkedTimeSlot:true,
             checkedSubject:true,
