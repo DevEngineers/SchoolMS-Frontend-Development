@@ -1,4 +1,4 @@
-const EXAM_TIMETABLE_API_BASE_URI='';
+const EXAM_TIMETABLE_API_BASE_URI='http://localhost:5000/examTimetables';
 
 /**
  * @author : M.N.M Akeel
@@ -29,7 +29,7 @@ class ExamTimetableService{
      *  This service function is to Get All Exam timetables from backend
      */
     async getexamTimetable(){
-        return await fetch(EXAM_TIMETABLE_API_BASE_URI+"/",{
+        return await fetch(EXAM_TIMETABLE_API_BASE_URI,{
             method:'GET',
         }).then(response =>{
             return response.json();
