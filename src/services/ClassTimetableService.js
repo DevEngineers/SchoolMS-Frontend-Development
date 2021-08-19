@@ -1,4 +1,4 @@
-const CLASS_TIMETABLE_API_BASE_URI='';
+const CLASS_TIMETABLE_API_BASE_URI='http://localhost:5000/classTimetables';
 
 /**
  * @author : M.N.M Akeel
@@ -29,7 +29,7 @@ class ClassTimetableService{
      *  This service function is to Get All Class timetables from backend
      */
     async getClassTimetable(){
-        return await fetch(CLASS_TIMETABLE_API_BASE_URI+"/",{
+        return await fetch(CLASS_TIMETABLE_API_BASE_URI,{
             method:'GET',
         }).then(response =>{
             return response.json();
