@@ -10,6 +10,7 @@ import UpdateClassTimetable from "./components/classTimetableManagement/UpdateCl
 import ManageResults from "./components/resultManagement/ManageResults";
 import ManageClassTimetable from "./components/classTimetableManagement/ManageClassTimetable";
 import ManageExamTimetable from "./components/examTimetableManagement/ManageExamTimetable";
+import GenerateResultReport from "./components/resultManagement/GenerateResultReport";
 
 function App() {
   return <div>
@@ -24,6 +25,7 @@ function App() {
         <Route path="/manageResults" component={ManageResults}/>
         <Route path="/manageClassTimetable" component={ManageClassTimetable}/>
         <Route path="/manageExamTimetable" component={ManageExamTimetable}/>
+        <Route path="/generateResultReport" component={GenerateResultReport}/>
       </Switch>
     </Router>
   </div>
