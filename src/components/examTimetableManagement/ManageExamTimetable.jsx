@@ -1,4 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
+import {TextField} from "@material-ui/core";
+import ExamTimetableListHolder from "./ExamTimetabelListHolder";
 
 /**
  * @author : M.N.M Akeel
@@ -6,22 +8,27 @@ import React from "react";
  */
 
 
-class ManageExamTimetable extends React.Component{
-    constructor(props) {
-        super(props);
+function ManageClassTimetable(props){
+    const [examTimetable,setExamTimetable] = useState([])
 
-        this.state ={
-
-        }
-    }
-
-    render() {
-        return <div>
-
+    return <div>
+        <div>
+            <div className={'box'}>
+                <label className={'custom-underline'}>EXAM TIMETABLES</label>
+            </div>
         </div>
-    }
+        <div>
+            <div id={'searchDiv'}>
+                <TextField type={'text'}  id={'searchInput'} variant="outlined"/>
+                <input type={'submit'} value={'Search'} id={'searchBtn'}/>
+            </div>
+        </div>
+        <div>
+            <ExamTimetableListHolder />
+        </div>
 
-
+    </div>
 }
 
-export default ManageExamTimetable;
+
+export default ManageClassTimetable;

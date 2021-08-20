@@ -10,7 +10,7 @@ import ResultListHolder from "./ResultListHolder";
 
 
 function ManageResults(props){
-    const [classTimetable,setClassTimetable] = useState([])
+    const [results,setResults] = useState([])
 
     return <div>
         <div>
@@ -25,7 +25,7 @@ function ManageResults(props){
             </div>
         </div>
         <div>
-            <ResultListHolder/>
+            <ResultListHolder />
         </div>
 
         </div>
