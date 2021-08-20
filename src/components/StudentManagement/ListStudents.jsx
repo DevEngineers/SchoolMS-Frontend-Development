@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import StudentService from "../../Services/StudentService";
+import '../../styles/Student.css';
 
 class ListStudents extends Component {
     constructor(props) {
@@ -12,9 +13,10 @@ class ListStudents extends Component {
         this.editStudent = this.editStudent.bind(this);
         this.deleteStudent = this.deleteStudent.bind(this);
 
-        this.addTeacher = this.addTeacher.bind(this);
-        this.addPayment = this.addPayment.bind(this);
+
     }
+
+
 
     deleteStudent(id){
         StudentService.deleteStudent(id).then( res => {
@@ -25,33 +27,28 @@ class ListStudents extends Component {
         this.props.history.push(`/view-student/${id}`);
     }
     editStudent(id){
-        this.props.history.push(`/add-student/${id}`);
+        this.props.history.push(`/edit-student/${id}`);
     }
 
     componentDidMount(){
         StudentService.getStudents().then((res) => {
             this.setState({ students: res.data});
         });
+
     }
 
     addStudent(){
         this.props.history.push('/add-student/_add');
     }
-    addTeacher(){
-        this.props.history.push('/add-teacher/_add');
-    }
-    addPayment(){
-        this.props.history.push('/add-payment/_add');
-    }
 
     render() {
+
+        console.log(this.state.students);
         return (
             <div>
                 <h2 className="text-center">Students List</h2>
                 <div className = "row">
                     <button className="btn btn-primary" onClick={this.addStudent}style={{marginLeft: "10px"}}> Add Student</button>
-                    <button className="btn btn-primary" onClick={this.addTeacher}style={{marginLeft: "10px"}}> Add Teacher</button>
-                    <button className="btn btn-primary" onClick={this.addPayment}style={{marginLeft: "10px"}}> Add Payment</button>
                 </div>
                 <br></br>
                 <div className = "row">
