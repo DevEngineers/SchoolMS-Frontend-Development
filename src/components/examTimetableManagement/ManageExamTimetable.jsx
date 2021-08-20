@@ -8,7 +8,7 @@ import ExamTimetableListHolder from "./ExamTimetabelListHolder";
  */
 
 
-function ManageClassTimetable(props){
+function ManageExamTimetable(props){
     const [examTimetable,setExamTimetable] = useState([])
 
     return <div>
@@ -31,4 +31,4 @@ function ManageClassTimetable(props){
 }
 
 
-export default ManageClassTimetable;
+export default ManageExamTimetable;

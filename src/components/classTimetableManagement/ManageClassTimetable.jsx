@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {TextField} from "@material-ui/core";
 import ClassTimetableListHolder from "./ClassTimetableListHolder";
 import ClassTimetableService from "../../services/ClassTimetableService";
+import { useHistory } from "react-router-dom";
 
 /**
  * @author : M.N.M Akeel
@@ -10,6 +11,7 @@ import ClassTimetableService from "../../services/ClassTimetableService";
 
 
 function ManageClassTimetable(props){
+    const history = useHistory();
     const [classTimetable,setClassTimetable] = useState([]);
 
     useEffect(() =>{
@@ -19,11 +21,15 @@ function ManageClassTimetable(props){
     function fetchClassTimetable(){
         ClassTimetableService.getClassTimetable()
             .then(classTimetable =>{
-                console.log(classTimetable,)
                 setClassTimetable(classTimetable);
             }).catch(err =>{
             console.error(err)
         })
+    }
+
+    function updateClassTimetable(classTimetable){
+        let id = classTimetable._id;
+        history.push(`/updateClassTimetable/${id}`);
     }
 
     return <div>
@@ -40,11 +46,18 @@ function ManageClassTimetable(props){
         </div>
         <div>
             {
+                /*classTimetable.map(classT =>{
+                    let name = classT.class;
+                    classTimetable.map(classTimetable =>{
+                        if(classTimetable.class === name){
+                            return <ClassTimetableListHolder key={classTimetable._id} ClassTimetable={classTimetable}/>
+                        }
+                    })
+                })*/
                 classTimetable.map(classTimetable =>{
-                    return  <ClassTimetableListHolder key={classTimetable._id} ClassTimetable={classTimetable}/>
+                    return  <ClassTimetableListHolder key={classTimetable._id} ClassTimetable={classTimetable} editClassTimetable={updateClassTimetable}/>
                 })
             }
-
         </div>
 
     </div>
