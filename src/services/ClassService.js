@@ -52,7 +52,7 @@ class ClassService{
     }
 
     /**
-     *  This service function is to update stored result in backend
+     *  This service function is to update stored class in backend
      */
     async updateClass(id,Class){
         const bearer = 'Bearer ' + localStorage.getItem('userToken');
@@ -71,7 +71,7 @@ class ClassService{
     }
 
     /**
-     *  This service function is to Remove stored result in backend
+     *  This service function is to Remove stored class in backend
      */
     async removeClass(id){
         const bearer = 'Bearer ' + localStorage.getItem('userToken');
