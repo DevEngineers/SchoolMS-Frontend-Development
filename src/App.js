@@ -10,12 +10,14 @@ import ViewClass from "./components/classManagment/ViewClass";
 import AddSubject from "./components/subjectManagment/CreateSubject";
 import UpdateSubject from "./components/subjectManagment/UpdateSubject";
 import ViewSubject from "./components/subjectManagment/ViewSubject";
+import StoreAttendance from "./components/attendanceManagment/AddAttendance";
+import UpdateAttendance from "./components/attendanceManagment/UpdateAttendance";
 
 
 function App() {
   return <div>
     <Router>
-      {/*<Header/>*/}
+      <Header/>
       <Switch>
           <Route path="/login" component={Login}/>
           <Route path="/create-class" component={AddClass}/>
@@ -24,6 +26,8 @@ function App() {
           <Route path="/create-subject" component={AddSubject}/>
           <Route path="/update-subject" component={UpdateSubject}/>
           <Route path="/view-subject" component={ViewSubject}/>
+          <Route path="/store-attendance" component={StoreAttendance}/>
+          <Route path="/update-attendance" component={UpdateAttendance}/>
       </Switch>
       {/*<Footer/>*/}
     </Router>
