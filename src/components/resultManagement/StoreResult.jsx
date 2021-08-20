@@ -33,7 +33,7 @@ class StoreResult extends React.Component{
         super(props);
         this.state = {
 
-            subjects:['Mathematics','hi'],
+            subjects:['ICT','Mathematics','Science','English','Art'],
             grades:[],
 
             rClass:'',
@@ -138,7 +138,7 @@ class StoreResult extends React.Component{
             term:this.state.term,
             studentID: this.state.studentID,
             examSubjects: this.state.examSubjects,
-            eGrades:this.state.eGrades,
+            sGrades:this.state.sGrades,
             examMarks: this.state.examMarks
         }
 
@@ -156,7 +156,7 @@ class StoreResult extends React.Component{
             toast.warn('Select Exam Subjects',options)
         }else if (result.examMarks.includes('')){
             toast.warn('Enter Exam Marks',options)
-        }else if (result.eGrades.includes('')){
+        }else if (result.sGrades.includes('')){
             toast.warn('Select Exam Grade',options)
         }else {
             ResultService.storeResult(result)

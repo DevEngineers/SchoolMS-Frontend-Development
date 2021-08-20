@@ -6,6 +6,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import AddIcon from "@material-ui/icons/Add";
 import '../../styles/timetableAndResultStyles/Results.css';
 import {toast} from "material-react-toastify";
+import ResultService from "../../services/ResultService";
 
 /**
  * @author : M.N.M Akeel
@@ -26,6 +27,7 @@ class UpdateResult extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
+            resultID:this.props.match.params.id,
 
             subjects:[],
             grades:['A+','A','A-','B+','B','B-','C+','C','C-','D','F'],
@@ -48,6 +50,19 @@ class UpdateResult extends React.Component{
     }
 
     componentDidMount() {
+        ResultService.getResultsByID(this.state.resultID)
+            .then(res =>{
+                this.setState({
+                    rClass:res.class,
+                    rClassType:res.classType,
+                    year:res.year,
+                    term:res.term,
+                    studentID:res.studentID,
+                    sGrades:res.grades,
+                    examMarks:res.examMarks,
+                    examSubjects:res.examSubjects
+                })
+            })
     }
 
     /**
@@ -160,48 +175,24 @@ class UpdateResult extends React.Component{
                         <div id={'classSelectOpt'}>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'rClass'} value={this.state.rClass}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem value={''}><span className={'selectRName'}>Select Class</span></MenuItem>
-                                {
-                                    this.state.classes.map(classes =>
-                                        <MenuItem key={classes} value={classes}><span className={'selectRName'}>{classes}</span></MenuItem>
-                                    )
-                                }
+                                <MenuItem value={this.state.rClass}><span className={'selectRName'}>{this.state.rClass}</span></MenuItem>
+
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'rClassType'} value={this.state.rClassType}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem value={''}><span className={'selectRName'}>Select Class Type</span></MenuItem>
-                                {
-                                    this.state.classTypes.map(classType =>
-                                        <MenuItem key={classType} value={classType}><span className={'selectRName'}>{classType}</span></MenuItem>
-                                    )
-                                }
+                                <MenuItem value={this.state.rClassType}><span className={'selectRName'}>{this.state.rClassType}</span></MenuItem>
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'year'} value={this.state.year}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem value={''}><span className={'selectRName'}>Select Year</span></MenuItem>
-                                {
-                                    this.state.years.map(year =>
-                                        <MenuItem key={year} value={year} ><span className={'selectRName'}>{year}</span></MenuItem>
-                                    )
-                                }
+                                <MenuItem value={this.state.year}><span className={'selectRName'}>{this.state.year}</span></MenuItem>
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'term'} value={this.state.term}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem value={''}><span className={'selectRName'}>Select Term</span></MenuItem>
-                                {
-                                    this.state.eTerms.map(term =>
-                                        <MenuItem key={term} value={term}><span className={'selectRName'}>{term}</span></MenuItem>
-                                    )
-                                }
+                                <MenuItem value={this.state.term}><span className={'selectRName'}>{this.state.term}</span></MenuItem>
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'studentID'} value={this.state.studentID}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem value={''}><span className={'selectRName'}>Select Student</span></MenuItem>
-                                {
-                                    this.state.students.map(student =>
-                                        <MenuItem key={student} value={student} ><span className={'selectRName'}>{student}</span></MenuItem>
-                                    )
-                                }
+                                <MenuItem value={this.state.studentID}><span className={'selectRName'}>{this.state.studentID}</span></MenuItem>
                             </Select>
                         </div>
                     </div>
@@ -214,6 +205,7 @@ class UpdateResult extends React.Component{
                                         <div key={i}>
                                             <Select labelId="demo-simple-select-label" id="demo-simple-select"
                                                     value={el || ''} onChange={this.handleChangeSubject.bind(this, i)} className={'daySize'} >
+                                                <MenuItem value={this.state.examSubjects[i]}><span className={'selectRName'}>{this.state.examSubjects[i]}</span></MenuItem>
                                                 {
                                                     this.state.subjects.map(subject =>
                                                         <MenuItem key={subject} value={subject}>{subject}</MenuItem>
@@ -243,6 +235,7 @@ class UpdateResult extends React.Component{
                                         <div key={i}>
                                             <Select labelId="demo-simple-select-label" id="demo-simple-select"
                                                     value={el || ''} onChange={this.handleChangeGrade.bind(this, i)} className={'daySize'} >
+                                                <MenuItem value={this.state.sGrades[i]}><span className={'selectRName'}>{this.state.sGrades[i]}</span></MenuItem>
                                                 {
                                                     this.state.grades.map(grade =>
                                                         <MenuItem key={grade} value={grade}>{grade}</MenuItem>

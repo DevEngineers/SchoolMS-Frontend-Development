@@ -1,7 +1,10 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {TextField} from "@material-ui/core";
 import '../../styles/timetableAndResultStyles/CommonView.css';
 import ResultListHolder from "./ResultListHolder";
+import ExamTimetableService from "../../services/ExamTimetableService";
+import ResultService from "../../services/ResultService";
+import {useHistory} from "react-router-dom";
 
 /**
  * @author : M.N.M Akeel
@@ -10,7 +13,26 @@ import ResultListHolder from "./ResultListHolder";
 
 
 function ManageResults(props){
+    const history = useHistory();
     const [results,setResults] = useState([])
+
+    useEffect(() =>{
+        fetchResults();
+    },[]);
+
+    function fetchResults(){
+        ResultService.getResults()
+            .then(results =>{
+                setResults(results);
+            }).catch(err =>{
+            console.error(err)
+        })
+    }
+
+    function updateResult(result){
+        let id = result._id;
+        history.push(`/updateResults/${id}`);
+    }
 
     return <div>
         <div>
@@ -25,7 +47,11 @@ function ManageResults(props){
             </div>
         </div>
         <div>
-            <ResultListHolder />
+            {
+                results.map(result =>{
+                    return <ResultListHolder key={result._id} Result={result} editResult={updateResult}/>
+                })
+            }
         </div>
 
         </div>

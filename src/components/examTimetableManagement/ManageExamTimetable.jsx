@@ -15,10 +15,10 @@ function ManageExamTimetable(props){
     const [examTimetables,setExamTimetables] = useState([])
 
     useEffect(() =>{
-        fetchClassTimetable();
+        fetchExamTimetable();
     },[]);
 
-    function fetchClassTimetable(){
+    function fetchExamTimetable(){
         ExamTimetableService.getExamTimetable()
             .then(examTimetable =>{
                 setExamTimetables(examTimetable);
