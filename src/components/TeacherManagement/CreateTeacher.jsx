@@ -120,7 +120,7 @@ class CreateTeacher extends Component {
                                 <form>
                                     <div className = "form-group">
                                         <label> Teacher Name: </label>
-                                        <input placeholder="Teacher Name" name="teacherName" className="form-control"
+                                        <input   placeholder="Teacher Name" name="teacherName" className="form-control"
                                                value={this.state.teacherName} onChange={this.changeStudentNameHandler}/>
                                     </div>
                                     <div className = "form-group">
@@ -142,7 +142,8 @@ class CreateTeacher extends Component {
                                         <label> Qualification : </label>
                                         <input placeholder="Qualification" name="qualification" className="form-control"
                                                value={this.state.qualification} onChange={this.changeAddressHandler}/>
-                                    </div> <div className = "form-group">
+                                    </div>
+                                    <div className = "form-group">
                                     <label> Marital Status : </label>
                                     <input placeholder="Marital Status" name="maritalStatus" className="form-control"
                                            value={this.state.maritalStatus} onChange={this.changeSchoolBranchHandler}/>
