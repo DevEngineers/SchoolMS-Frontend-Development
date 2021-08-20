@@ -12,7 +12,7 @@ import { useHistory } from "react-router-dom";
 
 function ManageClassTimetable(props){
     const history = useHistory();
-    const [classTimetable,setClassTimetable] = useState([]);
+    const [classTimetables,setClassTimetables] = useState([]);
 
     useEffect(() =>{
         fetchClassTimetable();
@@ -21,7 +21,7 @@ function ManageClassTimetable(props){
     function fetchClassTimetable(){
         ClassTimetableService.getClassTimetable()
             .then(classTimetable =>{
-                setClassTimetable(classTimetable);
+                setClassTimetables(classTimetable);
             }).catch(err =>{
             console.error(err)
         })
@@ -54,7 +54,7 @@ function ManageClassTimetable(props){
                         }
                     })
                 })*/
-                classTimetable.map(classTimetable =>{
+                classTimetables.map(classTimetable =>{
                     return  <ClassTimetableListHolder key={classTimetable._id} ClassTimetable={classTimetable} editClassTimetable={updateClassTimetable}/>
                 })
             }

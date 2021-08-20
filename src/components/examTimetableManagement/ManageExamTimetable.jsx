@@ -1,6 +1,8 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {TextField} from "@material-ui/core";
 import ExamTimetableListHolder from "./ExamTimetabelListHolder";
+import ExamTimetableService from "../../services/ExamTimetableService";
+import { useHistory } from "react-router-dom";
 
 /**
  * @author : M.N.M Akeel
@@ -9,7 +11,26 @@ import ExamTimetableListHolder from "./ExamTimetabelListHolder";
 
 
 function ManageExamTimetable(props){
-    const [examTimetable,setExamTimetable] = useState([])
+    const history = useHistory();
+    const [examTimetables,setExamTimetables] = useState([])
+
+    useEffect(() =>{
+        fetchClassTimetable();
+    },[]);
+
+    function fetchClassTimetable(){
+        ExamTimetableService.getExamTimetable()
+            .then(examTimetable =>{
+                setExamTimetables(examTimetable);
+            }).catch(err =>{
+            console.error(err)
+        })
+    }
+
+    function updateExamTimetable(examTimetable){
+        let id = examTimetable._id;
+        history.push(`/updateExamTimetable/${id}`);
+    }
 
     return <div>
         <div>
@@ -24,7 +45,12 @@ function ManageExamTimetable(props){
             </div>
         </div>
         <div>
-            <ExamTimetableListHolder />
+            {
+                examTimetables.map(examTimetable =>{
+                    return <ExamTimetableListHolder ExamTimetable={examTimetable} editExamTimetable={updateExamTimetable} />
+                })
+            }
+
         </div>
 
     </div>
