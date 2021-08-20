@@ -23,7 +23,7 @@ class ListTeachers extends Component {
         this.props.history.push(`/view-teacher/${id}`);
     }
     editTeacher(id){
-        this.props.history.push(`/add-teacher/${id}`);
+        this.props.history.push(`/edit-teacher/${id}`);
     }
 
     componentDidMount(){
