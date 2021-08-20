@@ -10,7 +10,7 @@ function GenerateResultReport(props) {
     const [year,setYear] = useState('')
     const [term,setTerm] = useState('')
     const [sClassArray,setSClassArray] = useState([])
-    const [sClassTpyeArray,setSClassTypeArray] = useState([])
+    const [sClassTypeArray,setSClassTypeArray] = useState([])
     const [studentArray,setStudentArray] = useState([])
     const [yearArray,setYearArray] = useState([])
     const [termArray,setTermArray] = useState([])
