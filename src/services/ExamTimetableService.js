@@ -28,7 +28,7 @@ class ExamTimetableService{
     /**
      *  This service function is to Get All Exam timetables from backend
      */
-    async getexamTimetable(){
+    async getExamTimetable(){
         return await fetch(EXAM_TIMETABLE_API_BASE_URI,{
             method:'GET',
         }).then(response =>{
