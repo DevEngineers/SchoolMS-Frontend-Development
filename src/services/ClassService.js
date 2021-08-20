@@ -54,7 +54,7 @@ class ClassService{
     /**
      *  This service function is to update stored result in backend
      */
-    async updateClass(id,result){
+    async updateClass(id,Class){
         const bearer = 'Bearer ' + localStorage.getItem('userToken');
         return await fetch(CLASS_BASE_URI+"/"+id,{
             method:'PUT',
@@ -62,7 +62,7 @@ class ClassService{
                 'content-Type':"application/json",
                 'Authorization': bearer
             },
-            body:JSON.stringify(result)
+            body:JSON.stringify(Class)
         }).then(response =>{
             return response;
         }).catch(reason => {
