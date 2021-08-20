@@ -42,7 +42,6 @@ class CreateUserAccount extends React.Component{
 
 
     render() {
-        console.log(this.state.uType)
         return <div>
             <div>
                 <div className={'box'}>
