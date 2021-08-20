@@ -25,7 +25,7 @@ class ListPayments extends Component {
         this.props.history.push(`/view-payment/${id}`);
     }
     editPayment(id){
-        this.props.history.push(`/add-payment/${id}`);
+        this.props.history.push(`/edit-payment/${id}`);
     }
 
     componentDidMount(){
