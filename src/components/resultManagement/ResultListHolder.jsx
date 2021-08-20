@@ -12,16 +12,18 @@ export default function ResultListHolder(props) {
     return <div>
         <div id={'viewMain'}>
             <div>
-                    <label id={'headingLabel'}> Student</label>
+                <label id={'headingLabel'}>Student ID:</label><br/>
+                <label id={'headingLabel'}>Student Name:</label>
             </div>
             <div id={'viewDiv'}>
                 <div id={'viewSmall'}>
                     <label>Grade 11 Class Timetable</label>
                     <label id={'yearLabel'}>Year : 2021</label>
+                    <label id={'termLabel'}>Term : 1st Term</label>
                 </div>
                 <div className={'buttonDiv'}>
                     <IconButton aria-label="pageView" style={{backgroundColor:"transparent"}}
-                                onClick={() => viewResult(Result)}>
+                                onClick={() => deleteResult(Result)}>
                         <DeleteIcon/>
                     </IconButton>
                 </div>
@@ -33,7 +35,7 @@ export default function ResultListHolder(props) {
                 </div>
                 <div className={'buttonDiv'}>
                     <IconButton aria-label="delete" style={{backgroundColor:"transparent"}}
-                                onClick={() => deleteResult(Result)}>
+                                onClick={() => viewResult(Result)}>
                         <PageViewIcon/>
                     </IconButton>
                 </div>
