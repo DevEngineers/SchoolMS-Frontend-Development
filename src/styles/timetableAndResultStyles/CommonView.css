@@ -31,7 +31,7 @@
 
 #viewMain{
     width: 75%;
-    margin-left: 200px;
+    margin-left: 220px;
 }
 
 #headingLabel{
@@ -42,7 +42,7 @@
 }
 
 #viewDiv{
-    width: 90%;
+    width: 85%;
     height: 40px;
     border-style: groove;
     border-radius: 5px;
@@ -51,19 +51,22 @@
 }
 
 #viewSmall{
-    width: 49%;
+    width: 56%;
     float: left;
     padding: 8px;
 }
 
 .buttonDiv{
-
-    width: 8%;
+    width: 6%;
     float: right;
     margin-top: -5px;
 }
 
 #yearLabel{
     margin-left: 100px;
+}
+
+#termLabel{
+    margin-left: 80px;
 }
 /* ---------------------------------------------------------------------- */
