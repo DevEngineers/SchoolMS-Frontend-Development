@@ -5,6 +5,7 @@ import {IconButton, MenuItem} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import DeleteIcon from "@material-ui/icons/Delete";
 import AddIcon from "@material-ui/icons/Add";
+import ExamTimetableService from "../../services/ExamTimetableService";
 
 /**
  * @author : M.N.M Akeel
@@ -26,6 +27,7 @@ class UpdateExamTimetable extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
+            timetableID:this.props.match.params.id,
 
             startSlot:[],
             endSlot:[],
@@ -46,6 +48,21 @@ class UpdateExamTimetable extends React.Component{
     }
 
     componentDidMount() {
+        ExamTimetableService.getExamTimetableByID(this.state.timetableID)
+            .then(res =>{
+                console.log(res)
+                this.setState({
+                    eClass: res.class,
+                    eClassType:res.classType,
+                    year: res.year,
+                    term: res.term,
+                    startSlot:res.startSlot,
+                    endSlot:res.endSlot,
+                    examDates:res.examDates,
+                    examSubjects:res.examSubjects
+                })
+            })
+
     }
 
     /**
@@ -167,39 +184,22 @@ class UpdateExamTimetable extends React.Component{
                         <div id={'classSelectOpt'}>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'eClass'} value={this.state.eClass}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem value={''}><span className={'selectPName'}>Select Class</span></MenuItem>
-                                {
-                                    this.state.classes.map(classes =>
-                                        <MenuItem key={classes} value={classes}><span className={'selectPName'}>{classes}</span></MenuItem>
-                                    )
-                                }
+                                <MenuItem value={this.state.eClass}><span className={'selectPName'}>{this.state.eClass}</span></MenuItem>
+
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'eClassType'} value={this.state.eClassType}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem value={''}><span className={'selectPName'}>Select Class Type</span></MenuItem>
-                                {
-                                    this.state.classTypes.map(classType =>
-                                        <MenuItem key={classType} value={classType}><span className={'selectPName'}>{classType}</span></MenuItem>
-                                    )
-                                }
+                                <MenuItem value={this.state.eClassType}><span className={'selectPName'}>{this.state.eClassType}</span></MenuItem>
+
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'year'} value={this.state.year}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem value={''}><span className={'selectPName'}>Select Year</span></MenuItem>
-                                {
-                                    this.state.years.map(year =>
-                                        <MenuItem key={year} value={year} ><span className={'selectPName'}>{year}</span></MenuItem>
-                                    )
-                                }
+                                <MenuItem value={this.state.year}><span className={'selectPName'}>{this.state.year}</span></MenuItem>
+
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'term'} value={this.state.term}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem value={''}><span className={'selectPName'}>Select Term</span></MenuItem>
-                                {
-                                    this.state.eTerms.map(term =>
-                                        <MenuItem key={term} value={term} ><span className={'selectPName'}>{term}</span></MenuItem>
-                                    )
-                                }
+                                <MenuItem value={this.state.term}><span className={'selectPName'}>{this.state.term}</span></MenuItem>
                             </Select>
                         </div>
                     </div>
@@ -234,9 +234,10 @@ class UpdateExamTimetable extends React.Component{
                                         <div key={i}>
                                             <Select labelId="demo-simple-select-label" id="demo-simple-select"
                                                     value={el || ''} onChange={this.handleChangeSubjects.bind(this, i)} className={'daySize'} >
+                                                <MenuItem value={this.state.examSubjects[i]}><span className={'selectPName'}>{this.state.examSubjects[i]}</span></MenuItem>
                                                 {
                                                     this.state.subjects.map(subject =>
-                                                        <MenuItem key={subject} value={subject}>{subject}</MenuItem>
+                                                        <MenuItem key={subject} value={subject}><span className={'selectPName'}>{subject}</span></MenuItem>
                                                     )
                                                 }
                                             </Select>
