@@ -254,6 +254,9 @@ tr {
     background-color: #17a2b8;
     border-color: #17a2b8;
 }
+.btn-infon {
+
+}
 
 /**, ::after, ::before {
     box-sizing: border-box;
@@ -393,3 +396,8 @@ table {
     margin-left: 300px;
 }
 
+.buttonDiv{
+    width: 6%;
+    float: right;
+    margin-top: -5px;
+}
