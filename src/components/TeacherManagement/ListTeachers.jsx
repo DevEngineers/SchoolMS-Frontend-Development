@@ -23,7 +23,7 @@ class ListTeachers extends Component {
         this.props.history.push(`/view-teacher/${id}`);
     }
     editTeacher(id){
-        this.props.history.push(`/edit-teacher/${id}`);
+        this.props.history.push(`/update-teacher/${id}`);
     }
 
     componentDidMount(){
@@ -74,9 +74,9 @@ class ListTeachers extends Component {
                                         <td> {teacher.maritalStatus}</td>
                                         <td> { teacher.gender} </td>
                                         <td>
-                                            <button onClick={ () => this.editTeacher(teacher.id)} className="btn btn-info">Update </button>
-                                            <button style={{marginLeft: "10px"}} onClick={ () => this.deleteTeacher(teacher.id)} className="btn btn-danger">Delete </button>
-                                            <button style={{marginLeft: "10px"}} onClick={ () => this.viewTeacher(teacher.id)} className="btn btn-info">View </button>
+                                            <button onClick={ () => this.editTeacher(teacher._id)} className="btn btn-info">Update </button>
+                                            <button style={{marginLeft: "10px"}} onClick={ () => this.deleteTeacher(teacher._id)} className="btn btn-danger">Delete </button>
+                                            <button style={{marginLeft: "10px"}} onClick={ () => this.viewTeacher(teacher._id)} className="btn btn-info">View </button>
                                         </td>
                                     </tr>
                             )
