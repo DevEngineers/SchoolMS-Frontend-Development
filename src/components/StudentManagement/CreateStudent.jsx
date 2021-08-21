@@ -33,32 +33,17 @@ class CreateStudent extends Component {
         this.changeClassHandler = this.changeClassHandler.bind(this);
         this.changeClassTypeHandler = this.changeClassTypeHandler.bind(this);
         this.changeGenderHandler = this.changeGenderHandler.bind(this);
-        this.saveOrUpdateStudent = this.saveOrUpdateStudent.bind(this);
+        this.saveStudent = this.saveStudent.bind(this);
 
     }
 
     componentDidMount(){
-        if(this.state.id === '_add'){
-            return
-        }else{
-            StudentService.getStudentById(this.state.id).then( (res) =>{
-                let student = res.data;
-                this.setState({studentName: student.studentName,
-                    guardian: student.guardian,
-                    phone: student.phone,
-                    dob: student.dob,
-                    address: student.address,
-                    schoolBranch: student.schoolBranch,
-                    class: student.class,
-                    classType: student.classType,
-                    gender : student.gender
-                });
-            });
-        }
+
     }
-    saveOrUpdateStudent = (e) => {
+    saveStudent(e) {
         e.preventDefault();
-        let student = {studentName: this.state.studentName,
+        let student = {
+            studentName: this.state.studentName,
             guardian: this.state.guardian,
             phone: this.state.phone,
             dob: this.state.dob,
@@ -67,18 +52,15 @@ class CreateStudent extends Component {
             class: this.state.class,
             classType: this.state.classType,
             gender: this.state.gender};
+
         console.log('student => ' + JSON.stringify(student));
 
         // step 5
-        if(this.state.id === '_add'){
+
             StudentService.createStudent(student).then(res =>{
                 this.props.history.push('/students');
             });
-        }else{
-            StudentService.updateStudent(student, this.state.id).then( res => {
-                this.props.history.push('/students');
-            });
-        }
+
     }
 
     changeStudentNameHandler= (event) => {
@@ -116,12 +98,12 @@ class CreateStudent extends Component {
     }
 
     getTitle(){
+
         if(this.state.id === '_add'){
             return <h3 className="text-center">Add Student</h3>
         }else{
-            return <h3 className="text-center">Update Student</h3>
+            return <h3 className="text-centerTitle">Update Student</h3>
         }
-
     }
     /*addTeacher(){
         this.props.history.push('/add-teacher/_add');
@@ -130,6 +112,8 @@ class CreateStudent extends Component {
     addPayment(){
         this.props.history.push('/add-payment/_add');
     }*/
+
+
     render() {
         return (
             <div>
@@ -189,7 +173,7 @@ class CreateStudent extends Component {
 
                                     </div>
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} >Cancel</button>
-                                    <button className="btn btn-success" onClick={this.saveOrUpdateStudent}style={{marginLeft: "10px"}}>Save</button>
+                                    <button className="btn btn-success" onClick={this.saveStudent}style={{marginLeft: "10px"}}>Save</button>
 
 
 

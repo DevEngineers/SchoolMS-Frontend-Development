@@ -1,28 +1,88 @@
-import axios from 'axios';
+/*
+*  IT 19167442
+*  Author Nusky M.A.M
+* */
 
-const TEACHER_API_BASE_URL = "http://localhost:8087/teachers";
 
-class TeacherService {
+const TEACHER_API_BASE_URL = "http://localhost:5000/teacher";
 
-    getTeachers(){
-        return axios.get(TEACHER_API_BASE_URL);
+class TeacherService{
+
+
+    async getTeachers(){
+        return await fetch(TEACHER_API_BASE_URL+"",{
+            method:'GET',
+        }).then(response =>{
+            return response.json();
+        }).catch(reason => {
+            return reason;
+        })
+
     }
 
-    createTeacher(teacher){
-        return axios.post(TEACHER_API_BASE_URL, teacher);
+    async createTeacher(teacher){
+        console.log(teacher);
+        const bearer = 'Bearer ' + localStorage.getItem('userToken');
+        return await fetch(TEACHER_API_BASE_URL,{
+            method:'POST',
+            headers:{
+                'content-Type':"application/json",
+                'Authorization': bearer
+            },
+            body:JSON.stringify(teacher)
+        }).then(response =>{
+            return response;
+        }).catch(reason => {
+            return reason;
+        })
+
     }
 
-    getTeacherById(teacherId){
-        return axios.get(TEACHER_API_BASE_URL + '/' + teacherId);
+    async getTeacherById(id){
+        return await fetch(TEACHER_API_BASE_URL+"/"+id,{
+            method:'GET',
+        }).then(response =>{
+            return response.json();
+        }).catch(reason => {
+            return reason;
+        })
+
     }
 
-    updateTeacher(teacher, teacherId){
-        return axios.put(TEACHER_API_BASE_URL + '/' + teacherId, teacher);
+
+    async updateTeacher(id,Teacher){
+        const bearer = 'Bearer ' + localStorage.getItem('userToken');
+        console.log(Teacher);
+        return await fetch(TEACHER_API_BASE_URL+"/"+id,{
+            method:'PUT',
+            headers:{
+                'content-Type':"application/json",
+                'Authorization': bearer
+            },
+            body:JSON.stringify(Teacher)
+        }).then(response =>{
+            return response;
+        }).catch(reason => {
+            return reason;
+        })
     }
 
-    deleteTeacher(teacherId){
-        return axios.delete(TEACHER_API_BASE_URL + '/' + teacherId);
+    async deleteTeacher(id){
+        const bearer = 'Bearer ' + localStorage.getItem('userToken');
+        return await fetch(TEACHER_API_BASE_URL+"/"+id,{
+            headers:{
+                'Authorization': bearer
+            },
+            method:'DELETE',
+        }).then(response =>{
+            return response;
+        }).catch(reason => {
+            return reason;
+        })
+
     }
+
+
 }
 
-export default new TeacherService()
+export default new TeacherService();
