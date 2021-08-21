@@ -37,22 +37,7 @@ class UpdateStudent extends Component {
 
     }
 
-    componentDidMount(){
-            StudentService.getStudentById(this.state.id).then( (res) =>{
-                let student = res.data;
-                this.setState({studentName: student.studentName,
-                    guardian: student.guardian,
-                    phone: student.phone,
-                    dob: student.dob,
-                    address: student.address,
-                    schoolBranch: student.schoolBranch,
-                    class: student.class,
-                    classType: student.classType,
-                    gender : student.gender
-                });
-            });
 
-    }
     updateStudent= (e) => {
         e.preventDefault();
         let student = {studentName: this.state.studentName,
@@ -113,9 +98,7 @@ class UpdateStudent extends Component {
                     <div className = "row">
 
                         <div className = "card col-md-6 offset-md-3 offset-md-3">
-                            {
-                                this.getTitle()
-                            }
+                            <h3 className="text-center">Update Student</h3>
                             <div className = "card-body">
                                 <form>
                                     <div className = "form-group">
