@@ -12,6 +12,8 @@ import ListTeachers from "./components/TeacherManagement/ListTeachers";
 import CreateTeacher from "./components/TeacherManagement/CreateTeacher";
 import UpdateTeacher from "./components/TeacherManagement/UpdateTeacher";
 import ViewPayments from "./components/StudentPaymentManagement/ViewPayments";
+import ViewStudents from "./components/StudentManagement/ViewStudents";
+import ViewTeachers from "./components/TeacherManagement/ViewTeachers";
 
 function App() {
   return <div>
@@ -28,6 +30,8 @@ function App() {
         <Route path = "/update-teacher/:id" component = {UpdateTeacher}></Route>
         <Route path = "/teachers" component = {ListTeachers}></Route>
         <Route path = "/view-payment/:id" component = {ViewPayments}></Route>
+        <Route path = "/view-student/:id" component = {ViewStudents}></Route>
+        <Route path = "/view-teacher/:id" component = {ViewTeachers}></Route>
 
       </Switch>
     </Router>
