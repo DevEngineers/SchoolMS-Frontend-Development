@@ -93,14 +93,12 @@ class ListPayments extends Component {
                                             </div>
                                             <div className={'btn btn-infon'}>
                                                 <IconButton aria-label="pageView" style={{backgroundColor:"transparent"}}
-                                                            style={{marginLeft: "10px"}}
                                                             onClick={ () => this.deletePayment(payment._id)}>
                                                     <DeleteIcon/>
                                                 </IconButton>
                                             </div>
                                             <div className={'btn btn-dangern'}>
                                                 <IconButton aria-label="delete" style={{backgroundColor:"transparent"}}
-                                                            style={{marginLeft: "10px"}}
                                                             onClick={ () => this.viewPayment(payment._id)}>
                                                     <PageViewIcon/>
                                                 </IconButton>
