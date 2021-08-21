@@ -154,10 +154,17 @@ class CreatePayment extends Component {
                                         <label> Student Name : </label>
                                         <input placeholder="Select Student Name" name="studentName" className="form-control"
                                                value={this.state.studentName} onChange={this.changeStudentNameHandler}/>
-                                    </div> <div className = "form-group">
+                                    </div>
+                                    <div className = "form-group">
                                     <label> Payment Type : </label>
-                                    <input placeholder="Select Payment Type" name="paymentType" className="form-control"
-                                           value={this.state.paymentType} onChange={this.changePaymentTypeHandler}/>
+                                    <select value={this.state.paymentType} className="form-control" onChange={this.changePaymentTypeHandler}>
+                                        <option defaultValue >Payment Type:</option>
+                                        <option value="Admission Fees">Admission Fees</option>
+                                        <option value="Term Fees">Term Fees</option>
+                                        <option value="Exam Fees">Exam Fees</option>
+                                        <option value="Service Fees">Service Fees</option>
+                                        <option value="Others">Others</option>
+                                    </select>
                                 </div>
                                     <div className = "form-group">
                                         <label> Paid Amount : </label>
