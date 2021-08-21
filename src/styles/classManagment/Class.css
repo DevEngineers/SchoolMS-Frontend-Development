@@ -88,7 +88,7 @@ Class section
 Class section Buttons
 -------------------- */
 
-.BtnSub{
+.Btn-Class-Sub{
     position: relative;
     display: block;
     padding: 10px 20px 10px 20px;
@@ -111,12 +111,12 @@ Class section Buttons
     text-transform: uppercase;
 }
 
-.BtnSub:hover{
+.Btn-Class-Sub:hover{
     background: #359083;
     cursor: pointer;
 }
 
-.Btn-reset{
+.Btn-Class-reset{
     position: relative;
     display: block;
     padding: 10px 17px 10px 17px;
@@ -134,7 +134,7 @@ Class section Buttons
     text-transform: uppercase;
 }
 
-.Btn-reset:hover{
+.Btn-Class-reset:hover{
     background: #d32f2f;
     cursor: pointer;
 }
