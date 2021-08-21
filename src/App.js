@@ -15,8 +15,7 @@ import UpdateAttendance from "./components/attendanceManagment/UpdateAttendance"
 
 
 function App() {
-  return <div>
-    <Router>
+  return <Router>
       <Header/>
       <Switch>
           <Route path="/login" component={Login}/>
@@ -29,9 +28,8 @@ function App() {
           <Route path="/store-attendance" component={StoreAttendance}/>
           <Route path="/update-attendance" component={UpdateAttendance}/>
       </Switch>
-      {/*<Footer/>*/}
+      <Footer/>
     </Router>
-  </div>
 }
 
 export default App;
