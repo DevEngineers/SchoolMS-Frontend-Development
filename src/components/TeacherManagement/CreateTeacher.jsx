@@ -121,37 +121,39 @@ class CreateTeacher extends Component {
                                     <div className = "form-group">
                                         <label> Teacher Name: </label>
                                         <input   placeholder="Teacher Name" name="teacherName" className="form-control"
-                                               value={this.state.teacherName} onChange={this.changeStudentNameHandler}/>
+                                               value={this.state.teacherName} onChange={this.changeTeacherNameHandler}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> Mobile Number: </label>
                                         <input placeholder="Mobile Number" name="mobileNumber" className="form-control"
-                                               value={this.state.mobileNumber} onChange={this.changeGuardianHandler}/>
+                                               value={this.state.mobileNumber} onChange={this.changeMobileNumberHandler}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> NIC: </label>
                                         <input placeholder="NIC" name="nic" className="form-control"
-                                               value={this.state.nic} onChange={this.changePhoneHandler}/>
+                                               value={this.state.nic} onChange={this.changeNICHandler}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> School Branch: </label>
                                         <input placeholder="School Branch" name="schoolBranch" className="form-control"
-                                               value={this.state.schoolBranch} onChange={this.changeDobHandler}/>
+                                               value={this.state.schoolBranch} onChange={this.changeSchoolBranchHandler}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> Qualification : </label>
                                         <input placeholder="Qualification" name="qualification" className="form-control"
-                                               value={this.state.qualification} onChange={this.changeAddressHandler}/>
+                                               value={this.state.qualification} onChange={this.changeQualificationHandler}/>
                                     </div>
-                                    <div className = "form-group">
+                                    <div className = "form-group" value={this.state.maritalStatus} onChange={this.changeMaritalStatusHandler}>
                                     <label> Marital Status : </label>
-                                    <input placeholder="Marital Status" name="maritalStatus" className="form-control"
-                                           value={this.state.maritalStatus} onChange={this.changeSchoolBranchHandler}/>
+                                        <input type="radio" value="Single" name="maritalStatus" /> Single
+                                        <input type="radio" value="Married" name="maritalStatus" /> Married
+
                                 </div>
-                                    <div className = "form-group">
+                                    <div className = "form-group" value={this.state.gender} onChange={this.changeGenderHandler} >
                                         <label> Gender : </label>
-                                        <input placeholder="Gender" name="gender" className="form-control"
-                                               value={this.state.gender} onChange={this.changeGenderHandler}/>
+                                        <input type="radio" value="MALE" name="gender" /> Male
+                                        <input type="radio" value="FEMALE" name="gender" /> Female
+
                                     </div>
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} >Cancel</button>
                                     <button className="btn btn-success" onClick={this.saveOrUpdateTeacher}style={{marginLeft: "10px"}}>Save</button>
