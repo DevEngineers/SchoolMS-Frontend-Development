@@ -2,20 +2,71 @@ import React, {Component} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import {Box, Grid, MenuItem} from "@material-ui/core";
-import Button from "@material-ui/core/Button";
+import {toast} from "material-react-toastify";
 import '../../styles/classManagment/Class.css';
+import ClassService from "../../services/ClassService";
 
 /**
  * @author : A.M Zumry
  * Registration Number : IT19175126
  */
 
+//Toast Message Configuration
+const options = {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: false
+}
+
 class CreateClass extends Component {
     constructor(props){
         super(props);
         this.state= {
+            rClass:'',
+            rClassType:'',
+            rTeacher:'',
+
             classType:['A','B','C'],
-            teacher:['Nimal', 'Kumar', 'Kasun']
+            teacher:['611e68fc07b4bf1f64f88e89', 'Kumar', 'Kasun']
+        }
+    }
+
+    restAllValuesInForm(){
+
+    }
+
+    /**
+     * This function is to submit Create Class proposal
+     */
+    insertClass(event) {
+        event.preventDefault();
+        let Class = {
+            class: this.state.rClass,
+            classType: this.state.rClassType,
+            teacher: this.state.rTeacher
+        }
+        if(Class.class === ''){
+            toast.warn('Enter Class',options)
+        }else if(Class.classType === ''){
+            toast.warn('Select the Class Type',options)
+        }else if(Class.teacher === ''){
+            toast.warn('Select the Class Teacher',options)
+        }else{
+            console.log("I am class", Class);
+            ClassService.createClass(Class)
+                .then(res =>{
+                    if (res.status === 200) {
+                        toast.success("Class Created Successfully", options)
+                    } else {
+                        throw Error('Something went wrong!! Try again.' + res);
+                    }
+                })
+                .catch((error) => {
+                toast.error(error.message, options)
+            })
         }
     }
 
@@ -43,27 +94,30 @@ class CreateClass extends Component {
                             <form>
 
                                 <div className="class-form-div">
-                                    <Grid container direction="row" direction="row" justifyContent="space-evenly" alignItems="center" >
+                                    <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
                                             <label htmlFor={'class'} > Class </label>
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                            <TextField id="filled-basic" label="Class" variant="filled" style={{ width: 220 }} />
+                                            {/*<TextField id="filled-basic" label="class" name="class" value={this.state.class} variant="filled"  style={{ width: 220 }} />*/}
+                                            <TextField type={'text'} id="filled-basic"  name={'rClass'} value={this.state.rClass}
+                                                       placeholder={"Enter Class"} onChange={event => this.onChange(event)} style={{ width: 220 }} />
                                         </Box>
                                     </Grid>
                                 </div>
 
                                 <div className="class-form-div">
-                                    <Grid container direction="row" direction="row" justifyContent="space-evenly" alignItems="center" >
+                                    <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
                                             <label htmlFor={'classType'}> Class Type </label>
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                            <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }}
-                                                    className={'classSize'} onChange={event => this.onChange(event)}>
+                                            <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'rClassType'}
+                                                    value={this.state.rClassType} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                                <MenuItem value={''}> Select Class Type </MenuItem>
                                                 {
                                                     this.state.classType.map(type =>
-                                                        <MenuItem key={type} value={type}>{type}</MenuItem>
+                                                        <MenuItem key={type} value={type}> {type} </MenuItem>
                                                     )
                                                 }
                                             </Select>
@@ -72,16 +126,17 @@ class CreateClass extends Component {
                                 </div>
 
                                 <div className="class-form-div">
-                                    <Grid container direction="row" direction="row" justifyContent="space-evenly" alignItems="center" >
+                                    <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
                                             <label htmlFor={'teacher'}> Teacher  </label>
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                            <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }}
-                                                    className={'classSize'} onChange={event => this.onChange(event)}>
+                                            <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'rTeacher'}
+                                                    value={this.state.rTeacher} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                                <MenuItem value={''}> Select Teacher </MenuItem>
                                                 {
                                                     this.state.teacher.map(Teacher =>
-                                                        <MenuItem key={Teacher} value={Teacher}>{Teacher}</MenuItem>
+                                                        <MenuItem key={Teacher} value={Teacher}> {Teacher} </MenuItem>
                                                     )
                                                 }
                                             </Select>
@@ -89,25 +144,21 @@ class CreateClass extends Component {
                                     </Grid>
                                 </div>
 
-                                {/*<Grid container xs={12}>*/}
                                 <div className="class-form-div">
                                     <Grid container item direction="row" justifyContent="flex-end" alignItems="baseline" >
 
                                         <Box ccomponent="div" display="inline" style={{ padding: 10 }} >
-                                            <Button variant="contained" color="secondary">
-                                                Cancel
-                                            </Button>
+                                            {/*<Button variant="contained" color="secondary">Cancel</Button>*/}
+                                            <input type={'reset'} className={'Btn-Class-reset'} value={'Reset'} onClick={this.restAllValuesInForm.bind(this)}/>
                                         </Box>
 
                                         <Box component="div" display="inline" style={{ padding: 10 }} >
-                                            <Button variant="contained" color="primary">
-                                                Add Class
-                                            </Button>
+                                            {/*<Button variant="contained" color="primary">Add Class</Button>*/}
+                                            <input type={'submit'} className={'Btn-Class-Sub'} value={'Add Class'} onClick={this.insertClass.bind(this)}/>
                                         </Box>
 
                                     </Grid>
                                 </div>
-                                {/*</Grid>*/}
 
                             </form>
                         </div>
