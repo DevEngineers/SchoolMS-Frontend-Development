@@ -3,7 +3,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import PageViewIcon from "@material-ui/icons/Pageview";
 import React from "react";
-import '../../styles/timetableAndResultStyles/CommonView.css';
+import '../../styles/timetableAndResultStyles/CommonManage.css';
 
 
 export default function ResultListHolder(props) {

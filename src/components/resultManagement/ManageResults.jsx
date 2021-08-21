@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {TextField} from "@material-ui/core";
-import '../../styles/timetableAndResultStyles/CommonView.css';
+import '../../styles/timetableAndResultStyles/CommonManage.css';
 import ResultListHolder from "./ResultListHolder";
-import ExamTimetableService from "../../services/ExamTimetableService";
 import ResultService from "../../services/ResultService";
 import {useHistory} from "react-router-dom";
 
@@ -17,11 +16,11 @@ function ManageResults(props){
     const [results,setResults] = useState([])
 
     useEffect(() =>{
-        fetchResults();
+        fetchResults().then(r => console.log(r));
     },[]);
 
-    function fetchResults(){
-        ResultService.getResults()
+    async function fetchResults(){
+        await ResultService.getResults()
             .then(results =>{
                 setResults(results);
             }).catch(err =>{

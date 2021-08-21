@@ -1,6 +1,6 @@
 import React from "react";
 import Select from "@material-ui/core/Select";
-import {Container, Grid, MenuItem, TextField} from "@material-ui/core";
+import {Container, MenuItem, TextField} from "@material-ui/core";
 import '../../styles/usersStyles/Users.css'
 
 /**

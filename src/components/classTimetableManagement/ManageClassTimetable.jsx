@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {TextField} from "@material-ui/core";
 import ClassTimetableListHolder from "./ClassTimetableListHolder";
 import ClassTimetableService from "../../services/ClassTimetableService";
+import '../../styles/timetableAndResultStyles/CommonManage.css';
 import { useHistory } from "react-router-dom";
 
 /**
@@ -15,11 +16,11 @@ function ManageClassTimetable(props){
     const [classTimetables,setClassTimetables] = useState([]);
 
     useEffect(() =>{
-        fetchClassTimetable();
+        fetchClassTimetable().then(r => console.log(r));
     },[]);
 
-    function fetchClassTimetable(){
-        ClassTimetableService.getClassTimetable()
+    async function fetchClassTimetable(){
+        await ClassTimetableService.getClassTimetable()
             .then(classTimetable =>{
                 setClassTimetables(classTimetable);
             }).catch(err =>{

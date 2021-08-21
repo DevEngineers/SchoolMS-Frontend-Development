@@ -3,6 +3,7 @@ import {TextField} from "@material-ui/core";
 import ExamTimetableListHolder from "./ExamTimetabelListHolder";
 import ExamTimetableService from "../../services/ExamTimetableService";
 import { useHistory } from "react-router-dom";
+import '../../styles/timetableAndResultStyles/CommonManage.css';
 
 /**
  * @author : M.N.M Akeel
@@ -15,11 +16,11 @@ function ManageExamTimetable(props){
     const [examTimetables,setExamTimetables] = useState([])
 
     useEffect(() =>{
-        fetchExamTimetable();
+        fetchExamTimetable().then(r => console.log(r));
     },[]);
 
-    function fetchExamTimetable(){
-        ExamTimetableService.getExamTimetable()
+    async function fetchExamTimetable(){
+        await ExamTimetableService.getExamTimetable()
             .then(examTimetable =>{
                 setExamTimetables(examTimetable);
             }).catch(err =>{
