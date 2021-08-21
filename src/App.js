@@ -13,9 +13,12 @@ import ManageExamTimetable from "./components/examTimetableManagement/ManageExam
 import GenerateResultReport from "./components/resultManagement/GenerateResultReport";
 import UpdateExamTimetable from "./components/examTimetableManagement/UpdateExamTimetable";
 import UpdateResult from "./components/resultManagement/UpdateResult";
+import Header from "./components/Header";
+import UserProfile from "./components/userManagement/UserProfile";
 
 function App() {
   return <Router>
+    <Header/>
       <Switch>
         <Route path="/login" component={Login}/>
         <Route path="/createClassTimetable" component={CreateClassTimetable}/>
@@ -29,6 +32,7 @@ function App() {
         <Route path="/manageClassTimetable" component={ManageClassTimetable}/>
         <Route path="/manageExamTimetable" component={ManageExamTimetable}/>
         <Route path="/generateResultReport" component={GenerateResultReport}/>
+        <Route path="/userProfile" component={UserProfile}/>
       </Switch>
     </Router>
 }
