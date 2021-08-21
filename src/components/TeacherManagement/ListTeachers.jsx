@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 import TeacherService from "../../Services/TeacherService";
+import {IconButton} from "@material-ui/core";
+import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
+import PageViewIcon from "@material-ui/icons/Pageview";
 
 class ListTeachers extends Component {
     constructor(props) {
@@ -74,9 +78,26 @@ class ListTeachers extends Component {
                                         <td> {teacher.maritalStatus}</td>
                                         <td> { teacher.gender} </td>
                                         <td>
-                                            <button onClick={ () => this.editTeacher(teacher._id)} className="btn btn-info">Update </button>
-                                            <button style={{marginLeft: "10px"}} onClick={ () => this.deleteTeacher(teacher._id)} className="btn btn-danger">Delete </button>
-                                            <button style={{marginLeft: "10px"}} onClick={ () => this.viewTeacher(teacher._id)} className="btn btn-info">View </button>
+                                            <div className={'btn btn-infon'}>
+                                                <IconButton aria-label="edit" style={{backgroundColor:"transparent"}}
+                                                            onClick={ () => this.editTeacher(teacher._id)}>
+                                                    <EditIcon/>
+                                                </IconButton>
+                                            </div>
+                                            <div className={'btn btn-infon'}>
+                                                <IconButton aria-label="pageView" style={{backgroundColor:"transparent"}}
+                                                            style={{marginLeft: "10px"}}
+                                                            onClick={ () => this.deleteTeacher(teacher._id)}>
+                                                    <DeleteIcon/>
+                                                </IconButton>
+                                            </div>
+                                            <div className={'btn btn-dangern'}>
+                                                <IconButton aria-label="delete" style={{backgroundColor:"transparent"}}
+                                                            style={{marginLeft: "10px"}}
+                                                            onClick={ () => this.viewTeacher(teacher._id)}>
+                                                    <PageViewIcon/>
+                                                </IconButton>
+                                            </div>
                                         </td>
                                     </tr>
                             )
