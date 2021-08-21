@@ -55,7 +55,6 @@ class CreateClass extends Component {
         }else if(Class.teacher === ''){
             toast.warn('Select the Class Teacher',options)
         }else{
-            console.log("I am class", Class);
             ClassService.createClass(Class)
                 .then(res =>{
                     if (res.status === 200) {
