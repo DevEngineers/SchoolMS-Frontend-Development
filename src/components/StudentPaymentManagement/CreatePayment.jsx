@@ -132,8 +132,14 @@ class CreatePayment extends Component {
                                 <form>
                                     <div className = "form-group">
                                         <label> School Branch: </label>
-                                        <input placeholder="Select School Branch" name="schoolBranch" className="form-control"
-                                               value={this.state.schoolBranch} onChange={this.changeSchoolBranchHandler}/>
+                                        <select value={this.state.schoolBranch} className="form-control" onChange={this.changeSchoolBranchHandler}>
+                                            <option defaultValue>School Branch:</option>
+                                            <option value="Colombo">Colombo</option>
+                                            <option value="Kandy">Kandy</option>
+                                            <option value="Dehiwala">Dehiwala</option>
+                                            <option value="Negambo">Negambo</option>
+                                            <option value="Ratmalana">Ratmalana</option>
+                                        </select>
                                     </div>
                                     <div className = "form-group">
                                         <label> Class: </label>
