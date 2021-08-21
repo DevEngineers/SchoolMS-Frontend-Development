@@ -25,7 +25,7 @@ class ListPayments extends Component {
         this.props.history.push(`/view-payment/${id}`);
     }
     editPayment(id){
-        this.props.history.push(`/edit-payment/${id}`);
+        this.props.history.push(`/update-payment/${id}`);
     }
 
     componentDidMount(){
@@ -58,7 +58,6 @@ class ListPayments extends Component {
 
                         <thead>
                         <tr>
-                            <th> Student ID</th>
                             <th> Student Name</th>
                             <th> Payment Type</th>
                             <th> Paid Amount</th>
@@ -78,9 +77,9 @@ class ListPayments extends Component {
                                         <td> { payment.class} </td>
                                         <td> {payment.dateOfPayment}</td>
                                         <td>
-                                            <button onClick={ () => this.editPayment(payment.id)} className="btn btn-info">Update </button>
-                                            <button style={{marginLeft: "10px"}} onClick={ () => this.deletePayment(payment.id)} className="btn btn-danger">Delete </button>
-                                            <button style={{marginLeft: "10px"}} onClick={ () => this.viewPayment(payment.id)} className="btn btn-info">View </button>
+                                            <button onClick={ () => this.editPayment(payment._id)} className="btn btn-info">Update </button>
+                                            <button style={{marginLeft: "10px"}} onClick={ () => this.deletePayment(payment._id)} className="btn btn-danger">Delete </button>
+                                            <button style={{marginLeft: "10px"}} onClick={ () => this.viewPayment(payment._id)} className="btn btn-info">View </button>
                                         </td>
                                     </tr>
                             )
