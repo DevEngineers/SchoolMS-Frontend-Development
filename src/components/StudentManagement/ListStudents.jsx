@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import StudentService from "../../Services/StudentService";
 import '../../styles/Student.css';
+import {IconButton} from "@material-ui/core";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
+import PageViewIcon from "@material-ui/icons/Pageview";
 
 class ListStudents extends Component {
     constructor(props) {
@@ -60,6 +64,8 @@ class ListStudents extends Component {
                             <th> Student Name</th>
                             <th> Guardian</th>
                             <th> Phone</th>
+                            <th> Date Of Birth</th>
+                            <th> Address</th>
                             <th> School Branch</th>
                             <th> Class</th>
                             <th> Class Type</th>
@@ -75,15 +81,35 @@ class ListStudents extends Component {
                                         <td> { student.studentName} </td>
                                         <td> {student.guardian}</td>
                                         <td> {student.phone}</td>
+                                        <td> {student.dob}</td>
+                                        <td> {student.address}</td>
                                         <td> {student.schoolBranch}</td>
                                         <td> { student.class} </td>
                                         <td> {student.classType}</td>
                                         <td> {student.gender}</td>
                                         <td>
-                                            <button onClick={ () => this.editStudent(student._id)} className="btn btn-info">Update </button>
-                                            <button style={{marginLeft: "10px"}} onClick={ () => this.deleteStudent(student._id)} className="btn btn-danger">Delete </button>
-                                            <button style={{marginLeft: "10px"}} onClick={ () => this.viewStudent(student._id)} className="btn btn-info">View </button>
+                                            <div className={'btn btn-infon'}>
+                                                <IconButton aria-label="edit" style={{backgroundColor:"transparent"}}
+                                                            onClick={ () => this.editStudent(student._id)}>
+                                                    <EditIcon/>
+                                                </IconButton>
+                                            </div>
+                                            <div className={'btn btn-infon'}>
+                                                <IconButton aria-label="pageView" style={{backgroundColor:"transparent"}}
+                                                            style={{marginLeft: "10px"}}
+                                                            onClick={ () => this.deleteStudent(student._id)}>
+                                                    <DeleteIcon/>
+                                                </IconButton>
+                                            </div>
+                                            <div className={'btn btn-dangern'}>
+                                                <IconButton aria-label="delete" style={{backgroundColor:"transparent"}}
+                                                            style={{marginLeft: "10px"}}
+                                                            onClick={ () => this.viewStudent(student._id)}>
+                                                    <PageViewIcon/>
+                                                </IconButton>
+                                            </div>
                                         </td>
+
                                     </tr>
                             )
                         }
