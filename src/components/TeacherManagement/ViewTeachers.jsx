@@ -12,7 +12,7 @@ class ViewTeachers extends Component {
     }
 
     componentDidMount(){
-        TeacherService.getTeacherById(this.state.id).then( res => {
+        TeacherService.getTeachers(this.state.id).then( res => {
             this.setState({teacher: res.data});
         })
     }
