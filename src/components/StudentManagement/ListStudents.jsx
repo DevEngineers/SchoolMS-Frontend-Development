@@ -24,10 +24,10 @@ class ListStudents extends Component {
         });
     }
     viewStudent(id){
-        this.props.history.push(`/view-student/${id}`);
+        this.props.history.push(`/viewStudents/${id}`);
     }
     editStudent(id){
-        this.props.history.push(`/edit-student/${id}`);
+        this.props.history.push(`/update-Student/${id}`);
     }
 
     componentDidMount(){
@@ -63,6 +63,7 @@ class ListStudents extends Component {
                             <th> School Branch</th>
                             <th> Class</th>
                             <th> Class Type</th>
+                            <th> Gender</th>
                             <th> Actions</th>
                         </tr>
                         </thead>
@@ -74,16 +75,14 @@ class ListStudents extends Component {
                                         <td> { student.studentName} </td>
                                         <td> {student.guardian}</td>
                                         <td> {student.phone}</td>
-                                        <td> { student.dob} </td>
-                                        <td> {student.address}</td>
                                         <td> {student.schoolBranch}</td>
                                         <td> { student.class} </td>
                                         <td> {student.classType}</td>
                                         <td> {student.gender}</td>
                                         <td>
-                                            <button onClick={ () => this.editStudent(student.id)} className="btn btn-info">Update </button>
-                                            <button style={{marginLeft: "10px"}} onClick={ () => this.deleteStudent(student.id)} className="btn btn-danger">Delete </button>
-                                            <button style={{marginLeft: "10px"}} onClick={ () => this.viewStudent(student.id)} className="btn btn-info">View </button>
+                                            <button onClick={ () => this.editStudent(student._id)} className="btn btn-info">Update </button>
+                                            <button style={{marginLeft: "10px"}} onClick={ () => this.deleteStudent(student._id)} className="btn btn-danger">Delete </button>
+                                            <button style={{marginLeft: "10px"}} onClick={ () => this.viewStudent(student._id)} className="btn btn-info">View </button>
                                         </td>
                                     </tr>
                             )
