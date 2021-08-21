@@ -55,7 +55,6 @@ class CreateSubject extends Component {
         }else if(Subject.teacher === ''){
             toast.warn('Select the Subject Teacher',options)
         }else{
-            console.log("I am Subject", Subject);
             SubjectService.createSubject(Subject)
                 .then(res =>{
                     if (res.status === 200) {
