@@ -36,21 +36,7 @@ class UpdatePayment extends Component {
 
     }
 
-    componentDidMount(){
-            StudentPaymentService.getPaymentById(this.state.id).then( (res) =>{
-                let payment = res.data;
-                this.setState({schoolBranch: payment.schoolBranch,
-                    class: payment.class,
-                    classType: payment.classType,
-                    studentId: payment.studentId,
-                    studentName: payment.studentName,
-                    paymentType: payment.paymentType,
-                    paidAmount: payment.paidAmount,
-                    dateOfPayment: payment.dateOfPayment
-                });
-            });
 
-    }
     UpdatePayment= (e) => {
         e.preventDefault();
         let payment = {schoolBranch: this.state.schoolBranch,
@@ -98,14 +84,6 @@ class UpdatePayment extends Component {
         this.props.history.push('/payments');
     }
 
-    getTitle(){
-        if(this.state.id === '_add'){
-            return <h3 className="text-center">Add Payment</h3>
-        }else{
-            return <h3 className="text-center">Update Payment</h3>
-        }
-
-    }
 
     render() {
         return (
@@ -115,9 +93,7 @@ class UpdatePayment extends Component {
                     <div className = "row">
 
                         <div className = "card col-md-6 offset-md-3 offset-md-3">
-                            {
-                                this.getTitle()
-                            }
+                            <h3 className="text-center">Update Payment</h3>
                             <div className = "card-body">
                                 <form>
                                     <div className = "form-group">
