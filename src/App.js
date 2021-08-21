@@ -15,6 +15,8 @@ import UpdateExamTimetable from "./components/examTimetableManagement/UpdateExam
 import UpdateResult from "./components/resultManagement/UpdateResult";
 import Header from "./components/Header";
 import UserProfile from "./components/userManagement/UserProfile";
+import ManageUserAccounts from "./components/userManagement/ManageUserAccounts";
+import ViewClassTimetable from "./components/classTimetableManagement/ViewClassTimetable";
 
 function App() {
   return <Router>
@@ -23,16 +25,18 @@ function App() {
         <Route path="/login" component={Login}/>
         <Route path="/createClassTimetable" component={CreateClassTimetable}/>
         <Route path="/updateClassTimetable/:id" component={UpdateClassTimetable}/>
+        <Route path="/manageClassTimetable" component={ManageClassTimetable}/>
+        <Route path="/viewClassTimetable" component={ViewClassTimetable}/>
         <Route path="/createExamTimetable" component={CreateExamTimetable}/>
         <Route path="/updateExamTimetable/:id" component={UpdateExamTimetable}/>
+        <Route path="/manageExamTimetable" component={ManageExamTimetable}/>
         <Route path="/storeResults" component={StoreResult}/>
         <Route path="/updateResults/:id" component={UpdateResult}/>
-        <Route path="/createUsers" component={CreateUserAccount}/>
         <Route path="/manageResults" component={ManageResults}/>
-        <Route path="/manageClassTimetable" component={ManageClassTimetable}/>
-        <Route path="/manageExamTimetable" component={ManageExamTimetable}/>
-        <Route path="/generateResultReport" component={GenerateResultReport}/>
+        <Route path="/createUsers" component={CreateUserAccount}/>
         <Route path="/userProfile" component={UserProfile}/>
+        <Route path="/manageUserAccount" component={ManageUserAccounts}/>
+        <Route path="/generateResultReport" component={GenerateResultReport}/>
       </Switch>
     </Router>
 }
