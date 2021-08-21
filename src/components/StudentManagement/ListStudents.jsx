@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
+import '../../styles/Teacher.css';
 import StudentService from "../../Services/StudentService";
-import '../../styles/Student.css';
 import {IconButton} from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
@@ -28,7 +28,7 @@ class ListStudents extends Component {
         });
     }
     viewStudent(id){
-        this.props.history.push(`/viewStudents/${id}`);
+        this.props.history.push(`/view-Student/${id}`);
     }
     editStudent(id){
         this.props.history.push(`/update-Student/${id}`);
@@ -96,14 +96,12 @@ class ListStudents extends Component {
                                             </div>
                                             <div className={'btn btn-infon'}>
                                                 <IconButton aria-label="pageView" style={{backgroundColor:"transparent"}}
-                                                            style={{marginLeft: "10px"}}
                                                             onClick={ () => this.deleteStudent(student._id)}>
                                                     <DeleteIcon/>
                                                 </IconButton>
                                             </div>
                                             <div className={'btn btn-dangern'}>
                                                 <IconButton aria-label="delete" style={{backgroundColor:"transparent"}}
-                                                            style={{marginLeft: "10px"}}
                                                             onClick={ () => this.viewStudent(student._id)}>
                                                     <PageViewIcon/>
                                                 </IconButton>
