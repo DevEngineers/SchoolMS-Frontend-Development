@@ -5,7 +5,7 @@ import React from "react";
 import '../../styles/subjectManagment/ViewSubject.css';
 
 export default function SubjectListHolder(props){
-    const {Class,editClass,deleteClass} = props
+    const {subject,editSubject,deleteSubject} = props
 
     return <div className="SubjectListHolder">
         <div id={'viewMain'}>
@@ -18,13 +18,13 @@ export default function SubjectListHolder(props){
                 </div>
                 <div className={'buttonDiv'}>
                     <IconButton aria-label="delete" style={{backgroundColor:"transparent"}}
-                                onClick={() => deleteClass(Class)}>
+                                onClick={() => deleteSubject(subject)}>
                         <DeleteIcon/>
                     </IconButton>
                 </div>
                 <div className={'buttonDiv'}>
                     <IconButton aria-label="edit" style={{backgroundColor:"transparent"}}
-                                onClick={() => editClass(Class)}>
+                                onClick={() => editSubject(subject)}>
                         <EditIcon/>
                     </IconButton>
                 </div>

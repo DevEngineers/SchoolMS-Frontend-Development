@@ -47,7 +47,7 @@ function ManageSubjects(props){
         <div>
             {
                 Subjects.map(subject =>{
-                    return <SubjectListHolder key={subject._id} Result={subject} editResult={updateSubject}/>
+                    return <SubjectListHolder key={subject._id} Result={subject} editSubject={updateSubject}/>
                 })
             }
         </div>
