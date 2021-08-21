@@ -27,11 +27,6 @@ Subject title section
     text-transform: uppercase;
     margin: 0;
 }
-/*.subject-section .subject-section-title {*/
-/*    position: relative;*/
-/*    display: block;*/
-/*    width: 100%;*/
-/*}*/
 
 .subject-section .subject-custom-underline {
     position: relative;
@@ -44,30 +39,13 @@ Subject title section
 
 .subject-section .subject-section-title{
     position: relative;
-    display: block;
     width: 100%;
     height:125px;
     display: inline-block;
     font-size: 30px;
-    margin:30px 0 0 0px;
+    margin:30px 0 0 0;
     text-align: center;
 }
-
-/*.subject-section-title .subject-custom-underline::after {*/
-/*    top: 65%;*/
-/*    height: 2px !important;*/
-/*    width: 40%;*/
-/*    left: 31% ;*/
-/*    margin-top: 20px;*/
-/*    background-color: black;*/
-/*    transition: 0.4s ease-out all .1s;*/
-/*}*/
-
-/*.subject-section-title:hover .subject-custom-underline::after {*/
-/*    width: 90%;*/
-/*    left: 5%;*/
-/*    transition: 0.5s ease all;*/
-/*}*/
 
 /* --------------------
 Subject section
@@ -105,6 +83,57 @@ Subject section
     padding-top: 20px;
 }
 
-/**
-  ************************************************************************************
- */
+
+/* --------------------
+Subject section Buttons
+-------------------- */
+.Btn-Subject-Sub{
+    position: relative;
+    display: block;
+    padding: 10px 20px 10px 20px;
+    /*padding: 6px 16px;*/
+    /*line-height: 1.75;*/
+    color: #FFF;
+    background: #36988c;
+    font-size: 0.875rem;
+    box-sizing: border-box;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    /*font-size: 16px;*/
+    font-style: normal;
+    /* width: 25%; */
+    border: 1px solid #36988c;
+    border-radius: 4px;
+    /* float: right; */
+    margin-right: 5px;
+    font-weight: 500;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+}
+
+.Btn-Subject-Sub:hover{
+    background: #359083;
+    cursor: pointer;
+}
+
+.Btn-Subject-reset{
+    position: relative;
+    display: block;
+    padding: 10px 17px 10px 17px;
+    color: #FFF;
+    background: #f44336;
+    font-size: 0.875rem;
+    box-sizing: border-box;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-style: normal;
+    border: 1px solid #f44336;
+    border-radius: 4px;
+    /*margin-right: 5px;*/
+    font-weight: 500;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+}
+
+.Btn-Subject-reset:hover{
+    background: #d32f2f;
+    cursor: pointer;
+}

@@ -2,20 +2,71 @@ import React, {Component} from 'react';
 import {Box, Grid, MenuItem} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
-import Button from "@material-ui/core/Button";
 import '../../styles/subjectManagment/subjects.css';
+import {toast} from "material-react-toastify";
+import SubjectService from "../../services/SubjectService";
 
 /**
  * @author : A.M Zumry
  * Registration Number : IT19175126
  */
 
+//Toast Message Configuration
+const options = {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: false
+}
+
 class CreateSubject extends Component {
     constructor(props){
         super(props);
         this.state= {
-            grade:['5','6','7'],
-            teacher:['Nimal', 'Kumar', 'Kasun']
+            rSubject:'',
+            rClass:'',
+            rTeacher:'',
+
+            classes:['5','6','7','611ff24d1e8d711b0497e1bb'],
+            teachers:['Nimal', 'Kumar', 'Kasun','611e68fc07b4bf1f64f88e89']
+        }
+    }
+
+    restAllValuesInForm(){
+
+    }
+
+    /**
+     * This function is to submit Create Class proposal
+     */
+    insertSubject(event) {
+        event.preventDefault();
+        let Subject = {
+            subject: this.state.rSubject,
+            class: this.state.rClass,
+            teacher: this.state.rTeacher
+        }
+        if(Subject.subject === ''){
+            toast.warn('Enter Subject Name',options)
+        }else if(Subject.class === ''){
+            toast.warn('Select the Class',options)
+        }else if(Subject.teacher === ''){
+            toast.warn('Select the Subject Teacher',options)
+        }else{
+            console.log("I am Subject", Subject);
+            SubjectService.createSubject(Subject)
+                .then(res =>{
+                    if (res.status === 200) {
+                        toast.success("Class Created Successfully", options)
+                    } else {
+                        throw Error('Something went wrong!! Try again.' + res);
+                    }
+                })
+                .catch((error) => {
+                    toast.error(error.message, options)
+                })
         }
     }
 
@@ -43,27 +94,29 @@ class CreateSubject extends Component {
                             <form>
 
                                 <div className="subject-form-div">
-                                    <Grid container direction="row" direction="row" justifyContent="space-evenly" alignItems="center" >
+                                    <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
                                             <label htmlFor={'name'} > Name </label>
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                            <TextField id="filled-basic" label="Subject Name" variant="filled" style={{ width: 220 }} />
+                                            <TextField type={'text'} id="filled-basic"  name={'rSubject'} value={this.state.rSubject}
+                                                       placeholder={"Enter Subject Name"} onChange={event => this.onChange(event)} style={{ width: 220 }} />
                                         </Box>
                                     </Grid>
                                 </div>
 
                                 <div className="subject-form-div">
-                                    <Grid container direction="row" direction="row" justifyContent="space-evenly" alignItems="center" >
+                                    <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
-                                            <label htmlFor={'classType'}> Grade </label>
+                                            <label htmlFor={'class'}> Class </label>
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                            <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }}
-                                                    className={'classSize'} onChange={event => this.onChange(event)}>
+                                            <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'rClass'}
+                                                    value={this.state.rClass} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                                <MenuItem value={''}> Select Class </MenuItem>
                                                 {
-                                                    this.state.grade.map(type =>
-                                                        <MenuItem key={type} value={type}>{type}</MenuItem>
+                                                    this.state.classes.map(Class =>
+                                                        <MenuItem key={Class} value={Class}> {Class} </MenuItem>
                                                     )
                                                 }
                                             </Select>
@@ -72,16 +125,17 @@ class CreateSubject extends Component {
                                 </div>
 
                                 <div className="subject-form-div">
-                                    <Grid container direction="row" direction="row" justifyContent="space-evenly" alignItems="center" >
+                                    <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
                                             <label htmlFor={'teacher'}> Teacher </label>
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                            <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }}
-                                                    className={'classSize'} onChange={event => this.onChange(event)}>
+                                            <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'rTeacher'}
+                                                    value={this.state.rTeacher} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                                <MenuItem value={''}> Select Subject Teacher </MenuItem>
                                                 {
-                                                    this.state.teacher.map(Teacher =>
-                                                        <MenuItem key={Teacher} value={Teacher}>{Teacher}</MenuItem>
+                                                    this.state.teachers.map(Teacher =>
+                                                        <MenuItem key={Teacher} value={Teacher}> {Teacher} </MenuItem>
                                                     )
                                                 }
                                             </Select>
@@ -93,15 +147,11 @@ class CreateSubject extends Component {
                                     <Grid container item direction="row" justifyContent="flex-end" alignItems="baseline" >
 
                                         <Box ccomponent="div" display="inline" style={{ padding: 10 }} >
-                                            <Button variant="contained" style={{ backgroundColor: "#36988c" }}>
-                                                Reset
-                                            </Button>
+                                            <input type={'reset'} className={'Btn-Subject-reset'} value={'Reset'} onClick={this.restAllValuesInForm.bind(this)}/>
                                         </Box>
 
                                         <Box component="div" display="inline" style={{ padding: 10 }} >
-                                            <Button variant="contained" color="primary">
-                                                Add Subject
-                                            </Button>
+                                            <input type={'submit'} className={'Btn-Subject-Sub'} value={'Add Subject'} onClick={this.insertSubject.bind(this)}/>
                                         </Box>
 
                                     </Grid>
