@@ -1,18 +1,14 @@
 /*
 **************************************************************
-  @author : A.M Zumry
-  Registration Number : IT19175126
+  @authors : A.M Zumry and Akeel M.N.M
+  Registration Numbers : IT19175126 and IT19153414
 ************************************************************
 */
 
-.outer-shadow-header{
-    box-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
-}
-
 /* --------------- Header Styling---------------------------*/
 #HeadDiv{
-    background: #6ca69f;
-    /*background-image: linear-gradient(90deg, rgb(133 68 22) 0%, rgb(1 6 79) 100%);*/
+
+    background-image: linear-gradient(90deg, rgb(133 68 22) 0%, rgb(1 6 79) 100%);
     height: 70px;
 }
 
@@ -37,6 +33,7 @@
     font-size: 17px;
     color: white;
     font-family: 'Open Sans', sans-serif;
+    text-decoration: none;
 
 }
 
@@ -47,6 +44,7 @@
     font-size: 17px;
     color: white;
     font-family: 'Open Sans', sans-serif;
+    text-decoration: none;
 
 }
 
@@ -78,12 +76,12 @@ nav {
     color: #ffffff;
     word-wrap:break-word !important;
     font-family: 'Open Sans', sans-serif;
-    box-shadow: 0px 2px 2px rgba(.3, 0, 0, 0.3);
+    box-shadow: 0 2px 2px rgba(.3, 0, 0, 0.3);
 }
 
 #logo {
     display: block;
-    padding: 0 30px;
+    padding: 0 25px;
     float: left;
     font-size:20px;
     line-height: 60px;
@@ -101,36 +99,45 @@ nav:after {
 /* Removing padding, margin and "list-style" from the "ul",
  * and adding "position:relative" */
 nav ul {
-    float: right;
-    padding:0;
     margin:0;
+    padding: 0;
     list-style: none;
     position: relative;
 }
 
 /* Positioning the navigation items inline */
 nav ul li {
-    margin: 0px;
     display:inline-block;
     float: left;
     background-color: #254441;
     width: 150px;
     z-index: 1;
+    padding: 0;
 }
 
 /* Styling the nav for home */
 #homeID{
-    margin: 0px;
+    margin: 0;
     display:inline-block;
     float: left;
     background-color: #254441;
-    width: 90px;
+    width: 50px;
+    z-index: 1;
+
+}
+
+.liChange{
+    margin: 0;
+    display:inline-block;
+    float: left;
+    background-color: #254441;
+    width: 190px;
     z-index: 1;
 }
 
 /* Styling the nav for class,Exam timetable */
 #liBigID{
-    margin: 0px;
+    margin: 0;
     display:inline-block;
     float: left;
     background-color: #254441;
@@ -141,7 +148,7 @@ nav ul li {
 /* Styling the links */
 nav a {
     display:block;
-    padding:14px 20px;
+    padding:10px 15px;
     color:#FFF;
     font-size:17px;
     text-decoration:none;
@@ -162,7 +169,7 @@ nav ul ul {
     display: none;
     position: absolute;
     /* has to be the same number as the "line-height" of "nav a" */
-    top: 60px;
+    top: 56px;
 }
 
 /* Display Dropdowns on Hover */
@@ -191,9 +198,18 @@ nav ul ul ul li {
 
 
 /* Change ' +' in order to change the Dropdown symbol */
-li > a:after { content:  ' +'; }
+li > a:after {
+    content:  url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 17 17' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+}
 li > a:only-child:after { content: ''; }
 
+
+
+/* Home icon*/
+#homeIcon{
+    color: white;
+    margin-top: 3px;
+}
 
 
 /* Media Queries
