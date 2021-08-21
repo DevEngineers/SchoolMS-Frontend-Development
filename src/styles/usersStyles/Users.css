@@ -1,3 +1,10 @@
+/*
+**************************************************************
+  @author :Akeel M.N.M
+  Registration Number : IT19153414
+************************************************************
+*/
+
 #largeUserDiv{
     width: 40%;
     padding: 20px;
@@ -186,3 +193,40 @@
     cursor: pointer;
 }
 
+/* ------------------------------------------------------------- */
+
+#userPro{
+    width: 300px;
+    margin-left: 165px;
+}
+
+.UpLabel{
+    display: inline-block;
+    float: left;
+    padding: 15px;
+}
+
+.upValLabel {
+    display: inline-block;
+    padding-top: 22px;
+    padding-bottom: 10px;
+}
+
+#passwordHDiv{
+    width: 40%;
+    padding: 30px 0 30px 0;
+    float:left;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    margin-left: 440px;
+}
+
+#userProLabelDiv{
+    width: 180px;
+}
+
+#passHLabel{
+    font-size: 20px;
+    margin-top: 10px;
+    display: inline-block;
+    font-weight: bold;
+}
