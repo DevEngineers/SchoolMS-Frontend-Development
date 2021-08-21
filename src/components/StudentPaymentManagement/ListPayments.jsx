@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 import StudentPaymentService from "../../Services/StudentPaymentService";
+import {IconButton} from "@material-ui/core";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
+import PageViewIcon from "@material-ui/icons/Pageview";
 
 class ListPayments extends Component {
     constructor(props) {
@@ -59,9 +63,11 @@ class ListPayments extends Component {
                         <thead>
                         <tr>
                             <th> Student Name</th>
+                            <th> School Branch</th>
                             <th> Payment Type</th>
                             <th> Paid Amount</th>
                             <th> Class</th>
+                            <th> Class Type</th>
                             <th> Date Of Payment</th>
                             <th> Actions</th>
                         </tr>
@@ -72,14 +78,33 @@ class ListPayments extends Component {
                                 payment =>
                                     <tr key = {payment.id}>
                                         <td> { payment.studentName} </td>
+                                        <td> { payment.schoolBranch} </td>
                                         <td> {payment.paymentType}</td>
                                         <td> {payment.paidAmount}</td>
                                         <td> { payment.class} </td>
+                                        <td> { payment.classType} </td>
                                         <td> {payment.dateOfPayment}</td>
                                         <td>
-                                            <button onClick={ () => this.editPayment(payment._id)} className="btn btn-info">Update </button>
-                                            <button style={{marginLeft: "10px"}} onClick={ () => this.deletePayment(payment._id)} className="btn btn-danger">Delete </button>
-                                            <button style={{marginLeft: "10px"}} onClick={ () => this.viewPayment(payment._id)} className="btn btn-info">View </button>
+                                            <div className={'btn btn-infon'}>
+                                                <IconButton aria-label="edit" style={{backgroundColor:"transparent"}}
+                                                            onClick={ () => this.editPayment(payment._id)}>
+                                                    <EditIcon/>
+                                                </IconButton>
+                                            </div>
+                                            <div className={'btn btn-infon'}>
+                                                <IconButton aria-label="pageView" style={{backgroundColor:"transparent"}}
+                                                            style={{marginLeft: "10px"}}
+                                                            onClick={ () => this.deletePayment(payment._id)}>
+                                                    <DeleteIcon/>
+                                                </IconButton>
+                                            </div>
+                                            <div className={'btn btn-dangern'}>
+                                                <IconButton aria-label="delete" style={{backgroundColor:"transparent"}}
+                                                            style={{marginLeft: "10px"}}
+                                                            onClick={ () => this.viewPayment(payment._id)}>
+                                                    <PageViewIcon/>
+                                                </IconButton>
+                                            </div>
                                         </td>
                                     </tr>
                             )
