@@ -60,15 +60,20 @@
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+.btn-success:hover {
+    color: #fff;
+    background-color: #359083;
+    border-color: #359083;
+}
 .btn-success {
     color: #fff;
-    background-color: #28a745;
-    border-color: #28a745;
+    background-color: #36988c;
+    border-color: #36988c;
 }
 .btn-danger {
     color: #fff;
-    background-color: #dc3545;
-    border-color: #dc3545;
+    background-color: #f44336;
+    border-color: #f44336;
 }
 .card-body {
     flex: 1 1 auto;
