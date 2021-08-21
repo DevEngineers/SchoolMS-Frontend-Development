@@ -1,11 +1,20 @@
 import React, {Component} from 'react';
-import {Card, Paper} from "@material-ui/core";
+import SvgIcon from '@material-ui/core/SvgIcon';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import '../styles/HeaderFooter.css';
 
 /**
  * @author : A.M Zumry
  * Registration Number : IT19175126
  */
+
+function HomeIcon(props) {
+    return (
+        <SvgIcon {...props}>
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+        </SvgIcon>
+    );
+}
 
 class Header extends Component {
     constructor(props){
@@ -15,6 +24,7 @@ class Header extends Component {
             type:'Administrator',
         }
     }
+
 
     forAdministratorView(){
         return <div>
@@ -41,10 +51,10 @@ class Header extends Component {
                         <label htmlFor={'drop'} className={'toggle'}>Menu</label>
                         <input type={'checkbox'} id={'drop'}/>
                         <ul className={'menu'}>
-                            <li id={"homeID"}><a href="/">Home</a></li>
+                            <li id={"homeID"}><a href="/"> <HomeIcon /> </a></li>
                             <li>
                                 {/*First Tier Drop Down*/}
-                                <label htmlFor={'drop-1'} className={'toggle'}>Student +</label>
+                                <label htmlFor={'drop-1'} className={'toggle'}>Student<ArrowDropDownIcon/> </label>
                                 <a href="#">Student</a>
                                 <input type={'checkbox'} id={'drop-1'}/>
                                 <ul>
@@ -54,7 +64,7 @@ class Header extends Component {
                             </li>
                             <li>
                                 {/* First Tier Drop Down */}
-                                <label htmlFor={'drop-2'} className={'toggle'}>Teacher +</label>
+                                <label htmlFor={'drop-2'} className={'toggle'}>Teacher <ArrowDropDownIcon/></label>
                                 <a href="#">Teacher</a>
                                 <input type={'checkbox'} id={'drop-2'}/>
                                 <ul>
@@ -64,7 +74,7 @@ class Header extends Component {
                             </li>
                             <li>
                                 {/*First Tier Drop Down*/}
-                                <label htmlFor={'drop-3'} className={'toggle'}>Class +</label>
+                                <label htmlFor={'drop-3'} className={'toggle'}>Class <ArrowDropDownIcon/></label>
                                 <a href="#">Class</a>
                                 <input type={'checkbox'} id={'drop-3'}/>
                                 <ul>
@@ -74,7 +84,7 @@ class Header extends Component {
                             </li>
                             <li>
                                 {/*First Tier Drop Down*/}
-                                <label htmlFor={'drop-4'} className={'toggle'}>Subject +</label>
+                                <label htmlFor={'drop-4'} className={'toggle'}>Subject <ArrowDropDownIcon/></label>
                                 <a href="#">Subject</a>
                                 <input type={'checkbox'} id={'drop-4'}/>
                                 <ul>
@@ -84,7 +94,7 @@ class Header extends Component {
                             </li>
                             <li id={"liBigID"}>
                                 {/*First Tier Drop Down*/}
-                                <label htmlFor={'drop-5'} className={'toggle'}>Class Timetable +</label>
+                                <label htmlFor={'drop-5'} className={'toggle'}>Class Timetable <ArrowDropDownIcon/></label>
                                 <a href="#">Class Timetable</a>
                                 <input type={'checkbox'} id={'drop-5'}/>
                                 <ul>
@@ -94,7 +104,7 @@ class Header extends Component {
                             </li>
                             <li id={"liBigID"}>
                                 {/*First Tier Drop Down*/}
-                                <label htmlFor={'drop-6'} className={'toggle'}>Exam Timetable +</label>
+                                <label htmlFor={'drop-6'} className={'toggle'}>Exam Timetable <ArrowDropDownIcon/></label>
                                 <a href="#">Exam Timetable</a>
                                 <input type={'checkbox'} id={'drop-6'}/>
                                 <ul>
@@ -104,7 +114,7 @@ class Header extends Component {
                             </li>
                             <li>
                                 {/*First Tier Drop Down*/}
-                                <label htmlFor={'drop-7'} className={'toggle'}>Results +</label>
+                                <label htmlFor={'drop-7'} className={'toggle'}>Results <ArrowDropDownIcon/></label>
                                 <a href="#">Results</a>
                                 <input type={'checkbox'} id={'drop-7'}/>
                                 <ul>
@@ -114,7 +124,7 @@ class Header extends Component {
                             </li>
                             <li>
                                 {/*First Tier Drop Down*/}
-                                <label htmlFor={'drop-8'} className={'toggle'}>Attendance +</label>
+                                <label htmlFor={'drop-8'} className={'toggle'}>Attendance <ArrowDropDownIcon/></label>
                                 <a href="#">Attendance</a>
                                 <input type={'checkbox'} id={'drop-8'}/>
                                 <ul>
@@ -124,7 +134,7 @@ class Header extends Component {
                             </li>
                             <li>
                                 {/*First Tier Drop Down*/}
-                                <label htmlFor={'drop-9'} className={'toggle'}>Fees +</label>
+                                <label htmlFor={'drop-9'} className={'toggle'}>Fees <ArrowDropDownIcon/></label>
                                 <a href="#">Fees</a>
                                 <input type={'checkbox'} id={'drop-9'}/>
                                 <ul>
