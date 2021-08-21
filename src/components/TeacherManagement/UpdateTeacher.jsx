@@ -32,20 +32,7 @@ class UpdateTeacher extends Component {
         this.updateTeacher = this.updateTeacher.bind(this);
     }
 
-    componentDidMount(){
-            TeacherService.getTeacherById(this.state.id).then( (res) =>{
-                let teacher = res.data;
-                this.setState({teacherName: teacher.teacherName,
-                    mobileNumber: teacher.mobileNumber,
-                    nic: teacher.nic,
-                    schoolBranch: teacher.schoolBranch,
-                    qualification: teacher.qualification,
-                    maritalStatus: teacher.maritalStatus,
-                    gender: teacher.gender
-                });
-            });
 
-    }
     updateTeacher = (e) => {
         e.preventDefault();
         let teacher = {teacherName: this.state.teacherName,
@@ -95,9 +82,7 @@ class UpdateTeacher extends Component {
                 <div className = "container">
                     <div className = "row">
                         <div className = "card col-md-6 offset-md-3 offset-md-3">
-                            {
-                                this.getTitle()
-                            }
+                            <h3 className="text-center">Update Teacher</h3>
                             <div className = "card-body">
                                 <form>
                                     <div className = "form-group">
