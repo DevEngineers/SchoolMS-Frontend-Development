@@ -1,28 +1,88 @@
-import axios from 'axios';
+/*
+*  IT 19167442
+*  Author Nusky M.A.M
+* */
 
-const STUDENTPAYMENT_API_BASE_URL = "http://localhost:8087/payments/";
 
-class StudentPaymentService {
+const STUDENTPAYMENT_API_BASE_URL = "http://localhost:5000/payment";
 
-    getPayments(){
-        return axios.get(STUDENTPAYMENT_API_BASE_URL);
+class StudentPaymentService{
+
+
+    async getPayments(){
+        return await fetch(STUDENTPAYMENT_API_BASE_URL+"",{
+            method:'GET',
+        }).then(response =>{
+            return response.json();
+        }).catch(reason => {
+            return reason;
+        })
+
     }
 
-    createPayment(payment){
-        return axios.post(STUDENTPAYMENT_API_BASE_URL, payment);
+    async createPayment(payment){
+        console.log(payment);
+        const bearer = 'Bearer ' + localStorage.getItem('userToken');
+        return await fetch(STUDENTPAYMENT_API_BASE_URL,{
+            method:'POST',
+            headers:{
+                'content-Type':"application/json",
+                'Authorization': bearer
+            },
+            body:JSON.stringify(payment)
+        }).then(response =>{
+            return response;
+        }).catch(reason => {
+            return reason;
+        })
+
     }
 
-    getPaymentById(paymentId){
-        return axios.get(STUDENTPAYMENT_API_BASE_URL + '/' + paymentId);
+    async getPaymentById(id){
+        return await fetch(STUDENTPAYMENT_API_BASE_URL+"/"+id,{
+            method:'GET',
+        }).then(response =>{
+            return response.json();
+        }).catch(reason => {
+            return reason;
+        })
+
     }
 
-    updatePayment(payment, paymentId){
-        return axios.put(STUDENTPAYMENT_API_BASE_URL + '/' + paymentId, payment);
+
+    async updatePayment(id,Payment){
+        const bearer = 'Bearer ' + localStorage.getItem('userToken');
+        console.log(Payment);
+        return await fetch(STUDENTPAYMENT_API_BASE_URL+"/"+id,{
+            method:'PUT',
+            headers:{
+                'content-Type':"application/json",
+                'Authorization': bearer
+            },
+            body:JSON.stringify(Payment)
+        }).then(response =>{
+            return response;
+        }).catch(reason => {
+            return reason;
+        })
     }
 
-    deletePayment(paymentId){
-        return axios.delete(STUDENTPAYMENT_API_BASE_URL + '/' + paymentId);
+    async deletePayment(id){
+        const bearer = 'Bearer ' + localStorage.getItem('userToken');
+        return await fetch(STUDENTPAYMENT_API_BASE_URL+"/"+id,{
+            headers:{
+                'Authorization': bearer
+            },
+            method:'DELETE',
+        }).then(response =>{
+            return response;
+        }).catch(reason => {
+            return reason;
+        })
+
     }
+
+
 }
 
-export default new StudentPaymentService()
+export default new StudentPaymentService();
