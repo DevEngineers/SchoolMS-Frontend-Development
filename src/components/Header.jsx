@@ -74,8 +74,8 @@ class Header extends Component {
                                 <a href="#">Class</a>
                                 <input type={'checkbox'} id={'drop-3'}/>
                                 <ul>
-                                    <li><a href="/#">View Class's</a></li>
-                                    <li><a href="/#">Add Class</a></li>
+                                    <li><a href="/view-class">View Class's</a></li>
+                                    <li><a href="/create-class">Add Class</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -84,8 +84,8 @@ class Header extends Component {
                                 <a href="#">Subject</a>
                                 <input type={'checkbox'} id={'drop-4'}/>
                                 <ul>
-                                    <li><a href="/#">View Subject</a></li>
-                                    <li><a href="/#">Add Subject</a></li>
+                                    <li><a href="/view-subject">View Subject</a></li>
+                                    <li><a href="/create-subject">Add Subject</a></li>
                                 </ul>
                             </li>
                             <li className={'liChange'}>
