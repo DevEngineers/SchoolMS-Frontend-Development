@@ -16,6 +16,7 @@ import ExamTimetableService from "../../services/ExamTimetableService";
 
 //Setting default values for subjects,end time and subject slot in the time table form
 const defValues = ['','','','',''];
+const defClassTypes = ['Class A','Class B','Class C','Class D','Class E','Class F'];
 const defTerms = ['1st Term','2nd Term','3rd Term'];
 
 //Toast Message Configuration
@@ -56,11 +57,14 @@ class CreateExamTimetable extends React.Component{
     }
 
     setDefaultValuesInState(){
-        this.setState({startSlot:defValues})
-        this.setState({endSlot:defValues})
-        this.setState({examDates:defValues})
-        this.setState({examSubjects:defValues})
-        this.setState({eTerms:defTerms})
+        this.setState({
+            classType:defClassTypes,
+            startSlot:defValues,
+            endSlot:defValues,
+            examDates:defValues,
+            examSubjects:defValues,
+            eTerms:defTerms
+        })
     }
 
     restAllValuesInForm(){

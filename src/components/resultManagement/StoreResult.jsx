@@ -17,6 +17,7 @@ import ResultService from "../../services/ResultService";
 const defValues = ['','','','',''];
 const defTerms = ['1st Term','2nd Term','3rd Term'];
 const defGrades = ['A+','A','A-','B+','B','B-','C+','C','C-','D','F'];
+const defClassTypes = ['Class A','Class B','Class C','Class D','Class E','Class F'];
 
 //Toast Message Configuration
 const options = {
@@ -58,11 +59,14 @@ class StoreResult extends React.Component{
     }
 
     setDefaultValuesInState(){
-        this.setState({examMarks:defValues})
-        this.setState({sGrades:defValues})
-        this.setState({grades:defGrades})
-        this.setState({examSubjects:defValues})
-        this.setState({eTerms:defTerms})
+        this.setState({
+            classTypes:defClassTypes,
+            examMarks:defValues,
+            sGrades:defValues,
+            grades:defGrades,
+            examSubjects:defValues,
+            eTerms:defTerms
+        })
     }
 
     restAllValuesInForm(){

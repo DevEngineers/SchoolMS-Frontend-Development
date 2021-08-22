@@ -19,6 +19,7 @@ import ClassTimetableService from "../../services/ClassTimetableService";
 const defStartTimeSlot = ['07:50','08:30','09:10','09:50','10:30','10:50','11:30','12:10','12:50'];
 const defEndTimeSlot = ['08:30','09:10','09:50','10:30','10:50','11:30','12:10','12:50','01:30'];
 const defDayValues = ['','','','','interval','','','',''];
+const defClassTypes = ['Class A','Class B','Class C','Class D','Class E','Class F'];
 
 //Toast Message Configuration
 const options = {
@@ -50,9 +51,9 @@ class CreateClassTimetable extends React.Component{
             sClassType:'',
             year:'',
 
-            classes:[''],
-            classTypes:[''],
-            years:['']
+            classes:[],
+            classTypes:[],
+            years:[]
         }
     }
 
@@ -62,13 +63,16 @@ class CreateClassTimetable extends React.Component{
     }
 
     setDefaultValuesInState(){
-        this.setState({startSlot:defStartTimeSlot})
-        this.setState({endSlot:defEndTimeSlot})
-        this.setState({monday:defDayValues})
-        this.setState({tuesday:defDayValues})
-        this.setState({wednesday:defDayValues})
-        this.setState({thursday:defDayValues})
-        this.setState({friday:defDayValues})
+        this.setState({
+            classTypes:defClassTypes,
+            startSlot:defStartTimeSlot,
+            endSlot:defEndTimeSlot,
+            monday:defDayValues,
+            tuesday:defDayValues,
+            wednesday:defDayValues,
+            thursday:defDayValues,
+            friday:defDayValues
+        })
     }
 
     restAllValuesInForm(){
