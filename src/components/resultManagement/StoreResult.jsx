@@ -7,6 +7,7 @@ import AddIcon from "@material-ui/icons/Add";
 import '../../styles/timetableAndResultStyles/Results.css';
 import {toast} from "material-react-toastify";
 import ResultService from "../../services/ResultService";
+import ClassTypeService from "../../services/ClassTypeService";
 
 /**
  * @author : M.N.M Akeel
@@ -17,7 +18,6 @@ import ResultService from "../../services/ResultService";
 const defValues = ['','','','',''];
 const defTerms = ['1st Term','2nd Term','3rd Term'];
 const defGrades = ['A+','A','A-','B+','B','B-','C+','C','C-','D','F'];
-const defClassTypes = ['Class A','Class B','Class C','Class D','Class E','Class F'];
 
 //Toast Message Configuration
 const options = {
@@ -56,11 +56,16 @@ class StoreResult extends React.Component{
 
     componentDidMount() {
         this.setDefaultValuesInState();
+        ClassTypeService.getClassTypes()
+            .then(res =>{
+                this.setState({classTypes:res})
+            }).catch(err => {
+            console.error(err)
+        })
     }
 
     setDefaultValuesInState(){
         this.setState({
-            classTypes:defClassTypes,
             examMarks:defValues,
             sGrades:defValues,
             grades:defGrades,
@@ -211,7 +216,7 @@ class StoreResult extends React.Component{
                                 <MenuItem value={''}><span className={'selectRName'}>Select Class Type</span></MenuItem>
                                 {
                                     this.state.classTypes.map(classType =>
-                                        <MenuItem key={classType} value={classType}><span className={'selectRName'}>{classType}</span></MenuItem>
+                                        <MenuItem key={classType._id} value={classType._id}><span className={'selectRName'}>{classType.name}</span></MenuItem>
                                     )
                                 }
                             </Select>

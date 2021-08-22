@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'material-react-toastify';
 import 'material-react-toastify/dist/ReactToastify.css';
 import '../../styles/timetableAndResultStyles/ClassTimetable.css';
 import ClassTimetableService from "../../services/ClassTimetableService";
+import ClassTypeService from "../../services/ClassTypeService";
 
 
 /**
@@ -19,7 +20,6 @@ import ClassTimetableService from "../../services/ClassTimetableService";
 const defStartTimeSlot = ['07:50','08:30','09:10','09:50','10:30','10:50','11:30','12:10','12:50'];
 const defEndTimeSlot = ['08:30','09:10','09:50','10:30','10:50','11:30','12:10','12:50','01:30'];
 const defDayValues = ['','','','','interval','','','',''];
-const defClassTypes = ['Class A','Class B','Class C','Class D','Class E','Class F'];
 
 //Toast Message Configuration
 const options = {
@@ -59,12 +59,17 @@ class CreateClassTimetable extends React.Component{
 
 
     componentDidMount() {
-            this.setDefaultValuesInState();
+        this.setDefaultValuesInState();
+        ClassTypeService.getClassTypes()
+            .then(res =>{
+                this.setState({classTypes:res})
+            }).catch(err => {
+                console.error(err)
+            })
     }
 
     setDefaultValuesInState(){
         this.setState({
-            classTypes:defClassTypes,
             startSlot:defStartTimeSlot,
             endSlot:defEndTimeSlot,
             monday:defDayValues,
@@ -274,6 +279,7 @@ class CreateClassTimetable extends React.Component{
 
 
     render() {
+        console.log(this.state.sClassType)
         return <div>
             <ToastContainer/>
             <div>
@@ -304,7 +310,7 @@ class CreateClassTimetable extends React.Component{
                                 <MenuItem value={''}><span className={'selectCName'}>Select Class Type</span></MenuItem>
                                 {
                                     this.state.classTypes.map(classType =>
-                                             <MenuItem key={classType} value={classType}>{classType}</MenuItem>
+                                             <MenuItem key={classType._id} value={classType._id}>{classType.name}</MenuItem>
                                     )
                                 }
                             </Select>

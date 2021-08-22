@@ -7,6 +7,7 @@ import AddIcon from "@material-ui/icons/Add";
 import '../../styles/timetableAndResultStyles/ExamTimetable.css'
 import {toast, ToastContainer} from "material-react-toastify";
 import ExamTimetableService from "../../services/ExamTimetableService";
+import ClassTypeService from "../../services/ClassTypeService";
 
 
 /**
@@ -16,7 +17,6 @@ import ExamTimetableService from "../../services/ExamTimetableService";
 
 //Setting default values for subjects,end time and subject slot in the time table form
 const defValues = ['','','','',''];
-const defClassTypes = ['Class A','Class B','Class C','Class D','Class E','Class F'];
 const defTerms = ['1st Term','2nd Term','3rd Term'];
 
 //Toast Message Configuration
@@ -54,11 +54,16 @@ class CreateExamTimetable extends React.Component{
 
     componentDidMount() {
         this.setDefaultValuesInState();
+        ClassTypeService.getClassTypes()
+            .then(res =>{
+                this.setState({classTypes:res})
+            }).catch(err => {
+            console.error(err)
+        })
     }
 
     setDefaultValuesInState(){
         this.setState({
-            classType:defClassTypes,
             startSlot:defValues,
             endSlot:defValues,
             examDates:defValues,
@@ -217,7 +222,7 @@ class CreateExamTimetable extends React.Component{
                                 <MenuItem value={''}><span className={'selectPName'}>Select Class Type</span></MenuItem>
                                 {
                                     this.state.classTypes.map(classType =>
-                                        <MenuItem key={classType} value={classType}><span className={'selectPName'}>{classType}</span></MenuItem>
+                                        <MenuItem key={classType._id} value={classType._id}><span className={'selectPName'}>{classType.name}</span></MenuItem>
                                     )
                                 }
                             </Select>
