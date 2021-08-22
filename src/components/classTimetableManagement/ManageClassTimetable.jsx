@@ -33,6 +33,11 @@ function ManageClassTimetable(props){
         history.push(`/updateClassTimetable/${id}`);
     }
 
+    function viewClassTimetable(classTimetable){
+        let id = classTimetable._id;
+        history.push(`/viewClassTimetable/${id}`);
+    }
+
     return <div>
         <div>
             <div className={'box'}>
@@ -56,7 +61,8 @@ function ManageClassTimetable(props){
                     })
                 })*/
                 classTimetables.map(classTimetable =>{
-                    return  <ClassTimetableListHolder key={classTimetable._id} ClassTimetable={classTimetable} editClassTimetable={updateClassTimetable}/>
+                    return  <ClassTimetableListHolder key={classTimetable._id} ClassTimetable={classTimetable}
+                                                      editClassTimetable={updateClassTimetable} viewClassTimetable={viewClassTimetable}/>
                 })
             }
         </div>
