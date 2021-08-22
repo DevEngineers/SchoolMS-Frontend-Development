@@ -23,7 +23,7 @@ function ViewClassTimetable(props) {
          await ClassTimetableService.getClassTimetableByID('611ded3b4cac520950887a5c')
             .then(classTimetable =>{
                 setSClass(classTimetable.class.class)
-                setSClassType(classTimetable.classType)
+                setSClassType(classTimetable.classType.name)
                 setYear(classTimetable.year)
                 setStartSlot(classTimetable.startSlot)
                 setEndSlot(classTimetable.endSlot)

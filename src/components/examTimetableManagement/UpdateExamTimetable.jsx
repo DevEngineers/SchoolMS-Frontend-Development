@@ -36,12 +36,9 @@ class UpdateExamTimetable extends React.Component{
             subjects:[],
 
             eClass:'',
-            eClassType:'',
             year:'',
             term:'',
 
-            classes:[],
-            classTypes:[],
             years:[],
             eTerms:[]
         }
@@ -50,10 +47,8 @@ class UpdateExamTimetable extends React.Component{
     componentDidMount() {
         ExamTimetableService.getExamTimetableByID(this.state.timetableID)
             .then(res =>{
-                console.log(res)
                 this.setState({
                     eClass: res.class,
-                    eClassType:res.classType,
                     year: res.year,
                     term: res.term,
                     startSlot:res.startSlot,
@@ -136,8 +131,7 @@ class UpdateExamTimetable extends React.Component{
     updateExamTimetable(event) {
         event.preventDefault();
         let examTimetable ={
-            class:this.state.eClass,
-            classType:this.state.eClassType,
+            class:this.state.eClass._id,
             year: this.state.year,
             term: this.state.term,
             startSlot: this.state.startSlot,
@@ -148,8 +142,6 @@ class UpdateExamTimetable extends React.Component{
 
         if(examTimetable.class === ''){
             toast.warn('Select the Class',options)
-        }else if(examTimetable.classType === ''){
-            toast.warn('Select the Class Type',options)
         }else if(examTimetable.year === ''){
             toast.warn('Select the Year',options)
         }else if(examTimetable.term === ''){
@@ -185,19 +177,13 @@ class UpdateExamTimetable extends React.Component{
                     <div id={'form-style-examClass'}>
                         <div id={'examLabelEDiv'}>
                             <label className={'classELabel'}>Class</label>
-                            <label className={'classELabel'}>Class Type</label>
                             <label className={'classELabel'}>Year</label>
                             <label className={'classELabel'}>Term</label>
                         </div>
                         <div id={'classSelectOpt'}>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'eClass'} value={this.state.eClass}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem value={this.state.eClass}><span className={'selectPName'}>{this.state.eClass}</span></MenuItem>
-
-                            </Select>
-                            <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'eClassType'} value={this.state.eClassType}
-                                    className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem value={this.state.eClassType}><span className={'selectPName'}>{this.state.eClassType}</span></MenuItem>
+                                <MenuItem value={this.state.eClass}><span className={'selectPName'}>{this.state.eClass.class}</span></MenuItem>
 
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'year'} value={this.state.year}

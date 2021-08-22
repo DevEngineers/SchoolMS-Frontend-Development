@@ -12,7 +12,7 @@ export default function ClassTimetableListHolder(props) {
         <div id={'viewMain'}>
             <div id={'viewDiv'}>
                 <div id={'viewSmall'}>
-                    <label>Grade 11 {ClassTimetable.classType} Timetable</label>
+                    <label>{ClassTimetable.class.class} {ClassTimetable.classType.name} Timetable</label>
                     <label id={'yearLabel'}>Year : {ClassTimetable.year}</label>
                 </div>
                 <div className={'buttonDiv'}>

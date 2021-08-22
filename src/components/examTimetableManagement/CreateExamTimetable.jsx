@@ -41,12 +41,10 @@ class CreateExamTimetable extends React.Component{
             subjects:[],
 
             eClass:'',
-            eClassType:'',
             year:'',
             term:'',
 
             classes:[],
-            classTypes:[],
             years:[],
             eTerms:[]
         }
@@ -54,12 +52,6 @@ class CreateExamTimetable extends React.Component{
 
     componentDidMount() {
         this.setDefaultValuesInState();
-        ClassTypeService.getClassTypes()
-            .then(res =>{
-                this.setState({classTypes:res})
-            }).catch(err => {
-            console.error(err)
-        })
     }
 
     setDefaultValuesInState(){
@@ -152,7 +144,6 @@ class CreateExamTimetable extends React.Component{
         event.preventDefault();
         let examTimetable ={
             class:this.state.eClass,
-            classType:this.state.eClassType,
             year: this.state.year,
             term: this.state.term,
             startSlot: this.state.startSlot,
@@ -163,8 +154,6 @@ class CreateExamTimetable extends React.Component{
 
         if(examTimetable.class === ''){
             toast.warn('Select the Class',options)
-        }else if(examTimetable.classType === ''){
-            toast.warn('Select the Class Type',options)
         }else if(examTimetable.year === ''){
             toast.warn('Select the Year',options)
         }else if(examTimetable.term === ''){
@@ -178,7 +167,7 @@ class CreateExamTimetable extends React.Component{
                 .then(res => {
                     if (res.status === 200) {
                         toast.success("Exam Timetable Generated Successfully", options)
-                        /*setTimeout(()=>{this.props.history.push("/")},3000)*/
+                        setTimeout(()=>{this.props.history.push("/")},3000)
                     } else {
                         throw Error('Something went wrong!! Try again.');
                     }
@@ -203,7 +192,6 @@ class CreateExamTimetable extends React.Component{
                     <div id={'form-style-examClass'}>
                         <div id={'examLabelEDiv'}>
                             <label className={'classELabel'}>Class</label>
-                            <label className={'classELabel'}>Class Type</label>
                             <label className={'classELabel'}>Year</label>
                             <label className={'classELabel'}>Term</label>
                         </div>
@@ -214,15 +202,6 @@ class CreateExamTimetable extends React.Component{
                                 {
                                     this.state.classes.map(classes =>
                                         <MenuItem key={classes} value={classes}><span className={'selectPName'}>{classes}</span></MenuItem>
-                                    )
-                                }
-                            </Select>
-                            <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'eClassType'} value={this.state.eClassType}
-                                    className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem value={''}><span className={'selectPName'}>Select Class Type</span></MenuItem>
-                                {
-                                    this.state.classTypes.map(classType =>
-                                        <MenuItem key={classType._id} value={classType._id}><span className={'selectPName'}>{classType.name}</span></MenuItem>
                                     )
                                 }
                             </Select>

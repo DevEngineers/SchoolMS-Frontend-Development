@@ -11,13 +11,13 @@ export default function ExamTimetableListHolder(props) {
     return <div>
         <div id={'viewMain'}>
             <div>
-                <label id={'headingLabel'}>{ExamTimetable.class}</label>
+                <label id={'headingLabel'}>{ExamTimetable.class.class}</label>
             </div>
             <div id={'viewDiv'}>
                 <div id={'viewSmall'}>
-                    <label>{ExamTimetable.class} Exam Timetable</label>
-                    <label id={'yearLabel'}>Year : {editExamTimetable.year}</label>
-                    <label id={'termLabel'}>Term : {editExamTimetable.term}</label>
+                    <label>{ExamTimetable.class.class} Exam Timetable</label>
+                    <label id={'yearLabel'}>Year : {ExamTimetable.year}</label>
+                    <label id={'termLabel'}>Term : {ExamTimetable.term}</label>
                 </div>
                 <div className={'buttonDiv'}>
                     <IconButton aria-label="pageView" style={{backgroundColor:"transparent"}}

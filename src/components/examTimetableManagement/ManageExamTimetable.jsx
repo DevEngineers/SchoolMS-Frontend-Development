@@ -22,6 +22,7 @@ function ManageExamTimetable(props){
     async function fetchExamTimetable(){
         await ExamTimetableService.getExamTimetable()
             .then(examTimetable =>{
+                console.log(examTimetable)
                 setExamTimetables(examTimetable);
             }).catch(err =>{
             console.error(err)

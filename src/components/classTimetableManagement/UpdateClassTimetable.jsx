@@ -43,13 +43,9 @@ class UpdateClassTimetable extends React.Component{
             checkedTimeSlot:true,
             checkedSubject:true,
 
-            sClass:'',
-            sClassType:'',
+            sClass:{},
+            sClassType:{},
             year:'',
-
-            classes:[],
-            classTypes:[],
-            years:[]
         }
     }
 
@@ -214,8 +210,8 @@ class UpdateClassTimetable extends React.Component{
     updateClassTimetable(event) {
         event.preventDefault();
         let classTimetable ={
-            class:this.state.sClass,
-            classType:this.state.sClassType,
+            class:this.state.sClass._id,
+            classType:this.state.sClassType._id,
             year: this.state.year,
             startSlot: this.state.startSlot,
             endSlot: this.state.endSlot,
@@ -257,6 +253,7 @@ class UpdateClassTimetable extends React.Component{
 
 
     render() {
+        console.log(this.state.sClassType)
         return <div>
             <ToastContainer/>
             <div>
@@ -275,11 +272,11 @@ class UpdateClassTimetable extends React.Component{
                         <div id={'classSelectOpt'}>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" value={this.state.sClass} name={'sClass'}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem value={this.state.sClass}><span className={'selectCName'}>{this.state.sClass}</span></MenuItem>
+                                <MenuItem value={this.state.sClass}><span className={'selectCName'}>{this.state.sClass.class}</span></MenuItem>
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" value={this.state.sClassType} name={'sClassType'}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem value={this.state.sClassType}><span className={'selectCName'}>{this.state.sClassType}</span></MenuItem>
+                                <MenuItem value={this.state.sClassType}><span className={'selectCName'}>{this.state.sClassType.name}</span></MenuItem>
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" value={this.state.year} name={'year'}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
