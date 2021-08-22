@@ -57,7 +57,6 @@ class UpdateClassTimetable extends React.Component{
     componentDidMount() {
         ClassTimetableService.getClassTimetableByID(this.state.timetableID)
             .then(res =>{
-                console.log(res)
                 this.setState({
                     sClass:res.class,
                     sClassType:res.classType,
@@ -244,7 +243,6 @@ class UpdateClassTimetable extends React.Component{
         }else if (classTimetable.friday.includes('')){
             toast.warn('Select Subjects in Friday',options)
         }else{
-            console.log(JSON.stringify(classTimetable))
             ClassTimetableService.updateClassTimetable(this.state.timetableID,classTimetable)
                 .then(res => {
                     if(res.status === 200){

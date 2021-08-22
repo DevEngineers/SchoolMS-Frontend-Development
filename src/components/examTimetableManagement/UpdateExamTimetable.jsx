@@ -159,7 +159,15 @@ class UpdateExamTimetable extends React.Component{
         }else if (examTimetable.examSubjects.includes('')){
             toast.warn('Select Subjects',options)
         }else {
-            console.log(JSON.stringify(examTimetable))
+            ExamTimetableService.updateExamTimetable(this.state.timetableID,examTimetable)
+                .then(res => {
+                    if(res.status === 200){
+                        toast.success("Exam Timetable Updated Successfully",options)
+                        setTimeout(()=>{this.props.history.push("/")},3000)
+                    }else{
+                        toast.error("Something went wrong!! Try again.",options)
+                    }
+                })
         }
     }
 

@@ -150,7 +150,15 @@ class UpdateResult extends React.Component{
         }else if (result.eGrades.includes('')){
             toast.warn('Select Exam Grade',options)
         }else {
-            console.log(JSON.stringify(result))
+            ResultService.updateResult(this.state.resultID,result)
+                .then(res => {
+                    if(res.status === 200){
+                        toast.success("Result Updated Successfully",options)
+                        setTimeout(()=>{this.props.history.push("/")},3000)
+                    }else{
+                        toast.error("Something went wrong!! Try again.",options)
+                    }
+                })
         }
     }
 
