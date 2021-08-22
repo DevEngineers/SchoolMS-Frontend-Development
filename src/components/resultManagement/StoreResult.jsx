@@ -194,7 +194,7 @@ class StoreResult extends React.Component{
             <div id={'largeResultDiv'}>
                 <form>
                     <div id={'form-style-resultClass'}>
-                        <div id={'examLabelEDiv'}>
+                        <div id={'examLabelRDiv'}>
                             <label className={'classELabel'}>Class</label>
                             <label className={'classELabel'}>Class Type</label>
                             <label className={'classELabel'}>Year</label>
