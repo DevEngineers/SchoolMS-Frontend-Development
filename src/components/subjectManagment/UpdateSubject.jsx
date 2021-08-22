@@ -66,7 +66,7 @@ class UpdateSubject extends Component {
             SubjectService.updateSubject(this.state.subjectID,Subject)
                 .then(res =>{
                     if (res.status === 200) {
-                        toast.success("Class Update Successfully", options)
+                        toast.success("Subject Update Successfully", options)
                     } else {
                         throw Error('Something went wrong!! Try again.' + res);
                     }
