@@ -33,6 +33,15 @@ function ManageResults(props){
         history.push(`/updateResults/${id}`);
     }
 
+    function viewResult(result){
+        let id = result._id;
+        history.push(`/viewResult/${id}`);
+    }
+
+    function deleteResult(result){
+        let id = result._id;
+    }
+
     return <div>
         <div>
             <div className={'box'}>
@@ -48,7 +57,8 @@ function ManageResults(props){
         <div>
             {
                 results.map(result =>{
-                    return <ResultListHolder key={result._id} Result={result} editResult={updateResult}/>
+                    return <ResultListHolder key={result._id} Result={result} deleteResult={deleteResult}
+                                             viewResult={viewResult} editResult={updateResult}/>
                 })
             }
         </div>

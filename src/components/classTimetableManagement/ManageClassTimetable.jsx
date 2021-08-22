@@ -38,6 +38,10 @@ function ManageClassTimetable(props){
         history.push(`/viewClassTimetable/${id}`);
     }
 
+    function deleteClassTimetable(classTimetable){
+        let id = classTimetable._id;
+    }
+
     return <div>
         <div>
             <div className={'box'}>
@@ -61,7 +65,7 @@ function ManageClassTimetable(props){
                     })
                 })*/
                 classTimetables.map(classTimetable =>{
-                    return  <ClassTimetableListHolder key={classTimetable._id} ClassTimetable={classTimetable}
+                    return  <ClassTimetableListHolder key={classTimetable._id} ClassTimetable={classTimetable} deleteClassTimetable={deleteClassTimetable}
                                                       editClassTimetable={updateClassTimetable} viewClassTimetable={viewClassTimetable}/>
                 })
             }

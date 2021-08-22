@@ -34,6 +34,15 @@ function ManageExamTimetable(props){
         history.push(`/updateExamTimetable/${id}`);
     }
 
+    function viewExamTimetable(examTimetable){
+        let id = examTimetable._id;
+        history.push(`/viewExamTimetable/${id}`);
+    }
+
+    function deleteExamTimetable(examTimetable){
+        let id = examTimetable._id;
+    }
+
     return <div>
         <div>
             <div className={'box'}>
@@ -49,7 +58,8 @@ function ManageExamTimetable(props){
         <div>
             {
                 examTimetables.map(examTimetable =>{
-                    return <ExamTimetableListHolder ExamTimetable={examTimetable} editExamTimetable={updateExamTimetable} />
+                    return <ExamTimetableListHolder ExamTimetable={examTimetable} deleteExamTimetable={deleteExamTimetable}
+                                            viewExamTimetable={viewExamTimetable} editExamTimetable={updateExamTimetable} />
                 })
             }
 
