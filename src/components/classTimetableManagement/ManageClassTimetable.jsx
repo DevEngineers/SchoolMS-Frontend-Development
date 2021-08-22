@@ -16,7 +16,7 @@ function ManageClassTimetable(props){
     const [classTimetables,setClassTimetables] = useState([]);
 
     useEffect(() =>{
-        fetchClassTimetable().then(r => console.log(r));
+        fetchClassTimetable().then();
     },[]);
 
     async function fetchClassTimetable(){

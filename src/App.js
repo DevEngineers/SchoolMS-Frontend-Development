@@ -17,6 +17,9 @@ import Header from "./components/Header";
 import UserProfile from "./components/userManagement/UserProfile";
 import ManageUserAccounts from "./components/userManagement/ManageUserAccounts";
 import ViewClassTimetable from "./components/classTimetableManagement/ViewClassTimetable";
+import ViewExamTimetable from './components/examTimetableManagement/ViewExamTimetable';
+import ViewResult from "./components/resultManagement/ViewResult";
+
 
 function App() {
   return <Router>
@@ -30,9 +33,11 @@ function App() {
         <Route path="/createExamTimetable" component={CreateExamTimetable}/>
         <Route path="/updateExamTimetable/:id" component={UpdateExamTimetable}/>
         <Route path="/manageExamTimetable" component={ManageExamTimetable}/>
+        <Route path="/viewExamTimetable" component={ViewExamTimetable}/>
         <Route path="/storeResults" component={StoreResult}/>
         <Route path="/updateResults/:id" component={UpdateResult}/>
         <Route path="/manageResults" component={ManageResults}/>
+        <Route path="/viewResult" component={ViewResult}/>
         <Route path="/createUsers" component={CreateUserAccount}/>
         <Route path="/userProfile" component={UserProfile}/>
         <Route path="/manageUserAccount" component={ManageUserAccounts}/>

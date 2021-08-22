@@ -16,7 +16,7 @@ function ManageExamTimetable(props){
     const [examTimetables,setExamTimetables] = useState([])
 
     useEffect(() =>{
-        fetchExamTimetable().then(r => console.log(r));
+        fetchExamTimetable().then();
     },[]);
 
     async function fetchExamTimetable(){

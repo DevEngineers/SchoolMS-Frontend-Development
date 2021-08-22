@@ -16,7 +16,7 @@ function ManageResults(props){
     const [results,setResults] = useState([])
 
     useEffect(() =>{
-        fetchResults().then(r => console.log(r));
+        fetchResults().then();
     },[]);
 
     async function fetchResults(){
