@@ -38,7 +38,7 @@ class UpdateClassTimetable extends React.Component{
             wednesday:[],
             thursday:[],
             friday:[],
-            subjects:['ICT','Science'],
+            subjects:[],
 
             checkedTimeSlot:true,
             checkedSubject:true,
@@ -58,7 +58,6 @@ class UpdateClassTimetable extends React.Component{
                     sClassType:res.classType,
                     year:res.year,
                     startSlot:res.startSlot,
-                    endSlot:res.endSlot,
                     monday:res.monday,
                     tuesday:res.tuesday,
                     wednesday:res.wednesday,
