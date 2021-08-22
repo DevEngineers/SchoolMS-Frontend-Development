@@ -3,7 +3,7 @@ import ClassTimetableService from "../../services/ClassTimetableService";
 import '../../styles/timetableAndResultStyles/CommonView.css';
 
 function ViewClassTimetable(props) {
-    const [timetableID,setTimetableID] = useState('')
+    const classTID = props.match.params.id
     const [startSlot,setStartSlot] = useState([])
     const [endSlot,setEndSlot] = useState([])
     const [monday,setMonday] = useState([])
@@ -20,7 +20,7 @@ function ViewClassTimetable(props) {
     },[]);
 
      async function fetchClassTimetable(){
-         await ClassTimetableService.getClassTimetableByID('611ded3b4cac520950887a5c')
+         await ClassTimetableService.getClassTimetableByID(classTID)
             .then(classTimetable =>{
                 setSClass(classTimetable.class.class)
                 setSClassType(classTimetable.classType.name)
@@ -37,12 +37,13 @@ function ViewClassTimetable(props) {
         })
     }
 
+
     return <div>
         <div id={'largeViewDiv'}>
             <div id={'viewTopTitleDiv'}>
-                <label id={'schoolName'}>Gateway International School</label>
-                <label>{sClass} {sClassType}</label>
-                <label>Year {year}</label>
+                <label id={'schoolName'}>Gateway International School</label><br/>
+                <label id={'vGrade'}>{sClass} {sClassType}</label><br/>
+                <label id={'vYear'}>Year {year}</label>
             </div>
             <div id={'viewCTTimeSlot'}>
             <label id={'timeSlotTitle'}>Time Slot</label>
