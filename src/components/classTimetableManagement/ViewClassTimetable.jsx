@@ -46,7 +46,7 @@ function ViewClassTimetable(props) {
                 <label id={'vYear'}>Year {year}</label>
             </div>
             <div id={'viewCTTimeSlot'}>
-            <label id={'timeSlotTitle'}>Time Slot</label>
+            <label id={'timeSlotViewTitle'}>Time Slot</label>
             {
                 startSlot.map((sTime,i) =>
                     <div key={i}>

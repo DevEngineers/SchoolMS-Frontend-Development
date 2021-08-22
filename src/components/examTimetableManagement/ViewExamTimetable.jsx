@@ -1,16 +1,11 @@
 import React, {useEffect, useState} from "react";
-import ClassTimetableService from "../../services/ClassTimetableService";
-import ResultService from "../../services/ResultService";
-import TextField from "@material-ui/core/TextField";
-import Select from "@material-ui/core/Select";
-import {IconButton, MenuItem} from "@material-ui/core";
-import DeleteIcon from "@material-ui/icons/Delete";
-import AddIcon from "@material-ui/icons/Add";
+import ExamTimetableService from "../../services/ExamTimetableService";
+import '../../styles/timetableAndResultStyles/CommonView.css';
 
 
 function ViewExamTimetable(props) {
+    const examID = props.match.params.id
     const [eClass,setEClass] = useState('');
-    const [eClassType,setEClassType] = useState('');
     const [year,setYear] = useState('');
     const [term,setTerm] = useState('');
     const [startSlot,setStartSlot] = useState([])
@@ -23,11 +18,9 @@ function ViewExamTimetable(props) {
     },[])
 
     async function fetchExamTimetable(){
-        await ResultService.getResultsByID('612021f9301790055ccb0573')
+        await ExamTimetableService.getExamTimetableByID(examID)
             .then(examTimetable =>{
-                console.log(examTimetable)
                 setEClass(examTimetable.class.class)
-                setEClassType(examTimetable.classType)
                 setYear(examTimetable.year)
                 setTerm(examTimetable.term)
                 setStartSlot(examTimetable.startSlot)
@@ -40,40 +33,44 @@ function ViewExamTimetable(props) {
     }
 
     return <div>
-        <div id={'secondDiv'}>
-            <div id={'form-style-examR'}>
-                <label id={'timeSlotETitle'}>Dates</label>
-                {
-                    examDates.map(date =>
-                        <div className={'dateInput'} key={date}>
-                            <label>{date}</label>
-                        </div>
-                    )
-                }
+        <div id={'largeVExamDiv'}>
+            <div id={'viewETopTitleDiv'}>
+                <label id={'schoolName'}>Gateway International School</label><br/>
+                <label id={'vGrade'}>{eClass}</label><br/>
+                <label id={'vYear'}>Year {year} - {term}</label>
             </div>
-            <div id={'form-style-timeSlotE'}>
-                <label id={'timeSlotTitle'}>Time</label>
-                {
-                    startSlot.map((el,i) =>
-                        <div key={i}>
-                            <TextField type="time" value={el||''}/>
-                            <TextField  type="time" value={endSlot[i] || ''}/>
-                        </div>
-                    )
-                }
-            </div>
-            <div id={'form-style-examR'} >
-                <div id={'form-style-examR-inside'}>
-                    <label id={'timeSlotTitle'}>Subjects</label>
+            <div id={'secondEViewDiv'}>
+                <div id={'viewEData'}>
+                    <label id={'REFirstViewTitle'}>Dates</label>
                     {
-                        examSubjects.map((el, i) =>
-                            <div key={i}>
-                                <Select labelId="demo-simple-select-label" id="demo-simple-select"
-                                        value={el || ''} className={'daySize'} >
-                                </Select>
+                        examDates.map(date =>
+                            <div id={'viewEDDataInside'}>
+                                <label>{date}</label>
                             </div>
                         )
                     }
+                </div>
+                <div id={'viewTimeData'}>
+                    <label id={'REViewTitle'}>Time</label>
+                    {
+                        startSlot.map((start,i) =>
+                            <div key={i}  className={'viewEDataInside'}>
+                                <label>{start}</label>
+                                <label> - </label>
+                                <label>{endSlot[i]}</label>
+                            </div>
+                        )
+                    }
+                </div>
+                <div id={'viewEData'} >
+                        <label id={'REViewTitle'}>Subjects</label>
+                        {
+                            examSubjects.map(subject =>
+                                <div  className={'viewEDataInside'}>
+                                    <label>{subject}</label>
+                                </div>
+                            )
+                        }
                 </div>
             </div>
         </div>
