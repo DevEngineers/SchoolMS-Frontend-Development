@@ -16,13 +16,12 @@ function ViewClassTimetable(props) {
     const [year,setYear] = useState('')
 
     useEffect(() =>{
-            fetchClassTimetable()
+            fetchClassTimetable().then()
     },[]);
 
-     function fetchClassTimetable(){
-         ClassTimetableService.getClassTimetableByID('611ded3b4cac520950887a5c')
+     async function fetchClassTimetable(){
+         await ClassTimetableService.getClassTimetableByID('611ded3b4cac520950887a5c')
             .then(classTimetable =>{
-                console.log(classTimetable)
                 setSClass(classTimetable.class.class)
                 setSClassType(classTimetable.classType)
                 setYear(classTimetable.year)
