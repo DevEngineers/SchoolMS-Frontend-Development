@@ -29,15 +29,15 @@ function App() {
         <Route path="/createClassTimetable" component={CreateClassTimetable}/>
         <Route path="/updateClassTimetable/:id" component={UpdateClassTimetable}/>
         <Route path="/manageClassTimetable" component={ManageClassTimetable}/>
-        <Route path="/viewClassTimetable" component={ViewClassTimetable}/>
+        <Route path="/viewClassTimetable/:id" component={ViewClassTimetable}/>
         <Route path="/createExamTimetable" component={CreateExamTimetable}/>
         <Route path="/updateExamTimetable/:id" component={UpdateExamTimetable}/>
         <Route path="/manageExamTimetable" component={ManageExamTimetable}/>
-        <Route path="/viewExamTimetable" component={ViewExamTimetable}/>
+        <Route path="/viewExamTimetable/:id" component={ViewExamTimetable}/>
         <Route path="/storeResults" component={StoreResult}/>
         <Route path="/updateResults/:id" component={UpdateResult}/>
         <Route path="/manageResults" component={ManageResults}/>
-        <Route path="/viewResult" component={ViewResult}/>
+        <Route path="/viewResult/:id" component={ViewResult}/>
         <Route path="/createUsers" component={CreateUserAccount}/>
         <Route path="/userProfile" component={UserProfile}/>
         <Route path="/manageUserAccount" component={ManageUserAccounts}/>
