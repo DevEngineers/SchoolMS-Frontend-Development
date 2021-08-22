@@ -98,7 +98,6 @@ class CreateClass extends Component {
                                             <label htmlFor={'class'} > Class </label>
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                            {/*<TextField id="filled-basic" label="class" name="class" value={this.state.class} variant="filled"  style={{ width: 220 }} />*/}
                                             <TextField type={'text'} id="filled-basic"  name={'rClass'} value={this.state.rClass}
                                                        placeholder={"Enter Class"} onChange={event => this.onChange(event)} style={{ width: 220 }} />
                                         </Box>
@@ -147,12 +146,10 @@ class CreateClass extends Component {
                                     <Grid container item direction="row" justifyContent="flex-end" alignItems="baseline" >
 
                                         <Box ccomponent="div" display="inline" style={{ padding: 10 }} >
-                                            {/*<Button variant="contained" color="secondary">Cancel</Button>*/}
                                             <input type={'reset'} className={'Btn-Class-reset'} value={'Reset'} onClick={this.restAllValuesInForm.bind(this)}/>
                                         </Box>
 
                                         <Box component="div" display="inline" style={{ padding: 10 }} >
-                                            {/*<Button variant="contained" color="primary">Add Class</Button>*/}
                                             <input type={'submit'} className={'Btn-Class-Sub'} value={'Add Class'} onClick={this.insertClass.bind(this)}/>
                                         </Box>
 
