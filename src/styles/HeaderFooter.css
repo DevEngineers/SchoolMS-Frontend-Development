@@ -343,7 +343,7 @@ li > a:only-child:after { content: ''; }
     display: flex;
     background: #254441;
     width: 100%;
-    height: 100px;
+    height: 80px;
 }
 
 #copyright{
@@ -355,15 +355,15 @@ li > a:only-child:after { content: ''; }
 
 #contInfoLabel {
     color: white;
-    font-size: 14px;
+    font-size: 16px;
     display: inline-block;
 }
 
 #about-footer {
-    margin-left: 5%;
+    margin-left: 50%;
     margin-right: 2%;
-    margin-top: 30px;
+    margin-top: 1.3%;
     width: 20%;
-    height: 30px;
+    /*height: 30px;*/
 }
 
