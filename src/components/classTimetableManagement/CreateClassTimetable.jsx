@@ -245,7 +245,8 @@ class CreateClassTimetable extends React.Component{
             friday: this.state.friday
         }
 
-        if(classTimetable.class === ''){
+        console.log(classTimetable)
+        /*if(classTimetable.class === ''){
             toast.warn('Select the Class',options)
         }else if(classTimetable.classType === ''){
             toast.warn('Select the Class Type',options)
@@ -266,7 +267,7 @@ class CreateClassTimetable extends React.Component{
                 .then(res => {
                     if (res.status === 200) {
                         toast.success("Class Timetable Generated Successfully", options)
-                        /*setTimeout(()=>{this.props.history.push("/")},3000)*/
+                        setTimeout(()=>{this.props.history.push("/")},3000)
                     } else {
                         throw Error('Something went wrong!! Try again.' + res);
                     }
@@ -274,7 +275,7 @@ class CreateClassTimetable extends React.Component{
                 .catch((error) => {
                     toast.error(error.message, options)
                 })
-        }
+        }*/
     }
 
 
