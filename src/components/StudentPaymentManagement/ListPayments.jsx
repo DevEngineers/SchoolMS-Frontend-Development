@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import StudentPaymentService from "../../Services/StudentPaymentService";
-import {IconButton} from "@material-ui/core";
+import {IconButton, TextField} from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import PageViewIcon from "@material-ui/icons/Pageview";
@@ -18,6 +18,7 @@ class ListPayments extends Component {
 
         this.addTeacher = this.addTeacher.bind(this);
         this.addStudent = this.addStudent.bind(this);
+        this.paymentReport = this.paymentReport.bind(this);
     }
 
     deletePayment(id){
@@ -46,15 +47,25 @@ class ListPayments extends Component {
     addTeacher(){
         this.props.history.push('/add-teacher/_add');
     }
+    paymentReport(){
+        this.props.history.push('/payment-report/');
+    }
 
     render() {
         return (
             <div>
                 <h2 className="text-center">Payments List</h2>
+                <div>
+                    <div id={'searchDiv'}>
+                        <TextField type={'text'}  id={'searchInput'} variant="outlined"/>
+                        <input type={'submit'} value={'Search'} id={'searchBtn'}/>
+                    </div>
+                </div>
                 <div className = "row">
                     <button className="btn btn-primary" onClick={this.addPayment}> Add Payment</button>
                     <button className="btn btn-primary" onClick={this.addStudent}> Add Student</button>
                     <button className="btn btn-primary" onClick={this.addTeacher}> Add Teacher</button>
+                    <button className="btn btn-primary" onClick={this.paymentReport}> Payment Report</button>
                 </div>
                 <br></br>
                 <div className = "row">
