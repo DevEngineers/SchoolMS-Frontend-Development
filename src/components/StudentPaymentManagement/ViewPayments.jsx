@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import StudentPaymentService from "../../Services/StudentPaymentService";
+import StudentService from "../../Services/StudentService";
 
 class ViewPayments extends Component {
     constructor(props) {
@@ -12,11 +13,10 @@ class ViewPayments extends Component {
     }
 
     componentDidMount(){
-        StudentPaymentService.getPayments().then((res) => {
-            this.setState({ payments: res.data});
-        });
+        StudentPaymentService.getPaymentById(this.state.id).then( res => {
+            this.setState({payments: res.data});
+        })
     }
-
 
     render() {
         return (
@@ -27,35 +27,35 @@ class ViewPayments extends Component {
                     <div className = "card-body">
                         <div className = "row">
                             <label> Student School Branch: </label>
-                            <div> { this.state.payments.schoolBranch }</div>
+                             { this.state.payments.schoolBranch }
                         </div>
                         <div className = "row">
                             <label> Student Class: </label>
-                            <div> { this.state.payments.class }</div>
+                          { this.state.payments.class }
                         </div>
                         <div className = "row">
                             <label> Student Class Type: </label>
-                            <div> { this.state.payments.classType }</div>
+                           { this.state.payments.classType }
                         </div>
                         <div className = "row">
                             <label> Student ID: </label>
-                            <div> { this.state.payments.studentId }</div>
+                            { this.state.payments.studentId }
                         </div>
                         <div className = "row">
                             <label> Student Name: </label>
-                            <div> { this.state.payments.studentName }</div>
+                           { this.state.payments.studentName }
                         </div>
                         <div className = "row">
                             <label> Payment Type : </label>
-                            <div> { this.state.payments.paymentType }</div>
+                           { this.state.payments.paymentType }
                         </div>
                         <div className = "row">
                             <label> Paid Amount: </label>
-                            <div> { this.state.payments.paidAmount }</div>
+                          { this.state.payments.paidAmount }
                         </div>
                         <div className = "row">
                             <label> Date Of Payment: </label>
-                            <div> { this.state.payments.dateOfPayment }</div>
+                           { this.state.payments.dateOfPayment }
                         </div>
                     </div>
 
