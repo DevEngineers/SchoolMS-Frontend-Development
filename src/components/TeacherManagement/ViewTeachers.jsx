@@ -12,7 +12,7 @@ class ViewTeachers extends Component {
     }
 
     componentDidMount(){
-        TeacherService.getTeachers(this.state.id).then( res => {
+        TeacherService.getTeacherById(this.state.id).then( res => {
             this.setState({teacher: res.data});
         })
     }
@@ -26,31 +26,31 @@ class ViewTeachers extends Component {
                     <div className = "card-body">
                         <div className = "row">
                             <label> Teacher Name: </label>
-                            <div> { this.state.teacher.teacherName }</div>
+                            { this.state.teacher.teacherName }
                         </div>
                         <div className = "row">
                             <label> Mobile Number: </label>
-                            <div> { this.state.teacher.mobileNumber }</div>
+                            { this.state.teacher.mobileNumber }
                         </div>
                         <div className = "row">
                             <label> Teacher NIC: </label>
-                            <div> { this.state.teacher.nic }</div>
+                            { this.state.teacher.nic }
                         </div>
                         <div className = "row">
                             <label> School Branch: </label>
-                            <div> { this.state.teacher.schoolBranch }</div>
+                          { this.state.teacher.schoolBranch }
                         </div>
                         <div className = "row">
                             <label> Qualification : </label>
-                            <div> { this.state.teacher.qualification }</div>
+                           { this.state.teacher.qualification }
                         </div>
                         <div className = "row">
                             <label> Marital Status: </label>
-                            <div> { this.state.teacher.maritalStatus }</div>
+                            { this.state.teacher.maritalStatus }
                         </div>
                         <div className = "row">
-                            <label> Gender </label>
-                            <div> { this.state.teacher.gender }</div>
+                            <label> Gender : </label>
+                           { this.state.teacher.gender }
                         </div>
                     </div>
 
