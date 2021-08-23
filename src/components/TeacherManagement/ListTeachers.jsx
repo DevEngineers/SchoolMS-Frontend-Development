@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import TeacherService from "../../Services/TeacherService";
-import {IconButton} from "@material-ui/core";
+import {IconButton, TextField} from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import PageViewIcon from "@material-ui/icons/Pageview";
@@ -45,6 +45,12 @@ class ListTeachers extends Component {
         return (
             <div>
                 <h2 className="text-center">Teachers List</h2>
+                <div>
+                    <div id={'searchDiv'}>
+                        <TextField type={'text'}  id={'searchInput'} variant="outlined"/>
+                        <input type={'submit'} value={'Search'} id={'searchBtn'}/>
+                    </div>
+                </div>
                 <div className = "row">
                     <button className="btn btn-primary" onClick={this.addTeacher}> Add Teacher</button>
                 </div>
