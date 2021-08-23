@@ -7,13 +7,13 @@ class ViewStudents extends Component {
 
         this.state = {
             id: this.props.match.params.id,
-            students: {}
+            student: {}
         }
     }
 
     componentDidMount(){
-        StudentService.getStudents(this.state.id).then( res => {//change this method to get student by id now only for temporary
-            this.setState({students: res.data});
+        StudentService.getStudentById(this.state.id).then( res => {
+            this.setState({student: res.data});
         })
     }
 
@@ -24,47 +24,56 @@ class ViewStudents extends Component {
                 <div className = "card col-md-6 offset-md-3">
                     <h3 className = "text-center"> View Student Details</h3>
                     <div className = "card-body">
-                        <div className = "row">
+
+                        <div className = "row" >
                             <label> Student Name: </label>
-                            <div> { this.state.students.studentName }</div>
+                            { this.state.student.studentName }
                         </div>
+
                         <div className = "row">
                             <label> Guardian: </label>
-                            <div> { this.state.students.guardian }</div>
+                            { this.state.student.guardian }
                         </div>
+
                         <div className = "row">
                             <label> Phone: </label>
-                            <div> { this.state.students.phone }</div>
+                          { this.state.student.phone }
                         </div>
+
                         <div className = "row">
                             <label> Date of Birth: </label>
-                            <div> { this.state.students.dob }</div>
+                           { this.state.student.dob }
                         </div>
+
                         <div className = "row">
                             <label> Address: </label>
-                            <div> { this.state.students.address }</div>
+                           { this.state.student.address }
                         </div>
+
                         <div className = "row">
                             <label> School Branch: </label>
-                            <div> { this.state.students.schoolBranch }</div>
+                            { this.state.student.schoolBranch }
                         </div>
                         <div className = "row">
                             <label> Class: </label>
-                            <div> { this.state.students.class }</div>
+                             { this.state.student.class }
                         </div>
+
                         <div className = "row">
                             <label> Class Type: </label>
-                            <div> { this.state.students.classType }</div>
+                           { this.state.student.classType }
                         </div>
+
                         <div className = "row">
                             <label> Gender: </label>
-                            <div> { this.state.students.gender }</div>
+                            { this.state.student.gender }
                         </div>
+
                     </div>
 
                 </div>
             </div>
-        )
+        );
     }
 }
 
