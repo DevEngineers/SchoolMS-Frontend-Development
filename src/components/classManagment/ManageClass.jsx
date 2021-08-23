@@ -28,7 +28,6 @@ function ManageClass(props){
     }
 
     function updateClass(Classes){
-        console.log("class",Classes);
         let id = Classes._id;
         history.push(`/update-class/${id}`);
     }
