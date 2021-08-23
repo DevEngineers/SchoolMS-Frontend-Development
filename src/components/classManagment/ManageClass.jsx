@@ -28,6 +28,7 @@ function ManageClass(props){
     }
 
     function updateClass(Classes){
+        console.log("class",Classes);
         let id = Classes._id;
         history.push(`/update-class/${id}`);
     }
@@ -47,7 +48,7 @@ function ManageClass(props){
         <div>
             {
                 Classes.map(Class =>{
-                    return <ClassListHolder key={Class._id} Result={Class} editResult={updateClass}/>
+                    return <ClassListHolder key={Class._id} Class={Class} editClass={updateClass}/>
                 })
             }
         </div>
