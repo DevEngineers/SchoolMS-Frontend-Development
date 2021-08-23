@@ -1,0 +1,122 @@
+/*
+**************************************************************
+  @author : A.M Zumry
+  Registration Number : IT19175126
+************************************************************
+*/
+
+/* --------------------
+Attendance title section
+-------------------- */
+
+.box {
+    position: relative;
+    width: 100%;
+    height:80px;
+    display: inline-block;
+    margin:30px 0 0 0;
+    text-align: center;
+}
+
+.custom-underline {
+    position: relative;
+    display: inline-block;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Raleway", sans-serif;
+}
+
+#largeUserDiv{
+    width: 40%;
+    padding: 20px;
+    float:left;
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
+    font-family: Georgia, "Times New Roman", Times, serif;
+    margin-left: 440px;
+    background-color: #f4f7f8;
+}
+
+
+#form-style-user{
+    width: 731px;
+    padding: 15px;
+    float:left;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    margin-bottom: 3px;
+    margin-left: 8px;
+}
+
+#userLabelEDiv{
+    width: 150px;
+}
+
+.classULabel{
+    display: inline-block;
+    float: left;
+    padding: 12px;
+}
+
+#userSelectOpt{
+    width: 300px;
+    margin-left: 160px;
+}
+
+.userSize{
+    width: 80%;
+    margin-top: 5px;
+}
+
+.selectUName{
+    font-size:14px;
+}
+
+
+.btnEDiv{
+    padding: 20px;
+    width: 94%;
+    float: left;
+    margin-left: 25px;
+}
+
+#submitUBtn{
+    position: relative;
+    display: block;
+    padding: 10px 5px 10px 5px;
+    color: #FFF;
+    background: #36988c;
+    font-size: 16px;
+    font-style: normal;
+    width: 25%;
+    border: 1px solid #36988c;
+    border-radius: 3px;
+    float: right;
+    margin-right: 5px;
+
+}
+
+#submitUBtn:hover{
+    background: #359083;
+    cursor: pointer;
+}
+
+#restUBtn{
+    position: relative;
+    display: block;
+    padding: 10px 5px 10px 5px;
+    color: #FFF;
+    background: #f44336;
+    font-size: 16px;
+    font-style: normal;
+    width: 15%;
+    border: 1px solid #f44336;
+    border-radius: 3px;
+    float: right;
+    margin-right: 5px;
+}
+
+#restUBtn:hover{
+    background: #d32f2f;
+    cursor: pointer;
+}
+
