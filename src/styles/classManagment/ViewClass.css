@@ -9,6 +9,10 @@
 Manage Class CSS
 -------------------- */
 
+.ManageClass-Section{
+    min-height: 70vh;
+}
+
 .ManageClass-Section .box {
     position: relative;
     width: 100%;
