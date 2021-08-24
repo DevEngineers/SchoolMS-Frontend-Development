@@ -14,8 +14,8 @@ class CreatePayment extends Component {
         this.state = {
             id: this.props.match.params.id,
             schoolBranch:'',
-            class:'',
-            classType:'',
+            class:'Grade 13',
+            classType:'Class E',
             studentId: '',
             studentName: '',
             paymentType: '',
@@ -105,8 +105,9 @@ class CreatePayment extends Component {
     }
 
     cancel(){
-        this.props.history.push('/payments');
+        this.props.history.push('/add-payment/_add');
     }
+
 
     getTitle(){
         if(this.state.id === '_add'){
@@ -142,23 +143,45 @@ class CreatePayment extends Component {
                                         </select>
                                     </div>
                                     <div className = "form-group">
-                                        <label> Class: </label>
-                                        <input placeholder="Select Class" name="class" className="form-control"
-                                               value={this.state.class} onChange={this.changeClassHandler}/>
+                                        <label> Select Grade: </label>
+                                        <select value={this.state.class} className="form-control" onChange={this.changeClassHandler}>
+                                            <option defaultValue>Grade</option>
+                                            <option value="Grade 01">Grade 01</option>
+                                            <option value="Grade 02">Grade 02</option>
+                                            <option value="Grade 03">Grade 03</option>
+                                            <option value="Grade 04">Grade 04</option>
+                                            <option value="Grade 05">Grade 05</option>
+                                            <option value="Grade 06">Grade 06</option>
+                                            <option value="Grade 07">Grade 07</option>
+                                            <option value="Grade 08">Grade 08</option>
+                                            <option value="Grade 09">Grade 09</option>
+                                            <option value="Grade 10">Grade 10</option>
+                                            <option value="Grade 11">Grade 11</option>
+                                            <option value="Grade 12">Grade 12</option>
+                                            <option value="Grade 13">Grade 13</option>
+                                        </select>
                                     </div>
                                     <div className = "form-group">
                                         <label> Select Class Type: </label>
-                                        <input placeholder="Select Class Type" name="classType" className="form-control"
-                                               value={this.state.classType} onChange={this.changeClassTypeHandler}/>
+                                        <select value={this.state.classType} name="classType" className="form-control" onChange={this.changeClassTypeHandler}>
+                                            <option defaultValue>Class</option>
+                                            <option value="Class A">Class A</option>
+                                            <option value="Class B">Class B</option>
+                                            <option value="Class C">Class C</option>
+                                            <option value="Class D">Class D</option>
+                                            <option value="Class E">Class E</option>
+
+                                        </select>
+
                                     </div>
                                     <div className = "form-group">
                                         <label> Student ID: </label>
-                                        <input placeholder="Select Student ID" name="studentId" className="form-control"
+                                        <input placeholder="Student ID" name="studentId" className="form-control"
                                                value={this.state.studentId} onChange={this.changeStudentIdHandler}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> Student Name : </label>
-                                        <input placeholder="Select Student Name" name="studentName" className="form-control"
+                                        <input placeholder="Student Name" name="studentName" className="form-control"
                                                value={this.state.studentName} onChange={this.changeStudentNameHandler}/>
                                     </div>
                                     <div className = "form-group">
