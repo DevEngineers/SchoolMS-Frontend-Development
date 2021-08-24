@@ -68,6 +68,7 @@ class UpdateSubject extends Component {
                 .then(res =>{
                     if (res.status === 200) {
                         toast.success("Subject Update Successfully", options)
+                        setTimeout(()=>{this.props.history.push("/view-subject")},2000)
                     } else {
                         throw Error('Something went wrong!! Try again.' + res);
                     }
