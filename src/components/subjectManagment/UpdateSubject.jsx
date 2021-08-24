@@ -34,7 +34,8 @@ class UpdateSubject extends Component {
             class:'',
             teacher:'',
 
-            grade:['5','6','7'],
+            grade:['9','10','11','12'],
+            teachers:['Nimal', 'Kumar', 'Kasun','sara gorge', 'Amarakoon' ,'Amila prasanna']
         }
     }
 
@@ -142,7 +143,7 @@ class UpdateSubject extends Component {
                                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
                                                 <MenuItem value={this.state.rTeacher} > {this.state.rTeacher} </MenuItem>
                                                 {
-                                                    this.state.grade.map(Teacher =>
+                                                    this.state.teachers.map(Teacher =>
                                                         <MenuItem key={Teacher} value={Teacher}> {Teacher} </MenuItem>
                                                     )
                                                 }
