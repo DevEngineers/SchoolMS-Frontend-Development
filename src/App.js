@@ -15,7 +15,6 @@ import UpdateAttendance from "./components/attendanceManagment/UpdateAttendance"
 import ReportAttendance from "./components/attendanceManagment/AttendanceReport";
 import ViewAttendance from "./components/attendanceManagment/ManageAttendance";
 
-
 function App() {
   return <Router>
       <Header/>
