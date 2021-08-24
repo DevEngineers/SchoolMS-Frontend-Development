@@ -47,6 +47,7 @@ class UpdateAttendance extends Component {
         }
     }
 
+
     onCheckBox(event){
         const{value} = event.target;
         console.log(value);
@@ -74,11 +75,119 @@ class UpdateAttendance extends Component {
     }
 
     render() {
-        return (
-            <div>
+        return <div className="attendance-section">
+            <div className={"attendance-container"}>
+
+                <div className={"attendance-row"}>
+                    <div className={"attendance-section-title"}>
+                        <h2 className={"attendance-custom-underline"}> UPDATE ATTENDANCE </h2>
+                    </div>
+                </div>
+
+                <div className={"attendance-row"}>
+                    <div className={"attendance-item"}>
+                        <div className={"attendance-item-big-inner outer-shadow-attendance"}>
+                            <form>
+                                <div className="attendance-form-div">
+                                    <Grid container direction="row" justifyContent="flex-start" alignItems="center" >
+                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
+                                            <label htmlFor={'date'} > Date </label>
+                                        </Box>
+                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
+                                            <TextField type={'date'} id="filled-basic"  name={'rDate'} value={this.state.rDate}
+                                                       onChange={event => this.onChange(event)} style={{ width: 220 }} />
+                                        </Box>
+                                    </Grid>
+                                </div>
+
+                                <div className="attendance-form-div">
+                                    <Grid container direction="row" justifyContent="flex-start" alignItems="center" >
+                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
+                                            <label htmlFor={'class'} > Class </label>
+                                        </Box>
+                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
+                                            <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'rClass'}
+                                                    value={this.state.rClass} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                                <MenuItem value={''}> Select Class </MenuItem>
+                                                {
+                                                    this.state.class.map(cls =>
+                                                        <MenuItem key={cls} value={cls}>{cls}</MenuItem>
+                                                    )
+                                                }
+                                            </Select>
+                                        </Box>
+                                    </Grid>
+                                </div>
+
+                                <div className="attendance-form-div" id="attendance-big-item-end">
+                                    <Grid container direction="row" justifyContent="flex-start" alignItems="center" >
+                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
+                                            <label htmlFor={'classType'}> Class Type </label>
+                                        </Box>
+                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
+                                            <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'rClassType'}
+                                                    value={this.state.rClassType} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                                <MenuItem value={''}> Select Class Type </MenuItem>
+                                                {
+                                                    this.state.classType.map(type =>
+                                                        <MenuItem key={type} value={type}> {type} </MenuItem>
+                                                    )
+                                                }
+                                            </Select>
+                                        </Box>
+                                    </Grid>
+                                </div>
+
+                            </form>
+
+                            {/*--------------------------------------------------- Check box form ---------------------------------------------------*/}
+
+                            <form>
+                                <div className={"attendance-item-inner outer-shadow-attendance"}>
+
+                                    <div className="attendance-form-div">
+
+                                        {
+                                            students.map(Stu => (
+                                                <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
+                                                    <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
+                                                        <label htmlFor={'classType'}> {Stu.name} </label>
+                                                    </Box>
+                                                    <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
+                                                        <Checkbox name="checkedB" color="primary" //checked={this.state.isTrue}
+                                                                  value={Stu.Id} key={Stu.Id} onChange={event => this.onCheckBox(event) }
+                                                        />
+                                                    </Box>
+                                                </Grid>
+                                            ))
+                                        }
+
+                                    </div>
+
+                                </div>
+
+                                <div className="attendance-form-div">
+                                    <Grid container item direction="row" justifyContent="flex-end" alignItems="baseline" >
+
+                                        <Box ccomponent="div" display="inline" style={{ padding: 10 }} >
+                                            <input type={'reset'} className={'Btn-Att-reset'} value={'Reset'} />
+                                            {/*onClick={this.restAllValuesInForm.bind(this)}*/}
+                                        </Box>
+
+                                        <Box component="div" display="inline" style={{ padding: 10 }} >
+                                            <input type={'submit'} className={'Btn-Att-Sub'} value={'Store Attendance'} onClick={this.storeAttendance.bind(this)}/>
+                                        </Box>
+
+                                    </Grid>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
 
             </div>
-        );
+        </div>
     }
 }
 
