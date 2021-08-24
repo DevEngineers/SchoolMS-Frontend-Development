@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Box, Checkbox, FormControlLabel, Grid, MenuItem} from "@material-ui/core";
+import {Box, Checkbox, Grid, MenuItem} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import '../../styles/AttendanceManagment/Attendance.css';
@@ -9,20 +9,36 @@ import '../../styles/AttendanceManagment/Attendance.css';
  * Registration Number : IT19175126
  */
 
+// const students ={
+//     Store1: [
+//         { Id: '0001', Business: 'Ministop' }
+//     ],
+//     Store2: [
+//         { Id: '0002', Business: 'Grocery Store' }
+//     ],
+// }
+
 class AddAttendance extends Component {
     constructor(props){
         super(props);
         this.state= {
+            isTrue: false,
             rDate:'',
             rClass:'',
             rClassType:'',
 
+            allAttendance:[],
+            allStudent:['Nimal Kumar', 'Pasan Bandara', 'Kasun kumar','Sunil sunil', 'Tharuni bandara','Kasun Vimal' ],
             attendance:[],
             student:[],
 
             classType:['A','B','C'],
             class:['8', '9', '10', '11', '12']
         }
+    }
+
+    CheckboxHandle(event){
+
     }
 
     storeAttendance(event){
@@ -113,18 +129,25 @@ class AddAttendance extends Component {
                                 <div className={"attendance-item-inner outer-shadow-attendance"}>
 
                                         <div className="attendance-form-div">
-                                            <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
-                                                <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
-                                                    <label htmlFor={'classType'}> Nimal Kumar </label>
-                                                </Box>
-                                                <Box ccomponent="div" display="inline" >
-                                                    <FormControlLabel
-                                                        control={
-                                                            <Checkbox // checked={true} onChange={handleChange}
-                                                                name="checkedB" color="primary" />
-                                                        } />
-                                                </Box>
-                                            </Grid>
+
+                                            {
+                                                this.state.allStudent.map(Stu => (
+                                                    <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
+                                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
+                                                            <label htmlFor={'classType'}> {Stu} </label>
+                                                        </Box>
+                                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
+                                                            <Checkbox name="checkedB" color="primary" checked={this.state.isTrue}
+                                                                      onChange={e => {
+                                                                          console.log(e.target.checked);
+                                                                          this.setState({ isTrue: e.target.checked });
+                                                                      }}
+                                                            />
+                                                        </Box>
+                                                    </Grid>
+                                                ))
+                                            }
+
                                         </div>
 
                                 </div>
