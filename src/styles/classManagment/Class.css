@@ -53,8 +53,8 @@ Class section
 -------------------- */
 
 .class-section{
-    padding: 0 0 80px;
-    min-height: 88vh;
+    padding: 0 0 30px;
+    min-height: 50vh;
     background-color: #F0F0F0;
 }
 .class-container {
