@@ -52,7 +52,6 @@ class ListTeachers extends Component {
                     </div>
                 </div>
                 <div className = "row">
-                    <button className="btn btn-primary" onClick={this.addTeacher}> Add Teacher</button>
                 </div>
                 <br></br>
                 <div className = "row">
