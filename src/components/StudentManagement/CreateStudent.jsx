@@ -94,7 +94,7 @@ class CreateStudent extends Component {
 
 
     cancel(){
-        this.props.history.push('/students');
+        this.props.history.push('/add-student/_add');
     }
 
     getTitle(){
@@ -151,9 +151,10 @@ class CreateStudent extends Component {
                                         <label> Address : </label>
                                         <input placeholder="Address" name="address" className="form-control"
                                                value={this.state.address} onChange={this.changeAddressHandler}/>
-                                    </div> <div className = "form-group">
+                                    </div>
+                                    <div className = "form-group">
                                     <label> School Branch : </label>
-                                    <select value={this.state.schoolBranch} className="form-control" onChange={this.changeSchoolBranchHandler}>
+                                    <select value={this.state.schoolBranch} name="schoolBranch" className="form-control" onChange={this.changeSchoolBranchHandler}>
                                         <option defaultValue>School Branch:</option>
                                         <option value="Colombo">Colombo</option>
                                         <option value="Kandy">Kandy</option>
@@ -161,16 +162,37 @@ class CreateStudent extends Component {
                                         <option value="Negambo">Negambo</option>
                                         <option value="Ratmalana">Ratmalana</option>
                                     </select>
-                                </div>
+                                     </div>
                                     <div className = "form-group">
-                                        <label> Class : </label>
-                                        <input placeholder="Class" name="class" className="form-control"
-                                               value={this.state.class} onChange={this.changeClassHandler}/>
+                                        <label> Grade : </label>
+                                        <select value={this.state.class} name="class" className="form-control" onChange={this.changeClassHandler}>
+                                            <option defaultValue>Grade</option>
+                                            <option value="Grade 01">Grade 01</option>
+                                            <option value="Grade 02">Grade 02</option>
+                                            <option value="Grade 03">Grade 03</option>
+                                            <option value="Grade 04">Grade 04</option>
+                                            <option value="Grade 05">Grade 05</option>
+                                            <option value="Grade 06">Grade 06</option>
+                                            <option value="Grade 07">Grade 07</option>
+                                            <option value="Grade 08">Grade 08</option>
+                                            <option value="Grade 09">Grade 09</option>
+                                            <option value="Grade 10">Grade 10</option>
+                                            <option value="Grade 11">Grade 11</option>
+                                            <option value="Grade 12">Grade 12</option>
+                                            <option value="Grade 13">Grade 13</option>
+                                        </select>
                                     </div>
                                     <div className = "form-group">
                                         <label> Class Type: </label>
-                                        <input placeholder="Class Type" name="classType" className="form-control"
-                                               value={this.state.classType} onChange={this.changeClassTypeHandler}/>
+                                        <select value={this.state.classType} className="form-control" onChange={this.changeClassTypeHandler}>
+                                            <option defaultValue>Class</option>
+                                            <option value="Class A">Class A</option>
+                                            <option value="Class B">Class B</option>
+                                            <option value="Class C">Class C</option>
+                                            <option value="Class D">Class D</option>
+                                            <option value="Class E">Class E</option>
+
+                                        </select>
                                     </div>
                                     <div className = "form-group" value={this.state.gender} onChange={this.changeGenderHandler} >
                                         <label> Gender : </label>
