@@ -184,7 +184,7 @@ class UpdateAttendance extends Component {
                                         </Box>
 
                                         <Box component="div" display="inline" style={{ padding: 10 }} >
-                                            <input type={'submit'} className={'Btn-Att-Sub'} value={'Store Attendance'} onClick={this.updateAttendance.bind(this)}/>
+                                            <input type={'submit'} className={'Btn-Att-Sub'} value={'Update Attendance'} onClick={this.updateAttendance.bind(this)}/>
                                         </Box>
 
                                     </Grid>
