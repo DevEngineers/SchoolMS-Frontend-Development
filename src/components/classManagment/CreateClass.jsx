@@ -59,6 +59,7 @@ class CreateClass extends Component {
                 .then(res =>{
                     if (res.status === 200) {
                         toast.success("Class Created Successfully", options)
+                        setTimeout(()=>{this.props.history.push("/view-class")},3000)
                     } else {
                         throw Error('Something went wrong!! Try again.' + res);
                     }
