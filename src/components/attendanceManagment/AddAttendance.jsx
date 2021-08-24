@@ -90,6 +90,7 @@ class AddAttendance extends Component {
                 .then(res =>{
                     if (res.status === 200) {
                         toast.success("Attendance store Successfully ", options)
+                        setTimeout(()=>{this.props.history.push("/view-attendance")},3000)
                     } else {
                         throw Error('Something went wrong!! Try again.' + res);
                     }
