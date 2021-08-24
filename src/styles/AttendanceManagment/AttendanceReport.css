@@ -9,7 +9,7 @@
 Attendance title section
 -------------------- */
 
-.box {
+.Att-Report-Section .box {
     position: relative;
     width: 100%;
     height:80px;
@@ -18,7 +18,7 @@ Attendance title section
     text-align: center;
 }
 
-.custom-underline {
+.Att-Report-Section .custom-underline {
     position: relative;
     display: inline-block;
     font-size: 28px;
@@ -27,9 +27,10 @@ Attendance title section
     font-family: "Raleway", sans-serif;
 }
 
-#largeUserDiv{
+.Att-Report-Section #largeUserDiv{
     width: 40%;
     padding: 20px;
+    margin-bottom: 3%;
     float:left;
     box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
     font-family: Georgia, "Times New Roman", Times, serif;
@@ -38,7 +39,7 @@ Attendance title section
 }
 
 
-#form-style-user{
+.Att-Report-Section #form-style-user{
     width: 731px;
     padding: 15px;
     float:left;
@@ -47,39 +48,39 @@ Attendance title section
     margin-left: 8px;
 }
 
-#userLabelEDiv{
+.Att-Report-Section #userLabelEDiv{
     width: 150px;
 }
 
-.classULabel{
+.Att-Report-Section .classULabel{
     display: inline-block;
     float: left;
     padding: 12px;
 }
 
-#userSelectOpt{
+.Att-Report-Section #userSelectOpt{
     width: 300px;
     margin-left: 160px;
 }
 
-.userSize{
+.Att-Report-Section .userSize{
     width: 80%;
     margin-top: 5px;
 }
 
-.selectUName{
+.Att-Report-Section .selectUName{
     font-size:14px;
 }
 
 
-.btnEDiv{
+.Att-Report-Section .btnEDiv{
     padding: 20px;
     width: 94%;
     float: left;
     margin-left: 25px;
 }
 
-#submitUBtn{
+.Att-Report-Section #submitUBtn{
     position: relative;
     display: block;
     padding: 10px 5px 10px 5px;
@@ -95,12 +96,12 @@ Attendance title section
 
 }
 
-#submitUBtn:hover{
+.Att-Report-Section #submitUBtn:hover{
     background: #359083;
     cursor: pointer;
 }
 
-#restUBtn{
+.Att-Report-Section #restUBtn{
     position: relative;
     display: block;
     padding: 10px 5px 10px 5px;
@@ -115,7 +116,7 @@ Attendance title section
     margin-right: 5px;
 }
 
-#restUBtn:hover{
+.Att-Report-Section #restUBtn:hover{
     background: #d32f2f;
     cursor: pointer;
 }

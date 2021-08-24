@@ -60,7 +60,7 @@ attendance section
 .attendance-section{
     padding: 0 0 80px;
     min-height: 88vh;
-    background-color: #F0F0F0;
+    /*background-color: #F0F0F0;*/
 }
 .attendance-container {
     max-width: 1250px;
@@ -78,7 +78,7 @@ attendance section
     display: flex;
     flex-wrap: wrap;
     margin: auto;
-    /*background-color: #d15a08;*/
+    /*background-color: #f4f7f8;*/
 }
 .attendance-row .attendance-item-inner{
     flex:0 0 93%;
@@ -86,6 +86,7 @@ attendance section
     border-radius: 5px;
     width: 97%;
     margin: auto;
+    background-color: #f2f2f2;
     /*background-color:#6ca69f;*/
     /*box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.3);*/
 }
@@ -97,6 +98,7 @@ attendance section
     border-radius: 5px;
     width: 100%;
     margin: auto;
+    background-color: #f4f7f8;
     /*background-color:orange;*/
 }
 

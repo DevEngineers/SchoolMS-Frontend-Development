@@ -24,7 +24,7 @@ function GenerateResultReport(props) {
         this.setState({ [name] : value });
     }
 
-    return <div>
+    return <div className={"Att-Report-Section"}>
         <div>
             <div className={'box'}>
                 <label className={'custom-underline'}>GENERATE STUDENT ATTENDANCE REPORT</label>
@@ -34,11 +34,10 @@ function GenerateResultReport(props) {
             <form>
                 <Container id={'form-style-user'}>
                     <div id={'userLabelEDiv'}>
-                        <label className={'classULabel'}>Class</label>
+                        <label className={'classULabel'}>Class </label>
                         <label className={'classULabel'}>Class Type</label>
-                        <label className={'classULabel'}>Student ID</label>
+                        <label className={'classULabel'}>Student Name</label>
                         <label className={'classULabel'}>Year</label>
-                        <label className={'classULabel'}>Term</label>
                     </div>
                     <div id={'userSelectOpt'}>
                         <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'smBranch'}
@@ -52,7 +51,7 @@ function GenerateResultReport(props) {
                         </Select>
                         <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'uType'}
                                 className={'userSize'} onChange={(event) => onChange(event)} displayEmpty>
-                            <MenuItem value={''}><span className={'selectUName'}>Select Account Type</span></MenuItem>
+                            <MenuItem value={''}><span className={'selectUName'}>Select Class Type</span></MenuItem>
                             {
                                 /*this.state.userType.map(type =>
                                     <MenuItem key={type} value={type}><span className={'selectUName'}>{type}</span></MenuItem>
@@ -62,7 +61,7 @@ function GenerateResultReport(props) {
 
                         <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'uType'}
                                 className={'userSize'} onChange={(event) => onChange(event)} displayEmpty>
-                            <MenuItem value={''}><span className={'selectUName'}>Select Account Type</span></MenuItem>
+                            <MenuItem value={''}><span className={'selectUName'}>Select Student Name</span></MenuItem>
                             {
                                 /*this.state.userType.map(type =>
                                     <MenuItem key={type} value={type}><span className={'selectUName'}>{type}</span></MenuItem>
@@ -71,16 +70,7 @@ function GenerateResultReport(props) {
                         </Select>
                         <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'uType'}
                                 className={'userSize'} onChange={(event) => onChange(event)} displayEmpty>
-                            <MenuItem value={''}><span className={'selectUName'}>Select Account Type</span></MenuItem>
-                            {
-                                /*this.state.userType.map(type =>
-                                    <MenuItem key={type} value={type}><span className={'selectUName'}>{type}</span></MenuItem>
-                                )*/
-                            }
-                        </Select>
-                        <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'uType'}
-                                className={'userSize'} onChange={(event) => onChange(event)} displayEmpty>
-                            <MenuItem value={''}><span className={'selectUName'}>Select Account Type</span></MenuItem>
+                            <MenuItem value={''}><span className={'selectUName'}>Select Year</span></MenuItem>
                             {
                                 /*this.state.userType.map(type =>
                                     <MenuItem key={type} value={type}><span className={'selectUName'}>{type}</span></MenuItem>
