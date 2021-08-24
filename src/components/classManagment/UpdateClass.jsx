@@ -31,7 +31,7 @@ class UpdateClass extends Component {
             rClassType:'',
             rTeacher:'',
 
-            classTypeN:['A','B','C'],
+            classTypeN:['A','B','C','D','E'],
             teacherN:['Nimal', 'Kumar', 'Kasun','sara gorge', 'Amarakoon' ,'Amila prasanna']
         }
     }
