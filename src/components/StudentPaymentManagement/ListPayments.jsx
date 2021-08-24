@@ -16,9 +16,6 @@ class ListPayments extends Component {
         this.editPayment = this.editPayment.bind(this);
         this.deletePayment = this.deletePayment.bind(this);
 
-        this.addTeacher = this.addTeacher.bind(this);
-        this.addStudent = this.addStudent.bind(this);
-        this.paymentReport = this.paymentReport.bind(this);
     }
 
     deletePayment(id){
@@ -41,15 +38,8 @@ class ListPayments extends Component {
     addPayment(){
         this.props.history.push('/add-payment/_add');
     }
-    addStudent(){
-        this.props.history.push('/add-student/_add');
-    }
-    addTeacher(){
-        this.props.history.push('/add-teacher/_add');
-    }
-    paymentReport(){
-        this.props.history.push('/payment-report/');
-    }
+
+
 
     render() {
         return (
@@ -62,10 +52,7 @@ class ListPayments extends Component {
                     </div>
                 </div>
                 <div className = "row">
-                    <button className="btn btn-primary" onClick={this.addPayment}> Add Payment</button>
-                    <button className="btn btn-primary" onClick={this.addStudent}> Add Student</button>
-                    <button className="btn btn-primary" onClick={this.addTeacher}> Add Teacher</button>
-                    <button className="btn btn-primary" onClick={this.paymentReport}> Payment Report</button>
+
                 </div>
                 <br></br>
                 <div className = "row">
