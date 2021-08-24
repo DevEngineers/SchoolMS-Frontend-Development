@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import '../../styles/AttendanceManagment/Attendance.css';
 import {toast} from "material-react-toastify";
+import AttendanceService from "../../services/AttendanceService";
 
 /**
  * @author : A.M Zumry
@@ -33,11 +34,14 @@ class UpdateAttendance extends Component {
     constructor(props){
         super(props);
         this.state= {
+            AttendanceID:this.props.match.params.id,
+
             rDate:'',
             rClass:'',
             rClassType:'',
+            rAttendance:[],
+            rStudent:[],
 
-            allAttendance:[],
             studentID:['0001', '0002', '0003','0004', '0005','0006' ],
             student:['Nimal Kumar', 'Pasan Bandara', 'Kasun kumar','Sunil sunil', 'Tharuni bandara','Kasun Vimal' ],
             attendance:[1, 1, 1, 1, 0, 1],
@@ -47,6 +51,20 @@ class UpdateAttendance extends Component {
         }
     }
 
+    componentDidMount(){
+        AttendanceService.getAttendanceByID(this.state.AttendanceID)
+            .then(res => {
+                this.setState({
+                    rDate:res.date,
+                    rClass:res.class,
+                    rClassType:res.classType,
+                    rAttendance:res.attendance,
+                    rStudent:res.student
+                })
+                console.log('Att', this.state.rStudent);
+                console.log('Att', this.state.rAttendance);
+            })
+    }
 
     onCheckBox(event){
         const{value} = event.target;
