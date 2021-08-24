@@ -121,7 +121,7 @@ class UpdateSubject extends Component {
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
                                             <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'rClass'}
-                                                    className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                                    value={this.state.rClass} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
                                                 <MenuItem value={this.state.rClass}> {this.state.rClass} </MenuItem>
                                                 {
                                                     this.state.grade.map(Class =>
@@ -140,7 +140,7 @@ class UpdateSubject extends Component {
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
                                             <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'rTeacher'}
-                                                    className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                                    value={this.state.rTeacher} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
                                                 <MenuItem value={this.state.rTeacher} > {this.state.rTeacher} </MenuItem>
                                                 {
                                                     this.state.teachers.map(Teacher =>
