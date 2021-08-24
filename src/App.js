@@ -13,6 +13,7 @@ import ViewSubject from "./components/subjectManagment/ManageSubjects";
 import StoreAttendance from "./components/attendanceManagment/AddAttendance";
 import UpdateAttendance from "./components/attendanceManagment/UpdateAttendance";
 import ReportAttendance from "./components/attendanceManagment/AttendanceReport";
+import ViewAttendance from "./components/attendanceManagment/ManageAttendance";
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/view-subject" component={ViewSubject}/>
           <Route path="/store-attendance" component={StoreAttendance}/>
           <Route path="/update-attendance/:id" component={UpdateAttendance}/>
+          <Route path="/view-attendance" component={ViewAttendance}/>
           <Route path="/report-attendance" component={ReportAttendance}/>
       </Switch>
       <Footer/>
