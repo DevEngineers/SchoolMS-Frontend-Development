@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Box, Checkbox, Grid, MenuItem} from "@material-ui/core";
+import {Box, Checkbox, Grid} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import '../../styles/AttendanceManagment/Attendance.css';
 import {toast} from "material-react-toastify";
@@ -12,12 +12,12 @@ import moment from "moment";
  */
 
 const students =[
-    { Id: '0001', name: 'Nimal Kumar', class:'10' , classType:'A' },
-    { Id: '0002', name: 'Pasan Bandara', class:'10' , classType:'A'},
-    { Id: '0003', name: 'Kasun kumar', class:'10' , classType:'A' },
-    { Id: '0004', name: 'Sunil sunil', class:'10' , classType:'A'},
-    { Id: '0005', name: 'Tharuni bandara', class:'10' , classType:'A'},
-    { Id: '0006', name: 'Kasun Vimal', class:'10' , classType:'A'},
+    { Id: '0001', name: 'Nimal Kumar', class:'10' , classType:'A', Att:true },
+    { Id: '0002', name: 'Pasan Bandara', class:'10' , classType:'A', Att:true },
+    { Id: '0003', name: 'Kasun kumar', class:'10' , classType:'A', Att:true },
+    { Id: '0004', name: 'Sunil sunil', class:'10' , classType:'A', Att:true },
+    { Id: '0005', name: 'Tharuni bandara', class:'10' , classType:'A', Att:false },
+    { Id: '0006', name: 'Kasun Vimal', class:'10' , classType:'A', Att:true },
 ]
 
 //Toast Message Configuration
@@ -163,7 +163,7 @@ class UpdateAttendance extends Component {
                                                         <label htmlFor={'classType'}> {Stu.name} </label>
                                                     </Box>
                                                     <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
-                                                        <Checkbox name="checkedB" color="primary" //checked={this.state.isTrue}
+                                                        <Checkbox name="checkedB" color="primary" checked={Stu.Att}
                                                                   value={Stu.Id} key={Stu.Id} onChange={event => this.onCheckBox(event) }
                                                         />
                                                     </Box>
