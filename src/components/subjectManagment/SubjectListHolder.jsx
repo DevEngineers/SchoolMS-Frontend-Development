@@ -12,9 +12,9 @@ export default function SubjectListHolder(props){
 
             <div id={'viewDiv'}>
                 <div id={'viewSmall'}>
-                    <label id="ClassLabel">Class : 10 </label>
-                    <label id={'SubjectLabel'}>Subject : ICT </label>
-                    <label id={'TeacherLabel'}>Teacher : Sunil </label>
+                    <label id="ClassLabel">Class : {subject.class} </label>
+                    <label id={'SubjectLabel'}>Subject : {subject.subject} </label>
+                    <label id={'TeacherLabel'}>Teacher : {subject.teacher} </label>
                 </div>
                 <div className={'buttonDiv'}>
                     <IconButton aria-label="delete" style={{backgroundColor:"transparent"}}

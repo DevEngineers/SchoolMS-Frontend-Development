@@ -12,9 +12,9 @@ export default function ClassListHolder(props){
 
             <div id={'viewDiv'}>
                 <div id={'viewSmall'}>
-                    <label id="ClassLabel">Class : 11 </label>
-                    <label id={'TypeLabel'}>Class Type : A</label>
-                    <label id={'TeacherLabel'}>Teacher : Sunil</label>
+                    <label id="ClassLabel">Class : {Class.class} </label>
+                    <label id={'TypeLabel'}>Class Type : {Class.classType} </label>
+                    <label id={'TeacherLabel'}>Teacher : {Class.teacher} </label>
                 </div>
                 <div className={'buttonDiv'}>
                     <IconButton aria-label="delete" style={{backgroundColor:"transparent"}}
