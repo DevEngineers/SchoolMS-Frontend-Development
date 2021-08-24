@@ -116,7 +116,7 @@ class Header extends Component {
                             <a href="#">Attendance</a>
                                 <input type={'checkbox'} id={'drop-8'}/>
                             <ul>
-                                <li><a href="/#">View Attendance</a></li>
+                                <li><a href="/view-attendance">View Attendance</a></li>
                                 <li><a href="/store-attendance">Add Attendance</a></li>
                                 <li><a href="/report-attendance">Attendance Report</a></li>
                             </ul>
