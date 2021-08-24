@@ -117,7 +117,7 @@ class UpdateAttendance extends Component {
                                             <label htmlFor={'date'} > Date </label>
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                            <TextField type={'date'} id="filled-basic"  name={'rDate'} value={this.state.rDate}
+                                            <TextField type={'text'} id="filled-basic"  name={'rDate'} value={this.state.rDate}
                                                        onChange={event => this.onChange(event)} style={{ width: 220 }} />
                                         </Box>
                                     </Grid>
