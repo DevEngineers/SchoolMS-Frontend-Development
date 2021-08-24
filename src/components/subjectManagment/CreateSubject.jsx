@@ -29,8 +29,8 @@ class CreateSubject extends Component {
             rClass:'',
             rTeacher:'',
 
-            classes:['5','6','7','611ff24d1e8d711b0497e1bb'],
-            teachers:['Nimal', 'Kumar', 'Kasun','611e68fc07b4bf1f64f88e89']
+            classes:['5','6','7','8','9','10','11','12'],
+            teachers:['Nimal', 'Kumar', 'Kasun','sara gorge', "Amarakoon" ,"Amila prasanna"]
         }
     }
 
