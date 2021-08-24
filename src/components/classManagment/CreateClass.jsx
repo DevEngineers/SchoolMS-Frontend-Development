@@ -29,8 +29,8 @@ class CreateClass extends Component {
             rClassType:'',
             rTeacher:'',
 
-            classType:['A','B','C'],
-            teacher:['611e68fc07b4bf1f64f88e89', 'Kumar', 'Kasun']
+            classType:['A','B','C','D','E'],
+            teacher:['Nimal', 'Kumar', 'Kasun','sara gorge', "Amarakoon" ,"Amila prasanna"]
         }
     }
 
