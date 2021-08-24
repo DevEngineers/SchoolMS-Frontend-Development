@@ -3,8 +3,8 @@ import '../styles/HeaderFooter.css';
 import Button from '@material-ui/core/Button';
 
 /**
- * @author : A.M Zumry
- * Registration Number : IT19175126
+ * @authors : A.M Zumry & M.N.M Akeel
+ * Registration Numbers : IT19175126 & IT19153414
  */
 
 class Footer extends Component {
@@ -30,10 +30,10 @@ class Footer extends Component {
                 localStorage.getItem('footerValue') !== 'value' ?
                     (
                         this.state.type === 'Administrator'?
-                            (<></>)
+                            (null)
                             :(<div id={'footer'}>
                                 <div id={'copyright'}>
-                                    <label id={'contInfoLabel'}>Copyright &copy;2021 Gateway International School all right reserved</label>
+                                    <label id={'contInfoLabel'}>Copyright &copy;2021 Gateway International School. All right reserved</label>
                                     {/*<hr/>*/}
                                 </div>
                                 <div id="about-footer">
@@ -41,7 +41,7 @@ class Footer extends Component {
                                 </div>
                             </div>)
                     )
-                    :(<></>,localStorage.removeItem('footerValue'))
+                    :(null,localStorage.removeItem('footerValue'))
             }
         </div>
     }
