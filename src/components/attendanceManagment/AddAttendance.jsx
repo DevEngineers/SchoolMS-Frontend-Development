@@ -3,20 +3,33 @@ import {Box, Checkbox, Grid, MenuItem} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import '../../styles/AttendanceManagment/Attendance.css';
+import {toast} from "material-react-toastify";
+import AttendanceService from "../../services/AttendanceService";
 
 /**
  * @author : A.M Zumry
  * Registration Number : IT19175126
  */
 
-// const students ={
-//     Store1: [
-//         { Id: '0001', Business: 'Ministop' }
-//     ],
-//     Store2: [
-//         { Id: '0002', Business: 'Grocery Store' }
-//     ],
-// }
+const students =[
+        { Id: '0001', name: 'Nimal Kumar', class:'10' , classType:'A' },
+        { Id: '0002', name: 'Pasan Bandara', class:'10' , classType:'A'},
+        { Id: '0003', name: 'Kasun kumar', class:'10' , classType:'A' },
+        { Id: '0004', name: 'Sunil sunil', class:'10' , classType:'A'},
+        { Id: '0005', name: 'Tharuni bandara', class:'10' , classType:'A'},
+        { Id: '0006', name: 'Kasun Vimal', class:'10' , classType:'A'},
+]
+
+//Toast Message Configuration
+const options = {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: false
+}
+
 
 class AddAttendance extends Component {
     constructor(props){
@@ -28,25 +41,63 @@ class AddAttendance extends Component {
             rClassType:'',
 
             allAttendance:[],
-            allStudent:['Nimal Kumar', 'Pasan Bandara', 'Kasun kumar','Sunil sunil', 'Tharuni bandara','Kasun Vimal' ],
-            attendance:[],
-            student:[],
+            studentID:['0001', '0002', '0003','0004', '0005','0006' ],
+            student:['Nimal Kumar', 'Pasan Bandara', 'Kasun kumar','Sunil sunil', 'Tharuni bandara','Kasun Vimal' ],
+            attendance:[1, 1, 1, 1, 0, 1],
 
-            classType:['A','B','C'],
+            classType:['A','B','C','D','E'],
             class:['8', '9', '10', '11', '12']
         }
     }
 
-    CheckboxHandle(event){
+    onCheckBox(event){
+        const{value} = event.target;
+        console.log(value);
+        // let {student} = students.Id;
+        // let {studentID} = this.state;
+
+        // if(student.includes(value) === true){
+        //     let index = student.indexOf(value);
+        //     student.splice(index,1)
+        //     console.log('true students',student);
+        //     return
+        // }
+        //
+        // if(student.includes(value) === false){
+        //     student.push(value);
+        //     console.log('false students',student);
+        // }
 
     }
 
     storeAttendance(event){
         event.preventDefault();
         let Att = {
-
+            date:this.state.rDate,
+            class:this.state.rClass,
+            classType: this.state.rClassType,
+            student:this.state.student,
+            attendance:this.state.attendance
         }
-
+        if(Att.date === ''){
+            toast.warn('Select a Date',options)
+        }else if(Att.class === ''){
+            toast.warn('Select the Class',options)
+        }else if(Att.classType === ''){
+            toast.warn('Select the Class Type',options)
+        }else{
+            AttendanceService.storeAttendance(Att)
+                .then(res =>{
+                    if (res.status === 200) {
+                        toast.success("Attendance store Successfully ", options)
+                    } else {
+                        throw Error('Something went wrong!! Try again.' + res);
+                    }
+                })
+                .catch((error) => {
+                    toast.error(error.message, options)
+                })
+        }
     }
 
     /**
@@ -131,17 +182,14 @@ class AddAttendance extends Component {
                                         <div className="attendance-form-div">
 
                                             {
-                                                this.state.allStudent.map(Stu => (
+                                                students.map(Stu => (
                                                     <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
                                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
-                                                            <label htmlFor={'classType'}> {Stu} </label>
+                                                            <label htmlFor={'classType'}> {Stu.name} </label>
                                                         </Box>
                                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
-                                                            <Checkbox name="checkedB" color="primary" checked={this.state.isTrue}
-                                                                      onChange={e => {
-                                                                          console.log(e.target.checked);
-                                                                          this.setState({ isTrue: e.target.checked });
-                                                                      }}
+                                                            <Checkbox name="checkedB" color="primary" //checked={this.state.isTrue}
+                                                                      value={Stu.Id} key={Stu.Id} onChange={event => this.onCheckBox(event) }
                                                             />
                                                         </Box>
                                                     </Grid>
