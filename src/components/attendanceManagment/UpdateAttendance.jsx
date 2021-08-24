@@ -86,7 +86,33 @@ class UpdateAttendance extends Component {
 
     updateAttendance(event){
         event.preventDefault();
-
+        let Att = {
+            date:this.state.rDate,
+            class:this.state.rClass,
+            classType: this.state.rClassType,
+            student:this.state.student,
+            attendance:this.state.attendance
+        }
+        if(Att.date === ''){
+            toast.warn('Select a Date',options)
+        }else if(Att.class === ''){
+            toast.warn('Select the Class',options)
+        }else if(Att.classType === ''){
+            toast.warn('Select the Class Type',options)
+        }else{
+            AttendanceService.updateAttendance(this.state.AttendanceID,Att)
+                .then(res =>{
+                    if (res.status === 200) {
+                        toast.success("Attendance Update Successfully ", options)
+                        setTimeout(()=>{this.props.history.push("/view-attendance")},3000)
+                    } else {
+                        throw Error('Something went wrong!! Try again.' + res);
+                    }
+                })
+                .catch((error) => {
+                    toast.error(error.message, options)
+                })
+        }
     }
 
     /**
