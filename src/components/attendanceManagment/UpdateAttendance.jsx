@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {Box, Checkbox, Grid, MenuItem} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-import Select from "@material-ui/core/Select";
 import '../../styles/AttendanceManagment/Attendance.css';
 import {toast} from "material-react-toastify";
 import AttendanceService from "../../services/AttendanceService";
+import moment from "moment";
 
 /**
  * @author : A.M Zumry
@@ -117,8 +117,8 @@ class UpdateAttendance extends Component {
                                             <label htmlFor={'date'} > Date </label>
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                            <TextField type={'text'} id="filled-basic"  name={'rDate'} value={this.state.rDate}
-                                                       onChange={event => this.onChange(event)} style={{ width: 220 }} />
+                                            <TextField type={'text'} id="filled-basic"  name={'rDate'} value={moment(this.state.rDate).format("YYYY-MM-DD")}
+                                                       onChange={event => this.onChange(event)} style={{ width: 220 }} disabled/>
                                         </Box>
                                     </Grid>
                                 </div>
@@ -129,15 +129,8 @@ class UpdateAttendance extends Component {
                                             <label htmlFor={'class'} > Class </label>
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                            <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'rClass'}
-                                                    value={this.state.rClass} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                                <MenuItem value={''}> Select Class </MenuItem>
-                                                {
-                                                    this.state.class.map(cls =>
-                                                        <MenuItem key={cls} value={cls}>{cls}</MenuItem>
-                                                    )
-                                                }
-                                            </Select>
+                                            <TextField type={'text'} id="filled-basic"  name={'rClass'} value={this.state.rClass}
+                                                       onChange={event => this.onChange(event)} style={{ width: 220 }} disabled/>
                                         </Box>
                                     </Grid>
                                 </div>
@@ -148,15 +141,8 @@ class UpdateAttendance extends Component {
                                             <label htmlFor={'classType'}> Class Type </label>
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                            <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'rClassType'}
-                                                    value={this.state.rClassType} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                                <MenuItem value={''}> Select Class Type </MenuItem>
-                                                {
-                                                    this.state.classType.map(type =>
-                                                        <MenuItem key={type} value={type}> {type} </MenuItem>
-                                                    )
-                                                }
-                                            </Select>
+                                            <TextField type={'text'} id="filled-basic"  name={'rClassType'} value={this.state.rClassType}
+                                                       onChange={event => this.onChange(event)} style={{ width: 220 }} disabled/>
                                         </Box>
                                     </Grid>
                                 </div>
