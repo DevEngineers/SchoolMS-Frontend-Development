@@ -96,7 +96,7 @@ class CreateTeacher extends Component {
     }
 
     cancel(){
-        this.props.history.push('/teachers');
+        this.props.history.push('/add-teacher/_add');
     }
 
     getTitle(){
