@@ -182,7 +182,9 @@ class AddAttendance extends Component {
 
                                         <div className="attendance-form-div">
 
-                                            {
+
+                                            {this.state.rClassType === 'A' ?
+
                                                 students.map(Stu => (
                                                     <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
                                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
@@ -195,7 +197,8 @@ class AddAttendance extends Component {
                                                         </Box>
                                                     </Grid>
                                                 ))
-                                            }
+
+                                             : null}
 
                                         </div>
 
