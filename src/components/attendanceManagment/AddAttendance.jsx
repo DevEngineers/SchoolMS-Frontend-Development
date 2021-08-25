@@ -46,7 +46,7 @@ class AddAttendance extends Component {
             attendance:[1, 1, 1, 1, 0, 1],
 
             classType:['A','B','C','D','E'],
-            class:['8', '9', '10', '11', '12']
+            class:['9', '10', '11', '12']
         }
     }
 
