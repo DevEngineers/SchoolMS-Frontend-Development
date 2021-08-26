@@ -6,7 +6,7 @@ import React from "react";
 import '../../styles/timetableAndResultStyles/CommonManage.css'
 
 export default function ClassTimetableListHolder(props) {
-    const {ClassTimetable,editClassTimetable,viewClassTimetable,deleteClassTimetable} = props
+    const {ClassTimetable,editClassTimetable,viewClassTimetable,handleOpenDeleteAlert} = props
 
     return <div>
         <div id={'viewMain'}>
@@ -17,7 +17,7 @@ export default function ClassTimetableListHolder(props) {
                 </div>
                 <div className={'buttonDiv'}>
                     <IconButton aria-label="pageView" style={{backgroundColor:"transparent"}}
-                                onClick={() => deleteClassTimetable(ClassTimetable)}>
+                                onClick={() => handleOpenDeleteAlert(ClassTimetable)}>
                         <DeleteIcon/>
                     </IconButton>
                 </div>
