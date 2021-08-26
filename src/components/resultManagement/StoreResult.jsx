@@ -34,7 +34,7 @@ class StoreResult extends React.Component{
         super(props);
         this.state = {
 
-            subjects:['ICT','Mathematics','Science','English','Art'],
+            subjects:[],
             grades:[],
 
             rClass:'',
@@ -147,7 +147,7 @@ class StoreResult extends React.Component{
             term:this.state.term,
             studentID: this.state.studentID,
             examSubjects: this.state.examSubjects,
-            sGrades:this.state.sGrades,
+            grades:this.state.sGrades,
             examMarks: this.state.examMarks
         }
 
@@ -165,16 +165,16 @@ class StoreResult extends React.Component{
             toast.warn('Select Exam Subjects',options)
         }else if (result.examMarks.includes('')){
             toast.warn('Enter Exam Marks',options)
-        }else if (result.sGrades.includes('')){
+        }else if (result.grades.includes('')){
             toast.warn('Select Exam Grade',options)
         }else {
             ResultService.storeResult(result)
                 .then(res => {
                     if (res.status === 200) {
                         toast.success("Student Result Successfully", options)
-                        /*setTimeout(()=>{this.props.history.push("/")},3000)*/
-                    } else {
-                        throw Error('Something went wrong!! Try again.' + res);
+                        setTimeout(()=>{this.props.history.push("/manageResults")},3000)
+                   } else {
+                        throw Error('Something went wrong!! Try again.');
                     }
                 })
                 .catch((error) => {
@@ -314,8 +314,6 @@ class StoreResult extends React.Component{
                                         <AddIcon className={'timeslotIconRA'} />
                                     </IconButton>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -323,7 +321,6 @@ class StoreResult extends React.Component{
                         <input type={'submit'} id={'submitRBtn'} value={'Store Results'} onClick={this.storeResults.bind(this)}/>
                         <input type={'reset'} id={'restRBtn'} value={'Reset'} onClick={this.restAllValuesInForm.bind(this)}/>
                     </div>
-
                 </form>
             </div>
         </div>
