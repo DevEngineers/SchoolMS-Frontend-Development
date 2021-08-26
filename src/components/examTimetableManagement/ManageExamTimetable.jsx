@@ -4,12 +4,23 @@ import ExamTimetableListHolder from "./ExamTimetabelListHolder";
 import ExamTimetableService from "../../services/ExamTimetableService";
 import { useHistory } from "react-router-dom";
 import '../../styles/timetableAndResultStyles/CommonManage.css';
+import {toast, ToastContainer} from "material-react-toastify";
+import 'material-react-toastify/dist/ReactToastify.css';
 
 /**
  * @author : M.N.M Akeel
  * Registration Number : IT19153414
  */
 
+//Toast Message Configuration
+const options = {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: false
+}
 
 function ManageExamTimetable(props){
     const history = useHistory();
@@ -41,9 +52,19 @@ function ManageExamTimetable(props){
 
     function deleteExamTimetable(examTimetable){
         let id = examTimetable._id;
+        ExamTimetableService.removeExamTimetable(id)
+            .then(res =>{
+                if(res.status === 200){
+                    toast.error("Class Timetable is Removed",options)
+                    setTimeout(()=>{this.props.history.push("/manageExamTimetable")},3000)
+                }else{
+                    toast.warning("Something went wrong!!,Try again.",options)
+                }
+            })
     }
 
     return <div>
+        <ToastContainer/>
         <div>
             <div className={'box'}>
                 <label className={'custom-underline'}>EXAM TIMETABLES</label>
@@ -56,6 +77,9 @@ function ManageExamTimetable(props){
             </div>
         </div>
         <div>
+            {/*<div>
+                <label id={'headingLabel'}>{ExamTimetable.class.class}</label>
+            </div>*/}
             {
                 examTimetables.map(examTimetable =>{
                     return <ExamTimetableListHolder ExamTimetable={examTimetable} deleteExamTimetable={deleteExamTimetable}
@@ -64,7 +88,6 @@ function ManageExamTimetable(props){
             }
 
         </div>
-
     </div>
 }
 
