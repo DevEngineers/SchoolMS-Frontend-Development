@@ -123,13 +123,13 @@ class UpdateResult extends React.Component{
     updateResults(event) {
         event.preventDefault();
         let result = {
-            class:this.state.rClass,
-            classType:this.state.rClassType,
+            class:this.state.rClass._id,
+            classType:this.state.rClassType._id,
             year: this.state.year,
             term:this.state.term,
             studentID: this.state.studentID,
             examSubjects: this.state.examSubjects,
-            eGrades:this.state.eGrades,
+            grades:this.state.sGrades,
             examMarks: this.state.examMarks
         }
 
@@ -147,14 +147,14 @@ class UpdateResult extends React.Component{
             toast.warn('Select Exam Subjects',options)
         }else if (result.examMarks.includes('')){
             toast.warn('Enter Exam Marks',options)
-        }else if (result.eGrades.includes('')){
+        }else if (result.grades.includes('')){
             toast.warn('Select Exam Grade',options)
         }else {
             ResultService.updateResult(this.state.resultID,result)
                 .then(res => {
                     if(res.status === 200){
                         toast.success("Result Updated Successfully",options)
-                        setTimeout(()=>{this.props.history.push("/")},3000)
+                        setTimeout(()=>{this.props.history.push("/manageResults")},3000)
                     }else{
                         toast.error("Something went wrong!! Try again.",options)
                     }
@@ -183,12 +183,12 @@ class UpdateResult extends React.Component{
                         <div id={'classSelectOpt'}>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'rClass'} value={this.state.rClass}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem value={this.state.rClass}><span className={'selectRName'}>{this.state.rClass}</span></MenuItem>
+                                <MenuItem value={this.state.rClass}><span className={'selectRName'}>{this.state.rClass.class}</span></MenuItem>
 
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'rClassType'} value={this.state.rClassType}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem value={this.state.rClassType}><span className={'selectRName'}>{this.state.rClassType}</span></MenuItem>
+                                <MenuItem value={this.state.rClassType}><span className={'selectRName'}>{this.state.rClassType.name}</span></MenuItem>
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'year'} value={this.state.year}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
@@ -200,7 +200,7 @@ class UpdateResult extends React.Component{
                             </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'studentID'} value={this.state.studentID}
                                     className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem value={this.state.studentID}><span className={'selectRName'}>{this.state.studentID}</span></MenuItem>
+                                <MenuItem value={this.state.studentID}><span className={'selectRName'}>Nimal Kumara{/*{this.state.studentID}*/}</span></MenuItem>
                             </Select>
                         </div>
                     </div>
@@ -271,8 +271,6 @@ class UpdateResult extends React.Component{
                                         <AddIcon className={'timeslotIconRA'} />
                                     </IconButton>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -280,7 +278,6 @@ class UpdateResult extends React.Component{
                         <input type={'submit'} id={'submitRBtn'} value={'Update Results'} onClick={this.updateResults.bind(this)}/>
                         <input type={'reset'} id={'restRBtn'} value={'Cancel'} />
                     </div>
-
                 </form>
             </div>
         </div>
