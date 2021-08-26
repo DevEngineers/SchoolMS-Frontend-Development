@@ -11,15 +11,11 @@ export default function ResultListHolder(props) {
 
     return <div>
         <div id={'viewMain'}>
-            <div>
-                <label id={'headingLabel'}>Student ID:</label><br/>
-                <label id={'headingLabel'}>Student Name:</label>
-            </div>
             <div id={'viewDiv'}>
                 <div id={'viewSmall'}>
-                    <label>Grade 11 Class Timetable</label>
-                    <label id={'yearLabel'}>Year : 2021</label>
-                    <label id={'termLabel'}>Term : 1st Term</label>
+                    <label>{Result.class.class} {Result.classType.name}</label>
+                    <label id={'yearLabel'}>Year : {Result.year}</label>
+                    <label id={'termLabel'}>Term : {Result.term}</label>
                 </div>
                 <div className={'buttonDiv'}>
                     <IconButton aria-label="pageView" style={{backgroundColor:"transparent"}}

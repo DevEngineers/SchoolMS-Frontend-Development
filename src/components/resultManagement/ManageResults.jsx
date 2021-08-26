@@ -75,6 +75,10 @@ function ManageResults(props){
             </div>
         </div>
         <div>
+            {/*<div>
+                <label id={'headingLabel'}>Student ID: ST0012</label><br/>
+                <label id={'headingLabel'}>Student Name: Nimal Kumara </label>
+            </div>*/}
             {
                 results.map(result =>{
                     return <ResultListHolder key={result._id} Result={result} deleteResult={deleteResult}
