@@ -55,7 +55,7 @@ function ManageExamTimetable(props){
         ExamTimetableService.removeExamTimetable(id)
             .then(res =>{
                 if(res.status === 200){
-                    toast.error("Class Timetable is Removed",options)
+                    toast.error("Exam Timetable is Removed",options)
                     setTimeout(()=>{this.props.history.push("/manageExamTimetable")},3000)
                 }else{
                     toast.warning("Something went wrong!!,Try again.",options)

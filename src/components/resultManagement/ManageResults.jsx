@@ -4,12 +4,23 @@ import '../../styles/timetableAndResultStyles/CommonManage.css';
 import ResultListHolder from "./ResultListHolder";
 import ResultService from "../../services/ResultService";
 import {useHistory} from "react-router-dom";
+import {toast, ToastContainer} from "material-react-toastify";
+import 'material-react-toastify/dist/ReactToastify.css';
 
 /**
  * @author : M.N.M Akeel
  * Registration Number : IT19153414
  */
 
+//Toast Message Configuration
+const options = {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: false
+}
 
 function ManageResults(props){
     const history = useHistory();
@@ -40,6 +51,15 @@ function ManageResults(props){
 
     function deleteResult(result){
         let id = result._id;
+        ResultService.removeResult(id)
+            .then(res =>{
+                if(res.status === 200){
+                    toast.error("Student Result is Removed",options)
+                    setTimeout(()=>{this.props.history.push("/manageResults")},3000)
+                }else{
+                    toast.warning("Something went wrong!!,Try again.",options)
+                }
+            })
     }
 
     return <div>
@@ -62,7 +82,7 @@ function ManageResults(props){
                 })
             }
         </div>
-
+        <div style={{height:'150px'}}/>
         </div>
 }
 
