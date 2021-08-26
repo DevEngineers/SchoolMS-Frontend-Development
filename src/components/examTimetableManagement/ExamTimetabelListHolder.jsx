@@ -6,7 +6,7 @@ import React from "react";
 import '../../styles/timetableAndResultStyles/CommonManage.css';
 
 export default function ExamTimetableListHolder(props) {
-    const {ExamTimetable,editExamTimetable,viewExamTimetable,deleteExamTimetable} = props
+    const {ExamTimetable,editExamTimetable,viewExamTimetable,handleOpenDeleteAlert} = props
 
     return <div>
         <div id={'viewMain'}>
@@ -18,7 +18,7 @@ export default function ExamTimetableListHolder(props) {
                 </div>
                 <div className={'buttonDiv'}>
                     <IconButton aria-label="pageView" style={{backgroundColor:"transparent"}}
-                                onClick={() => deleteExamTimetable(ExamTimetable)}>
+                                onClick={() => handleOpenDeleteAlert(ExamTimetable)}>
                         <DeleteIcon/>
                     </IconButton>
                 </div>
