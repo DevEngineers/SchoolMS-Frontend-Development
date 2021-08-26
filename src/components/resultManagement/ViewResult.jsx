@@ -38,8 +38,8 @@ function ViewResult(props) {
                 <label id={'vYear'}>Year {year} - {term}</label>
             </div>
             <div id={'viewStudentDDiv'}>
-                <label id={'studentDID'}>StudentID:</label><br/>
-                <label id={'studentDID'}>Student Name:</label>
+                <label id={'studentDID'}>StudentID: ST0012</label><br/>
+                <label id={'studentDID'}>Student Name:Nimal Kumara</label>
             </div>
             <div id={'secondRViewDiv'}>
                 <div id={'ViewVResult'} >
