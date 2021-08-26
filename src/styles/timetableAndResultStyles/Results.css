@@ -13,6 +13,7 @@
     font-family: Georgia, "Times New Roman", Times, serif;
     margin-left: 350px;
     background-color: #f4f7f8;
+    margin-bottom: 100px;
 }
 
 #form-style-marksR{
@@ -212,5 +213,58 @@
     cursor: pointer;
 }
 
-/* ---------------------------------------------------------------------- */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+
+/**
+    Style for Generate Result Report
+ */
+
+#largeReportDiv{
+    width: 40%;
+    padding: 20px;
+    float:left;
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
+    font-family: Georgia, "Times New Roman", Times, serif;
+    margin-left: 440px;
+    background-color: #f4f7f8;
+    margin-bottom: 100px;
+}
+
+#form-style-report{
+    width: 731px;
+    padding: 15px;
+    float:left;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    margin-bottom: 3px;
+    margin-left: 8px;
+}
+
+#reportLabelDiv{
+    width: 110px;
+}
+
+.repLabel{
+    display: inline-block;
+    float: left;
+    padding: 12px;
+}
+
+#reportSelectOpt{
+    width: 300px;
+    margin-left: 160px;
+}
+
+.reportSize{
+    width: 80%;
+    padding-top: 3px;
+    padding-bottom: 5px;
+}
+
+.selectRepName{
+    font-size:14px;
+}
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 

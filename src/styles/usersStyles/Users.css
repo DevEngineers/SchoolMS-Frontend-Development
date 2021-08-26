@@ -13,6 +13,7 @@
     font-family: Georgia, "Times New Roman", Times, serif;
     margin-left: 440px;
     background-color: #f4f7f8;
+    margin-bottom: 100px;
 }
 
 #form-style-marksR{
@@ -229,4 +230,96 @@
     margin-top: 10px;
     display: inline-block;
     font-weight: bold;
+}
+
+/**
+ Style for ManageUserAccounts component
+*/
+
+#styled-table{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+#styled-table thead tr {
+    background-color: #BC4123;
+    color: #ffffff;
+    text-align: left;
+}
+
+#styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+#styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+#styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #BC4123;
+}
+
+#styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #BC4123;
+}
+
+#tblDiv{
+    margin-left: 50px;
+    padding-bottom: 50px;
+}
+
+.thUData {
+    width: 180px;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.thUDataBtn {
+    width: 400px;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.tdUData {
+    text-align: center;
+    padding: 5px;
+}
+
+.tdUDataBtn {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+/**
+    Style for UserProfile component
+*/
+
+#largeUserPDiv{
+    width: 40%;
+    padding: 20px;
+    float:left;
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
+    font-family: Georgia, "Times New Roman", Times, serif;
+    margin-left: 440px;
+    background-color: #f4f7f8;
+}
+
+#largeUserPBDiv{
+    width: 40%;
+    padding: 20px;
+    float:left;
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
+    font-family: Georgia, "Times New Roman", Times, serif;
+    margin-left: 440px;
+    background-color: #f4f7f8;
+    margin-bottom: 100px;
 }
