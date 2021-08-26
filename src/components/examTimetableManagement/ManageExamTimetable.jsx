@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
-import {TextField} from "@material-ui/core";
+import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField} from "@material-ui/core";
 import ExamTimetableListHolder from "./ExamTimetabelListHolder";
 import ExamTimetableService from "../../services/ExamTimetableService";
 import { useHistory } from "react-router-dom";
 import '../../styles/timetableAndResultStyles/CommonManage.css';
 import {toast, ToastContainer} from "material-react-toastify";
 import 'material-react-toastify/dist/ReactToastify.css';
+import Button from "@material-ui/core/Button";
 
 /**
  * @author : M.N.M Akeel
@@ -24,7 +25,25 @@ const options = {
 
 function ManageExamTimetable(props){
     const history = useHistory();
-    const [examTimetables,setExamTimetables] = useState([])
+    const [examTimetables,setExamTimetables] = useState([]);
+    const [open, setOpen] = useState(false);
+    const [deleteExamTimetableObj, setDeleteExamTimetableObj] = useState('');
+
+    /**
+     * handler to open the alter dialog box and setting up the
+     * relevant exam timetable that we going to remove in deleteExamTimetableObj state variable
+     */
+    const handleClickOpen = (examTimetable) => {
+        setOpen(true);
+        setDeleteExamTimetableObj(examTimetable);
+    };
+
+    /**
+     * handler to close the alter dialog box
+     */
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     useEffect(() =>{
         fetchExamTimetable().then();
@@ -50,15 +69,17 @@ function ManageExamTimetable(props){
         history.push(`/viewExamTimetable/${id}`);
     }
 
-    function deleteExamTimetable(examTimetable){
-        let id = examTimetable._id;
+    function deleteExamTimetable(){
+        let id = deleteExamTimetableObj._id;
         ExamTimetableService.removeExamTimetable(id)
             .then(res =>{
                 if(res.status === 200){
-                    toast.error("Exam Timetable is Removed",options)
-                    setTimeout(()=>{this.props.history.push("/manageExamTimetable")},3000)
+                    handleClose();
+                    toast.error("Exam Timetable is Removed",options);
+                    setTimeout(()=>{this.props.history.push("/manageExamTimetable")},3000);
                 }else{
-                    toast.warning("Something went wrong!!,Try again.",options)
+                    handleClose();
+                    toast.warning("Something went wrong!!,Try again.",options);
                 }
             })
     }
@@ -82,12 +103,27 @@ function ManageExamTimetable(props){
             </div>*/}
             {
                 examTimetables.map(examTimetable =>{
-                    return <ExamTimetableListHolder ExamTimetable={examTimetable} deleteExamTimetable={deleteExamTimetable}
+                    return <ExamTimetableListHolder ExamTimetable={examTimetable} handleOpenDeleteAlert={handleClickOpen}
                                             viewExamTimetable={viewExamTimetable} editExamTimetable={updateExamTimetable} />
                 })
             }
-
         </div>
+        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+            <DialogTitle id="form-dialog-title">Alert</DialogTitle>
+            <DialogContent>
+                <DialogContentText>
+                    Are you sure to remove this record
+                </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+                <Button onClick={handleClose} color="primary" style={{fontWeight:'bold'}}>
+                    Cancel
+                </Button>
+                <Button onClick={deleteExamTimetable} color="secondary" style={{fontWeight:'bold'}}>
+                    Proceed
+                </Button>
+            </DialogActions>
+        </Dialog>
     </div>
 }
 
