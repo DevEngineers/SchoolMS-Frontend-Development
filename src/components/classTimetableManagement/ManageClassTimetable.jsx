@@ -4,11 +4,24 @@ import ClassTimetableListHolder from "./ClassTimetableListHolder";
 import ClassTimetableService from "../../services/ClassTimetableService";
 import '../../styles/timetableAndResultStyles/CommonManage.css';
 import { useHistory } from "react-router-dom";
+import { ToastContainer, toast } from 'material-react-toastify';
+import 'material-react-toastify/dist/ReactToastify.css';
 
 /**
  * @author : M.N.M Akeel
  * Registration Number : IT19153414
  */
+
+//Toast Message Configuration
+const options = {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: false
+}
+
 
 
 function ManageClassTimetable(props){
@@ -40,9 +53,19 @@ function ManageClassTimetable(props){
 
     function deleteClassTimetable(classTimetable){
         let id = classTimetable._id;
+        ClassTimetableService.removeClassTimetable(id)
+            .then(res =>{
+                if(res.status === 200){
+                    toast.error("Class Timetable is Removed",options)
+                    setTimeout(()=>{this.props.history.push("/manageClassTimetable")},3000)
+                }else{
+                    toast.warning("Something went wrong!!,Try again.",options)
+                }
+            })
     }
 
     return <div>
+        <ToastContainer/>
         <div>
             <div className={'box'}>
                 <label className={'custom-underline'}>CLASS TIMETABLES</label>
@@ -64,13 +87,15 @@ function ManageClassTimetable(props){
                         }
                     })
                 })*/
+                /*<div>
+                    <label id={'headingLabel'}>{ClassTimetable.class.class}</label>
+                </div>*/
                 classTimetables.map(classTimetable =>{
                     return  <ClassTimetableListHolder key={classTimetable._id} ClassTimetable={classTimetable} deleteClassTimetable={deleteClassTimetable}
                                                       editClassTimetable={updateClassTimetable} viewClassTimetable={viewClassTimetable}/>
                 })
             }
         </div>
-
     </div>
 }
 
