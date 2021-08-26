@@ -86,7 +86,7 @@ function ManageResults(props){
                 })
             }
         </div>
-        </div>
+    </div>
 }
 
 export default ManageResults;
