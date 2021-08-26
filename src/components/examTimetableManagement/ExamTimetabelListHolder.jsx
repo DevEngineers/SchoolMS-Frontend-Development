@@ -10,9 +10,6 @@ export default function ExamTimetableListHolder(props) {
 
     return <div>
         <div id={'viewMain'}>
-            <div>
-                <label id={'headingLabel'}>{ExamTimetable.class.class}</label>
-            </div>
             <div id={'viewDiv'}>
                 <div id={'viewSmall'}>
                     <label>{ExamTimetable.class.class} Exam Timetable</label>
