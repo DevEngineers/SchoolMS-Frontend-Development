@@ -86,7 +86,6 @@ function ManageResults(props){
                 })
             }
         </div>
-        <div style={{height:'150px'}}/>
         </div>
 }
 
