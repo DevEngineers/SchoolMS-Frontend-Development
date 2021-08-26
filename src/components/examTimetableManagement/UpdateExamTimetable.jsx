@@ -155,7 +155,7 @@ class UpdateExamTimetable extends React.Component{
                 .then(res => {
                     if(res.status === 200){
                         toast.success("Exam Timetable Updated Successfully",options)
-                        setTimeout(()=>{this.props.history.push("/")},3000)
+                        setTimeout(()=>{this.props.history.push("/manageExamTimetable")},3000)
                     }else{
                         toast.error("Something went wrong!! Try again.",options)
                     }
