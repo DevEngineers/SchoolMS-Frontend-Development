@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
-import {TextField} from "@material-ui/core";
+import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField} from "@material-ui/core";
 import ClassTimetableListHolder from "./ClassTimetableListHolder";
 import ClassTimetableService from "../../services/ClassTimetableService";
 import '../../styles/timetableAndResultStyles/CommonManage.css';
 import { useHistory } from "react-router-dom";
 import { ToastContainer, toast } from 'material-react-toastify';
 import 'material-react-toastify/dist/ReactToastify.css';
+import Button from "@material-ui/core/Button";
 
 /**
  * @author : M.N.M Akeel
@@ -25,11 +26,32 @@ const options = {
 function ManageClassTimetable(props){
     const history = useHistory();
     const [classTimetables,setClassTimetables] = useState([]);
+    const [open, setOpen] = useState(false);
+    const [deleteClassTimetableObj, setDeleteClassTimetableObj] = useState('');
+
+    /**
+     * handler to open the alter dialog box and setting up the
+     * relevant class timetable that we going to remove in deleteClassTimetableObj state variable
+     */
+    const handleClickOpen = (classTimetable) => {
+        setOpen(true);
+        setDeleteClassTimetableObj(classTimetable);
+    };
+
+    /**
+     * handler to close the alter dialog box
+     */
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     useEffect(() =>{
         fetchClassTimetable().then();
     },[]);
 
+    /**
+     * fetching exam timetable form database
+     */
     async function fetchClassTimetable(){
         await ClassTimetableService.getClassTimetable()
             .then(classTimetable =>{
@@ -49,14 +71,16 @@ function ManageClassTimetable(props){
         history.push(`/viewClassTimetable/${id}`);
     }
 
-    function deleteClassTimetable(classTimetable){
-        let id = classTimetable._id;
+    function deleteClassTimetable(){
+        let id = deleteClassTimetableObj._id;
         ClassTimetableService.removeClassTimetable(id)
             .then(res =>{
                 if(res.status === 200){
+                    handleClose();
                     toast.error("Class Timetable is Removed",options)
-                    setTimeout(()=>{this.props.history.push("/manageClassTimetable")},3000)
+                    setTimeout(()=>{history.push("/manageClassTimetable")},2000)
                 }else{
+                    handleClose();
                     toast.warning("Something went wrong!!,Try again.",options)
                 }
             })
@@ -89,11 +113,27 @@ function ManageClassTimetable(props){
                     <label id={'headingLabel'}>{ClassTimetable.class.class}</label>
                 </div>*/
                 classTimetables.map(classTimetable =>{
-                    return  <ClassTimetableListHolder key={classTimetable._id} ClassTimetable={classTimetable} deleteClassTimetable={deleteClassTimetable}
+                    return  <ClassTimetableListHolder key={classTimetable._id} ClassTimetable={classTimetable} handleOpenDeleteAlert={handleClickOpen}
                                                       editClassTimetable={updateClassTimetable} viewClassTimetable={viewClassTimetable}/>
                 })
             }
         </div>
+        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+            <DialogTitle id="form-dialog-title">Alert</DialogTitle>
+            <DialogContent>
+                <DialogContentText>
+                    Are you sure to remove this record
+                </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+                <Button onClick={handleClose} color="primary" style={{fontWeight:'bold'}}>
+                    Cancel
+                </Button>
+                <Button onClick={deleteClassTimetable} color="secondary" style={{fontWeight:'bold'}}>
+                    Proceed
+                </Button>
+            </DialogActions>
+        </Dialog>
     </div>
 }
 
