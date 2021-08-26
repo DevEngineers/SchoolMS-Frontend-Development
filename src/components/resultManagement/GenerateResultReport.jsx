@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Container, MenuItem, TextField} from "@material-ui/core";
 import Select from "@material-ui/core/Select";
-
+import '../../styles/timetableAndResultStyles/Results.css';
 
 function GenerateResultReport(props) {
     const [sClass,setSClass] = useState('')
@@ -29,20 +29,20 @@ function GenerateResultReport(props) {
                 <label className={'custom-underline'}>GENERATE STUDENT RESULTS REPORT</label>
             </div>
         </div>
-        <div id={'largeUserDiv'}>
+        <div id={'largeReportDiv'}>
             <form>
-                <Container id={'form-style-user'}>
-                    <div id={'userLabelEDiv'}>
-                        <label className={'classULabel'}>Class</label>
-                        <label className={'classULabel'}>Class Type</label>
-                        <label className={'classULabel'}>Student ID</label>
-                        <label className={'classULabel'}>Year</label>
-                        <label className={'classULabel'}>Term</label>
+                <Container id={'form-style-report'}>
+                    <div id={'reportLabelDiv'}>
+                        <label className={'repLabel'}>Class</label>
+                        <label className={'repLabel'}>Class Type</label>
+                        <label className={'repLabel'}>Student ID</label>
+                        <label className={'repLabel'}>Year</label>
+                        <label className={'repLabel'}>Term</label>
                     </div>
-                    <div id={'userSelectOpt'}>
+                    <div id={'reportSelectOpt'}>
                         <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'smBranch'}
-                                className={'userSize'} onChange={(event) => onChange(event)} displayEmpty>
-                            <MenuItem value={''}><span className={'selectUName'}>Select Class</span></MenuItem>
+                                className={'reportSize'} onChange={(event) => onChange(event)} displayEmpty>
+                            <MenuItem value={''}><span className={'selectRepName'}>Select Class</span></MenuItem>
                             {
                                /* this.state.sBranch.map(branch =>
                                     <MenuItem key={branch} value={branch} className={'selectUName'}>{branch}</MenuItem>
@@ -50,8 +50,8 @@ function GenerateResultReport(props) {
                             }
                         </Select>
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'uType'}
-                                    className={'userSize'} onChange={(event) => onChange(event)} displayEmpty>
-                                <MenuItem value={''}><span className={'selectUName'}>Select Account Type</span></MenuItem>
+                                    className={'reportSize'} onChange={(event) => onChange(event)} displayEmpty>
+                                <MenuItem value={''}><span className={'selectRepName'}>Select Account Type</span></MenuItem>
                                 {
                                     /*this.state.userType.map(type =>
                                         <MenuItem key={type} value={type}><span className={'selectUName'}>{type}</span></MenuItem>
@@ -60,8 +60,8 @@ function GenerateResultReport(props) {
                             </Select>
 
                             <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'uType'}
-                                    className={'userSize'} onChange={(event) => onChange(event)} displayEmpty>
-                                <MenuItem value={''}><span className={'selectUName'}>Select Account Type</span></MenuItem>
+                                    className={'reportSize'} onChange={(event) => onChange(event)} displayEmpty>
+                                <MenuItem value={''}><span className={'selectRepName'}>Select Account Type</span></MenuItem>
                                 {
                                     /*this.state.userType.map(type =>
                                         <MenuItem key={type} value={type}><span className={'selectUName'}>{type}</span></MenuItem>
@@ -69,8 +69,8 @@ function GenerateResultReport(props) {
                                 }
                             </Select>
                         <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'uType'}
-                                className={'userSize'} onChange={(event) => onChange(event)} displayEmpty>
-                            <MenuItem value={''}><span className={'selectUName'}>Select Account Type</span></MenuItem>
+                                className={'reportSize'} onChange={(event) => onChange(event)} displayEmpty>
+                            <MenuItem value={''}><span className={'selectRepName'}>Select Account Type</span></MenuItem>
                             {
                                 /*this.state.userType.map(type =>
                                     <MenuItem key={type} value={type}><span className={'selectUName'}>{type}</span></MenuItem>
@@ -78,8 +78,8 @@ function GenerateResultReport(props) {
                             }
                         </Select>
                         <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'uType'}
-                                className={'userSize'} onChange={(event) => onChange(event)} displayEmpty>
-                            <MenuItem value={''}><span className={'selectUName'}>Select Account Type</span></MenuItem>
+                                className={'reportSize'} onChange={(event) => onChange(event)} displayEmpty>
+                            <MenuItem value={''}><span className={'selectRepName'}>Select Account Type</span></MenuItem>
                             {
                                 /*this.state.userType.map(type =>
                                     <MenuItem key={type} value={type}><span className={'selectUName'}>{type}</span></MenuItem>
