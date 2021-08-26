@@ -170,7 +170,6 @@ function ViewClassTimetable(props) {
                         </div>
                     )
                 }
-
             </div>
         </div>
         </div>
