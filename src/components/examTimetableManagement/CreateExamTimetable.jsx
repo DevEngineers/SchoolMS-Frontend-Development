@@ -283,8 +283,6 @@ class CreateExamTimetable extends React.Component{
                                                 <AddIcon className={'timeslotIconEA'} />
                                             </IconButton>
                                         </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -292,7 +290,6 @@ class CreateExamTimetable extends React.Component{
                         <input type={'submit'} id={'submitEBtn'} value={'Generate Timetable'} onClick={this.generateExamTimetable.bind(this)}/>
                         <input type={'reset'} id={'restEBtn'} value={'Reset'} onClick={this.restAllValuesInForm.bind(this)}/>
                     </div>
-
                 </form>
             </div>
         </div>
