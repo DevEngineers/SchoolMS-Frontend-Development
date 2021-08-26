@@ -120,8 +120,8 @@
 }
 
 .textFieldAc{
-    margin-top: 8px;
-    margin-bottom: 8px;
+    margin-top: 2px;
+    margin-bottom: 16px;
 }
 
 
@@ -195,42 +195,6 @@
 }
 
 /* ------------------------------------------------------------- */
-
-#userPro{
-    width: 300px;
-    margin-left: 165px;
-}
-
-.UpLabel{
-    display: inline-block;
-    float: left;
-    padding: 15px;
-}
-
-.upValLabel {
-    display: inline-block;
-    padding-top: 22px;
-    padding-bottom: 10px;
-}
-
-#passwordHDiv{
-    width: 40%;
-    padding: 30px 0 30px 0;
-    float:left;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    margin-left: 440px;
-}
-
-#userProLabelDiv{
-    width: 180px;
-}
-
-#passHLabel{
-    font-size: 20px;
-    margin-top: 10px;
-    display: inline-block;
-    font-weight: bold;
-}
 
 /**
  Style for ManageUserAccounts component
@@ -313,6 +277,16 @@
     background-color: #f4f7f8;
 }
 
+#form-style-userProfile{
+    width: 731px;
+    padding: 15px;
+    float:left;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    margin-bottom: 3px;
+    margin-top: -30px;
+    margin-left: 8px;
+}
+
 #largeUserPBDiv{
     width: 40%;
     padding: 20px;
@@ -322,4 +296,72 @@
     margin-left: 440px;
     background-color: #f4f7f8;
     margin-bottom: 100px;
+}
+
+#viewDeUpDiv{
+    width: 150px;
+}
+
+.upVal2Label {
+    display: inline-block;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#uPEdit{
+    margin-left: 570px;
+    margin-top: -10px;
+}
+
+#uPEditBtn{
+    width: 200px;
+    margin-left: 260px;
+}
+
+#uPEditPBtn{
+    width: 200px;
+    margin-left: 240px;
+}
+
+#userPro{
+    width: 300px;
+    margin-left: 165px;
+}
+
+.UpLabel{
+    display: inline-block;
+    float: left;
+    padding: 15px;
+    font-weight: bold;
+}
+
+.UpPLabel{
+    display: inline-block;
+    float: left;
+    padding: 15px;
+}
+
+.upValLabel {
+    display: inline-block;
+    padding-top: 12px;
+    padding-bottom: 18px;
+}
+
+#passwordHDiv{
+    width: 40%;
+    padding: 30px 0 30px 0;
+    float:left;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    margin-left: 440px;
+}
+
+#userProLabelDiv{
+    width: 180px;
+}
+
+#passHLabel{
+    font-size: 20px;
+    margin-top: 10px;
+    display: inline-block;
+    font-weight: bold;
 }
