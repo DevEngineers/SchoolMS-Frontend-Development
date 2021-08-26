@@ -167,7 +167,7 @@ class CreateExamTimetable extends React.Component{
                 .then(res => {
                     if (res.status === 200) {
                         toast.success("Exam Timetable Generated Successfully", options)
-                        setTimeout(()=>{this.props.history.push("/")},3000)
+                        setTimeout(()=>{this.props.history.push("/manageExamTimetable")},3000)
                     } else {
                         throw Error('Something went wrong!! Try again.');
                     }
@@ -241,9 +241,9 @@ class CreateExamTimetable extends React.Component{
                             {
                                 this.state.startSlot.map((el,i) =>
                                     <div key={i}>
-                                        <TextField type="time" value={el||''} disabled={this.state.checkedTimeSlot === true} onChange={this.handleChangeOnStartSlot.bind(this,i)}/>
+                                        <TextField type="time" value={el||''} onChange={this.handleChangeOnStartSlot.bind(this,i)}/>
                                         <label id={'timeID'}> to </label>
-                                        <TextField  type="time" value={this.state.endSlot[i] || ''} disabled={this.state.checkedTimeSlot === true} onChange={this.handleChangeOnEndSlot.bind(this,i)}/>
+                                        <TextField  type="time" value={this.state.endSlot[i] || ''} onChange={this.handleChangeOnEndSlot.bind(this,i)}/>
                                     </div>
                                 )
                             }
