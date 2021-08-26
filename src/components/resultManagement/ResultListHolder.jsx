@@ -7,7 +7,7 @@ import '../../styles/timetableAndResultStyles/CommonManage.css';
 
 
 export default function ResultListHolder(props) {
-    const {Result,editResult,viewResult,deleteResult} = props
+    const {Result,editResult,viewResult,handleOpenDeleteAlert} = props
 
     return <div>
         <div id={'viewMain'}>
@@ -19,7 +19,7 @@ export default function ResultListHolder(props) {
                 </div>
                 <div className={'buttonDiv'}>
                     <IconButton aria-label="pageView" style={{backgroundColor:"transparent"}}
-                                onClick={() => deleteResult(Result)}>
+                                onClick={() => handleOpenDeleteAlert(Result)}>
                         <DeleteIcon/>
                     </IconButton>
                 </div>
