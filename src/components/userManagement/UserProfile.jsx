@@ -1,6 +1,9 @@
 import React, {useState} from "react";
-import {Container, MenuItem, TextField} from "@material-ui/core";
+import {Container, IconButton, MenuItem, TextField} from "@material-ui/core";
 import '../../styles/usersStyles/Users.css';
+import EditIcon from "@material-ui/icons/Edit";
+import CloseIcon from '@material-ui/icons/Close';
+import Button from "@material-ui/core/Button";
 
 /**
  * @author : M.N.M Akeel
@@ -11,7 +14,14 @@ import '../../styles/usersStyles/Users.css';
 function UserProfile() {
     const [email,setEmail] = useState('');
     const [username,setUsername] = useState('');
+    const [password,setPassword] = useState('');
     const [branch,setBranch] = useState('');
+    const [enableEdit,setEnableEdit] = useState(false)
+
+
+    function enableEditFunction(value){
+        setEnableEdit(value)
+    }
 
     return <div>
         <div>
@@ -21,7 +31,22 @@ function UserProfile() {
         </div>
         <div id={'largeUserPDiv'}>
             <form>
-                <Container id={'form-style-user'}>
+                {
+                    enableEdit === false?(
+                        <div id={'uPEdit'}>
+                            <IconButton aria-label="edit" style={{backgroundColor:"transparent"}} onClick={() => enableEditFunction(true)}>
+                                <EditIcon/>
+                            </IconButton>
+                        </div>
+                    ):(
+                        <div id={'uPEdit'}>
+                            <IconButton aria-label="edit" style={{backgroundColor:"transparent"}} onClick={() => enableEditFunction(false)}>
+                                <CloseIcon/>
+                            </IconButton>
+                        </div>
+                    )
+                }
+                <Container id={'form-style-userProfile'}>
                     <div id={'userLabelEDiv'}>
                         <label className={'UpLabel'}>Username</label>
                         <label className={'UpLabel'}>Email</label>
@@ -29,14 +54,34 @@ function UserProfile() {
                         <label className={'UpLabel'}>Account Type</label>
                     </div>
                     <div id={'userPro'}>
-                        <div className={'textFieldAc'}>
-                            <TextField type={'password'} className={'userSize'}  name={'username'} value={username}/>
-                        </div>
-                        <div className={'textFieldAc'}>
-                            <TextField type={'password'} className={'userSize'}  name={'email'} value={email}/>
-                        </div>
-                            <label className={'upValLabel'}>Colombo</label><br/>
-                            <label className={'upValLabel'}>Administration Staff</label>
+                        {
+                            enableEdit === true?(
+                                <div>
+                                    <div className={'textFieldAc'}>
+                                        <TextField type={'text'} className={'userSize'}  name={'username'} value={username}
+                                                   onChange={event => setUsername(event.target.value)}/>
+                                    </div>
+                                    <div className={'textFieldAc'}>
+                                        <TextField type={'text'} className={'userSize'}  name={'email'} value={email}
+                                                   onChange={event => setEmail(event.target.value)}/>
+                                    </div>
+                                    <label className={'upValLabel'}>Colombo</label><br/>
+                                    <label className={'upValLabel'}>Administration Staff</label>
+                                    <div id={'uPEditBtn'}>
+                                        <Button variant="contained" color="secondary" style={{backgroundColor:'#36988c'}}>
+                                            Update Profile
+                                        </Button>
+                                    </div>
+                                </div>
+                            ):(
+                                <div id={'viewDeUpDiv'}>
+                                    <label className={'upVal2Label'}>Saman Kuamra</label>
+                                    <label className={'upVal2Label'}>Saman@gmail.com</label>
+                                    <label className={'upVal2Label'}>Colombo</label>
+                                    <label className={'upVal2Label'}>Administration Staff</label>
+                                </div>
+                            )
+                        }
                     </div>
                 </Container>
             </form>
@@ -48,15 +93,20 @@ function UserProfile() {
             <form>
                 <Container id={'form-style-user'}>
                     <div id={'userProLabelDiv'}>
-                        <label className={'UpLabel'}>New Password</label>
-                        <label className={'UpLabel'}>Re-enter Password</label>
+                        <label className={'UpPLabel'}>New Password</label>
+                        <label className={'UpPLabel'}>Re-enter Password</label>
                     </div>
                     <div id={'userPro'}>
                         <div className={'textFieldAc'}>
-                            <TextField type={'password'} className={'userSize'}  name={'username'} value={username}/>
+                            <TextField type={'password'} className={'userSize'}  name={'password'} onChange={event => setPassword(event.target.value)} value={password}/>
                         </div>
                         <div className={'textFieldAc'}>
-                            <TextField type={'password'} className={'userSize'}  name={'email'} value={email}/>
+                            <TextField type={'password'} className={'userSize'}  name={'rePassword'}/>
+                        </div>
+                        <div id={'uPEditPBtn'}>
+                            <Button variant="contained" color="secondary" style={{backgroundColor:'#36988c'}}>
+                                Update Password
+                            </Button>
                         </div>
                     </div>
                 </Container>
