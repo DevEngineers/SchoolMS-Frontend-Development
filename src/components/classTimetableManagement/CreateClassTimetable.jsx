@@ -245,8 +245,7 @@ class CreateClassTimetable extends React.Component{
             friday: this.state.friday
         }
 
-        console.log(classTimetable)
-        /*if(classTimetable.class === ''){
+        if(classTimetable.class === ''){
             toast.warn('Select the Class',options)
         }else if(classTimetable.classType === ''){
             toast.warn('Select the Class Type',options)
@@ -267,20 +266,19 @@ class CreateClassTimetable extends React.Component{
                 .then(res => {
                     if (res.status === 200) {
                         toast.success("Class Timetable Generated Successfully", options)
-                        setTimeout(()=>{this.props.history.push("/")},3000)
+                        setTimeout(()=>{this.props.history.push("/manageClassTimetable")},3000)
                     } else {
-                        throw Error('Something went wrong!! Try again.' + res);
+                        throw Error('Something went wrong!! Try again.');
                     }
                 })
                 .catch((error) => {
                     toast.error(error.message, options)
                 })
-        }*/
+        }
     }
 
 
     render() {
-        console.log(this.state.sClassType)
         return <div>
             <ToastContainer/>
             <div>
@@ -302,7 +300,7 @@ class CreateClassTimetable extends React.Component{
                                 <MenuItem value={''}><span className={'selectCName'}>Select Class</span></MenuItem>
                                 {
                                     this.state.classes.map(classes =>
-                                            <MenuItem key={classes} value={classes}>{classes}</MenuItem>
+                                            <MenuItem key={classes._id} value={classes}>{classes.class}</MenuItem>
                                     )
                                 }
                             </Select>
