@@ -19,7 +19,7 @@ function UserProfile() {
                 <label className={'custom-underline'}>USER PROFILE</label>
             </div>
         </div>
-        <div id={'largeUserDiv'}>
+        <div id={'largeUserPDiv'}>
             <form>
                 <Container id={'form-style-user'}>
                     <div id={'userLabelEDiv'}>
@@ -44,7 +44,7 @@ function UserProfile() {
         <div id={'passwordHDiv'}>
             <label id={'passHLabel'}>Change Password</label>
         </div>
-        <div id={'largeUserDiv'}>
+        <div id={'largeUserPBDiv'}>
             <form>
                 <Container id={'form-style-user'}>
                     <div id={'userProLabelDiv'}>
@@ -62,6 +62,7 @@ function UserProfile() {
                 </Container>
             </form>
         </div>
+        <br/>
     </div>
 }
 
