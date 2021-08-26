@@ -22,8 +22,6 @@ const options = {
     draggable: false
 }
 
-
-
 function ManageClassTimetable(props){
     const history = useHistory();
     const [classTimetables,setClassTimetables] = useState([]);

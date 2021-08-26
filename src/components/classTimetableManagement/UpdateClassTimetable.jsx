@@ -253,7 +253,6 @@ class UpdateClassTimetable extends React.Component{
 
 
     render() {
-        console.log(this.state.sClassType)
         return <div>
             <ToastContainer/>
             <div>
@@ -326,7 +325,6 @@ class UpdateClassTimetable extends React.Component{
                                                 {
                                                     (this.state.startSlot.length - 1) === i ?(
                                                         (this.state.checkedTimeSlot === false)?(
-                                                            /*<input type='button' value='-' onClick={this.removeClick.bind(this, i)}/>*/
                                                             <div className={'timeslotIcon'}>
                                                                 <IconButton aria-label="delete" style={{backgroundColor:"transparent"}} onClick={this.removeClick.bind(this, i)}>
                                                                     <DeleteIcon className={'timeslotIconB'}/>
@@ -343,7 +341,6 @@ class UpdateClassTimetable extends React.Component{
                         }
                         {
                             (this.state.checkedTimeSlot === false)?(
-                                /* <input type='button' value='Add' onClick={this.addClickOnSlot.bind(this)}/>*/
                                 <div className={'timeslotIcon'}>
                                     <IconButton aria-label="add" style={{backgroundColor:"transparent"}} onClick={this.addClickOnSlot.bind(this)}>
                                         <AddIcon className={'timeslotIconA'}/>
@@ -484,10 +481,7 @@ class UpdateClassTimetable extends React.Component{
                                     </div>
                                 )
                             }
-                            {/**
-                             * This should be a icon and it should be in bottom of all the days
-                             */
-
+                            {
                                 this.state.friday.map((el, i) =>
                                     (this.state.friday.length - 1) === i ?(
                                         (this.state.checkedSubject === false)?(
@@ -511,14 +505,12 @@ class UpdateClassTimetable extends React.Component{
                                     </div>
                                 ):null
                             }
-
                         </div>
                     </div>
                     <div className={'btnDiv'}>
                         <input type={'submit'} id={'submitBtn'} value={'Update Timetable'} onClick={this.updateClassTimetable.bind(this)}/>
                         <input type={'reset'} id={'restBtn'} value={'Cancel'} />
                     </div>
-
                 </form>
             </div>
         </div>
