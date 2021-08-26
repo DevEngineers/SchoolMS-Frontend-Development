@@ -383,7 +383,6 @@ class CreateClassTimetable extends React.Component{
                         }
                         {
                             (this.state.checkedTimeSlot === false)?(
-                               /* <input type='button' value='Add' onClick={this.addClickOnSlot.bind(this)}/>*/
                                 <div className={'timeslotIcon'}>
                                     <IconButton aria-label="add" style={{backgroundColor:"transparent"}} onClick={this.addClickOnSlot.bind(this)}>
                                         <AddIcon className={'timeslotIconA'}/>
@@ -518,10 +517,7 @@ class CreateClassTimetable extends React.Component{
                                     </div>
                                 )
                             }
-                            {/**
-                             * This should be a icon and it should be in bottom of all the days
-                             */
-
+                            {
                                 this.state.friday.map((el, i) =>
                                     (this.state.friday.length - 1) === i ?(
                                         (this.state.checkedSubject === false)?(
@@ -530,7 +526,6 @@ class CreateClassTimetable extends React.Component{
                                                         <DeleteIcon className={'timeslotIconSB'} />
                                                     </IconButton>
                                                 </div>
-                                            /*<input type='button' value='-'  className={'delSub'} onClick={this.removeClickOnDay.bind(this, i)}/>*/
                                         ):null
                                     ):null
                                 )
