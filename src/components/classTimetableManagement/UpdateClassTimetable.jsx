@@ -58,6 +58,7 @@ class UpdateClassTimetable extends React.Component{
                     sClassType:res.classType,
                     year:res.year,
                     startSlot:res.startSlot,
+                    endSlot:res.endSlot,
                     monday:res.monday,
                     tuesday:res.tuesday,
                     wednesday:res.wednesday,
@@ -242,7 +243,7 @@ class UpdateClassTimetable extends React.Component{
                 .then(res => {
                     if(res.status === 200){
                         toast.success("Class Timetable Updated Successfully",options)
-                        setTimeout(()=>{this.props.history.push("/")},3000)
+                        setTimeout(()=>{this.props.history.push("/manageClassTimetable")},3000)
                     }else{
                         toast.error("Something went wrong!! Try again.",options)
                     }
