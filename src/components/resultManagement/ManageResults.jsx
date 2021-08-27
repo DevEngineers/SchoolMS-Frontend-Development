@@ -1,5 +1,14 @@
 import React, {useEffect, useState} from "react";
-import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField} from "@material-ui/core";
+import {
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
+    FormControl,
+    MenuItem,
+    TextField
+} from "@material-ui/core";
 import '../../styles/timetableAndResultStyles/CommonManage.css';
 import ResultListHolder from "./ResultListHolder";
 import ResultService from "../../services/ResultService";
@@ -7,6 +16,7 @@ import {useHistory} from "react-router-dom";
 import {toast, ToastContainer} from "material-react-toastify";
 import 'material-react-toastify/dist/ReactToastify.css';
 import Button from "@material-ui/core/Button";
+import Select from "@material-ui/core/Select";
 
 /**
  * @author : M.N.M Akeel
@@ -28,6 +38,7 @@ function ManageResults(props){
     const [results,setResults] = useState([]);
     const [open, setOpen] = useState(false);
     const [deleteResultObj, setDeleteResultObj] = useState('');
+    const [searchType,setSearchType] = useState('')
 
     /**
      * handler to open the alter dialog box and setting up the
@@ -76,7 +87,7 @@ function ManageResults(props){
                 if(res.status === 200){
                     handleClose();
                     toast.error("Student Result is Removed",options)
-                    setTimeout(()=>{this.props.history.push("/manageResults")},3000)
+                    setTimeout(()=>{history.push("/manageResults")},3000)
                 }else{
                     handleClose();
                     toast.warning("Something went wrong!!,Try again.",options)
@@ -91,9 +102,24 @@ function ManageResults(props){
             </div>
         </div>
         <div>
-            <div id={'searchDiv'}>
-                <TextField type={'text'}  id={'searchInput'} variant="outlined"/>
-                <input type={'submit'} value={'Search'} id={'searchBtn'}/>
+            <div id={'searchResultDiv'}>
+                <div id={'searchTxtMRDiv'}>
+                    <TextField type={'text'}  id={'searchInputResult'} variant="outlined"/>
+                </div>
+                <div id={'searchTypeDiv'}>
+                    <FormControl variant="outlined">
+                        <Select labelId="demo-simple-select-outlined-label" id="demo-simple-select-outlined" className={'seTypeSel'} name={'searchType'} value={searchType}
+                                onChange={event => setSearchType(event.target.value)} displayEmpty>
+                            <MenuItem value={''}><span className={'selectRName'}>Select Search Type</span></MenuItem>
+                            <MenuItem value={'class'}><span className={'selectRName'}>Class</span></MenuItem>
+                            <MenuItem value={'studentName'}><span className={'selectRName'}>Student Name</span></MenuItem>
+                            <MenuItem value={'studentID'}><span className={'selectRName'}>Student ID</span></MenuItem>
+                        </Select>
+                    </FormControl>
+                </div>
+                <div id={'searchBtnMRDiv'}>
+                    <input type={'submit'} value={'Search'} id={'searchRBtn'}/>
+                </div>
             </div>
         </div>
         <div>
@@ -101,12 +127,12 @@ function ManageResults(props){
                 <label id={'headingLabel'}>Student ID: ST0012</label><br/>
                 <label id={'headingLabel'}>Student Name: Nimal Kumara </label>
             </div>*/}
-            {
+            {/*{
                 results.map(result =>{
                     return <ResultListHolder key={result._id} Result={result} handleOpenDeleteAlert={handleClickOpen}
                                              viewResult={viewResult} editResult={updateResult}/>
                 })
-            }
+            }*/}
         </div>
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
             <DialogTitle id="form-dialog-title">Alert</DialogTitle>
