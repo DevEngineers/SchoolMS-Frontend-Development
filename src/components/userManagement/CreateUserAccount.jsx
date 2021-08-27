@@ -32,7 +32,7 @@ class CreateUserAccount extends React.Component{
             uType:'',
             password:'',
             rePassword:'',
-            sBranch:[],
+            sBranch:['Kandy','Colombo'],
             userType:['Administrative Staff', 'Examination Staff'],
         }
     }
@@ -102,30 +102,34 @@ class CreateUserAccount extends React.Component{
                             <label className={'classULabel'}>Renter-Password</label>
                         </div>
                         <div id={'userSelectOpt'}>
-                            <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'smBranch'} value={this.state.smBranch}
-                                    className={'userSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem value={''}><span className={'selectUName'}>Select Branch</span></MenuItem>
-                                {
-                                    this.state.sBranch.map(branch =>
-                                        <MenuItem key={branch} value={branch} className={'selectUName'}>{branch}</MenuItem>
-                                    )
-                                }
-                            </Select>
                             <div className={'textFieldAc'}>
-                                <TextField type={'password'} className={'userSize'}  name={'username'} value={this.state.username} onChange={event => this.onChange(event)}/>
+                                <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'smBranch'} value={this.state.smBranch}
+                                        className={'userSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                    <MenuItem value={''}><span className={'selectUName'}>Select Branch</span></MenuItem>
+                                    {
+                                        this.state.sBranch.map(branch =>
+                                            <MenuItem key={branch} value={branch} className={'selectUName'}><span className={'selectUName'}>{branch}</span></MenuItem>
+                                        )
+                                    }
+                                </Select>
                             </div>
                             <div className={'textFieldAc'}>
-                                <TextField type={'password'} className={'userSize'}  name={'email'} value={this.state.email} onChange={event => this.onChange(event)}/>
+                                <TextField type={'text'} className={'userSize'}  name={'username'} value={this.state.username} onChange={event => this.onChange(event)}/>
                             </div>
-                            <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'uType'} value={this.state.uType}
-                                    className={'userSize'} onChange={event => this.onChange(event)} displayEmpty>
-                                <MenuItem value={''}><span className={'selectUName'}>Select Account Type</span></MenuItem>
-                                {
-                                    this.state.userType.map(type =>
-                                        <MenuItem key={type} value={type}><span className={'selectUName'}>{type}</span></MenuItem>
-                                    )
-                                }
-                            </Select>
+                            <div className={'textFieldAc'}>
+                                <TextField type={'text'} className={'userSize'}  name={'email'} value={this.state.email} onChange={event => this.onChange(event)}/>
+                            </div>
+                            <div className={'textFieldAc'}>
+                                <Select labelId="demo-simple-select-label" id="demo-simple-select" name={'uType'} value={this.state.uType}
+                                        className={'userSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                    <MenuItem value={''}><span className={'selectUName'}>Select Account Type</span></MenuItem>
+                                    {
+                                        this.state.userType.map(type =>
+                                            <MenuItem key={type} value={type}><span className={'selectUName'}>{type}</span></MenuItem>
+                                        )
+                                    }
+                                </Select>
+                            </div>
                             <div className={'textFieldAc'}>
                                 <TextField type={'password'} className={'userSize'} name={'password'} value={this.state.password}  onChange={event => this.onChange(event)}/>
                             </div>
