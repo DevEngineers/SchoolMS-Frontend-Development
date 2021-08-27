@@ -127,12 +127,12 @@ function ManageResults(props){
                 <label id={'headingLabel'}>Student ID: ST0012</label><br/>
                 <label id={'headingLabel'}>Student Name: Nimal Kumara </label>
             </div>*/}
-            {/*{
+            {
                 results.map(result =>{
                     return <ResultListHolder key={result._id} Result={result} handleOpenDeleteAlert={handleClickOpen}
                                              viewResult={viewResult} editResult={updateResult}/>
                 })
-            }*/}
+            }
         </div>
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
             <DialogTitle id="form-dialog-title">Alert</DialogTitle>
