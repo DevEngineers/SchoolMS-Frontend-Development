@@ -16,6 +16,11 @@
     width: 900px;
 }
 
+#searchInputResult{
+    padding: 10px;
+    width: 750px;
+}
+
 #searchBtn{
     position: relative;
     display: block;
@@ -76,4 +81,59 @@
 #termLabel{
     margin-left: 80px;
 }
-/* ---------------------------------------------------------------------- */
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+/**
+    For ManageResults Component
+ */
+
+#searchResultDiv{
+    padding: 20px;
+    margin-left: 150px;
+}
+
+
+#searchTypeDiv{
+    width: 100px;
+    float: left;
+    margin-right:105px;
+    margin-top: 5px;
+}
+
+#searchRBtn{
+    position: relative;
+    display: block;
+    padding: 10px 5px 10px 5px;
+    color: #FFF;
+    background: #36988c;
+    font-size: 16px;
+    font-style: normal;
+    width: 80%;
+    border: 1px solid #36988c;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+#searchRBtn:hover{
+    background: #359083;
+    cursor: pointer;
+}
+
+#searchTxtMRDiv{
+    width: 780px;
+    float:left;
+}
+
+#searchBtnMRDiv{
+    width: 200px;
+    float: left;
+}
+
+.seTypeSel{
+    width: 200px;
+    height: 40px;
+    margin-top: -5px;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
