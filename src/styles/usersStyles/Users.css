@@ -100,13 +100,13 @@
 }
 
 #userLabelEDiv{
-    width: 150px;
+    width: 160px;
 }
 
 .classULabel{
     display: inline-block;
     float: left;
-    padding: 12px;
+    padding: 13px;
 }
 
 #userSelectOpt{
@@ -116,12 +116,11 @@
 
 .userSize{
     width: 80%;
-    margin-top: 5px;
 }
 
 .textFieldAc{
-    margin-top: 2px;
-    margin-bottom: 16px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 
@@ -326,6 +325,11 @@
 #userPro{
     width: 300px;
     margin-left: 165px;
+}
+
+.textFieldUp{
+    margin-top: 2px;
+    margin-bottom: 16px;
 }
 
 .UpLabel{
