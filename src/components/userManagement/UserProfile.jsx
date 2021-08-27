@@ -57,11 +57,11 @@ function UserProfile() {
                         {
                             enableEdit === true?(
                                 <div>
-                                    <div className={'textFieldAc'}>
+                                    <div className={'textFieldUp'}>
                                         <TextField type={'text'} className={'userSize'}  name={'username'} value={username}
                                                    onChange={event => setUsername(event.target.value)}/>
                                     </div>
-                                    <div className={'textFieldAc'}>
+                                    <div className={'textFieldUp'}>
                                         <TextField type={'text'} className={'userSize'}  name={'email'} value={email}
                                                    onChange={event => setEmail(event.target.value)}/>
                                     </div>
@@ -97,10 +97,10 @@ function UserProfile() {
                         <label className={'UpPLabel'}>Re-enter Password</label>
                     </div>
                     <div id={'userPro'}>
-                        <div className={'textFieldAc'}>
+                        <div className={'textFieldUp'}>
                             <TextField type={'password'} className={'userSize'}  name={'password'} onChange={event => setPassword(event.target.value)} value={password}/>
                         </div>
-                        <div className={'textFieldAc'}>
+                        <div className={'textFieldUp'}>
                             <TextField type={'password'} className={'userSize'}  name={'rePassword'}/>
                         </div>
                         <div id={'uPEditPBtn'}>
