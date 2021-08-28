@@ -1,0 +1,371 @@
+/*
+**************************************************************
+  @author :Akeel M.N.M
+  Registration Number : IT19153414
+************************************************************
+*/
+
+#largeUserDiv{
+    width: 40%;
+    padding: 20px;
+    float:left;
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
+    font-family: Georgia, "Times New Roman", Times, serif;
+    margin-left: 440px;
+    background-color: #f4f7f8;
+    margin-bottom: 100px;
+}
+
+#form-style-marksR{
+    max-width: 270px;
+    padding: 20px;
+    float:left;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+
+#form-style-result{
+    width: 200px;
+    padding: 20px;
+    float: left;
+    margin-left: 3px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+
+#timeSlotTitle{
+    display: block;
+    margin-bottom: 8px;
+    padding: 10px 0 0 0;
+    text-align: center;
+}
+
+#timeSlotETitle{
+    display: block;
+    margin-bottom: 8px;
+    padding: 10px 0 0 0;
+    margin-left: 55px;
+}
+
+#dayTitle{
+    display: block;
+    margin-bottom: 8px;
+    padding: 50px 0 0 0 ;
+    text-align: center;
+}
+
+#timeSwitch{
+    width: 50px;
+    margin-left: 230px;
+}
+
+#daySwitch{
+    width: 50px;
+    margin-left: 130px;
+}
+
+#timeID{
+    padding: 5px 20px 0 20px;
+    display: inline-block;
+}
+
+.daySize{
+    width: 100%;
+}
+
+.delSub{
+    margin-top: 20px;
+}
+
+
+#timeslotInterval{
+    padding: 24px;
+    width: 270px;
+    margin-left: -25px;
+}
+
+.selectUName{
+    font-size:14px;
+}
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+#form-style-user{
+    width: 731px;
+    padding: 15px;
+    float:left;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    margin-bottom: 3px;
+    margin-left: 8px;
+}
+
+#userLabelEDiv{
+    width: 160px;
+}
+
+.classULabel{
+    display: inline-block;
+    float: left;
+    padding: 13px;
+}
+
+#userSelectOpt{
+    width: 300px;
+    margin-left: 160px;
+}
+
+.userSize{
+    width: 80%;
+}
+
+.textFieldAc{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+.box {
+    position: relative;
+    width: 100%;
+    height:80px;
+    display: inline-block;
+    margin:30px 0 0 0px;
+    text-align: center;
+}
+
+.custom-underline {
+    position: relative;
+    display: inline-block;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Raleway", sans-serif;
+}
+
+.btnEDiv{
+    padding: 20px;
+    width: 94%;
+    float: left;
+    margin-left: 25px;
+}
+
+#submitUBtn{
+    position: relative;
+    display: block;
+    padding: 10px 5px 10px 5px;
+    color: #FFF;
+    background: #36988c;
+    font-size: 16px;
+    font-style: normal;
+    width: 25%;
+    border: 1px solid #36988c;
+    border-radius: 3px;
+    float: right;
+    margin-right: 5px;
+
+}
+
+#submitUBtn:hover{
+    background: #359083;
+    cursor: pointer;
+}
+
+#restUBtn{
+    position: relative;
+    display: block;
+    padding: 10px 5px 10px 5px;
+    color: #FFF;
+    background: #f44336;
+    font-size: 16px;
+    font-style: normal;
+    width: 15%;
+    border: 1px solid #f44336;
+    border-radius: 3px;
+    float: right;
+    margin-right: 5px;
+}
+
+#restUBtn:hover{
+    background: #d32f2f;
+    cursor: pointer;
+}
+
+/* ------------------------------------------------------------- */
+
+/**
+ Style for ManageUserAccounts component
+*/
+
+#styled-table{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+#styled-table thead tr {
+    background-color: #BC4123;
+    color: #ffffff;
+    text-align: left;
+}
+
+#styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+#styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+#styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #BC4123;
+}
+
+#styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #BC4123;
+}
+
+#tblDiv{
+    margin-left: 50px;
+    padding-bottom: 50px;
+}
+
+.thUData {
+    width: 180px;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.thUDataBtn {
+    width: 400px;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.tdUData {
+    text-align: center;
+    padding: 5px;
+}
+
+.tdUDataBtn {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+/**
+    Style for UserProfile component
+*/
+
+#largeUserPDiv{
+    width: 40%;
+    padding: 20px;
+    float:left;
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
+    font-family: Georgia, "Times New Roman", Times, serif;
+    margin-left: 440px;
+    background-color: #f4f7f8;
+}
+
+#form-style-userProfile{
+    width: 731px;
+    padding: 15px;
+    float:left;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    margin-bottom: 3px;
+    margin-top: -30px;
+    margin-left: 8px;
+}
+
+#largeUserPBDiv{
+    width: 40%;
+    padding: 20px;
+    float:left;
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
+    font-family: Georgia, "Times New Roman", Times, serif;
+    margin-left: 440px;
+    background-color: #f4f7f8;
+    margin-bottom: 100px;
+}
+
+#viewDeUpDiv{
+    width: 150px;
+}
+
+.upVal2Label {
+    display: inline-block;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#uPEdit{
+    margin-left: 570px;
+    margin-top: -10px;
+}
+
+#uPEditBtn{
+    width: 200px;
+    margin-left: 260px;
+}
+
+#uPEditPBtn{
+    width: 200px;
+    margin-left: 240px;
+}
+
+#userPro{
+    width: 300px;
+    margin-left: 165px;
+}
+
+.textFieldUp{
+    margin-top: 2px;
+    margin-bottom: 16px;
+}
+
+.UpLabel{
+    display: inline-block;
+    float: left;
+    padding: 15px;
+    font-weight: bold;
+}
+
+.UpPLabel{
+    display: inline-block;
+    float: left;
+    padding: 15px;
+}
+
+.upValLabel {
+    display: inline-block;
+    padding-top: 12px;
+    padding-bottom: 18px;
+}
+
+#passwordHDiv{
+    width: 40%;
+    padding: 30px 0 30px 0;
+    float:left;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    margin-left: 440px;
+}
+
+#userProLabelDiv{
+    width: 180px;
+}
+
+#passHLabel{
+    font-size: 20px;
+    margin-top: 10px;
+    display: inline-block;
+    font-weight: bold;
+}
