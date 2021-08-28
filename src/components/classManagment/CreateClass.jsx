@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import {Box, Grid, MenuItem} from "@material-ui/core";
-import {toast} from "material-react-toastify";
+import {toast, ToastContainer} from "material-react-toastify";
 import '../../styles/classManagment/Class.css';
 import ClassService from "../../services/ClassService";
 
@@ -80,6 +80,7 @@ class CreateClass extends Component {
 
     render() {
         return <div className="class-section">
+            <ToastContainer/>
             <div className={"class-container"}>
 
                 <div className={"class-row"}>

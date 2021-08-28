@@ -3,7 +3,7 @@ import {Box, Checkbox, Grid, MenuItem} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import '../../styles/AttendanceManagment/Attendance.css';
-import {toast} from "material-react-toastify";
+import {toast, ToastContainer} from "material-react-toastify";
 import AttendanceService from "../../services/AttendanceService";
 
 /**
@@ -111,6 +111,7 @@ class AddAttendance extends Component {
 
     render() {
         return <div className="attendance-section">
+            <ToastContainer/>
             <div className={"attendance-container"}>
 
                 <div className={"attendance-row"}>

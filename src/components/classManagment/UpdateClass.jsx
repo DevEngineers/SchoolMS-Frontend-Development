@@ -3,7 +3,7 @@ import {Box, Grid, MenuItem} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import '../../styles/classManagment/Class.css';
-import {toast} from "material-react-toastify";
+import {toast, ToastContainer} from "material-react-toastify";
 import ClassService from "../../services/ClassService";
 
 /**
@@ -86,6 +86,7 @@ class UpdateClass extends Component {
 
     render() {
         return <div className="class-section">
+            <ToastContainer/>
             <div className={"class-container"}>
 
                 <div className={"class-row"}>
