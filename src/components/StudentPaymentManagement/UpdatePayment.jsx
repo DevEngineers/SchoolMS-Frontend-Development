@@ -6,8 +6,6 @@ import '../../styles/Teacher.css';
 /*
 *  Registration number: IT 19167442
 *  @Author :Nusky M.A.M
-* Nushky
-* Nushky
 * */
 
 class UpdatePayment extends Component {
@@ -38,6 +36,10 @@ class UpdatePayment extends Component {
 
 
     }
+    onChange(event){
+        const { name, value } = event.target;
+        this.setState({ [name] : value });
+    }
 
     componentDidMount(){
         StudentPaymentService.getPaymentById(this.state.id).then( (res) =>{
@@ -65,7 +67,7 @@ class UpdatePayment extends Component {
             dateOfPayment: this.state.dateOfPayment};
         console.log('payment => ' + JSON.stringify(payment));
         console.log('id => ' + JSON.stringify(this.state.id));
-        StudentPaymentService.updatePayment(payment, this.state.id).then( res => {
+        StudentPaymentService.updatePayment(this.state.id,payment).then( res => {
             this.props.history.push('/payments');
         });
     }
@@ -114,42 +116,69 @@ class UpdatePayment extends Component {
                                 <form>
                                     <div className = "form-group">
                                         <label> School Branch: </label>
-                                        <input placeholder="Select School Branch" name="schoolBranch" className="form-control"
-                                               value={this.state.schoolBranch} onChange={this.changeSchoolBranchHandler}/>
+                                        <select placeholder="Select School Branch" name="schoolBranch"  value={this.state.schoolBranch} className="form-control"  onChange ={event=>this.onChange(event)}>
+                                            <option defaultValue>School Branch:</option>
+                                            <option value="Colombo">Colombo</option>
+                                            <option value="Kandy">Kandy</option>
+                                            <option value="Dehiwala">Dehiwala</option>
+                                            <option value="Negambo">Negambo</option>
+                                            <option value="Ratmalana">Ratmalana</option>
+                                        </select>
                                     </div>
                                     <div className = "form-group">
                                         <label> Class: </label>
-                                        <input placeholder="Select Class" name="class" className="form-control"
-                                               value={this.state.class} onChange={this.changeClassHandler}/>
+                                        <select placeholder="Select Class" name="class" value={this.state.class} className="form-control" onChange ={event=>this.onChange(event)}>
+                                            <option defaultValue>Grade</option>
+                                            <option value="Grade 01">Grade 01</option>
+                                            <option value="Grade 02">Grade 02</option>
+                                            <option value="Grade 03">Grade 03</option>
+                                            <option value="Grade 04">Grade 04</option>
+                                            <option value="Grade 05">Grade 05</option>
+                                            <option value="Grade 06">Grade 06</option>
+                                            <option value="Grade 07">Grade 07</option>
+                                            <option value="Grade 08">Grade 08</option>
+                                            <option value="Grade 09">Grade 09</option>
+                                            <option value="Grade 10">Grade 10</option>
+                                            <option value="Grade 11">Grade 11</option>
+                                            <option value="Grade 12">Grade 12</option>
+                                            <option value="Grade 13">Grade 13</option>
+                                        </select>
                                     </div>
                                     <div className = "form-group">
                                         <label> Select Class Type: </label>
-                                        <input placeholder="Select Class Type" name="classType" className="form-control"
-                                               value={this.state.classType} onChange={this.changeClassTypeHandler}/>
+                                        <select value={this.state.classType} name="classType" className="form-control" onChange ={event=>this.onChange(event)}>
+                                            <option defaultValue>Class</option>
+                                            <option value="Class A">Class A</option>
+                                            <option value="Class B">Class B</option>
+                                            <option value="Class C">Class C</option>
+                                            <option value="Class D">Class D</option>
+                                            <option value="Class E">Class E</option>
+
+                                        </select>
                                     </div>
                                     <div className = "form-group">
                                         <label> Student ID: </label>
                                         <input placeholder="Select Student ID" name="studentId" className="form-control"
-                                               value={this.state.studentId} onChange={this.changeStudentIdHandler}/>
+                                               value={this.state.studentId}  onChange ={event=>this.onChange(event)}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> Student Name : </label>
                                         <input placeholder="Select Student Name" name="studentName" className="form-control"
-                                               value={this.state.studentName} onChange={this.changeStudentNameHandler}/>
+                                               value={this.state.studentName}  onChange ={event=>this.onChange(event)}/>
                                     </div> <div className = "form-group">
                                     <label> Payment Type : </label>
                                     <input placeholder="Select Payment Type" name="paymentType" className="form-control"
-                                           value={this.state.paymentType} onChange={this.changePaymentTypeHandler}/>
+                                           value={this.state.paymentType}  onChange ={event=>this.onChange(event)}/>
                                 </div>
                                     <div className = "form-group">
                                         <label> Paid Amount : </label>
                                         <input placeholder="Enter Paid Amount" name="paidAmount" className="form-control"
-                                               value={this.state.paidAmount} onChange={this.changePaidAmountHandler}/>
+                                               value={this.state.paidAmount}  onChange ={event=>this.onChange(event)}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> Date Of Payment: </label>
-                                        <input type="date" placeholder="MM-DD-YYYY" name="dateOfPayment" className="form-control"
-                                               value={this.state.dateOfPayment} onChange={this.changeDateOfPaymentHandler}/>
+                                        <input placeholder="MM-DD-YYYY" name="dateOfPayment" className="form-control"
+                                               value={this.state.dateOfPayment}  onChange ={event=>this.onChange(event)}/>
                                     </div>
 
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} >Cancel</button>
