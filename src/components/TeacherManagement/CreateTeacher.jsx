@@ -33,22 +33,8 @@ class CreateTeacher extends Component {
     }
 
     componentDidMount(){
-        if(this.state.id === '_add'){
-            return
-        }else{
-            TeacherService.getTeacherById(this.state.id).then( (res) =>{
-                let teacher = res.data;
-                this.setState({teacherName: teacher.teacherName,
-                    mobileNumber: teacher.mobileNumber,
-                    nic: teacher.nic,
-                    schoolBranch: teacher.schoolBranch,
-                    qualification: teacher.qualification,
-                    maritalStatus: teacher.maritalStatus,
-                    gender: teacher.gender
-                });
-            });
-        }
     }
+
     saveOrUpdateTeacher = (e) => {
         e.preventDefault();
         let teacher = {teacherName: this.state.teacherName,
@@ -61,15 +47,14 @@ class CreateTeacher extends Component {
         console.log('teacher => ' + JSON.stringify(teacher));
 
         // step 5
-        if(this.state.id === '_add'){
             TeacherService.createTeacher(teacher).then(res =>{
                 this.props.history.push('/teachers');
             });
-        }else{
+        /*else{
             TeacherService.updateTeacher(teacher, this.state.id).then( res => {
                 this.props.history.push('/teachers');
             });
-        }
+        }*/
     }
 
     changeTeacherNameHandler= (event) => {
@@ -103,7 +88,7 @@ class CreateTeacher extends Component {
         if(this.state.id === '_add'){
             return <h3 className="text-center">Add Teacher</h3>
         }else{
-            return <h3 className="text-center">Update Teacher</h3>
+            return <h3 className="text-center">Add Teacher</h3>
         }
     }
     render() {

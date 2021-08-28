@@ -37,22 +37,7 @@ class CreatePayment extends Component {
     }
 
     componentDidMount(){
-        if(this.state.id === '_add'){
-            return
-        }else{
-            StudentPaymentService.getPaymentById(this.state.id).then( (res) =>{
-                let payment = res.data;
-                this.setState({schoolBranch: payment.schoolBranch,
-                    class: payment.class,
-                    classType: payment.classType,
-                    studentId: payment.studentId,
-                    studentName: payment.studentName,
-                    paymentType: payment.paymentType,
-                    paidAmount: payment.paidAmount,
-                    dateOfPayment: payment.dateOfPayment
-                });
-            });
-        }
+
     }
     saveOrUpdatePayment = (e) => {
         e.preventDefault();
@@ -67,15 +52,16 @@ class CreatePayment extends Component {
         console.log('payment => ' + JSON.stringify(payment));
 
         // step 5
-        if(this.state.id === '_add'){
+
             StudentPaymentService.createPayment(payment).then(res =>{
                 this.props.history.push('/payments');
             });
-        }else{
+        /*else
+            {
             StudentPaymentService.updatePayment(payment, this.state.id).then( res => {
                 this.props.history.push('/payments');
             });
-        }
+        }*/
     }
 
     changeSchoolBranchHandler= (event) => {
@@ -113,7 +99,7 @@ class CreatePayment extends Component {
         if(this.state.id === '_add'){
             return <h3 className="text-center">Add Payment</h3>
         }else{
-            return <h3 className="text-center">Update Payment</h3>
+            return <h3 className="text-center">Add Payment</h3>
         }
 
     }

@@ -67,7 +67,7 @@ function App() {
           <Route path="/userProfile" component={UserProfile}/>
           <Route path="/manageUserAccount" component={ManageUserAccounts}/>
           <Route path="/generateResultReport" component={GenerateResultReport}/>
-            
+
           <Route path="/create-class" component={AddClass}/>
           <Route path="/update-class/:id" component={UpdateClass}/>
           <Route path="/view-class" component={ViewClass}/>
@@ -78,17 +78,17 @@ function App() {
           <Route path="/update-attendance/:id" component={UpdateAttendance}/>
           <Route path="/view-attendance" component={ViewAttendance}/>
           <Route path="/report-attendance" component={ReportAttendance}/>
-            
+
           <Route path = "/" exact component = {ListStudents}/>
           <Route path = "/students"  component = {ListStudents}/>
-          <Route path = "/add-student/:id" component = {CreateStudent}/>
+          <Route path = "/add-student/" component = {CreateStudent}/>
           <Route path = "/update-student/:id" component = {UpdateStudent}/>
           <Route path = "/view-student/:id" component = {ViewStudents}/>
-          <Route path = "/add-teacher/:id" component = {CreateTeacher}/>
+          <Route path = "/add-teacher/" component = {CreateTeacher}/>
           <Route path = "/update-teacher/:id" component = {UpdateTeacher}/>
           <Route path = "/teachers" component = {ListTeachers}/>
           <Route path = "/view-teacher/:id" component = {ViewTeachers}/>
-          <Route path = "/add-payment/:id" component = {CreatePayment}/>
+          <Route path = "/add-payment/" component = {CreatePayment}/>
           <Route path = "/update-payment/:id" component = {UpdatePayment}/>
           <Route path = "/view-payment/:id" component = {ViewPayments}/>
           <Route path = "/payments" component = {ListPayments}/>

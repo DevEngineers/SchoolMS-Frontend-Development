@@ -102,7 +102,7 @@ class CreateStudent extends Component {
         if(this.state.id === '_add'){
             return <h3 className="text-center">Add Student</h3>
         }else{
-            return <h3 className="text-centerTitle">Update Student</h3>
+            return <h3 className="text-center">Add Student</h3>
         }
     }
     /*addTeacher(){
