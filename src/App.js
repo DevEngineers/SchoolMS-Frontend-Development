@@ -19,6 +19,7 @@ import ManageUserAccounts from "./components/userManagement/ManageUserAccounts";
 import ViewClassTimetable from "./components/classTimetableManagement/ViewClassTimetable";
 import ViewExamTimetable from './components/examTimetableManagement/ViewExamTimetable';
 import ViewResult from "./components/resultManagement/ViewResult";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         <Route path="/manageUserAccount" component={ManageUserAccounts}/>
         <Route path="/generateResultReport" component={GenerateResultReport}/>
       </Switch>
+    <Footer/>
     </Router>
 }
 
