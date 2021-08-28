@@ -55,8 +55,8 @@ class Header extends Component {
                             <a href="#">Teacher</a>
                             <input type={'checkbox'} id={'drop-2'}/>
                             <ul>
-                                <li><a href="/teachers">View Teachers</a></li>
                                 <li><a href="/add-teacher/">Add Teacher</a></li>
+                                <li><a href="/teachers">View Teachers</a></li>
                             </ul>
                         </li>
                         <li>
@@ -127,8 +127,8 @@ class Header extends Component {
                             <a href="#">Fees</a>
                             <input type={'checkbox'} id={'drop-9'}/>
                             <ul>
-                                <li><a href="/payments">View Fees</a></li>
                                 <li><a href="/add-payment/">Add Fees</a></li>
+                                <li><a href="/payments">View Fees</a></li>
                                 <li><a href="/payment-report">Generate Fees Report</a></li>
                             </ul>
                         </li>

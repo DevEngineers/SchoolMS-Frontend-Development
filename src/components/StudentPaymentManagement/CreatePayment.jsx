@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import StudentPaymentService from "../../services/StudentPaymentService";
-import '../../styles/Teacher.css';
+import '../../styles/TeacherStyles/Teacher.css';
 
 /*
 *  Registration number: IT 19167442

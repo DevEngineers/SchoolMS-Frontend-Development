@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../../styles/Teacher.css';
+import '../../styles/TeacherStyles/Teacher.css';
 import StudentService from "../../services/StudentService";
 import {IconButton, TextField} from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";

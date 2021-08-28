@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import StudentService from "../../services/StudentService";
-import '../../styles/Teacher.css';
+import '../../styles/TeacherStyles/Teacher.css';
 
 
 /*

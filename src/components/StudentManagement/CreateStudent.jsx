@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import StudentService from "../../services/StudentService";
-import '../../styles/Teacher.css';
+import '../../styles/TeacherStyles/Teacher.css';
 
 /*
 *  Registration number: IT 19167442
@@ -117,7 +117,6 @@ class CreateStudent extends Component {
     render() {
         return (
             <div>
-                <br></br>
                 <div className = "container">
                     <div className = "row">
 
