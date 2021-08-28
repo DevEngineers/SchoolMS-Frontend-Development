@@ -92,7 +92,7 @@ function App() {
           <Route path = "/update-payment/:id" component = {UpdatePayment}/>
           <Route path = "/view-payment/:id" component = {ViewPayments}/>
           <Route path = "/payments" component = {ListPayments}/>
-          <Route path = "/payment-report/" component = {GeneratePaymentReport}/>
+          <Route path = "/payment-report" component = {GeneratePaymentReport}/>
       </Switch>
       <Footer/>
     </Router>
