@@ -23,22 +23,20 @@ function App() {
     <Router>
       <Header/>
       <Switch>
-        <Route path = "/" exact component = {ListStudents}></Route>
-        <Route path = "/students"  component = {ListStudents}></Route>
-        <Route path = "/add-student/:id" component = {CreateStudent}></Route>
-        <Route path = "/update-student/:id" component = {UpdateStudent}></Route>
-        <Route path = "/view-student/:id" component = {ViewStudents}></Route>
-        <Route path = "/add-teacher/:id" component = {CreateTeacher}></Route>
-        <Route path = "/update-teacher/:id" component = {UpdateTeacher}></Route>
-        <Route path = "/teachers" component = {ListTeachers}></Route>
-        <Route path = "/view-teacher/:id" component = {ViewTeachers}></Route>
-        <Route path = "/add-payment/:id" component = {CreatePayment}></Route>
-        <Route path = "/update-payment/:id" component = {UpdatePayment}></Route>
-        <Route path = "/view-payment/:id" component = {ViewPayments}></Route>
-        <Route path = "/payments" component = {ListPayments}></Route>
-        <Route path = "/payment-report/" component = {GeneratePaymentReport}></Route>
-
-
+        <Route path = "/" exact component = {ListStudents}/>
+        <Route path = "/students"  component = {ListStudents}/>
+        <Route path = "/add-student/:id" component = {CreateStudent}/>
+        <Route path = "/update-student/:id" component = {UpdateStudent}/>
+        <Route path = "/view-student/:id" component = {ViewStudents}/>
+        <Route path = "/add-teacher/:id" component = {CreateTeacher}/>
+        <Route path = "/update-teacher/:id" component = {UpdateTeacher}/>
+        <Route path = "/teachers" component = {ListTeachers}/>
+        <Route path = "/view-teacher/:id" component = {ViewTeachers}/>
+        <Route path = "/add-payment/:id" component = {CreatePayment}/>
+        <Route path = "/update-payment/:id" component = {UpdatePayment}/>
+        <Route path = "/view-payment/:id" component = {ViewPayments}/>
+        <Route path = "/payments" component = {ListPayments}/>
+        <Route path = "/payment-report/" component = {GeneratePaymentReport}/>
 
       </Switch>
       <Footer/>
