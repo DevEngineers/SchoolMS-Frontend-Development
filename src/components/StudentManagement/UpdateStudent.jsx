@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import StudentService from "../../services/StudentService";
 import '../../styles/Teacher.css';
 
+
 /*
 *  Registration number: IT19167442
 *  @Author :Nusky M.A.M
@@ -37,7 +38,25 @@ class UpdateStudent extends Component {
 
     }
 
-
+    onChange(event){
+        const { name, value } = event.target;
+        this.setState({ [name] : value });
+    }
+    componentDidMount(){
+        StudentService.getStudentById(this.state.id).then( (res) =>{
+            let student = res;
+            this.setState({studentName: student.studentName,
+                guardian: student.guardian,
+                phone : student.phone,
+                dob : student.dob,
+                address : student.address,
+                schoolBranch : student.schoolBranch,
+                class : student.class,
+                classType : student.classType,
+                gender : student.gender,
+            });
+        });
+    }
     updateStudent= (e) => {
         e.preventDefault();
         let student = {studentName: this.state.studentName,
@@ -51,7 +70,7 @@ class UpdateStudent extends Component {
             gender: this.state.gender};
         console.log('student => ' + JSON.stringify(student));
         console.log('id => ' + JSON.stringify(this.state.id));
-        StudentService.updateStudent(student, this.state.id).then( res => {
+        StudentService.updateStudent(this.state.id,student).then( res => {
             this.props.history.push('/students');
         });
     }
@@ -104,46 +123,74 @@ class UpdateStudent extends Component {
                                     <div className = "form-group">
                                         <label> Student Name: </label>
                                         <input placeholder="Student Name" name="studentName" className="form-control"
-                                               value={this.state.studentName} onChange={this.changeStudentNameHandler}/>
+                                               value={this.state.studentName} onChange ={event=>this.onChange(event)}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> Guardian: </label>
                                         <input placeholder="Guardian" name="guardian" className="form-control"
-                                               value={this.state.guardian} onChange={this.changeGuardianHandler}/>
+                                               value={this.state.guardian} onChange ={event=>this.onChange(event)}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> Phone: </label>
                                         <input placeholder="Phone" name="phone" className="form-control"
-                                               value={this.state.phone} onChange={this.changePhoneHandler}/>
+                                               value={this.state.phone} onChange ={event=>this.onChange(event)}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> Date Of Birth: </label>
                                         <input type="date" placeholder="MM-DD-YYYY" name="dob" className="form-control"
-                                               value={this.state.dob} onChange={this.changeDobHandler}/>
+                                               value={this.state.dob} onChange ={event=>this.onChange(event)}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> Address : </label>
                                         <input placeholder="Address" name="address" className="form-control"
-                                               value={this.state.address} onChange={this.changeAddressHandler}/>
-                                    </div> <div className = "form-group">
+                                               value={this.state.address} onChange ={event=>this.onChange(event)}/>
+                                    </div>
+                                    <div className = "form-group">
                                     <label> School Branch : </label>
-                                    <input placeholder="School Branch" name="schoolBranch" className="form-control"
-                                           value={this.state.schoolBranch} onChange={this.changeSchoolBranchHandler}/>
+                                        <select placeholder="Select School Branch" name="schoolBranch"  value={this.state.schoolBranch} className="form-control"  onChange ={event=>this.onChange(event)}>
+                                            <option defaultValue>School Branch:</option>
+                                            <option value="Colombo">Colombo</option>
+                                            <option value="Kandy">Kandy</option>
+                                            <option value="Dehiwala">Dehiwala</option>
+                                            <option value="Negambo">Negambo</option>
+                                            <option value="Ratmalana">Ratmalana</option>
+                                        </select>
                                 </div>
                                     <div className = "form-group">
                                         <label> Class : </label>
-                                        <input placeholder="Class" name="class" className="form-control"
-                                               value={this.state.class} onChange={this.changeClassHandler}/>
+                                        <select placeholder="Select Class" name="class" value={this.state.class} className="form-control" onChange ={event=>this.onChange(event)}>
+                                            <option defaultValue>Grade</option>
+                                            <option value="Grade 01">Grade 01</option>
+                                            <option value="Grade 02">Grade 02</option>
+                                            <option value="Grade 03">Grade 03</option>
+                                            <option value="Grade 04">Grade 04</option>
+                                            <option value="Grade 05">Grade 05</option>
+                                            <option value="Grade 06">Grade 06</option>
+                                            <option value="Grade 07">Grade 07</option>
+                                            <option value="Grade 08">Grade 08</option>
+                                            <option value="Grade 09">Grade 09</option>
+                                            <option value="Grade 10">Grade 10</option>
+                                            <option value="Grade 11">Grade 11</option>
+                                            <option value="Grade 12">Grade 12</option>
+                                            <option value="Grade 13">Grade 13</option>
+                                        </select>
                                     </div>
                                     <div className = "form-group">
                                         <label> Class Type: </label>
-                                        <input placeholder="Class Type" name="classType" className="form-control"
-                                               value={this.state.classType} onChange={this.changeClassTypeHandler}/>
+                                        <select value={this.state.classType} name="classType" className="form-control" onChange ={event=>this.onChange(event)}>
+                                            <option defaultValue>Class</option>
+                                            <option value="Class A">Class A</option>
+                                            <option value="Class B">Class B</option>
+                                            <option value="Class C">Class C</option>
+                                            <option value="Class D">Class D</option>
+                                            <option value="Class E">Class E</option>
+
+                                        </select>
                                     </div>
-                                    <div className = "form-group" value={this.state.gender} onChange={this.changeGenderHandler} >
+                                    <div className = "form-group" >
                                         <label> Gender : </label>
-                                        <input type="radio" value="MALE" name="gender" /> Male
-                                        <input type="radio" value="FEMALE" name="gender" /> Female
+                                        <input type="radio"  name="gender"  className = "form-group" value={this.state.gender} onChange ={event=>this.onChange(event)} /> Male
+                                        <input type="radio"  name="gender"  className = "form-group" value={this.state.gender} onChange ={event=>this.onChange(event)} /> Female
 
                                     </div>
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} >Cancel</button>
