@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import StudentPaymentService from "../../Services/StudentPaymentService";
+import StudentPaymentService from "../../services/StudentPaymentService";
 
 
 class ViewPayments extends Component {
@@ -21,7 +21,6 @@ class ViewPayments extends Component {
     render() {
         return (
             <div>
-                <br></br>
                 <div className = "card col-md-6 offset-md-3">
                     <h3 className = "text-center"> View Student Payment Details</h3>
                     <div className = "card-body">
