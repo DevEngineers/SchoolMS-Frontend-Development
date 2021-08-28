@@ -3,7 +3,7 @@ import {Box, Grid, MenuItem} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import '../../styles/subjectManagment/subjects.css';
-import {toast} from "material-react-toastify";
+import {toast, ToastContainer} from "material-react-toastify";
 import SubjectService from "../../services/SubjectService";
 
 /**
@@ -80,6 +80,7 @@ class CreateSubject extends Component {
 
     render() {
         return <div className={"subject-section"}>
+            <ToastContainer/>
             <div className={"subject-container"}>
 
                 <div className={"subject-row"}>
