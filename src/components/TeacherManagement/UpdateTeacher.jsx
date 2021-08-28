@@ -31,6 +31,10 @@ class UpdateTeacher extends Component {
         this.changeGenderHandler = this.changeGenderHandler.bind(this);
         this.updateTeacher = this.updateTeacher.bind(this);
     }
+    onChange(event){
+        const { name, value } = event.target;
+        this.setState({ [name] : value });
+    }
     componentDidMount(){
         TeacherService.getTeacherById(this.state.id).then( (res) =>{
             let teacher = res;
@@ -40,7 +44,7 @@ class UpdateTeacher extends Component {
                 schoolBranch : teacher.schoolBranch,
                 qualification : teacher.qualification,
                 maritalStatus : teacher.maritalStatus,
-                gender : teacher.gender
+                gender : teacher.gender,
             });
         });
     }
@@ -56,7 +60,7 @@ class UpdateTeacher extends Component {
             gender: this.state.gender};
         console.log('teacher => ' + JSON.stringify(teacher));
         console.log('id => ' + JSON.stringify(this.state.id));
-        TeacherService.updateTeacher(teacher, this.state.id).then( res => {
+        TeacherService.updateTeacher(this.state.id,teacher).then( res => {
             this.props.history.push('/teachers');
         });
     }
@@ -116,21 +120,21 @@ class UpdateTeacher extends Component {
                                     <div className = "form-group">
                                         <label> Teacher Name: </label>
                                         <input   placeholder="Teacher Name" name="teacherName" className="form-control"
-                                                 value={this.state.teacherName} onChange={this.changeTeacherNameHandler}/>
+                                                 value={this.state.teacherName} onChange ={event=>this.onChange(event)}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> Mobile Number: </label>
                                         <input placeholder="Mobile Number" name="mobileNumber" className="form-control"
-                                               value={this.state.mobileNumber} onChange={this.changeMobileNumberHandler}/>
+                                               value={this.state.mobileNumber} onChange ={event=>this.onChange(event)}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> NIC: </label>
                                         <input placeholder="NIC" name="nic" className="form-control"
-                                               value={this.state.nic} onChange={this.changeNICHandler}/>
+                                               value={this.state.nic} onChange ={event=>this.onChange(event)}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> School Branch: </label>
-                                        <select value={this.state.schoolBranch} className="form-control" onChange={this.changeSchoolBranchHandler}>
+                                        <select placeholder="Select School Branch" name="schoolBranch"  value={this.state.schoolBranch} className="form-control"  onChange ={event=>this.onChange(event)}>
                                             <option defaultValue>School Branch:</option>
                                             <option value="Colombo">Colombo</option>
                                             <option value="Kandy">Kandy</option>
@@ -142,15 +146,15 @@ class UpdateTeacher extends Component {
                                     <div className = "form-group">
                                         <label> Qualification : </label>
                                         <input placeholder="Qualification" name="qualification" className="form-control"
-                                               value={this.state.qualification} onChange={this.changeQualificationHandler}/>
+                                               value={this.state.qualification} onChange ={event=>this.onChange(event)}/>
                                     </div>
-                                    <div className = "form-group" value={this.state.maritalStatus} onChange={this.changeMaritalStatusHandler}>
+                                    <div className = "form-group" value={this.state.maritalStatus} onChange ={event=>this.onChange(event)}>
                                         <label> Marital Status : </label>
                                         <input type="radio" value="Single" name="maritalStatus" /> Single
                                         <input type="radio" value="Married" name="maritalStatus" /> Married
 
                                     </div>
-                                    <div className = "form-group" value={this.state.gender} onChange={this.changeGenderHandler} >
+                                    <div className = "form-group" value={this.state.gender} onChange ={event=>this.onChange(event)} >
                                         <label> Gender : </label>
                                         <input type="radio" value="MALE" name="gender" /> Male
                                         <input type="radio" value="FEMALE" name="gender" /> Female
