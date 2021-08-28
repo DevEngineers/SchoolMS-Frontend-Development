@@ -105,9 +105,9 @@ class Header extends Component {
                             <a href="#">Results</a>
                             <input type={'checkbox'} id={'drop-7'}/>
                             <ul>
-                                <li><a href="/#">View Results</a></li>
-                                <li><a href="/#">Add Results</a></li>
-                                <li><a href="/#">Generate Results Report</a></li>
+                                <li><a href="/manageResults">View Results</a></li>
+                                <li><a href="/storeResults">Add Results</a></li>
+                                <li><a href="/generateResultReport">Generate Results Report</a></li>
                             </ul>
                         </li>
                         <li>
@@ -127,9 +127,9 @@ class Header extends Component {
                             <a href="#">Fees</a>
                             <input type={'checkbox'} id={'drop-9'}/>
                             <ul>
-                                <li><a href="/#">View Fees</a></li>
-                                <li><a href="/#">Add Fees</a></li>
-                                <li><a href="/#">Generate Fees Report</a></li>
+                                <li><a href="/payments">View Fees</a></li>
+                                <li><a href="/add-payment/:id">Add Fees</a></li>
+                                <li><a href="/payment-report">Generate Fees Report</a></li>
                             </ul>
                         </li>
                     </ul>
