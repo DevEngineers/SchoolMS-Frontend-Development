@@ -1,0 +1,123 @@
+/*
+**************************************************************
+  @author : A.M Zumry
+  Registration Number : IT19175126
+************************************************************
+*/
+
+/* --------------------
+Attendance title section
+-------------------- */
+
+.Att-Report-Section .box {
+    position: relative;
+    width: 100%;
+    height:80px;
+    display: inline-block;
+    margin:30px 0 0 0;
+    text-align: center;
+}
+
+.Att-Report-Section .custom-underline {
+    position: relative;
+    display: inline-block;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Raleway", sans-serif;
+}
+
+.Att-Report-Section #largeUserDiv{
+    width: 40%;
+    padding: 20px;
+    margin-bottom: 5.5%;
+    float:left;
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
+    font-family: Georgia, "Times New Roman", Times, serif;
+    margin-left: 440px;
+    background-color: #f4f7f8;
+}
+
+
+.Att-Report-Section #form-style-user{
+    width: 731px;
+    padding: 15px;
+    float:left;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    margin-bottom: 3px;
+    margin-left: 8px;
+}
+
+.Att-Report-Section #userLabelEDiv{
+    width: 150px;
+}
+
+.Att-Report-Section .classULabel{
+    display: inline-block;
+    float: left;
+    padding: 12px;
+}
+
+.Att-Report-Section #userSelectOpt{
+    width: 300px;
+    margin-left: 160px;
+}
+
+.Att-Report-Section .userSize{
+    width: 80%;
+    margin-top: 5px;
+}
+
+.Att-Report-Section .selectUName{
+    font-size:14px;
+}
+
+
+.Att-Report-Section .btnEDiv{
+    padding: 20px;
+    width: 94%;
+    float: left;
+    margin-left: 25px;
+}
+
+.Att-Report-Section #submitUBtn{
+    position: relative;
+    display: block;
+    padding: 10px 5px 10px 5px;
+    color: #FFF;
+    background: #36988c;
+    font-size: 16px;
+    font-style: normal;
+    width: 25%;
+    border: 1px solid #36988c;
+    border-radius: 3px;
+    float: right;
+    margin-right: 5px;
+
+}
+
+.Att-Report-Section #submitUBtn:hover{
+    background: #359083;
+    cursor: pointer;
+}
+
+.Att-Report-Section #restUBtn{
+    position: relative;
+    display: block;
+    padding: 10px 5px 10px 5px;
+    color: #FFF;
+    background: #f44336;
+    font-size: 16px;
+    font-style: normal;
+    width: 15%;
+    border: 1px solid #f44336;
+    border-radius: 3px;
+    float: right;
+    margin-right: 5px;
+}
+
+.Att-Report-Section #restUBtn:hover{
+    background: #d32f2f;
+    cursor: pointer;
+}
+
