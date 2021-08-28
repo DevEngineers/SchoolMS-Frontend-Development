@@ -85,8 +85,8 @@ class Header extends Component {
                             <a href="#">Class Timetable</a>
                             <input type={'checkbox'} id={'drop-5'}/>
                             <ul>
-                                <li><a href="/#">View Class Timetable</a></li>
-                                <li><a href="/#">Add Class Timetable</a></li>
+                                <li><a href="/manageClassTimetable">View Class Timetable</a></li>
+                                <li><a href="/createClassTimetable">Add Class Timetable</a></li>
                             </ul>
                         </li>
                         <li className={'liChange'}>
