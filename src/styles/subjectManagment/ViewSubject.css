@@ -1,0 +1,113 @@
+/*
+**************************************************************
+  @author : A.M Zumry
+  Registration Number : IT19175126
+************************************************************
+*/
+
+/* --------------------
+Manage Subject CSS
+-------------------- */
+
+.ManageSubject-Section{
+    min-height: 70vh;
+}
+.ManageSubject-Section .box {
+    position: relative;
+    width: 100%;
+    height:80px;
+    display: inline-block;
+    margin:30px 0 0 0;
+    text-align: center;
+}
+
+.ManageSubject-Section .custom-underline {
+    position: relative;
+    display: inline-block;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Raleway", sans-serif;
+}
+
+.ManageSubject-Section #searchDiv{
+    width: 71%;
+    padding: 20px;
+    margin-left: 200px;
+}
+
+.ManageSubject-Section #searchInput{
+    padding: 10px;
+    width: 900px;
+}
+
+.ManageSubject-Section #searchBtn{
+    position: relative;
+    display: block;
+    padding: 10px 5px 10px 5px;
+    color: #FFF;
+    background: #36988c;
+    font-size: 16px;
+    font-style: normal;
+    width: 14%;
+    border: 1px solid #36988c;
+    border-radius: 3px;
+    float: right;
+    margin-right: 5px;
+}
+
+.ManageSubject-Section #searchBtn:hover{
+    background: #359083;
+    cursor: pointer;
+}
+
+/* --------------------
+Subject List Holder CSS
+-------------------- */
+
+.SubjectListHolder #viewMain{
+    width: 75%;
+    margin-left: 220px;
+}
+
+.SubjectListHolder #headingLabel{
+    font-size: 25px;
+    margin-top: 10px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.SubjectListHolder #viewDiv{
+    width: 80%;
+    height: 40px;
+    border-style: groove;
+    border-radius: 5px;
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-bottom: 15px;
+}
+
+.SubjectListHolder #viewSmall{
+    width: 82%;
+    float: left;
+    padding: 10px;
+}
+
+.SubjectListHolder .buttonDiv{
+    width: 6%;
+    float: right;
+    margin-top: -5px;
+}
+
+.SubjectListHolder #ClassLabel{
+    margin-left: 70px;
+}
+
+.SubjectListHolder #SubjectLabel{
+    margin-left: 130px;
+}
+
+.SubjectListHolder #TeacherLabel{
+    margin-left: 130px;
+}
+/* ---------------------------------------------------------------------- */

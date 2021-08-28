@@ -1,0 +1,140 @@
+/*
+**************************************************************
+  @author : A.M Zumry
+  Registration Number : IT19175126
+************************************************************
+*/
+
+.outer-shadow-class {
+    box-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
+}
+
+/* --------------------
+Class title section
+-------------------- */
+.class-section-title {
+    padding: 0 15px;
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 60px;
+}
+.class-section-title h2 {
+    display: inline-block;
+    font-size: 30px;
+    font-weight: 700;
+    color: #000000;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.class-section .class-custom-underline {
+    position: relative;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Raleway", sans-serif;
+}
+
+.class-section .class-section-title{
+    position: relative;
+    width: 100%;
+    height:75px;
+    display: inline-block;
+    font-size: 30px;
+    margin:40px 0 0 0;
+    text-align: center;
+}
+
+
+/* --------------------
+Class section
+-------------------- */
+
+.class-section{
+    padding: 0 0 30px;
+    min-height: 50vh;
+    background-color: #F0F0F0;
+}
+.class-container {
+    max-width: 1140px;
+    margin: auto;
+}
+.class-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+.class-row .class-item {
+    flex: 0 0 50%;
+    max-width: 100%;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+}
+.class-row .class-item-inner{
+    padding: 50px 15px;
+    border-radius: 5px;
+    width: 100%;
+    /*box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.3);*/
+}
+
+.class-form-div{
+    padding-top: 20px;
+}
+
+/* --------------------
+Class section Buttons
+-------------------- */
+
+.Btn-Class-Sub{
+    position: relative;
+    display: block;
+    padding: 10px 20px 10px 20px;
+    /*padding: 6px 16px;*/
+    /*line-height: 1.75;*/
+    color: #FFF;
+    background: #36988c;
+    font-size: 0.875rem;
+    box-sizing: border-box;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    /*font-size: 16px;*/
+    font-style: normal;
+    /* width: 25%; */
+    border: 1px solid #36988c;
+    border-radius: 4px;
+    /* float: right; */
+    margin-right: 5px;
+    font-weight: 500;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+}
+
+.Btn-Class-Sub:hover{
+    background: #359083;
+    cursor: pointer;
+}
+
+.Btn-Class-reset{
+    position: relative;
+    display: block;
+    padding: 10px 17px 10px 17px;
+    color: #FFF;
+    background: #f44336;
+    font-size: 0.875rem;
+    box-sizing: border-box;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-style: normal;
+    border: 1px solid #f44336;
+    border-radius: 4px;
+    /*margin-right: 5px;*/
+    font-weight: 500;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+}
+
+.Btn-Class-reset:hover{
+    background: #d32f2f;
+    cursor: pointer;
+}
