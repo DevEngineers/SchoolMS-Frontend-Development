@@ -1,0 +1,242 @@
+/*
+**************************************************************
+  @author :Akeel M.N.M
+  Registration Number : IT19153414
+************************************************************
+*/
+
+#largeDiv{
+    width: 91%;
+    padding: 20px;
+    float:left;
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
+    font-family: Georgia, "Times New Roman", Times, serif;
+    margin-left: 50px;
+    background-color: #f4f7f8;
+    margin-bottom: 100px;
+}
+
+#form-style-timeSlot{
+    max-width: 270px;
+    background: #f2f2f2;
+    padding: 20px;
+    float:left;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+#form-style-Week{
+    background: #f2f2f2;
+    float: left;
+    margin-left: 5px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+#form-style-Week-inside{
+    width: 170px;
+    padding: 20px;
+    float: left;
+    margin-left: 3px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+
+#timeSlotTitle{
+    display: block;
+    margin-bottom: 8px;
+    padding: 10px 0 0 0;
+    text-align: center;
+}
+
+#dayTitle{
+    display: block;
+    margin-bottom: 8px;
+    padding: 50px 0 0px 0 ;
+    text-align: center;
+}
+
+#timeSwitch{
+    width: 50px;
+    margin-left: 230px;
+}
+
+#daySwitch{
+    width: 50px;
+    margin-left: 130px;
+}
+
+#timeID{
+    padding: 5px 20px 0 20px;
+    display: inline-block;
+}
+
+.daySize{
+    width: 100%;
+}
+
+.delSub{
+    margin-top: 20px;
+}
+
+#intervalDiv{
+    width: 1020px;
+    border: 4px groove;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 0;
+    position: absolute;
+    padding: 10px;
+    margin-left: -10px;
+    margin-top: -60px;
+    font-weight: bold;
+}
+
+#insideInterval{
+    color: #f2f2f2;
+    margin-bottom: 60px;
+}
+
+#timeslotInterval{
+    padding: 24px;
+    width: 270px;
+    margin-left: -25px;
+}
+
+.timeslotIcon{
+    margin-left: 35%;
+}
+
+.timeslotIconB{
+    background-color: #f44336;
+    padding: 10px;
+    border-radius: 50px;
+    color: white;
+}
+
+.timeslotIconA{
+    background-color: #00e676;
+    padding: 10px;
+    border-radius: 50px;
+    color: white;
+    margin-top: -10px;
+}
+
+.selectCName{
+    font-size:14px;
+}
+
+    /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+#form-style-classDetails{
+    width: 1350px;
+    padding: 15px;
+    float:left;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    margin-bottom: 3px;
+}
+
+#classLabelDiv{
+    width: 150px;
+}
+
+.classLabel{
+    display: inline-block;
+    float: left;
+    padding: 15px;
+}
+
+#classSelectOpt{
+    width: 300px;
+    margin-left: 150px;
+}
+
+.classSize{
+    width: 80%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.timeslotIconSB{
+    background-color: #f44336;
+    padding: 10px;
+    border-radius: 50px;
+    color: white;
+    margin-left: -850px;
+}
+
+.timeslotIconSA{
+    background-color: #00e676;
+    padding: 10px;
+    border-radius: 50px;
+    color: white;
+    margin-left: -850px;
+    margin-top: -10px;
+}
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+.box {
+    position: relative;
+    width: 100%;
+    height:80px;
+    display: inline-block;
+    margin:30px 0 0 0px;
+    text-align: center;
+}
+
+.custom-underline {
+    position: relative;
+    display: inline-block;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Raleway", sans-serif;
+}
+
+.btnDiv{
+    padding: 20px;
+    width: 94%;
+    float: left;
+    margin-left: 70px;
+}
+
+#submitBtn{
+    position: relative;
+    display: block;
+    padding: 10px 5px 10px 5px;
+    color: #FFF;
+    background: #36988c;
+    font-size: 16px;
+    font-style: normal;
+    width: 15%;
+    border: 1px solid #36988c;
+    border-radius: 3px;
+    float: right;
+    margin-right: 5px;
+
+}
+
+#submitBtn:hover{
+    background: #359083;
+    cursor: pointer;
+}
+
+#restBtn{
+    position: relative;
+    display: block;
+    padding: 10px 5px 10px 5px;
+    color: #FFF;
+    background: #f44336;
+    font-size: 16px;
+    font-style: normal;
+    width: 8%;
+    border: 1px solid #f44336;
+    border-radius: 3px;
+    float: right;
+    margin-right: 5px;
+}
+
+#restBtn:hover{
+    background: #d32f2f;
+    cursor: pointer;
+}
+
