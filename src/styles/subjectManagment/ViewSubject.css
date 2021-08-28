@@ -9,6 +9,9 @@
 Manage Subject CSS
 -------------------- */
 
+.ManageSubject-Section{
+    min-height: 70vh;
+}
 .ManageSubject-Section .box {
     position: relative;
     width: 100%;

@@ -35,6 +35,7 @@ class UpdateAttendance extends Component {
         super(props);
         this.state= {
             AttendanceID:this.props.match.params.id,
+            isCheck:false,
 
             rDate:'',
             rClass:'',
@@ -61,26 +62,34 @@ class UpdateAttendance extends Component {
                     rAttendance:res.attendance,
                     rStudent:res.student
                 })
-                console.log('Att', this.state.rStudent);
-                console.log('Att', this.state.rAttendance);
             })
     }
 
     onCheckBox(event){
         const{value} = event.target;
         console.log(value);
+        const student = students;
+        console.log(' students',student);
+        console.log(' students ID',student[0].Id);
+        const iArr = ['1','2','3','4','5','6'];
 
-        // if(student.includes(value) === true){
-        //     let index = student.indexOf(value);
-        //     student.splice(index,1)
-        //     console.log('true students',student);
-        //     return
-        // }
-        //
-        // if(student.includes(value) === false){
-        //     student.push(value);
-        //     console.log('false students',student);
-        // }
+        for(let i=0 ; i<6 ; i++){
+            if(student[i].Id.includes(value) === true){
+                let index = student.indexOf(value);
+                student.splice(index,1)
+                // student[i].Att.push("false");
+                console.log('true students',student[i].Att);
+                console.log('true index',index);
+                return
+            }
+        }
+
+
+
+        if((student.Id).includes(value) === false){
+            students.push(value);
+            console.log('false students',student);
+        }
 
     }
 
