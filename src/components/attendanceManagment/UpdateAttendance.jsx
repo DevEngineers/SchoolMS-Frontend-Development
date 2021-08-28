@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Box, Checkbox, Grid} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import '../../styles/AttendanceManagment/Attendance.css';
-import {toast} from "material-react-toastify";
+import {toast, ToastContainer} from "material-react-toastify";
 import AttendanceService from "../../services/AttendanceService";
 import moment from "moment";
 
@@ -134,6 +134,7 @@ class UpdateAttendance extends Component {
 
     render() {
         return <div className="attendance-section">
+            <ToastContainer/>
             <div className={"attendance-container"}>
 
                 <div className={"attendance-row"}>
