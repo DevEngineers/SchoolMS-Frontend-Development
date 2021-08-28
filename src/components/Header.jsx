@@ -95,8 +95,8 @@ class Header extends Component {
                             <a href="#">Exam Timetable</a>
                             <input type={'checkbox'} id={'drop-6'}/>
                             <ul>
-                                <li><a href="/#">View Exam Timetable</a></li>
-                                <li><a href="/#">Add Exam Timetable</a></li>
+                                <li><a href="/manageExamTimetable">View Exam Timetable</a></li>
+                                <li><a href="/createExamTimetable">Add Exam Timetable</a></li>
                             </ul>
                         </li>
                         <li>
