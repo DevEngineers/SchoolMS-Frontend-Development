@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import StudentService from "../../Services/StudentService";
+import StudentService from "../../services/StudentService";
 import '../../styles/Teacher.css';
 
 /*
