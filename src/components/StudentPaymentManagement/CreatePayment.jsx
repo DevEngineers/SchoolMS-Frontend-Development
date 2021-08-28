@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import StudentPaymentService from "../../Services/StudentPaymentService";
+import StudentPaymentService from "../../services/StudentPaymentService";
 import '../../styles/Teacher.css';
 
 /*
