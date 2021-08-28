@@ -4,13 +4,13 @@
 * */
 
 
-const STUDENTPAYMENT_API_BASE_URL = "http://localhost:5000/payment";
+const STUDENTPAYMENT_API_BASE_URL = 'http://localhost:5000/fees';
 
 class StudentPaymentService{
 
 
     async getPayments(){
-        return await fetch(STUDENTPAYMENT_API_BASE_URL+"",{
+        return await fetch(STUDENTPAYMENT_API_BASE_URL,{
             method:'GET',
         }).then(response =>{
             return response.json();

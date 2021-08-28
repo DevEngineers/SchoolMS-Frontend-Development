@@ -31,7 +31,19 @@ class UpdateTeacher extends Component {
         this.changeGenderHandler = this.changeGenderHandler.bind(this);
         this.updateTeacher = this.updateTeacher.bind(this);
     }
-
+    componentDidMount(){
+        TeacherService.getTeacherById(this.state.id).then( (res) =>{
+            let teacher = res;
+            this.setState({teacherName: teacher.teacherName,
+                mobileNumber: teacher.mobileNumber,
+                nic : teacher.nic,
+                schoolBranch : teacher.schoolBranch,
+                qualification : teacher.qualification,
+                maritalStatus : teacher.maritalStatus,
+                gender : teacher.gender
+            });
+        });
+    }
 
     updateTeacher = (e) => {
         e.preventDefault();
@@ -48,6 +60,22 @@ class UpdateTeacher extends Component {
             this.props.history.push('/teachers');
         });
     }
+
+    /*updateTeacher = (e) => {
+        e.preventDefault();
+        let teacher = {teacherName: this.state.teacherName,
+            mobileNumber: this.state.mobileNumber,
+            nic: this.state.nic,
+            schoolBranch: this.state.schoolBranch,
+            qualification: this.state.qualification,
+            maritalStatus: this.state.maritalStatus,
+            gender: this.state.gender};
+        console.log('teacher => ' + JSON.stringify(teacher));
+        console.log('id => ' + JSON.stringify(this.state.id));
+        TeacherService.updateTeacher(teacher, this.state.id).then( res => {
+            this.props.history.push('/teachers');
+        });
+    }*/
     changeTeacherNameHandler= (event) => {
         this.setState({teacherName: event.target.value});
     }
@@ -87,37 +115,46 @@ class UpdateTeacher extends Component {
                                 <form>
                                     <div className = "form-group">
                                         <label> Teacher Name: </label>
-                                        <input placeholder="Teacher Name" name="teacherName" className="form-control"
-                                               value={this.state.teacherName} onChange={this.changeStudentNameHandler}/>
+                                        <input   placeholder="Teacher Name" name="teacherName" className="form-control"
+                                                 value={this.state.teacherName} onChange={this.changeTeacherNameHandler}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> Mobile Number: </label>
                                         <input placeholder="Mobile Number" name="mobileNumber" className="form-control"
-                                               value={this.state.mobileNumber} onChange={this.changeGuardianHandler}/>
+                                               value={this.state.mobileNumber} onChange={this.changeMobileNumberHandler}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> NIC: </label>
                                         <input placeholder="NIC" name="nic" className="form-control"
-                                               value={this.state.nic} onChange={this.changePhoneHandler}/>
+                                               value={this.state.nic} onChange={this.changeNICHandler}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> School Branch: </label>
-                                        <input placeholder="School Branch" name="schoolBranch" className="form-control"
-                                               value={this.state.schoolBranch} onChange={this.changeDobHandler}/>
+                                        <select value={this.state.schoolBranch} className="form-control" onChange={this.changeSchoolBranchHandler}>
+                                            <option defaultValue>School Branch:</option>
+                                            <option value="Colombo">Colombo</option>
+                                            <option value="Kandy">Kandy</option>
+                                            <option value="Dehiwala">Dehiwala</option>
+                                            <option value="Negambo">Negambo</option>
+                                            <option value="Ratmalana">Ratmalana</option>
+                                        </select>
                                     </div>
                                     <div className = "form-group">
                                         <label> Qualification : </label>
                                         <input placeholder="Qualification" name="qualification" className="form-control"
-                                               value={this.state.qualification} onChange={this.changeAddressHandler}/>
-                                    </div> <div className = "form-group">
-                                    <label> Marital Status : </label>
-                                    <input placeholder="Marital Status" name="maritalStatus" className="form-control"
-                                           value={this.state.maritalStatus} onChange={this.changeSchoolBranchHandler}/>
-                                </div>
-                                    <div className = "form-group">
+                                               value={this.state.qualification} onChange={this.changeQualificationHandler}/>
+                                    </div>
+                                    <div className = "form-group" value={this.state.maritalStatus} onChange={this.changeMaritalStatusHandler}>
+                                        <label> Marital Status : </label>
+                                        <input type="radio" value="Single" name="maritalStatus" /> Single
+                                        <input type="radio" value="Married" name="maritalStatus" /> Married
+
+                                    </div>
+                                    <div className = "form-group" value={this.state.gender} onChange={this.changeGenderHandler} >
                                         <label> Gender : </label>
-                                        <input placeholder="Gender" name="gender" className="form-control"
-                                               value={this.state.gender} onChange={this.changeGenderHandler}/>
+                                        <input type="radio" value="MALE" name="gender" /> Male
+                                        <input type="radio" value="FEMALE" name="gender" /> Female
+
                                     </div>
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} >Cancel</button>
                                     <button className="btn btn-success" onClick={this.updateTeacher}style={{marginLeft: "10px"}}>Update</button>

@@ -32,7 +32,7 @@ class ListPayments extends Component {
 
     componentDidMount(){
         StudentPaymentService.getPayments().then((res) => {
-            this.setState({ payments: res.data});
+            this.setState({ payments: res});
         });
     }
     addPayment(){

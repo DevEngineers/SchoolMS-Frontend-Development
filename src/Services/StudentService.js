@@ -4,13 +4,13 @@
 * */
 
 
-const STUDENT_API_BASE_URL = "http://localhost:5000/student";
+const STUDENT_API_BASE_URL = 'http://localhost:5000/students';
 
 class StudentService{
 
 
     async getStudents(){
-        return await fetch(STUDENT_API_BASE_URL+"",{
+        return await fetch(STUDENT_API_BASE_URL,{
             method:'GET',
         }).then(response =>{
             return response.json();

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import StudentPaymentService from "../../Services/StudentPaymentService";
-import StudentService from "../../Services/StudentService";
+
 
 class ViewPayments extends Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class ViewPayments extends Component {
 
     componentDidMount(){
         StudentPaymentService.getPaymentById(this.state.id).then( res => {
-            this.setState({payments: res.data});
+            this.setState({payments: res});
         })
     }
 

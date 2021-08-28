@@ -13,7 +13,7 @@ class ViewStudents extends Component {
 
     componentDidMount(){
         StudentService.getStudentById(this.state.id).then( res => {
-            this.setState({student: res.data});
+            this.setState({student: res});
         })
     }
 

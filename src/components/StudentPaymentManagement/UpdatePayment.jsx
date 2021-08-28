@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import StudentPaymentService from "../../Services/StudentPaymentService";
 import '../../styles/Teacher.css';
 
+
 /*
 *  Registration number: IT 19167442
 *  @Author :Nusky M.A.M
@@ -36,7 +37,20 @@ class UpdatePayment extends Component {
 
     }
 
-
+    componentDidMount(){
+        StudentPaymentService.getPaymentById(this.state.id).then( (res) =>{
+            let payment = res;
+            this.setState({schoolBranch: payment.schoolBranch,
+                class: payment.class,
+                classType : payment.classType,
+                studentId : payment.studentId,
+                studentName : payment.studentName,
+                paymentType : payment.paymentType,
+                paidAmount : payment.paidAmount,
+                dateOfPayment : payment.dateOfPayment,
+            });
+        });
+    }
     UpdatePayment= (e) => {
         e.preventDefault();
         let payment = {schoolBranch: this.state.schoolBranch,

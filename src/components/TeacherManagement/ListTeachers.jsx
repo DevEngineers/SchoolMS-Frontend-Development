@@ -32,7 +32,7 @@ class ListTeachers extends Component {
 
     componentDidMount(){
         TeacherService.getTeachers().then((res) => {
-            this.setState({ teachers: res.data});
+            this.setState({ teachers: res});
         });
     }
 

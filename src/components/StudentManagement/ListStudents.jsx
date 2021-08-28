@@ -36,7 +36,8 @@ class ListStudents extends Component {
 
     componentDidMount(){
         StudentService.getStudents().then((res) => {
-            this.setState({ students: res.data});
+            console.log(res);
+            this.setState({ students: res});
         });
 
     }
