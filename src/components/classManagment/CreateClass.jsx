@@ -53,9 +53,9 @@ class CreateClass extends Component {
         })
     }
 
-    // restAllValuesInForm(){
-    //     this.setDefaultValuesInState()
-    // }
+    restAllValuesInForm(){
+        this.setDefaultValuesInState()
+    }
 
     /**
      * This function is to submit Create Class proposal
