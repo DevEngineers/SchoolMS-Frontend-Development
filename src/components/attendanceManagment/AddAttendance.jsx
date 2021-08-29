@@ -68,6 +68,10 @@ class AddAttendance extends Component {
         })
     }
 
+    restAllValuesInForm(){
+        this.setDefaultValuesInState()
+    }
+
     onCheckBox(event){
         const{value} = event.target;
         console.log(value);
