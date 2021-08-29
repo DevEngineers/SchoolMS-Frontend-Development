@@ -5,6 +5,7 @@ import Select from "@material-ui/core/Select";
 import '../../styles/AttendanceManagment/Attendance.css';
 import {toast, ToastContainer} from "material-react-toastify";
 import AttendanceService from "../../services/AttendanceService";
+import ClassTypeService from "../../services/ClassTypeService";
 
 /**
  * @author : A.M Zumry
@@ -45,10 +46,20 @@ class AddAttendance extends Component {
             student:['Nimal Kumar', 'Pasan Bandara', 'Kasun kumar','Sunil sunil', 'Tharuni bandara','Kasun Vimal' ],
             attendance:[1, 1, 1, 1, 0, 1],
 
-            classType:['A','B','C','D','E'],
+            classTypes:[],
             class:['9', '10', '11', '12']
         }
     }
+    componentDidMount() {
+        this.setDefaultValuesInState();
+        ClassTypeService.getClassTypes()
+            .then(res =>{
+                this.setState({classTypes:res})
+            }).catch(err => {
+            console.error(err)
+        })
+    }
+
 
     onCheckBox(event){
         const{value} = event.target;
