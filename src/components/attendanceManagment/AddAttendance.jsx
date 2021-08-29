@@ -176,7 +176,7 @@ class AddAttendance extends Component {
                                                         value={this.state.rClassType} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
                                                     <MenuItem value={''}> Select Class Type </MenuItem>
                                                     {
-                                                        this.state.classType.map(type =>
+                                                        this.state.classTypes.map(type =>
                                                             <MenuItem key={type} value={type}> {type} </MenuItem>
                                                         )
                                                     }
