@@ -36,7 +36,7 @@ class CreateClass extends Component {
     }
 
     componentDidMount() {
-        this.setDefaultValuesInState();
+        // this.setDefaultValuesInState();
         ClassTypeService.getClassTypes()
             .then(res =>{
                 this.setState({classTypes:res})
