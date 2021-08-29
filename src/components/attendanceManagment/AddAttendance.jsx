@@ -60,6 +60,13 @@ class AddAttendance extends Component {
         })
     }
 
+    setDefaultValuesInState(){
+        this.setState({
+            rDate:'',
+            rClass:'',
+            rClassType:'',
+        })
+    }
 
     onCheckBox(event){
         const{value} = event.target;
