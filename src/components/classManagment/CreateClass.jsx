@@ -127,8 +127,8 @@ class CreateClass extends Component {
                                                     value={this.state.rClassType} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
                                                 <MenuItem value={''}> Select Class Type </MenuItem>
                                                 {
-                                                    this.state.classTypes.map(type =>
-                                                        <MenuItem key={type} value={type}> {type} </MenuItem>
+                                                    this.state.classTypes.map(classType =>
+                                                        <MenuItem key={classType._id} value={classType._id}> {classType.name} </MenuItem>
                                                     )
                                                 }
                                             </Select>
