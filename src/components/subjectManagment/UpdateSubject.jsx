@@ -50,6 +50,10 @@ class UpdateSubject extends Component {
             })
     }
 
+    restAllValuesInForm(){
+        this.componentDidMount()
+    }
+
     updateSubject(event){
         event.preventDefault();
         let Subject = {
