@@ -47,6 +47,10 @@ class UpdateClass extends Component {
             })
     }
 
+    restAllValuesInForm(){
+        this.componentDidMount()
+    }
+
     updateClass(event){
         event.preventDefault();
         let Classes = {
