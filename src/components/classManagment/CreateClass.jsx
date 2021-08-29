@@ -5,6 +5,7 @@ import {Box, Grid, MenuItem} from "@material-ui/core";
 import {toast, ToastContainer} from "material-react-toastify";
 import '../../styles/classManagment/Class.css';
 import ClassService from "../../services/ClassService";
+import ClassTypeService from "../../services/ClassTypeService";
 
 /**
  * @author : A.M Zumry
@@ -29,9 +30,19 @@ class CreateClass extends Component {
             rClassType:'',
             rTeacher:'',
 
-            classType:['A','B','C','D','E'],
+            classTypes:[],
             teacher:['Nimal', 'Kumar', 'Kasun','sara gorge', "Amarakoon" ,"Amila prasanna"]
         }
+    }
+
+    componentDidMount() {
+        this.setDefaultValuesInState();
+        ClassTypeService.getClassTypes()
+            .then(res =>{
+                this.setState({classTypes:res})
+            }).catch(err => {
+            console.error(err)
+        })
     }
 
     restAllValuesInForm(){
@@ -116,7 +127,7 @@ class CreateClass extends Component {
                                                     value={this.state.rClassType} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
                                                 <MenuItem value={''}> Select Class Type </MenuItem>
                                                 {
-                                                    this.state.classType.map(type =>
+                                                    this.state.classTypes.map(type =>
                                                         <MenuItem key={type} value={type}> {type} </MenuItem>
                                                     )
                                                 }
