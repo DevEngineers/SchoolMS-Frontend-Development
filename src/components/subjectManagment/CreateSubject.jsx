@@ -38,6 +38,11 @@ class CreateSubject extends Component {
 
     componentDidMount(){
         TeacherService.getTeachers()
+            .then(res => {
+                this.setState({teachers:res})
+            }).catch(err => {
+                console.error(err)
+        })
     }
 
     setDefaultValuesInState(){
