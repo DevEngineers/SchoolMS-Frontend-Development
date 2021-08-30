@@ -6,6 +6,7 @@ import {toast, ToastContainer} from "material-react-toastify";
 import '../../styles/classManagment/Class.css';
 import ClassService from "../../services/ClassService";
 import ClassTypeService from "../../services/ClassTypeService";
+import TeacherService from "../../services/TeacherService";
 
 /**
  * @author : A.M Zumry
@@ -31,7 +32,7 @@ class CreateClass extends Component {
             rTeacher:'',
 
             classTypes:[],
-            teacher:['Nimal', 'Kumar', 'Kasun','sara gorge', "Amarakoon" ,"Amila prasanna"]
+            teachers:[]
         }
     }
 
@@ -40,8 +41,16 @@ class CreateClass extends Component {
             .then(res =>{
                 this.setState({classTypes:res})
             }).catch(err => {
-            console.error(err)
+            console.error()
         })
+
+        TeacherService.getTeachers()
+            .then(res => {
+                this.setState({teachers:res})
+            }).catch(err => {
+                console.error(err)
+        })
+
     }
 
     setDefaultValuesInState(){
