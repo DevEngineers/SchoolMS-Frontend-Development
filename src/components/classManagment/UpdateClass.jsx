@@ -5,6 +5,7 @@ import Select from "@material-ui/core/Select";
 import '../../styles/classManagment/Class.css';
 import {toast, ToastContainer} from "material-react-toastify";
 import ClassService from "../../services/ClassService";
+import TeacherService from "../../services/TeacherService";
 
 /**
  * @author : A.M Zumry
@@ -32,6 +33,7 @@ class UpdateClass extends Component {
             rTeacher:'',
 
             classTypeN:['A','B','C','D','E'],
+            teachers:[],
             teacherN:['Nimal', 'Kumar', 'Kasun','sara gorge', 'Amarakoon' ,'Amila prasanna']
         }
     }
@@ -44,7 +46,17 @@ class UpdateClass extends Component {
                     rClassType:res.classType,
                     rTeacher:res.teacher
                 })
-            })
+            }).catch(err => {
+            console.error(err)
+        })
+
+        TeacherService.getTeachers()
+            .then(res => {
+                this.setState({teachers:res})
+            }).catch(err => {
+            console.error(err)
+        })
+
     }
 
     restAllValuesInForm(){
