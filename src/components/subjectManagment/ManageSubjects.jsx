@@ -22,6 +22,7 @@ function ManageSubjects(props){
         SubjectService.getSubjects()
             .then(Subjects =>{
                 setSubject(Subjects);
+                console.log("Sub",Subjects)
             }).catch(err =>{
             console.error(err)
         })
