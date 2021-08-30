@@ -34,7 +34,6 @@ class UpdateClass extends Component {
 
             classTypeN:['A','B','C','D','E'],
             teachers:[],
-            teacherN:['Nimal', 'Kumar', 'Kasun','sara gorge', 'Amarakoon' ,'Amila prasanna']
         }
     }
 
@@ -43,8 +42,8 @@ class UpdateClass extends Component {
             .then(res => {
                 this.setState({
                     rClass:res.class,
-                    rClassType:res.classType,
-                    rTeacher:res.teacher
+                    rClassType:res.classType.name,
+                    rTeacher:res.teacher.teacherName
                 })
             }).catch(err => {
             console.error(err)
