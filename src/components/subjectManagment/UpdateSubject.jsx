@@ -31,10 +31,6 @@ class UpdateSubject extends Component {
             rClass:'',
             rTeacher:'',
 
-            subject:'',
-            class:'',
-            teacher:'',
-
             grade:['9','10','11','12'],
             teachers:[]
         }
