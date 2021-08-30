@@ -62,7 +62,9 @@ class UpdateAttendance extends Component {
                     rAttendance:res.attendance,
                     rStudent:res.student
                 })
-            })
+            }).catch(err => {
+            console.error(err)
+        })
     }
 
     onCheckBox(event){
