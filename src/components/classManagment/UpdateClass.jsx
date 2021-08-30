@@ -156,8 +156,8 @@ class UpdateClass extends Component {
                                                     value={this.state.rTeacher} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
                                                 <MenuItem value={this.state.rTeacher} > {this.state.rTeacher} </MenuItem>
                                                 {
-                                                    this.state.teacherN.map(Teacher =>
-                                                        <MenuItem key={Teacher} value={Teacher}> {Teacher} </MenuItem>
+                                                    this.state.teachers.map(Teacher =>
+                                                        <MenuItem key={Teacher._id} value={Teacher._id}> {Teacher.teacherName} </MenuItem>
                                                     )
                                                 }
                                             </Select>
