@@ -6,6 +6,7 @@ import '../../styles/subjectManagment/subjects.css';
 import {toast, ToastContainer} from "material-react-toastify";
 import SubjectService from "../../services/SubjectService";
 import TeacherService from "../../services/TeacherService";
+import ClassService from "../../services/ClassService";
 
 /**
  * @author : A.M Zumry
@@ -42,6 +43,9 @@ class CreateSubject extends Component {
             }).catch(err => {
                 console.error(err)
         })
+
+        ClassService.getClasses()
+
     }
 
     setDefaultValuesInState(){
