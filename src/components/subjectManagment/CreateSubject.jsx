@@ -47,7 +47,9 @@ class CreateSubject extends Component {
         ClassService.getClasses()
             .then(res => {
                 this.setState({classes:res})
-            })
+            }).catch(err => {
+                console.error(err)
+        })
 
     }
 
