@@ -45,8 +45,8 @@ class UpdateSubject extends Component {
             .then(res => {
                 this.setState({
                     rSubject:res.subject,
-                    rClass:res.class,
-                    rTeacher:res.teacher
+                    rClass:res.class.class,
+                    rTeacher:res.teacher.teacherName
                 })
             }).catch(err => {
             console.error(err)
