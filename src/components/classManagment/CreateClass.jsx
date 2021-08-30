@@ -162,8 +162,8 @@ class CreateClass extends Component {
                                                     value={this.state.rTeacher} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
                                                 <MenuItem value={''}> Select Teacher </MenuItem>
                                                 {
-                                                    this.state.teacher.map(Teacher =>
-                                                        <MenuItem key={Teacher} value={Teacher}> {Teacher} </MenuItem>
+                                                    this.state.teachers.map(Teacher =>
+                                                        <MenuItem key={Teacher._id} value={Teacher._id}> {Teacher} </MenuItem>
                                                     )
                                                 }
                                             </Select>
