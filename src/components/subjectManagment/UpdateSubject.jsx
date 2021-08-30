@@ -47,7 +47,9 @@ class UpdateSubject extends Component {
                     rClass:res.class,
                     rTeacher:res.teacher
                 })
-            })
+            }).catch(err => {
+            console.error(err)
+        })
     }
 
     restAllValuesInForm(){
