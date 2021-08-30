@@ -177,7 +177,7 @@ class AddAttendance extends Component {
                                                     <MenuItem value={''}> Select Class </MenuItem>
                                                     {
                                                         this.state.classes.map(Class =>
-                                                            <MenuItem key={Class} value={Class}> {Class} </MenuItem>
+                                                            <MenuItem key={Class._id} value={Class._id}> {Class.class} </MenuItem>
                                                         )
                                                     }
                                                 </Select>
