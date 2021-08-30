@@ -71,7 +71,7 @@ class CreateClass extends Component {
     insertClass(event) {
         event.preventDefault();
         let Class = {
-            class: this.state.rClass,
+            class: 'Grade ' + this.state.rClass,
             classType: this.state.rClassType,
             teacher: this.state.rTeacher
         }
