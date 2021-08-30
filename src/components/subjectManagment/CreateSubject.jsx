@@ -31,7 +31,7 @@ class CreateSubject extends Component {
             rClass:'',
             rTeacher:'',
 
-            classes:['9','10','11','12'],
+            classes:[],
             teachers:[]
         }
     }
@@ -45,6 +45,9 @@ class CreateSubject extends Component {
         })
 
         ClassService.getClasses()
+            .then(res => {
+                this.setState({classes:res})
+            })
 
     }
 
