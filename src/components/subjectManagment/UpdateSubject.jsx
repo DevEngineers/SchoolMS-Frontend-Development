@@ -161,7 +161,7 @@ class UpdateSubject extends Component {
                                                 <MenuItem value={this.state.rTeacher} > {this.state.rTeacher} </MenuItem>
                                                 {
                                                     this.state.teachers.map(Teacher =>
-                                                        <MenuItem key={Teacher} value={Teacher}> {Teacher} </MenuItem>
+                                                        <MenuItem key={Teacher._id} value={Teacher._id}> {Teacher.teacherName} </MenuItem>
                                                     )
                                                 }
                                             </Select>
