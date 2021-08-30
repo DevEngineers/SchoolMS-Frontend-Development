@@ -163,7 +163,7 @@ class CreateClass extends Component {
                                                 <MenuItem value={''}> Select Teacher </MenuItem>
                                                 {
                                                     this.state.teachers.map(Teacher =>
-                                                        <MenuItem key={Teacher._id} value={Teacher._id}> {Teacher} </MenuItem>
+                                                        <MenuItem key={Teacher._id} value={Teacher._id}> {Teacher.teacherName} </MenuItem>
                                                     )
                                                 }
                                             </Select>
