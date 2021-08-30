@@ -5,6 +5,7 @@ import Select from "@material-ui/core/Select";
 import '../../styles/subjectManagment/subjects.css';
 import {toast, ToastContainer} from "material-react-toastify";
 import SubjectService from "../../services/SubjectService";
+import TeacherService from "../../services/TeacherService";
 
 /**
  * @author : A.M Zumry
@@ -33,6 +34,10 @@ class CreateSubject extends Component {
             // teachers:['Nimal', 'Kumar', 'Kasun','sara gorge', 'Amarakoon' ,'Amila prasanna'],
             teachers:[]
         }
+    }
+
+    componentDidMount(){
+        TeacherService.getTeachers()
     }
 
     setDefaultValuesInState(){
