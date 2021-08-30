@@ -155,7 +155,7 @@ class CreateSubject extends Component {
                                                 <MenuItem value={''}> Select Subject Teacher </MenuItem>
                                                 {
                                                     this.state.teachers.map(Teacher =>
-                                                        <MenuItem key={Teacher} value={Teacher}> {Teacher} </MenuItem>
+                                                        <MenuItem key={Teacher._id} value={Teacher._id}> {Teacher.teacherName} </MenuItem>
                                                     )
                                                 }
                                             </Select>
