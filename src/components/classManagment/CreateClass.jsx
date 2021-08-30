@@ -41,7 +41,7 @@ class CreateClass extends Component {
             .then(res =>{
                 this.setState({classTypes:res})
             }).catch(err => {
-            console.error()
+            console.error(err)
         })
 
         TeacherService.getTeachers()
