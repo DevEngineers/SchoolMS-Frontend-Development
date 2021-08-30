@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import SubjectService from "../../services/SubjectService";
 import {toast, ToastContainer} from "material-react-toastify";
+import TeacherService from "../../services/TeacherService";
 
 /**
  * @author : A.M Zumry
@@ -35,7 +36,7 @@ class UpdateSubject extends Component {
             teacher:'',
 
             grade:['9','10','11','12'],
-            teachers:['Nimal', 'Kumar', 'Kasun','sara gorge', 'Amarakoon' ,'Amila prasanna']
+            teachers:[]
         }
     }
 
@@ -50,6 +51,14 @@ class UpdateSubject extends Component {
             }).catch(err => {
             console.error(err)
         })
+
+        TeacherService.getTeachers()
+            .then(res => {
+                this.setState({teachers:res})
+            }).catch(err => {
+            console.error(err)
+        })
+
     }
 
     restAllValuesInForm(){
