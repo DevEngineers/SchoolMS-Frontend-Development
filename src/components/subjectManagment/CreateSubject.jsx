@@ -44,7 +44,7 @@ class CreateSubject extends Component {
     }
 
     restAllValuesInForm(){
-
+        this.setDefaultValuesInState()
     }
 
     /**
