@@ -30,8 +30,17 @@ class CreateSubject extends Component {
             rTeacher:'',
 
             classes:['9','10','11','12'],
-            teachers:['Nimal', 'Kumar', 'Kasun','sara gorge', 'Amarakoon' ,'Amila prasanna']
+            // teachers:['Nimal', 'Kumar', 'Kasun','sara gorge', 'Amarakoon' ,'Amila prasanna'],
+            teachers:[]
         }
+    }
+
+    setDefaultValuesInState(){
+        this.setState({
+            rSubject:'',
+            rClass:'',
+            rTeacher:'',
+        })
     }
 
     restAllValuesInForm(){
