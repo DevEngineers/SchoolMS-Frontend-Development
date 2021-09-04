@@ -5,6 +5,8 @@ import Select from "@material-ui/core/Select";
 import '../../styles/AttendanceManagment/Attendance.css';
 import {toast, ToastContainer} from "material-react-toastify";
 import AttendanceService from "../../services/AttendanceService";
+import ClassTypeService from "../../services/ClassTypeService";
+import ClassService from "../../services/ClassService";
 
 /**
  * @author : A.M Zumry
@@ -45,9 +47,37 @@ class AddAttendance extends Component {
             student:['Nimal Kumar', 'Pasan Bandara', 'Kasun kumar','Sunil sunil', 'Tharuni bandara','Kasun Vimal' ],
             attendance:[1, 1, 1, 1, 0, 1],
 
-            classType:['A','B','C','D','E'],
-            class:['9', '10', '11', '12']
+            classTypes:[],
+            classes:[]
         }
+    }
+    componentDidMount() {
+        ClassTypeService.getClassTypes()
+            .then(res =>{
+                this.setState({classTypes:res})
+            }).catch(err => {
+            console.error(err)
+        })
+
+        ClassService.getClasses()
+            .then(res => {
+                this.setState({classes:res})
+            }).catch(err => {
+            console.error(err)
+        })
+
+    }
+
+    setDefaultValuesInState(){
+        this.setState({
+            rDate:'',
+            rClass:'',
+            rClassType:'',
+        })
+    }
+
+    restAllValuesInForm(){
+        this.setDefaultValuesInState()
     }
 
     onCheckBox(event){
@@ -146,8 +176,8 @@ class AddAttendance extends Component {
                                                         value={this.state.rClass} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
                                                     <MenuItem value={''}> Select Class </MenuItem>
                                                     {
-                                                        this.state.class.map(cls =>
-                                                            <MenuItem key={cls} value={cls}>{cls}</MenuItem>
+                                                        this.state.classes.map(Class =>
+                                                            <MenuItem key={Class._id} value={Class._id}> {Class.class} </MenuItem>
                                                         )
                                                     }
                                                 </Select>
@@ -165,8 +195,8 @@ class AddAttendance extends Component {
                                                         value={this.state.rClassType} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
                                                     <MenuItem value={''}> Select Class Type </MenuItem>
                                                     {
-                                                        this.state.classType.map(type =>
-                                                            <MenuItem key={type} value={type}> {type} </MenuItem>
+                                                        this.state.classTypes.map(classType =>
+                                                            <MenuItem key={classType._id} value={classType._id}> {classType.name} </MenuItem>
                                                         )
                                                     }
                                                 </Select>
@@ -209,8 +239,7 @@ class AddAttendance extends Component {
                                     <Grid container item direction="row" justifyContent="flex-end" alignItems="baseline" >
 
                                         <Box ccomponent="div" display="inline" style={{ padding: 10 }} >
-                                            <input type={'reset'} className={'Btn-Att-reset'} value={'Reset'} />
-                                            {/*onClick={this.restAllValuesInForm.bind(this)}*/}
+                                            <input type={'reset'} className={'Btn-Att-reset'} value={'Reset'} onClick={this.restAllValuesInForm.bind(this)} />
                                         </Box>
 
                                         <Box component="div" display="inline" style={{ padding: 10 }} >

@@ -7,7 +7,8 @@ import AddIcon from "@material-ui/icons/Add";
 import '../../styles/timetableAndResultStyles/ExamTimetable.css'
 import {toast, ToastContainer} from "material-react-toastify";
 import ExamTimetableService from "../../services/ExamTimetableService";
-import ClassTypeService from "../../services/ClassTypeService";
+import ClassService from "../../services/ClassService";
+import SubjectService from "../../services/SubjectService";
 
 
 /**
@@ -52,6 +53,20 @@ class CreateExamTimetable extends React.Component{
 
     componentDidMount() {
         this.setDefaultValuesInState();
+
+        ClassService.getClasses()
+            .then(res =>{
+                this.setState({classes:res})
+            }).catch(err => {
+            console.error(err)
+            })
+
+        SubjectService.getSubjects()
+            .then(res =>{
+                this.setState({subjects:res})
+            }).catch(err => {
+            console.error(err)
+            })
     }
 
     setDefaultValuesInState(){
@@ -143,7 +158,7 @@ class CreateExamTimetable extends React.Component{
     generateExamTimetable(event) {
         event.preventDefault();
         let examTimetable ={
-            class:this.state.eClass,
+            class:this.state.eClass._id,
             year: this.state.year,
             term: this.state.term,
             startSlot: this.state.startSlot,
@@ -201,7 +216,7 @@ class CreateExamTimetable extends React.Component{
                                 <MenuItem value={''}><span className={'selectPName'}>Select Class</span></MenuItem>
                                 {
                                     this.state.classes.map(classes =>
-                                        <MenuItem key={classes} value={classes}><span className={'selectPName'}>{classes}</span></MenuItem>
+                                        <MenuItem key={classes} value={classes}><span className={'selectPName'}>{classes.class}</span></MenuItem>
                                     )
                                 }
                             </Select>
@@ -258,7 +273,7 @@ class CreateExamTimetable extends React.Component{
                                                     value={el || ''} onChange={this.handleChangeSubjects.bind(this, i)} className={'daySize'} >
                                                 {
                                                     this.state.subjects.map(subject =>
-                                                        <MenuItem key={subject} value={subject}>{subject}</MenuItem>
+                                                        <MenuItem key={subject._id} value={subject.subject}>{subject.subject}</MenuItem>
                                                     )
                                                 }
                                             </Select>

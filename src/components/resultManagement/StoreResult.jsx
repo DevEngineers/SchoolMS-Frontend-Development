@@ -8,6 +8,8 @@ import '../../styles/timetableAndResultStyles/Results.css';
 import {toast} from "material-react-toastify";
 import ResultService from "../../services/ResultService";
 import ClassTypeService from "../../services/ClassTypeService";
+import ClassService from "../../services/ClassService";
+import SubjectService from "../../services/SubjectService";
 
 /**
  * @author : M.N.M Akeel
@@ -56,9 +58,24 @@ class StoreResult extends React.Component{
 
     componentDidMount() {
         this.setDefaultValuesInState();
+
+        ClassService.getClasses()
+            .then(res =>{
+                this.setState({classes:res})
+            }).catch(err => {
+            console.error(err)
+        })
+
         ClassTypeService.getClassTypes()
             .then(res =>{
                 this.setState({classTypes:res})
+            }).catch(err => {
+            console.error(err)
+        })
+
+        SubjectService.getSubjects()
+            .then(res =>{
+                this.setState({subjects:res})
             }).catch(err => {
             console.error(err)
         })
@@ -141,7 +158,7 @@ class StoreResult extends React.Component{
     storeResults(event) {
         event.preventDefault();
         let result = {
-            class:this.state.rClass,
+            class:this.state.rClass._id,
             classType:this.state.rClassType,
             year: this.state.year,
             term:this.state.term,
@@ -207,7 +224,7 @@ class StoreResult extends React.Component{
                                 <MenuItem value={''}><span className={'selectRName'}>Select Class</span></MenuItem>
                                 {
                                     this.state.classes.map(classes =>
-                                        <MenuItem key={classes} value={classes}><span className={'selectRName'}>{classes}</span></MenuItem>
+                                        <MenuItem key={classes._id} value={classes}><span className={'selectRName'}>{classes.class}</span></MenuItem>
                                     )
                                 }
                             </Select>
@@ -260,7 +277,7 @@ class StoreResult extends React.Component{
                                                     value={el || ''} onChange={this.handleChangeSubject.bind(this, i)} className={'daySize'} >
                                                 {
                                                     this.state.subjects.map(subject =>
-                                                        <MenuItem key={subject} value={subject}>{subject}</MenuItem>
+                                                        <MenuItem key={subject._id} value={subject.subject}>{subject.subject}</MenuItem>
                                                     )
                                                 }
                                             </Select>

@@ -9,6 +9,8 @@ import 'material-react-toastify/dist/ReactToastify.css';
 import '../../styles/timetableAndResultStyles/ClassTimetable.css';
 import ClassTimetableService from "../../services/ClassTimetableService";
 import ClassTypeService from "../../services/ClassTypeService";
+import ClassService from "../../services/ClassService";
+import SubjectService from "../../services/SubjectService";
 
 
 /**
@@ -60,11 +62,26 @@ class CreateClassTimetable extends React.Component{
 
     componentDidMount() {
         this.setDefaultValuesInState();
+
+        ClassService.getClasses()
+            .then(res =>{
+                this.setState({classes:res})
+            }).catch(err => {
+            console.error(err)
+            })
+
         ClassTypeService.getClassTypes()
             .then(res =>{
                 this.setState({classTypes:res})
             }).catch(err => {
                 console.error(err)
+            })
+
+        SubjectService.getSubjects()
+            .then(res =>{
+                this.setState({subjects:res})
+            }).catch(err => {
+            console.error(err)
             })
     }
 
@@ -408,7 +425,7 @@ class CreateClassTimetable extends React.Component{
                                                         value={el||''} onChange={this.handleSubjectChange.bind(this, i,'monday')} className={'daySize'}>
                                                     {
                                                         this.state.subjects.map(subject =>
-                                                            <MenuItem key={subject} value={subject}>{subject}</MenuItem>
+                                                            <MenuItem key={subject._id} value={subject.subject}><span className={'selectCName'}>{subject.subject}</span></MenuItem>
                                                         )
                                                     }
                                                 </Select>
@@ -430,7 +447,7 @@ class CreateClassTimetable extends React.Component{
                                                 <Select labelId="demo-simple-select-label" id="demo-simple-select" value={el || ''} onChange={this.handleSubjectChange.bind(this, i, 'tuesday')} className={'daySize'}>
                                                     {
                                                         this.state.subjects.map(subject =>
-                                                            <MenuItem key={subject} value={subject}>{subject}</MenuItem>
+                                                            <MenuItem key={subject._id} value={subject.subject}><span className={'selectCName'}>{subject.subject}</span></MenuItem>
                                                         )
                                                     }
                                                 </Select>
@@ -453,7 +470,7 @@ class CreateClassTimetable extends React.Component{
                                                         onChange={this.handleSubjectChange.bind(this, i, 'wednesday')} className={'daySize'}>
                                                     {
                                                         this.state.subjects.map(subject =>
-                                                            <MenuItem key={subject} value={subject}>{subject}</MenuItem>
+                                                            <MenuItem key={subject._id} value={subject.subject}><span className={'selectCName'}>{subject.subject}</span></MenuItem>
                                                         )
                                                     }
                                                 </Select>
@@ -476,7 +493,7 @@ class CreateClassTimetable extends React.Component{
                                                         onChange={this.handleSubjectChange.bind(this, i, 'thursday')} className={'daySize'}>
                                                     {
                                                         this.state.subjects.map(subject =>
-                                                            <MenuItem key={subject} value={subject}>{subject}</MenuItem>
+                                                            <MenuItem key={subject._id} value={subject.subject}><span className={'selectCName'}>{subject.subject}</span></MenuItem>
                                                         )
                                                     }
                                                 </Select>
@@ -508,7 +525,7 @@ class CreateClassTimetable extends React.Component{
                                                         onChange={this.handleSubjectChange.bind(this, i, 'friday')} className={'daySize'}>
                                                     {
                                                         this.state.subjects.map(subject =>
-                                                            <MenuItem key={subject} value={subject}>{subject}</MenuItem>
+                                                            <MenuItem key={subject._id} value={subject.subject}><span className={'selectCName'}>{subject.subject}</span></MenuItem>
                                                         )
                                                     }
                                                 </Select>

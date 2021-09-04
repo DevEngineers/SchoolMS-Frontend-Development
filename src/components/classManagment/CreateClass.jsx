@@ -5,6 +5,8 @@ import {Box, Grid, MenuItem} from "@material-ui/core";
 import {toast, ToastContainer} from "material-react-toastify";
 import '../../styles/classManagment/Class.css';
 import ClassService from "../../services/ClassService";
+import ClassTypeService from "../../services/ClassTypeService";
+import TeacherService from "../../services/TeacherService";
 
 /**
  * @author : A.M Zumry
@@ -29,13 +31,38 @@ class CreateClass extends Component {
             rClassType:'',
             rTeacher:'',
 
-            classType:['A','B','C','D','E'],
-            teacher:['Nimal', 'Kumar', 'Kasun','sara gorge', "Amarakoon" ,"Amila prasanna"]
+            classTypes:[],
+            teachers:[]
         }
     }
 
-    restAllValuesInForm(){
+    componentDidMount() {
+        ClassTypeService.getClassTypes()
+            .then(res =>{
+                this.setState({classTypes:res})
+            }).catch(err => {
+            console.error(err)
+        })
 
+        TeacherService.getTeachers()
+            .then(res => {
+                this.setState({teachers:res})
+            }).catch(err => {
+                console.error(err)
+        })
+
+    }
+
+    setDefaultValuesInState(){
+        this.setState({
+            rClass:'',
+            rClassType:'',
+            rTeacher:'',
+        })
+    }
+
+    restAllValuesInForm(){
+        this.setDefaultValuesInState()
     }
 
     /**
@@ -44,7 +71,7 @@ class CreateClass extends Component {
     insertClass(event) {
         event.preventDefault();
         let Class = {
-            class: this.state.rClass,
+            class: 'Grade ' + this.state.rClass,
             classType: this.state.rClassType,
             teacher: this.state.rTeacher
         }
@@ -116,8 +143,8 @@ class CreateClass extends Component {
                                                     value={this.state.rClassType} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
                                                 <MenuItem value={''}> Select Class Type </MenuItem>
                                                 {
-                                                    this.state.classType.map(type =>
-                                                        <MenuItem key={type} value={type}> {type} </MenuItem>
+                                                    this.state.classTypes.map(classType =>
+                                                        <MenuItem key={classType._id} value={classType._id}> {classType.name} </MenuItem>
                                                     )
                                                 }
                                             </Select>
@@ -135,8 +162,8 @@ class CreateClass extends Component {
                                                     value={this.state.rTeacher} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
                                                 <MenuItem value={''}> Select Teacher </MenuItem>
                                                 {
-                                                    this.state.teacher.map(Teacher =>
-                                                        <MenuItem key={Teacher} value={Teacher}> {Teacher} </MenuItem>
+                                                    this.state.teachers.map(Teacher =>
+                                                        <MenuItem key={Teacher._id} value={Teacher._id}> {Teacher.teacherName} </MenuItem>
                                                     )
                                                 }
                                             </Select>

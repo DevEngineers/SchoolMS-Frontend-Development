@@ -6,6 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import DeleteIcon from "@material-ui/icons/Delete";
 import AddIcon from "@material-ui/icons/Add";
 import ExamTimetableService from "../../services/ExamTimetableService";
+import SubjectService from "../../services/SubjectService";
 
 /**
  * @author : M.N.M Akeel
@@ -57,6 +58,13 @@ class UpdateExamTimetable extends React.Component{
                     examSubjects:res.examSubjects
                 })
             })
+
+        SubjectService.getSubjects()
+            .then(res =>{
+                this.setState({subjects:res})
+            }).catch(err => {
+            console.error(err)
+        })
 
     }
 
@@ -127,6 +135,9 @@ class UpdateExamTimetable extends React.Component{
         this.setState({ examDates });
     }
 
+    cancelUpdate(){
+        this.props.history.push("/manageExamTimetable");
+    }
 
     updateExamTimetable(event) {
         event.preventDefault();
@@ -231,7 +242,8 @@ class UpdateExamTimetable extends React.Component{
                                                 <MenuItem value={this.state.examSubjects[i]}><span className={'selectPName'}>{this.state.examSubjects[i]}</span></MenuItem>
                                                 {
                                                     this.state.subjects.map(subject =>
-                                                        <MenuItem key={subject} value={subject}><span className={'selectPName'}>{subject}</span></MenuItem>
+                                                        this.state.examSubjects[i] === subject.subject?null:
+                                                            <MenuItem key={subject} value={subject.subject}><span className={'selectCName'}>{subject.subject}</span></MenuItem>
                                                     )
                                                 }
                                             </Select>
@@ -263,7 +275,7 @@ class UpdateExamTimetable extends React.Component{
                     </div>
                     <div className={'btnEDiv'}>
                         <input type={'submit'} id={'submitEBtn'} value={'Update Timetable'} onClick={this.updateExamTimetable.bind(this)}/>
-                        <input type={'reset'} id={'restEBtn'} value={'Cancel'} />
+                        <input type={'reset'} id={'restEBtn'} value={'Cancel'} onClick={this.cancelUpdate.bind(this)}/>
                     </div>
 
                 </form>

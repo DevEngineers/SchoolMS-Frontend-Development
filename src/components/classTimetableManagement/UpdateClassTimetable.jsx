@@ -8,6 +8,7 @@ import AddIcon from "@material-ui/icons/Add";
 import 'material-react-toastify/dist/ReactToastify.css';
 import '../../styles/timetableAndResultStyles/ClassTimetable.css';
 import ClassTimetableService from "../../services/ClassTimetableService";
+import SubjectService from "../../services/SubjectService";
 
 /**
  * @author : M.N.M Akeel
@@ -67,7 +68,12 @@ class UpdateClassTimetable extends React.Component{
                 })
             }).catch(err => console.error(err));
 
-
+        SubjectService.getSubjects()
+            .then(res =>{
+                this.setState({subjects:res})
+            }).catch(err => {
+            console.error(err)
+        })
     }
     /**
      * this function is to capture data in the input fields
@@ -206,6 +212,9 @@ class UpdateClassTimetable extends React.Component{
         this.setState({ friday });
     }
 
+    cancelUpdate(){
+        this.props.history.push("/manageClassTimetable");
+    }
 
     updateClassTimetable(event) {
         event.preventDefault();
@@ -367,7 +376,8 @@ class UpdateClassTimetable extends React.Component{
                                                     <MenuItem value={this.state.monday[i]}><span className={'selectCName'}>{this.state.monday[i]}</span></MenuItem>
                                                     {
                                                         this.state.subjects.map(subject =>
-                                                            <MenuItem key={subject} value={subject}><span className={'selectCName'}>{subject}</span></MenuItem>
+                                                            this.state.monday[i] === subject.subject?null:
+                                                                <MenuItem key={subject} value={subject.subject}><span className={'selectCName'}>{subject.subject}</span></MenuItem>
                                                         )
                                                     }
                                                 </Select>
@@ -391,7 +401,8 @@ class UpdateClassTimetable extends React.Component{
                                                     <MenuItem value={this.state.tuesday[i]}><span className={'selectCName'}>{this.state.tuesday[i]}</span></MenuItem>
                                                     {
                                                         this.state.subjects.map(subject =>
-                                                            <MenuItem key={subject} value={subject}><span className={'selectCName'}>{subject}</span></MenuItem>
+                                                            this.state.tuesday[i] === subject.subject?null:
+                                                                <MenuItem key={subject} value={subject.subject}><span className={'selectCName'}>{subject.subject}</span></MenuItem>
                                                         )
                                                     }
                                                 </Select>
@@ -415,7 +426,8 @@ class UpdateClassTimetable extends React.Component{
                                                     <MenuItem value={this.state.wednesday[i]}><span className={'selectCName'}>{this.state.wednesday[i]}</span></MenuItem>
                                                     {
                                                         this.state.subjects.map(subject =>
-                                                            <MenuItem key={subject} value={subject}><span className={'selectCName'}>{subject}</span></MenuItem>
+                                                            this.state.wednesday[i] === subject.subject?null:
+                                                                <MenuItem key={subject} value={subject.subject}><span className={'selectCName'}>{subject.subject}</span></MenuItem>
                                                         )
                                                     }
                                                 </Select>
@@ -439,7 +451,8 @@ class UpdateClassTimetable extends React.Component{
                                                     <MenuItem value={this.state.thursday[i]}><span className={'selectCName'}>{this.state.thursday[i]}</span></MenuItem>
                                                     {
                                                         this.state.subjects.map(subject =>
-                                                            <MenuItem key={subject} value={subject}><span className={'selectCName'}>{subject}</span></MenuItem>
+                                                            this.state.thursday[i] === subject.subject?null:
+                                                                <MenuItem key={subject} value={subject.subject}><span className={'selectCName'}>{subject.subject}</span></MenuItem>
                                                         )
                                                     }
                                                 </Select>
@@ -472,7 +485,8 @@ class UpdateClassTimetable extends React.Component{
                                                     <MenuItem value={this.state.friday[i]}><span className={'selectCName'}>{this.state.friday[i]}</span></MenuItem>
                                                     {
                                                         this.state.subjects.map(subject =>
-                                                            <MenuItem key={subject} value={subject}><span className={'selectCName'}>{subject}</span></MenuItem>
+                                                            this.state.friday[i] === subject.subject?null:
+                                                                <MenuItem key={subject} value={subject.subject}><span className={'selectCName'}>{subject.subject}</span></MenuItem>
                                                         )
                                                     }
                                                 </Select>
@@ -490,14 +504,12 @@ class UpdateClassTimetable extends React.Component{
                                                     <DeleteIcon className={'timeslotIconSB'} />
                                                 </IconButton>
                                             </div>
-                                            /*<input type='button' value='-'  className={'delSub'} onClick={this.removeClickOnDay.bind(this, i)}/>*/
                                         ):null
                                     ):null
                                 )
                             }
                             {
                                 (this.state.checkedSubject === false)?(
-                                    /*<input type='button' value='Add' onClick={this.addClickOn.bind(this)}/>*/
                                     <div className={'timeslotIcon'}>
                                         <IconButton aria-label="add" style={{backgroundColor:"transparent"}} onClick={this.addClickOn.bind(this)}>
                                             <AddIcon className={'timeslotIconSA'}/>
@@ -509,7 +521,7 @@ class UpdateClassTimetable extends React.Component{
                     </div>
                     <div className={'btnDiv'}>
                         <input type={'submit'} id={'submitBtn'} value={'Update Timetable'} onClick={this.updateClassTimetable.bind(this)}/>
-                        <input type={'reset'} id={'restBtn'} value={'Cancel'} />
+                        <input type={'reset'} id={'restBtn'} value={'Cancel'} onClick={this.cancelUpdate.bind(this)}/>
                     </div>
                 </form>
             </div>

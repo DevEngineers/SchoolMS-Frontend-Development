@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import SubjectService from "../../services/SubjectService";
 import {toast, ToastContainer} from "material-react-toastify";
+import TeacherService from "../../services/TeacherService";
 
 /**
  * @author : A.M Zumry
@@ -30,12 +31,8 @@ class UpdateSubject extends Component {
             rClass:'',
             rTeacher:'',
 
-            subject:'',
-            class:'',
-            teacher:'',
-
             grade:['9','10','11','12'],
-            teachers:['Nimal', 'Kumar', 'Kasun','sara gorge', 'Amarakoon' ,'Amila prasanna']
+            teachers:[]
         }
     }
 
@@ -44,10 +41,24 @@ class UpdateSubject extends Component {
             .then(res => {
                 this.setState({
                     rSubject:res.subject,
-                    rClass:res.class,
-                    rTeacher:res.teacher
+                    rClass:res.class.class,
+                    rTeacher:res.teacher.teacherName
                 })
-            })
+            }).catch(err => {
+            console.error(err)
+        })
+
+        TeacherService.getTeachers()
+            .then(res => {
+                this.setState({teachers:res})
+            }).catch(err => {
+            console.error(err)
+        })
+
+    }
+
+    restAllValuesInForm(){
+        this.componentDidMount()
     }
 
     updateSubject(event){
@@ -146,7 +157,7 @@ class UpdateSubject extends Component {
                                                 <MenuItem value={this.state.rTeacher} > {this.state.rTeacher} </MenuItem>
                                                 {
                                                     this.state.teachers.map(Teacher =>
-                                                        <MenuItem key={Teacher} value={Teacher}> {Teacher} </MenuItem>
+                                                        <MenuItem key={Teacher._id} value={Teacher._id}> {Teacher.teacherName} </MenuItem>
                                                     )
                                                 }
                                             </Select>
@@ -158,8 +169,7 @@ class UpdateSubject extends Component {
                                     <Grid container item direction="row" justifyContent="flex-end" alignItems="baseline" >
 
                                         <Box ccomponent="div" display="inline" style={{ padding: 10 }} >
-                                            <input type={'reset'} className={'Btn-Subject-reset'} value={'Reset'} />
-                                            {/*onClick={this.restAllValuesInForm.bind(this)}*/}
+                                            <input type={'reset'} className={'Btn-Subject-reset'} value={'Reset'} onClick={this.restAllValuesInForm.bind(this)} />
                                         </Box>
 
                                         <Box component="div" display="inline" style={{ padding: 10 }} >

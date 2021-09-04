@@ -5,6 +5,7 @@ import Select from "@material-ui/core/Select";
 import '../../styles/classManagment/Class.css';
 import {toast, ToastContainer} from "material-react-toastify";
 import ClassService from "../../services/ClassService";
+import TeacherService from "../../services/TeacherService";
 
 /**
  * @author : A.M Zumry
@@ -32,7 +33,7 @@ class UpdateClass extends Component {
             rTeacher:'',
 
             classTypeN:['A','B','C','D','E'],
-            teacherN:['Nimal', 'Kumar', 'Kasun','sara gorge', 'Amarakoon' ,'Amila prasanna']
+            teachers:[],
         }
     }
 
@@ -41,10 +42,24 @@ class UpdateClass extends Component {
             .then(res => {
                 this.setState({
                     rClass:res.class,
-                    rClassType:res.classType,
-                    rTeacher:res.teacher
+                    rClassType:res.classType.name,
+                    rTeacher:res.teacher.teacherName
                 })
-            })
+            }).catch(err => {
+            console.error(err)
+        })
+
+        TeacherService.getTeachers()
+            .then(res => {
+                this.setState({teachers:res})
+            }).catch(err => {
+            console.error(err)
+        })
+
+    }
+
+    restAllValuesInForm(){
+        this.componentDidMount()
     }
 
     updateClass(event){
@@ -141,8 +156,8 @@ class UpdateClass extends Component {
                                                     value={this.state.rTeacher} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
                                                 <MenuItem value={this.state.rTeacher} > {this.state.rTeacher} </MenuItem>
                                                 {
-                                                    this.state.teacherN.map(Teacher =>
-                                                        <MenuItem key={Teacher} value={Teacher}> {Teacher} </MenuItem>
+                                                    this.state.teachers.map(Teacher =>
+                                                        <MenuItem key={Teacher._id} value={Teacher._id}> {Teacher.teacherName} </MenuItem>
                                                     )
                                                 }
                                             </Select>
@@ -154,8 +169,7 @@ class UpdateClass extends Component {
                                     <Grid container item direction="row" justifyContent="flex-end" alignItems="baseline" >
 
                                         <Box ccomponent="div" display="inline" style={{ padding: 10 }} >
-                                            <input type={'reset'} className={'Btn-Class-reset'} value={'Reset'} />
-                                            {/*onClick={this.restAllValuesInForm.bind(this)}*/}
+                                            <input type={'reset'} className={'Btn-Class-reset'} value={'Reset'} onClick={this.restAllValuesInForm.bind(this)} />
                                         </Box>
 
                                         <Box component="div" display="inline" style={{ padding: 10 }} >

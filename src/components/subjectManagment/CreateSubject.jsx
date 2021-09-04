@@ -5,6 +5,8 @@ import Select from "@material-ui/core/Select";
 import '../../styles/subjectManagment/subjects.css';
 import {toast, ToastContainer} from "material-react-toastify";
 import SubjectService from "../../services/SubjectService";
+import TeacherService from "../../services/TeacherService";
+import ClassService from "../../services/ClassService";
 
 /**
  * @author : A.M Zumry
@@ -29,13 +31,38 @@ class CreateSubject extends Component {
             rClass:'',
             rTeacher:'',
 
-            classes:['9','10','11','12'],
-            teachers:['Nimal', 'Kumar', 'Kasun','sara gorge', 'Amarakoon' ,'Amila prasanna']
+            classes:[],
+            teachers:[]
         }
     }
 
-    restAllValuesInForm(){
+    componentDidMount(){
+        TeacherService.getTeachers()
+            .then(res => {
+                this.setState({teachers:res})
+            }).catch(err => {
+                console.error(err)
+        })
 
+        ClassService.getClasses()
+            .then(res => {
+                this.setState({classes:res})
+            }).catch(err => {
+                console.error(err)
+        })
+
+    }
+
+    setDefaultValuesInState(){
+        this.setState({
+            rSubject:'',
+            rClass:'',
+            rTeacher:'',
+        })
+    }
+
+    restAllValuesInForm(){
+        this.setDefaultValuesInState()
     }
 
     /**
@@ -117,7 +144,7 @@ class CreateSubject extends Component {
                                                 <MenuItem value={''}> Select Class </MenuItem>
                                                 {
                                                     this.state.classes.map(Class =>
-                                                        <MenuItem key={Class} value={Class}> {Class} </MenuItem>
+                                                        <MenuItem key={Class._id} value={Class._id}> {Class.class} </MenuItem>
                                                     )
                                                 }
                                             </Select>
@@ -136,7 +163,7 @@ class CreateSubject extends Component {
                                                 <MenuItem value={''}> Select Subject Teacher </MenuItem>
                                                 {
                                                     this.state.teachers.map(Teacher =>
-                                                        <MenuItem key={Teacher} value={Teacher}> {Teacher} </MenuItem>
+                                                        <MenuItem key={Teacher._id} value={Teacher._id}> {Teacher.teacherName} </MenuItem>
                                                     )
                                                 }
                                             </Select>

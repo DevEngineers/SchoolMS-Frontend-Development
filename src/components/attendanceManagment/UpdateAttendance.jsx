@@ -57,12 +57,14 @@ class UpdateAttendance extends Component {
             .then(res => {
                 this.setState({
                     rDate:res.date,
-                    rClass:res.class,
-                    rClassType:res.classType,
+                    rClass:res.class.class,
+                    rClassType:res.classType.name,
                     rAttendance:res.attendance,
                     rStudent:res.student
                 })
-            })
+            }).catch(err => {
+            console.error(err)
+        })
     }
 
     onCheckBox(event){
