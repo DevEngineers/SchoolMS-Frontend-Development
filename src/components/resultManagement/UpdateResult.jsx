@@ -127,6 +127,9 @@ class UpdateResult extends React.Component{
         this.setState({ examMarks });
     }
 
+    cancelUpdate(){
+        this.props.history.push("/manageResults");
+    }
 
     updateResults(event) {
         event.preventDefault();
@@ -224,7 +227,8 @@ class UpdateResult extends React.Component{
                                                 <MenuItem value={this.state.examSubjects[i]}><span className={'selectRName'}>{this.state.examSubjects[i]}</span></MenuItem>
                                                 {
                                                     this.state.subjects.map(subject =>
-                                                        <MenuItem key={subject._id} value={subject.subject}>{subject.subject}</MenuItem>
+                                                        this.state.examSubjects[i] === subject.subject?null:
+                                                            <MenuItem key={subject} value={subject.subject}><span className={'selectCName'}>{subject.subject}</span></MenuItem>
                                                     )
                                                 }
                                             </Select>
@@ -284,7 +288,7 @@ class UpdateResult extends React.Component{
                     </div>
                     <div className={'btnEDiv'}>
                         <input type={'submit'} id={'submitRBtn'} value={'Update Results'} onClick={this.updateResults.bind(this)}/>
-                        <input type={'reset'} id={'restRBtn'} value={'Cancel'} />
+                        <input type={'reset'} id={'restRBtn'} value={'Cancel'} onClick={this.cancelUpdate.bind(this)}/>
                     </div>
                 </form>
             </div>
