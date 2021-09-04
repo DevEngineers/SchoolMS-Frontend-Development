@@ -22,7 +22,7 @@ class Header extends Component {
         this.props.history.push('/');
     }
 
-    forGeneral(){
+    forAdministratorView(){
         return <div>
             <div  id={'HeadDiv'}>
                 <label id={'HeadTitle'}>𝙂𝙖𝙩𝙚𝙬𝙖𝙮 𝙄𝙣𝙩𝙚𝙧𝙣𝙖𝙩𝙞𝙤𝙣𝙖𝙡 𝙎𝙘𝙝𝙤𝙤𝙡</label>
@@ -138,7 +138,7 @@ class Header extends Component {
         </div>
     }
 
-    forAdministratorView(){
+    forAdministratorStaffView(){
         return <div>
             <div id="HeadDiv">
 
@@ -149,7 +149,7 @@ class Header extends Component {
     render() {
         return <div>
             {
-                this.forGeneral()
+                this.forAdministratorView()
             }
         </div>
     }
