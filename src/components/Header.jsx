@@ -233,6 +233,10 @@ class Header extends Component {
         </div>
     }
 
+    forExaminationStaffView(){
+
+    }
+
     render() {
         return <div>
             {
