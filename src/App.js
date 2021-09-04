@@ -79,7 +79,6 @@ function App() {
           <Route path="/view-attendance" component={ViewAttendance}/>
           <Route path="/report-attendance" component={ReportAttendance}/>
 
-          <Route path = "/" exact component = {ListStudents}/>
           <Route path = "/students"  component = {ListStudents}/>
           <Route path = "/add-student/" component = {CreateStudent}/>
           <Route path = "/update-student/:id" component = {UpdateStudent}/>
