@@ -6,6 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import DeleteIcon from "@material-ui/icons/Delete";
 import AddIcon from "@material-ui/icons/Add";
 import ExamTimetableService from "../../services/ExamTimetableService";
+import SubjectService from "../../services/SubjectService";
 
 /**
  * @author : M.N.M Akeel
@@ -57,6 +58,13 @@ class UpdateExamTimetable extends React.Component{
                     examSubjects:res.examSubjects
                 })
             })
+
+        SubjectService.getSubjects()
+            .then(res =>{
+                this.setState({subjects:res})
+            }).catch(err => {
+            console.error(err)
+        })
 
     }
 
@@ -231,7 +239,7 @@ class UpdateExamTimetable extends React.Component{
                                                 <MenuItem value={this.state.examSubjects[i]}><span className={'selectPName'}>{this.state.examSubjects[i]}</span></MenuItem>
                                                 {
                                                     this.state.subjects.map(subject =>
-                                                        <MenuItem key={subject} value={subject}><span className={'selectPName'}>{subject}</span></MenuItem>
+                                                        <MenuItem key={subject._id} value={subject.subject}><span className={'selectPName'}>{subject.subject}</span></MenuItem>
                                                     )
                                                 }
                                             </Select>
