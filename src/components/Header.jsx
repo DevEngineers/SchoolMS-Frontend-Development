@@ -303,7 +303,7 @@ class Header extends Component {
                         (this.forAdministratorView())
                     :this.state.type === 'AdministratorStaff'?
                         (this.forAdministratorStaffView())
-                    :this.state.type === 'Editor'?
+                    :this.state.type === 'ExaminationStaff'?
                         (this.forExaminationStaffView())
                     :(this.forAdministratorView())
                 )
