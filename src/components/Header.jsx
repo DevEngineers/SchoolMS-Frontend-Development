@@ -298,7 +298,18 @@ class Header extends Component {
     render() {
         return <div>
             {
-                this.forAdministratorView()
+                (
+                    this.state.type === 'Administrator'?
+                        (this.forAdministratorView())
+                    :this.state.type === 'AdministratorStaff'?
+                        (this.forAdministratorStaffView())
+                    :this.state.type === 'Editor'?
+                        (this.forExaminationStaffView())
+                    :(this.forAdministratorView())
+                )
+
+
+
             }
         </div>
     }
