@@ -7,6 +7,7 @@ import AddIcon from "@material-ui/icons/Add";
 import '../../styles/timetableAndResultStyles/Results.css';
 import {toast} from "material-react-toastify";
 import ResultService from "../../services/ResultService";
+import SubjectService from "../../services/SubjectService";
 
 /**
  * @author : M.N.M Akeel
@@ -63,6 +64,13 @@ class UpdateResult extends React.Component{
                     examSubjects:res.examSubjects
                 })
             })
+
+        SubjectService.getSubjects()
+            .then(res =>{
+                this.setState({subjects:res})
+            }).catch(err => {
+            console.error(err)
+        })
     }
 
     /**
@@ -216,7 +224,7 @@ class UpdateResult extends React.Component{
                                                 <MenuItem value={this.state.examSubjects[i]}><span className={'selectRName'}>{this.state.examSubjects[i]}</span></MenuItem>
                                                 {
                                                     this.state.subjects.map(subject =>
-                                                        <MenuItem key={subject} value={subject}>{subject}</MenuItem>
+                                                        <MenuItem key={subject._id} value={subject.subject}>{subject.subject}</MenuItem>
                                                     )
                                                 }
                                             </Select>
