@@ -4,8 +4,9 @@ import '../../styles/classManagment/ViewClass.css'
 import {useHistory} from "react-router-dom";
 import SubjectService from "../../services/SubjectService";
 import SubjectListHolder from "./SubjectListHolder";
-import {ToastContainer} from "material-react-toastify";
+import {toast, ToastContainer} from "material-react-toastify";
 import Button from "@material-ui/core/Button";
+import ClassService from "../../services/ClassService";
 
 /**
  * @author : A.M Zumry
@@ -60,6 +61,21 @@ function ManageSubjects(props){
     function updateSubject(Subjects){
         let id = Subjects._id;
         history.push(`/update-subject/${id}`);
+    }
+
+    function deleteSubject(){
+        let id = deleteSubjectObj._id;
+        SubjectService.removeSubject(id)
+            .then(res =>{
+                if(res.status === 200){
+                    handleClose();
+                    toast.error("Subject Details is Removed",options)
+                    setTimeout(()=>{history.push("/view-subject")},3000)
+                }else{
+                    handleClose();
+                    toast.warning("Something went wrong!!,Try again.",options)
+                }
+            })
     }
 
     return <div className={"ManageSubject-Section"}>
