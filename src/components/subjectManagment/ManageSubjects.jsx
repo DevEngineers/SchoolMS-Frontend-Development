@@ -10,6 +10,16 @@ import SubjectListHolder from "./SubjectListHolder";
  * Registration Number : IT19175126
  */
 
+//Toast Message Configuration
+const options = {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: false
+}
+
 function ManageSubjects(props){
     const history = useHistory();
     const [Subjects,setSubject] = useState([])
