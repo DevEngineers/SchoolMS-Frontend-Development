@@ -25,14 +25,16 @@ const options = {
 function ManageSubjects(props){
     const history = useHistory();
     const [Subjects,setSubject] = useState([])
+    const [open, setOpen] = useState(false);
+    const [deleteSubjectObj, setDeleteSubjectObj] = useState('');
 
     /**
      * handler to open the alter dialog box and setting up the
      * relevant Class that we going to remove in deleteClassObj state variable
      */
-    const handleClickOpen = (Class) => {
+    const handleClickOpen = (subject) => {
         setOpen(true);
-        setDeleteClassObj(Class);
+        setDeleteSubjectObj(subject);
     };
 
     /**
