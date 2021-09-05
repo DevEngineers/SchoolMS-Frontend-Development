@@ -4,6 +4,7 @@ import '../../styles/TeacherStyles/Teacher.css';
 
 /*
 *  Registration number: IT 19167442
+*
 *  @Author :Nusky M.A.M
 * */
 
@@ -97,14 +98,14 @@ class CreateStudent extends Component {
         this.props.history.push('/add-student/_add');
     }
 
-    getTitle(){
+    /*getTitle(){
 
         if(this.state.id === '_add'){
             return <h3 className="text-center">Add Student</h3>
         }else{
             return <h3 className="text-center">Add Student</h3>
         }
-    }
+    }*/
     /*addTeacher(){
         this.props.history.push('/add-teacher/_add');
     }
@@ -121,9 +122,7 @@ class CreateStudent extends Component {
                     <div className = "row">
 
                         <div className = "card col-md-6 offset-md-3 offset-md-3">
-                            {
-                                this.getTitle()
-                            }
+                            <h3 className="text-center">Add Student</h3>
                             <div className = "card-body">
                                 <form>
                                     <div className = "form-group">

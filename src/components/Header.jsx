@@ -22,7 +22,7 @@ class Header extends Component {
         this.props.history.push('/');
     }
 
-    forGeneral(){
+    forAdministratorView(){
         return <div>
             <div  id={'HeadDiv'}>
                 <label id={'HeadTitle'}>𝙂𝙖𝙩𝙚𝙬𝙖𝙮 𝙄𝙣𝙩𝙚𝙧𝙣𝙖𝙩𝙞𝙤𝙣𝙖𝙡 𝙎𝙘𝙝𝙤𝙤𝙡</label>
@@ -65,8 +65,8 @@ class Header extends Component {
                             <a href="#">Class</a>
                             <input type={'checkbox'} id={'drop-3'}/>
                             <ul>
-                                <li><a href="/view-class">View Class's</a></li>
                                 <li><a href="/create-class">Add Class</a></li>
+                                <li><a href="/view-class">View Class's</a></li>
                             </ul>
                         </li>
                         <li>
@@ -75,8 +75,8 @@ class Header extends Component {
                             <a href="#">Subject</a>
                             <input type={'checkbox'} id={'drop-4'}/>
                             <ul>
-                                <li><a href="/view-subject">View Subject</a></li>
                                 <li><a href="/create-subject">Add Subject</a></li>
+                                <li><a href="/view-subject">View Subject</a></li>
                             </ul>
                         </li>
                         <li className={'liChange'}>
@@ -85,8 +85,8 @@ class Header extends Component {
                             <a href="#">Class Timetable</a>
                             <input type={'checkbox'} id={'drop-5'}/>
                             <ul>
+                                <li><a href="/createClassTimetable">Create Class Timetable</a></li>
                                 <li><a href="/manageClassTimetable">View Class Timetable</a></li>
-                                <li><a href="/createClassTimetable">Add Class Timetable</a></li>
                             </ul>
                         </li>
                         <li className={'liChange'}>
@@ -95,8 +95,8 @@ class Header extends Component {
                             <a href="#">Exam Timetable</a>
                             <input type={'checkbox'} id={'drop-6'}/>
                             <ul>
+                                <li><a href="/createExamTimetable">Create Exam Timetable</a></li>
                                 <li><a href="/manageExamTimetable">View Exam Timetable</a></li>
-                                <li><a href="/createExamTimetable">Add Exam Timetable</a></li>
                             </ul>
                         </li>
                         <li>
@@ -105,8 +105,8 @@ class Header extends Component {
                             <a href="#">Results</a>
                             <input type={'checkbox'} id={'drop-7'}/>
                             <ul>
-                                <li><a href="/manageResults">View Results</a></li>
                                 <li><a href="/storeResults">Add Results</a></li>
+                                <li><a href="/manageResults">View Results</a></li>
                                 <li><a href="/generateResultReport">Generate Results Report</a></li>
                             </ul>
                         </li>
@@ -116,8 +116,8 @@ class Header extends Component {
                             <a href="#">Attendance</a>
                                 <input type={'checkbox'} id={'drop-8'}/>
                             <ul>
-                                <li><a href="/view-attendance">View Attendance</a></li>
                                 <li><a href="/store-attendance">Add Attendance</a></li>
+                                <li><a href="/view-attendance">View Attendance</a></li>
                                 <li><a href="/report-attendance">Attendance Report</a></li>
                             </ul>
                         </li>
@@ -138,10 +138,159 @@ class Header extends Component {
         </div>
     }
 
-    forAdministratorView(){
+    forAdministratorStaffView(){
         return <div>
-            <div id="HeadDiv">
+            <div  id={'HeadDiv'}>
+                <label id={'HeadTitle'}>𝙂𝙖𝙩𝙚𝙬𝙖𝙮 𝙄𝙣𝙩𝙚𝙧𝙣𝙖𝙩𝙞𝙤𝙣𝙖𝙡 𝙎𝙘𝙝𝙤𝙤𝙡</label>
+                <div id={'logRDiv'}>
+                    <a href={'/userProfile'} id={'regLink'}>User Profile</a>
+                    <a href={'#'} id={'logLink'} onClick={event => this.logout(event)} >Logout</a>
+                </div>
+            </div>
+            <div>
+                <nav id={'bigDiv'}>
+                    <label htmlFor={'drop'} className={'toggle'}>Menu</label>
+                    <input type={'checkbox'} id={'drop'}/>
+                    <ul className={'menu'}>
+                        <li id={'homeID'}>
+                            <a href="#"><HomeIcon id={'homeIcon'}/></a>
+                        </li>
+                        <li>
+                            {/*First Tier Drop Down*/}
+                            <label htmlFor={'drop-1'} className={'toggle'}>Student</label>
+                            <a href="#">Student</a>
+                            <input type={'checkbox'} id={'drop-1'}/>
+                            <ul>
+                                <li><a href="/add-student/">Add Student</a></li>
+                                <li><a href="/students">View Students</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            {/* First Tier Drop Down */}
+                            <label htmlFor={'drop-2'} className={'toggle'}>Teacher</label>
+                            <a href="#">Teacher</a>
+                            <input type={'checkbox'} id={'drop-2'}/>
+                            <ul>
+                                <li><a href="/add-teacher/">Add Teacher</a></li>
+                                <li><a href="/teachers">View Teachers</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            {/*First Tier Drop Down*/}
+                            <label htmlFor={'drop-3'} className={'toggle'}>Class</label>
+                            <a href="#">Class</a>
+                            <input type={'checkbox'} id={'drop-3'}/>
+                            <ul>
+                                <li><a href="/create-class">Add Class</a></li>
+                                <li><a href="/view-class">View Class's</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            {/*First Tier Drop Down*/}
+                            <label htmlFor={'drop-4'} className={'toggle'}>Subject</label>
+                            <a href="#">Subject</a>
+                            <input type={'checkbox'} id={'drop-4'}/>
+                            <ul>
+                                <li><a href="/create-subject">Add Subject</a></li>
+                                <li><a href="/view-subject">View Subject</a></li>
+                            </ul>
+                        </li>
+                        <li className={'liChange'}>
+                            {/*First Tier Drop Down*/}
+                            <label htmlFor={'drop-5'} className={'toggle'}>Class Timetable</label>
+                            <a href="#">Class Timetable</a>
+                            <input type={'checkbox'} id={'drop-5'}/>
+                            <ul>
+                                <li><a href="/createClassTimetable">Create Class Timetable</a></li>
+                                <li><a href="/manageClassTimetable">View Class Timetable</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            {/*First Tier Drop Down*/}
+                            <label htmlFor={'drop-6'} className={'toggle'}>Attendance</label>
+                            <a href="#">Attendance</a>
+                            <input type={'checkbox'} id={'drop-6'}/>
+                            <ul>
+                                <li><a href="/store-attendance">Add Attendance</a></li>
+                                <li><a href="/view-attendance">View Attendance</a></li>
+                                <li><a href="/report-attendance">Attendance Report</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            {/*First Tier Drop Down*/}
+                            <label htmlFor={'drop-7'} className={'toggle'}>Fees</label>
+                            <a href="#">Fees</a>
+                            <input type={'checkbox'} id={'drop-7'}/>
+                            <ul>
+                                <li><a href="/add-payment/">Add Fees</a></li>
+                                <li><a href="/payments">View Fees</a></li>
+                                <li><a href="/payment-report">Generate Fees Report</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    }
 
+    forExaminationStaffView(){
+        return <div>
+            <div  id={'HeadDiv'}>
+                <label id={'HeadTitle'}>𝙂𝙖𝙩𝙚𝙬𝙖𝙮 𝙄𝙣𝙩𝙚𝙧𝙣𝙖𝙩𝙞𝙤𝙣𝙖𝙡 𝙎𝙘𝙝𝙤𝙤𝙡</label>
+                <div id={'logRDiv'}>
+                    <a href={'/userProfile'} id={'regLink'}>User Profile</a>
+                    <a href={'#'} id={'logLink'} onClick={event => this.logout(event)} >Logout</a>
+                </div>
+            </div>
+            <div>
+                <nav id={'bigDiv'}>
+                    <label htmlFor={'drop'} className={'toggle'}>Menu</label>
+                    <input type={'checkbox'} id={'drop'}/>
+                    <ul className={'menu'}>
+                        <li id={'homeID'}>
+                            <a href="#"><HomeIcon id={'homeIcon'}/></a>
+                        </li>
+                        <li>
+                            {/*First Tier Drop Down*/}
+                            <label htmlFor={'drop-1'} className={'toggle'}>Student</label>
+                            <a href="#">Student</a>
+                            <input type={'checkbox'} id={'drop-1'}/>
+                            <ul>
+                                <li><a href="/students">View Students</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            {/*First Tier Drop Down*/}
+                            <label htmlFor={'drop-2'} className={'toggle'}>Subject</label>
+                            <a href="#">Subject</a>
+                            <input type={'checkbox'} id={'drop-2'}/>
+                            <ul>
+                                <li><a href="/view-subject">View Subject</a></li>
+                            </ul>
+                        </li>
+                        <li className={'liChange'}>
+                            {/*First Tier Drop Down*/}
+                            <label htmlFor={'drop-3'} className={'toggle'}>Exam Timetable</label>
+                            <a href="#">Exam Timetable</a>
+                            <input type={'checkbox'} id={'drop-3'}/>
+                            <ul>
+                                <li><a href="/createExamTimetable">Create Exam Timetable</a></li>
+                                <li><a href="/manageExamTimetable">View Exam Timetable</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            {/*First Tier Drop Down*/}
+                            <label htmlFor={'drop-4'} className={'toggle'}>Results</label>
+                            <a href="#">Results</a>
+                            <input type={'checkbox'} id={'drop-4'}/>
+                            <ul>
+                                <li><a href="/storeResults">Add Results</a></li>
+                                <li><a href="/manageResults">View Results</a></li>
+                                <li><a href="/generateResultReport">Generate Results Report</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
     }
@@ -149,7 +298,18 @@ class Header extends Component {
     render() {
         return <div>
             {
-                this.forGeneral()
+                (
+                    this.state.type === 'Administrator'?
+                        (this.forAdministratorView())
+                    :this.state.type === 'AdministratorStaff'?
+                        (this.forAdministratorStaffView())
+                    :this.state.type === 'ExaminationStaff'?
+                        (this.forExaminationStaffView())
+                    :(this.forAdministratorView())
+                )
+
+
+
             }
         </div>
     }
