@@ -4,6 +4,7 @@ import '../../styles/classManagment/ViewClass.css'
 import {useHistory} from "react-router-dom";
 import SubjectService from "../../services/SubjectService";
 import SubjectListHolder from "./SubjectListHolder";
+import {ToastContainer} from "material-react-toastify";
 
 /**
  * @author : A.M Zumry
@@ -43,6 +44,7 @@ function ManageSubjects(props){
     }
 
     return <div className={"ManageSubject-Section"}>
+        <ToastContainer/>
         <div>
             <div className={'box'}>
                 <label className={'custom-underline'}> LIST OF SUBJECTS </label>
