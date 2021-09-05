@@ -1,25 +1,57 @@
 import React, {useEffect, useState} from "react";
-import {TextField} from "@material-ui/core";
+import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField} from "@material-ui/core";
 import ClassListHolder from "./ClassListHolder";
 import '../../styles/classManagment/ViewClass.css'
 import {useHistory} from "react-router-dom";
 import ClassService from "../../services/ClassService";
+import Button from "@material-ui/core/Button";
+import ResultService from "../../services/ResultService";
+import {toast} from "material-react-toastify";
 
 /**
  * @author : A.M Zumry
  * Registration Number : IT19175126
  */
 
+//Toast Message Configuration
+const options = {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: false
+}
+
 function ManageClass(props){
     const history = useHistory();
-    const [Classes,setClass] = useState([])
+    const [Classes,setClass] = useState([]);
+    const [open, setOpen] = useState(false);
+    const [deleteClassObj, setDeleteClassObj] = useState('');
+
+    /**
+     * handler to open the alter dialog box and setting up the
+     * relevant Class that we going to remove in deleteClassObj state variable
+     */
+    const handleClickOpen = (Class) => {
+        setOpen(true);
+        setDeleteClassObj(Class);
+    };
+
+    /**
+     * handler to close the alter dialog box
+     */
+    const handleClose = () => {
+        setOpen(false);
+    };
+
 
     useEffect(() =>{
-        fetchClass();
+        fetchClass().then();
     },[]);
 
-    function fetchClass(){
-        ClassService.getClasses()
+    async function fetchClass(){
+        await ClassService.getClasses()
             .then(Classes =>{
                 setClass(Classes);
             }).catch(err =>{
@@ -30,6 +62,21 @@ function ManageClass(props){
     function updateClass(Classes){
         let id = Classes._id;
         history.push(`/update-class/${id}`);
+    }
+
+    function deleteClass(){
+        let id = deleteClassObj._id;
+        ClassService.removeClass(id)
+            .then(res =>{
+                if(res.status === 200){
+                    handleClose();
+                    toast.error(" Result is Removed",options)
+                    setTimeout(()=>{history.push("/manageResults")},3000)
+                }else{
+                    handleClose();
+                    toast.warning("Something went wrong!!,Try again.",options)
+                }
+            })
     }
 
     return <div className={"ManageClass-Section"}>
@@ -47,10 +94,29 @@ function ManageClass(props){
         <div>
             {
                 Classes.map(Class =>{
-                    return <ClassListHolder key={Class._id} Class={Class} editClass={updateClass}/>
+                    return <ClassListHolder key={Class._id} Class={Class} editClass={updateClass}
+                                            handleOpenDeleteAlert={handleClickOpen}/>
                 })
             }
         </div>
+
+        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+            <DialogTitle id="form-dialog-title">Alert</DialogTitle>
+            <DialogContent>
+                <DialogContentText>
+                    Are you sure to remove this record
+                </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+                <Button onClick={handleClose} color="primary" style={{fontWeight:'bold'}}>
+                    Cancel
+                </Button>
+                <Button onClick={deleteClass} color="secondary" style={{fontWeight:'bold'}}>
+                    Proceed
+                </Button>
+            </DialogActions>
+        </Dialog>
+
     </div>
 
 }
