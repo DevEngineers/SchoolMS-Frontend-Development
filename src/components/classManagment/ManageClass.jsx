@@ -5,7 +5,6 @@ import '../../styles/classManagment/ViewClass.css'
 import {useHistory} from "react-router-dom";
 import ClassService from "../../services/ClassService";
 import Button from "@material-ui/core/Button";
-import ResultService from "../../services/ResultService";
 import {toast} from "material-react-toastify";
 
 /**
@@ -70,7 +69,7 @@ function ManageClass(props){
             .then(res =>{
                 if(res.status === 200){
                     handleClose();
-                    toast.error(" Result is Removed",options)
+                    toast.error("Class Details is Removed",options)
                     setTimeout(()=>{history.push("/manageResults")},3000)
                 }else{
                     handleClose();
