@@ -5,7 +5,7 @@ import '../../styles/classManagment/ViewClass.css'
 import {useHistory} from "react-router-dom";
 import ClassService from "../../services/ClassService";
 import Button from "@material-ui/core/Button";
-import {toast} from "material-react-toastify";
+import {toast, ToastContainer} from "material-react-toastify";
 
 /**
  * @author : A.M Zumry
@@ -79,7 +79,7 @@ function ManageClass(props){
     }
 
     return <div className={"ManageClass-Section"}>
-
+        <ToastContainer/>
         <div>
             <div className={'box'}>
                 <label className={'custom-underline'}> LIST OF CLASSES </label>
