@@ -6,7 +6,6 @@ import SubjectService from "../../services/SubjectService";
 import SubjectListHolder from "./SubjectListHolder";
 import {toast, ToastContainer} from "material-react-toastify";
 import Button from "@material-ui/core/Button";
-import ClassService from "../../services/ClassService";
 
 /**
  * @author : A.M Zumry
@@ -111,7 +110,7 @@ function ManageSubjects(props){
                 <Button onClick={handleClose} color="primary" style={{fontWeight:'bold'}}>
                     Cancel
                 </Button>
-                <Button onClick={deleteClass} color="secondary" style={{fontWeight:'bold'}}>
+                <Button onClick={deleteSubject} color="secondary" style={{fontWeight:'bold'}}>
                     Proceed
                 </Button>
             </DialogActions>
