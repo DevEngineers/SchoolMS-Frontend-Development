@@ -70,7 +70,7 @@ function ManageClass(props){
                 if(res.status === 200){
                     handleClose();
                     toast.error("Class Details is Removed",options)
-                    setTimeout(()=>{history.push("/manageResults")},3000)
+                    setTimeout(()=>{history.push("/view-class")},3000)
                 }else{
                     handleClose();
                     toast.warning("Something went wrong!!,Try again.",options)
@@ -79,6 +79,7 @@ function ManageClass(props){
     }
 
     return <div className={"ManageClass-Section"}>
+
         <div>
             <div className={'box'}>
                 <label className={'custom-underline'}> LIST OF CLASSES </label>
