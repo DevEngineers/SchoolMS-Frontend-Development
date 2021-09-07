@@ -85,10 +85,10 @@ class StudentService{
     async getStudentByClass(Class,classType){
         return await fetch(STUDENT_API_BASE_URL+"/getStudent/search",{
             method:'GET',
-            // body:{
-            //     'class': Class,
-            //     'classType': classType
-            // }
+            body:{
+                'class': Class,
+                'classType': classType
+            }
         }).then(response =>{
             return response.json();
         }).catch(reason => {
