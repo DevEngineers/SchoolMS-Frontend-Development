@@ -80,6 +80,23 @@ function AddAttendance(props){
 
     }
 
+    function fetchStudents(type){
+        console.log("class",Class)
+        console.log("type",type)
+        let ClassType = {
+            class:Class,
+            classType:type
+        }
+        StudentService.getStudentByClass(ClassType)
+            .then(student =>{
+                setStudent(student);
+                console.log("fetch student",student)
+            }).catch(err => {
+            console.error(err)
+        })
+        console.log("student",student)
+    }
+
     // function componentWillMount() {
     //     if(this.state.rClass !== ''){
     //         console.log("if ",this.state.rClass)
@@ -170,23 +187,6 @@ function AddAttendance(props){
     //     const { name, value } = event.target;
     //     this.setState({ [name] : value });
     // }
-
-    function fetchStudents(type){
-        console.log("class",Class)
-        console.log("type",type)
-        let ClassType = {
-            class:Class,
-            classType:type
-        }
-        StudentService.getStudentByClass(ClassType)
-            .then(student =>{
-            setStudent(student);
-                console.log("fetch student",student)
-        }).catch(err => {
-            console.error(err)
-        })
-        console.log("student",student)
-    }
 
     function handleDateChange(event){
         setDate(event.target.value);
