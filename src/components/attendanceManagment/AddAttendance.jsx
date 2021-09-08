@@ -25,24 +25,6 @@ const options = {
 }
 
 function AddAttendance(props){
-
-    // super(props);
-    //     this.state= {
-    //         isTrue: false,
-    //         rDate:'',
-    //         rClass:'',
-    //         rClassType:'',
-    //
-    //         allAttendance:[],
-    //         studentID:['0001', '0002', '0003','0004', '0005','0006' ],
-    //         student:[],
-    //         // student:['Nimal Kumar', 'Pasan Bandara', 'Kasun kumar','Sunil sunil', 'Tharuni bandara','Kasun Vimal' ],
-    //         attendance:[1, 1, 1, 1, 0, 1],
-    //
-    //         classTypes:[],
-    //         classes:[]
-    //     }
-
     const [Date,setDate] = useState('');
     const [Class,setClass] = useState('');
     const [ClassType,setClassType] = useState('');
