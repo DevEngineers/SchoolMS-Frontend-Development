@@ -5,81 +5,81 @@
 ************************************************************
 */
 
-#searchDiv{
-    width: 71%;
-    padding: 20px;
-    margin-left: 200px;
+#searchDiv {
+  width: 71%;
+  padding: 20px;
+  margin-left: 200px;
 }
 
-#searchInput{
-    padding: 10px;
-    width: 900px;
+#searchInput {
+  padding: 10px;
+  width: 900px;
 }
 
-#searchInputResult{
-    padding: 10px;
-    width: 750px;
+#searchInputResult {
+  padding: 10px;
+  width: 750px;
 }
 
-#searchBtn{
-    position: relative;
-    display: block;
-    padding: 10px 5px 10px 5px;
-    color: #FFF;
-    background: #36988c;
-    font-size: 16px;
-    font-style: normal;
-    width: 14%;
-    border: 1px solid #36988c;
-    border-radius: 3px;
-    float: right;
-    margin-right: 5px;
+#searchBtn {
+  position: relative;
+  display: block;
+  padding: 10px 5px 10px 5px;
+  color: #fff;
+  background: #36988c;
+  font-size: 16px;
+  font-style: normal;
+  width: 14%;
+  border: 1px solid #36988c;
+  border-radius: 3px;
+  float: right;
+  margin-right: 5px;
 }
 
-#searchBtn:hover{
-    background: #359083;
-    cursor: pointer;
+#searchBtn:hover {
+  background: #359083;
+  cursor: pointer;
 }
 
-#viewMain{
-    width: 75%;
-    margin-left: 220px;
+#viewMain {
+  width: 75%;
+  margin-left: 220px;
 }
 
-#headingLabel{
-    font-size: 25px;
-    margin-top: 10px;
-    display: inline-block;
-    font-weight: bold;
+#headingLabel {
+  font-size: 25px;
+  margin-top: 10px;
+  display: inline-block;
+  font-weight: bold;
 }
 
-#viewDiv{
-    width: 87%;
-    height: 40px;
-    border-style: groove;
-    border-radius: 5px;
-    margin-top: 40px;
-    margin-left: 40px;
+#viewDiv {
+  width: 87%;
+  height: 40px;
+  border-style: groove;
+  border-radius: 5px;
+  margin-top: 40px;
+  margin-left: 40px;
 }
 
-#viewSmall{
-    width: 56%;
-    float: left;
-    padding: 8px;
+#viewSmall {
+  width: 56%;
+  float: left;
+  padding: 8px;
 }
 
-.buttonDiv{
-    width: 6%;
-    float: right;
-    margin-top: -5px;
+.buttonDiv {
+  width: 6%;
+  float: right;
+  margin-top: -5px;
 }
 
-#yearLabel{
-    margin-left: 100px;
+#yearLabel {
+  margin-left: 100px;
 }
 
-#termLabel{
-    margin-left: 80px;
+#termLabel {
+  margin-left: 80px;
 }
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -88,53 +88,51 @@
     For ManageResults Component
  */
 
-#searchResultDiv{
-    padding: 20px 20px 80px 20px;
-    margin-left: 150px;
-
+#searchResultDiv {
+  padding: 20px 20px 80px 20px;
+  margin-left: 150px;
 }
 
-
-#searchTypeDiv{
-    width: 100px;
-    float: left;
-    margin-right:105px;
-    margin-top: 5px;
+#searchTypeDiv {
+  width: 100px;
+  float: left;
+  margin-right: 105px;
+  margin-top: 5px;
 }
 
-#searchRBtn{
-    position: relative;
-    display: block;
-    padding: 10px 5px 10px 5px;
-    color: #FFF;
-    background: #36988c;
-    font-size: 16px;
-    font-style: normal;
-    width: 80%;
-    border: 1px solid #36988c;
-    border-radius: 3px;
-    margin-right: 5px;
+#searchRBtn {
+  position: relative;
+  display: block;
+  padding: 10px 5px 10px 5px;
+  color: #fff;
+  background: #36988c;
+  font-size: 16px;
+  font-style: normal;
+  width: 80%;
+  border: 1px solid #36988c;
+  border-radius: 3px;
+  margin-right: 5px;
 }
 
-#searchRBtn:hover{
-    background: #359083;
-    cursor: pointer;
+#searchRBtn:hover {
+  background: #359083;
+  cursor: pointer;
 }
 
-#searchTxtMRDiv{
-    width: 780px;
-    float:left;
+#searchTxtMRDiv {
+  width: 780px;
+  float: left;
 }
 
-#searchBtnMRDiv{
-    width: 200px;
-    float: left;
+#searchBtnMRDiv {
+  width: 200px;
+  float: left;
 }
 
-.seTypeSel{
-    width: 200px;
-    height: 40px;
-    margin-top: -5px;
+.seTypeSel {
+  width: 200px;
+  height: 40px;
+  margin-top: -5px;
 }
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */

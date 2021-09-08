@@ -5,198 +5,192 @@
 ************************************************************
 */
 
-#largeExamDiv{
-    width: 54%;
-    padding: 20px;
-    float:left;
-    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
-    font-family: Georgia, "Times New Roman", Times, serif;
-    margin-left: 340px;
-    background-color: #f4f7f8;
-    margin-bottom: 100px;
+#largeExamDiv {
+  width: 54%;
+  padding: 20px;
+  float: left;
+  box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin-left: 340px;
+  background-color: #f4f7f8;
+  margin-bottom: 100px;
 }
 
-#form-style-timeSlotE{
-    max-width: 270px;
-    padding: 20px;
-    float:left;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    margin-left: -25px;
+#form-style-timeSlotE {
+  max-width: 270px;
+  padding: 20px;
+  float: left;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin-left: -25px;
 }
 
-
-#form-style-examR{
-    width: 200px;
-    padding: 20px;
-    float: left;
-    margin-left: 3px;
-    font-family: Georgia, "Times New Roman", Times, serif;
+#form-style-examR {
+  width: 200px;
+  padding: 20px;
+  float: left;
+  margin-left: 3px;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-
-#timeSlotTitle{
-    display: block;
-    margin-bottom: 8px;
-    padding: 10px 0 0 0;
-    text-align: center;
+#timeSlotTitle {
+  display: block;
+  margin-bottom: 8px;
+  padding: 10px 0 0 0;
+  text-align: center;
 }
 
-#timeSlotETitle{
-    display: block;
-    margin-bottom: 8px;
-    padding: 10px 0 0 0;
-    margin-left: 55px;
+#timeSlotETitle {
+  display: block;
+  margin-bottom: 8px;
+  padding: 10px 0 0 0;
+  margin-left: 55px;
 }
 
-#dayTitle{
-    display: block;
-    margin-bottom: 8px;
-    padding: 50px 0 0 0 ;
-    text-align: center;
+#dayTitle {
+  display: block;
+  margin-bottom: 8px;
+  padding: 50px 0 0 0;
+  text-align: center;
 }
 
-
-#timeID{
-    padding: 5px 20px 0 20px;
-    display: inline-block;
+#timeID {
+  padding: 5px 20px 0 20px;
+  display: inline-block;
 }
 
-.daySize{
-    width: 100%;
+.daySize {
+  width: 100%;
 }
 
-.delSub{
-    margin-top: 20px;
+.delSub {
+  margin-top: 20px;
 }
 
-.selectPName{
-    font-size:14px;
+.selectPName {
+  font-size: 14px;
 }
 
 /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-#secondDiv{
-    padding: 20px;
-    float:left;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    background-color: #f2f2f2;
-    margin-left: 8px;
+#secondDiv {
+  padding: 20px;
+  float: left;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background-color: #f2f2f2;
+  margin-left: 8px;
 }
 
-#form-style-examClass{
-    width: 777px;
-    padding: 15px;
-    float:left;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    margin-bottom: 3px;
-    margin-left: 8px;
+#form-style-examClass {
+  width: 777px;
+  padding: 15px;
+  float: left;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin-bottom: 3px;
+  margin-left: 8px;
 }
 
-#examLabelEDiv{
-    width: 125px;
+#examLabelEDiv {
+  width: 125px;
 }
 
-.classELabel{
-    display: inline-block;
-    float: left;
-    padding: 15px;
+.classELabel {
+  display: inline-block;
+  float: left;
+  padding: 15px;
 }
 
-#classSelectOpt{
-    width: 300px;
-    margin-left: 150px;
+#classSelectOpt {
+  width: 300px;
+  margin-left: 150px;
 }
 
-.classSize{
-    width: 80%;
-    margin-top: 5px;
-    margin-bottom: 10px;
+.classSize {
+  width: 80%;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
-.timeslotIconEB{
-    background-color: #f44336;
-    padding: 10px;
-    border-radius: 50px;
-    color: white;
-    margin-left: -380px;
-    margin-top: 5px;
+.timeslotIconEB {
+  background-color: #f44336;
+  padding: 10px;
+  border-radius: 50px;
+  color: white;
+  margin-left: -380px;
+  margin-top: 5px;
 }
 
-.timeslotIconEA{
-    background-color: #00e676;
-    padding: 10px;
-    border-radius: 50px;
-    color: white;
-    margin-left: -380px;
-    margin-top: 5px;
+.timeslotIconEA {
+  background-color: #00e676;
+  padding: 10px;
+  border-radius: 50px;
+  color: white;
+  margin-left: -380px;
+  margin-top: 5px;
 }
 
 /*+++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-
 .box {
-    position: relative;
-    width: 100%;
-    height:80px;
-    display: inline-block;
-    margin:30px 0 0 0px;
-    text-align: center;
+  position: relative;
+  width: 100%;
+  height: 80px;
+  display: inline-block;
+  margin: 30px 0 0 0;
+  text-align: center;
 }
 
 .custom-underline {
-    position: relative;
-    display: inline-block;
-    font-size: 28px;
-    font-weight: bold;
-    text-align: center;
-    font-family: "Raleway", sans-serif;
+  position: relative;
+  display: inline-block;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
 }
 
-.btnEDiv{
-    padding: 20px;
-    width: 94%;
-    float: left;
-    margin-left: 35px;
+.btnEDiv {
+  padding: 20px;
+  width: 94%;
+  float: left;
+  margin-left: 35px;
 }
 
-#submitEBtn{
-    position: relative;
-    display: block;
-    padding: 10px 5px 10px 5px;
-    color: #FFF;
-    background: #36988c;
-    font-size: 16px;
-    font-style: normal;
-    width: 25%;
-    border: 1px solid #36988c;
-    border-radius: 3px;
-    float: right;
-    margin-right: 5px;
-
+#submitEBtn {
+  position: relative;
+  display: block;
+  padding: 10px 5px 10px 5px;
+  color: #fff;
+  background: #36988c;
+  font-size: 16px;
+  font-style: normal;
+  width: 25%;
+  border: 1px solid #36988c;
+  border-radius: 3px;
+  float: right;
+  margin-right: 5px;
 }
 
-#submitEBtn:hover{
-    background: #359083;
-    cursor: pointer;
+#submitEBtn:hover {
+  background: #359083;
+  cursor: pointer;
 }
 
-#restEBtn{
-    position: relative;
-    display: block;
-    padding: 10px 5px 10px 5px;
-    color: #FFF;
-    background: #f44336;
-    font-size: 16px;
-    font-style: normal;
-    width: 10%;
-    border: 1px solid #f44336;
-    border-radius: 3px;
-    float: right;
-    margin-right: 5px;
+#restEBtn {
+  position: relative;
+  display: block;
+  padding: 10px 5px 10px 5px;
+  color: #fff;
+  background: #f44336;
+  font-size: 16px;
+  font-style: normal;
+  width: 10%;
+  border: 1px solid #f44336;
+  border-radius: 3px;
+  float: right;
+  margin-right: 5px;
 }
 
-#restEBtn:hover{
-    background: #d32f2f;
-    cursor: pointer;
+#restEBtn:hover {
+  background: #d32f2f;
+  cursor: pointer;
 }
-
