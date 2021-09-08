@@ -14,15 +14,6 @@ import StudentService from "../../services/StudentService";
  * Registration Number : IT19175126
  */
 
-const students =[
-        { Id: '0001', name: 'Nimal Kumar', class:'10' , classType:'A' },
-        { Id: '0002', name: 'Pasan Bandara', class:'10' , classType:'A'},
-        { Id: '0003', name: 'Kasun kumar', class:'10' , classType:'A' },
-        { Id: '0004', name: 'Sunil sunil', class:'10' , classType:'A'},
-        { Id: '0005', name: 'Tharuni bandara', class:'10' , classType:'A'},
-        { Id: '0006', name: 'Kasun Vimal', class:'10' , classType:'A'},
-]
-
 //Toast Message Configuration
 const options = {
     position: "top-center",
@@ -32,7 +23,6 @@ const options = {
     pauseOnHover: false,
     draggable: false
 }
-
 
 function AddAttendance(props){
 
