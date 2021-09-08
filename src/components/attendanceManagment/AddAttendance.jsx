@@ -24,7 +24,7 @@ const options = {
     draggable: false
 }
 
-function AddAttendance(props){
+function AddAttendance(){
     const [Date,setDate] = useState('');
     const [Class,setClass] = useState('');
     const [ClassType,setClassType] = useState('');
@@ -79,20 +79,11 @@ function AddAttendance(props){
     }
 
     function setDefaultValuesInState(){
-        // this.setState({
-        //     rDate:'',
-        //     rClass:'',
-        //     rClassType:'',
-        // })
-        //
-        // Date:useState('');
-        // Class:useState('');
         setDate('');
         setClass('');
         setClassType('');
-        setStudent('');
-        setAttendance('');
-        // [ClassType,setClassType] = useState('');
+        setStudent([]);
+        setAttendance([]);
     }
 
     function restAllValuesInForm(){
