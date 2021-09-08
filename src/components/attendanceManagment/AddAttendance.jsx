@@ -7,6 +7,7 @@ import {toast, ToastContainer} from "material-react-toastify";
 import AttendanceService from "../../services/AttendanceService";
 import ClassTypeService from "../../services/ClassTypeService";
 import ClassService from "../../services/ClassService";
+import StudentService from "../../services/StudentService";
 
 /**
  * @author : A.M Zumry
@@ -44,7 +45,8 @@ class AddAttendance extends Component {
 
             allAttendance:[],
             studentID:['0001', '0002', '0003','0004', '0005','0006' ],
-            student:['Nimal Kumar', 'Pasan Bandara', 'Kasun kumar','Sunil sunil', 'Tharuni bandara','Kasun Vimal' ],
+            student:[],
+            // student:['Nimal Kumar', 'Pasan Bandara', 'Kasun kumar','Sunil sunil', 'Tharuni bandara','Kasun Vimal' ],
             attendance:[1, 1, 1, 1, 0, 1],
 
             classTypes:[],
@@ -65,6 +67,12 @@ class AddAttendance extends Component {
             }).catch(err => {
             console.error(err)
         })
+
+        if(this.state.rClass !== ''){
+            console.log("if ",this.state.rClass)
+        }else{
+            console.log("else ",this.state.rClass)
+        }
 
     }
 
@@ -140,6 +148,17 @@ class AddAttendance extends Component {
     }
 
     render() {
+
+        if(this.state.rClass !== '' && this.state.rClassType !== ''){
+            console.log("class",this.state.rClass);
+            console.log("class",this.state.rClassType);
+            StudentService.getStudentByClass(this.state.rClass,this.state.rClassType)
+                .then(res => {
+                    this.setState({student: res.data})
+                })
+            console.log("Students",this.state.student);
+        }
+
         return <div className="attendance-section">
             <ToastContainer/>
             <div className={"attendance-container"}>

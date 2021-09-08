@@ -5,7 +5,7 @@ import React from "react";
 import '../../styles/classManagment/ViewClass.css';
 
 export default function ClassListHolder(props){
-    const {Class,editClass,deleteClass} = props
+    const {Class,editClass,handleOpenDeleteAlert} = props
 
     return <div className="ClassListHolder">
         <div id={'viewMain'}>
@@ -18,7 +18,7 @@ export default function ClassListHolder(props){
                 </div>
                 <div className={'buttonDiv'}>
                     <IconButton aria-label="delete" style={{backgroundColor:"transparent"}}
-                                onClick={() => deleteClass(Class)}>
+                                onClick={() => handleOpenDeleteAlert(Class)}>
                         <DeleteIcon/>
                     </IconButton>
                 </div>

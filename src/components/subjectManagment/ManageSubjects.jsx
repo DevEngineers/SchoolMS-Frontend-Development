@@ -1,18 +1,48 @@
 import React, {useEffect, useState} from "react";
-import {TextField} from "@material-ui/core";
+import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField} from "@material-ui/core";
 import '../../styles/classManagment/ViewClass.css'
 import {useHistory} from "react-router-dom";
 import SubjectService from "../../services/SubjectService";
 import SubjectListHolder from "./SubjectListHolder";
+import {toast, ToastContainer} from "material-react-toastify";
+import Button from "@material-ui/core/Button";
 
 /**
  * @author : A.M Zumry
  * Registration Number : IT19175126
  */
 
+//Toast Message Configuration
+const options = {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: false
+}
+
 function ManageSubjects(props){
     const history = useHistory();
     const [Subjects,setSubject] = useState([])
+    const [open, setOpen] = useState(false);
+    const [deleteSubjectObj, setDeleteSubjectObj] = useState('');
+
+    /**
+     * handler to open the alter dialog box and setting up the
+     * relevant Class that we going to remove in deleteClassObj state variable
+     */
+    const handleClickOpen = (subject) => {
+        setOpen(true);
+        setDeleteSubjectObj(subject);
+    };
+
+    /**
+     * handler to close the alter dialog box
+     */
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     useEffect(() =>{
         fetchSubject();
@@ -32,7 +62,23 @@ function ManageSubjects(props){
         history.push(`/update-subject/${id}`);
     }
 
+    function deleteSubject(){
+        let id = deleteSubjectObj._id;
+        SubjectService.removeSubject(id)
+            .then(res =>{
+                if(res.status === 200){
+                    handleClose();
+                    toast.error("Subject Details is Removed",options)
+                    setTimeout(()=>{history.push("/view-subject")},3000)
+                }else{
+                    handleClose();
+                    toast.warning("Something went wrong!!,Try again.",options)
+                }
+            })
+    }
+
     return <div className={"ManageSubject-Section"}>
+        <ToastContainer/>
         <div>
             <div className={'box'}>
                 <label className={'custom-underline'}> LIST OF SUBJECTS </label>
@@ -47,10 +93,29 @@ function ManageSubjects(props){
         <div>
             {
                 Subjects.map(subject =>{
-                    return <SubjectListHolder key={subject._id} subject={subject} editSubject={updateSubject}/>
+                    return <SubjectListHolder key={subject._id} subject={subject} editSubject={updateSubject}
+                                              handleOpenDeleteAlert={handleClickOpen}/>
                 })
             }
         </div>
+
+        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+            <DialogTitle id="form-dialog-title">Alert</DialogTitle>
+            <DialogContent>
+                <DialogContentText>
+                    Are you sure to remove this record
+                </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+                <Button onClick={handleClose} color="primary" style={{fontWeight:'bold'}}>
+                    Cancel
+                </Button>
+                <Button onClick={deleteSubject} color="secondary" style={{fontWeight:'bold'}}>
+                    Proceed
+                </Button>
+            </DialogActions>
+        </Dialog>
+
     </div>
 
 }

@@ -5,7 +5,7 @@ import React from "react";
 import '../../styles/subjectManagment/ViewSubject.css';
 
 export default function SubjectListHolder(props){
-    const {subject,editSubject,deleteSubject} = props
+    const {subject,editSubject,handleOpenDeleteAlert} = props
 
     return <div className="SubjectListHolder">
         <div id={'viewMain'}>
@@ -18,7 +18,7 @@ export default function SubjectListHolder(props){
                 </div>
                 <div className={'buttonDiv'}>
                     <IconButton aria-label="delete" style={{backgroundColor:"transparent"}}
-                                onClick={() => deleteSubject(subject)}>
+                                onClick={() => handleOpenDeleteAlert(subject)}>
                         <DeleteIcon/>
                     </IconButton>
                 </div>
