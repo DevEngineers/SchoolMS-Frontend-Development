@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState} from "react";
 import {Box, Checkbox, Grid, MenuItem} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
-import '../../styles/AttendanceManagment/Attendance.css';
+import "../../styles/AttendanceManagment/Attendance.css";
 import {toast, ToastContainer} from "material-react-toastify";
 import AttendanceService from "../../services/AttendanceService";
 import ClassTypeService from "../../services/ClassTypeService";
