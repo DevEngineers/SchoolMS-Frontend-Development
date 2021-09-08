@@ -39,7 +39,6 @@ function AddAttendance(props){
         componentDidMount();
     },[]);
 
-
     function componentDidMount() {
         ClassService.getClasses()
             .then(classes => {
@@ -125,11 +124,11 @@ function AddAttendance(props){
             attendance:attendance
         }
         if(Att.date === ''){
-            toast.warn('Select a Date',options)
+            toast.warn("Select a Date",options)
         }else if(Att.class === ''){
-            toast.warn('Select the Class',options)
+            toast.warn("Select the Class",options)
         }else if(Att.classType === ''){
-            toast.warn('Select the Class Type',options)
+            toast.warn("Select the Class Type",options)
         }else{
             AttendanceService.storeAttendance(Att)
                 .then(res =>{
@@ -137,7 +136,7 @@ function AddAttendance(props){
                         toast.success("Attendance store Successfully ", options)
                         setTimeout(()=>{this.props.history.push("/view-attendance")},3000)
                     } else {
-                        throw Error('Something went wrong!! Try again.' + res);
+                        throw Error("Something went wrong!! Try again." + res);
                     }
                 })
                 .catch((error) => {
@@ -211,10 +210,10 @@ function AddAttendance(props){
                                     <div className="attendance-form-div">
                                         <Grid container direction="row" justifyContent="flex-start" alignItems="center" >
                                             <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
-                                                <label htmlFor={'date'} > Date </label>
+                                                <label htmlFor={"date"} > Date </label>
                                             </Box>
                                             <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                                <TextField type={'date'} id="filled-basic"  name={'Date'} value={Date}
+                                                <TextField type={"date"} id="filled-basic"  name={"Date"} value={Date}
                                                            onChange={handleDateChange} style={{ width: 220 }} />
                                                 {/*onChange={event => onChange(event)}*/}
                                             </Box>
@@ -224,11 +223,11 @@ function AddAttendance(props){
                                     <div className="attendance-form-div">
                                         <Grid container direction="row" justifyContent="flex-start" alignItems="center" >
                                             <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
-                                                <label htmlFor={'class'} > Class </label>
+                                                <label htmlFor={"class"} > Class </label>
                                             </Box>
                                             <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
                                                 <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'Class'}
-                                                        value={Class} className={'classSize'} onChange={handleClassChange} displayEmpty>
+                                                        value={Class} className={"classSize"} onChange={handleClassChange} displayEmpty>
                                                     <MenuItem value={''}> Select Class </MenuItem>
                                                     {
                                                         classes.map(Class =>
@@ -243,11 +242,11 @@ function AddAttendance(props){
                                     <div className="attendance-form-div" id="attendance-big-item-end">
                                         <Grid container direction="row" justifyContent="flex-start" alignItems="center" >
                                             <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
-                                                <label htmlFor={'classType'}> Class Type </label>
+                                                <label htmlFor={"classType"}> Class Type </label>
                                             </Box>
                                             <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
                                                 <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'ClassType'}
-                                                        value={ClassType} className={'classSize'}
+                                                        value={ClassType} className={"classSize"}
                                                         onChange={handleClassTypeChange}
                                                         // onChange={(e)=>onChangeHandling(e)}
                                                         displayEmpty>
@@ -277,7 +276,7 @@ function AddAttendance(props){
                                                 student.map(Stu => (
                                                     <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
                                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
-                                                            <label htmlFor={'classType'}> {Stu.studentName} </label>
+                                                            <label htmlFor={"classType"}> {Stu.studentName} </label>
                                                         </Box>
                                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
                                                             <Checkbox name="checkedB" color="primary" //checked={this.state.isTrue}
@@ -298,11 +297,11 @@ function AddAttendance(props){
                                     <Grid container item direction="row" justifyContent="flex-end" alignItems="baseline" >
 
                                         <Box ccomponent="div" display="inline" style={{ padding: 10 }} >
-                                            <input type={'reset'} className={'Btn-Att-reset'} value={'Reset'} onClick={restAllValuesInForm.bind(this)} />
+                                            <input type={"reset"} className={"Btn-Att-reset"} value={"Reset"} onClick={restAllValuesInForm.bind(this)} />
                                         </Box>
 
                                         <Box component="div" display="inline" style={{ padding: 10 }} >
-                                            <input type={'submit'} className={'Btn-Att-Sub'} value={'Store Attendance'} onClick={storeAttendance.bind(this)}/>
+                                            <input type={"submit"} className={"Btn-Att-Sub"} value={"Store Attendance"} onClick={storeAttendance.bind(this)}/>
                                         </Box>
 
                                     </Grid>
