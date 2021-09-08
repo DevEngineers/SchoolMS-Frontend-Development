@@ -85,9 +85,14 @@ function AddAttendance(props){
         //     rClassType:'',
         // })
         //
-        // Date
-        // Class : ;
-        // ClassType: '';
+        // Date:useState('');
+        // Class:useState('');
+        setDate('');
+        setClass('');
+        setClassType('');
+        setStudent('');
+        setAttendance('');
+        // [ClassType,setClassType] = useState('');
     }
 
     function restAllValuesInForm(){
