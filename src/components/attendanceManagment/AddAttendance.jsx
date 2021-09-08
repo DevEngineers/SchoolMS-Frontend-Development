@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Box, Checkbox, Grid, MenuItem} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
@@ -34,61 +34,95 @@ const options = {
 }
 
 
-class AddAttendance extends Component {
-    constructor(props){
-        super(props);
-        this.state= {
-            isTrue: false,
-            rDate:'',
-            rClass:'',
-            rClassType:'',
+function AddAttendance(props){
 
-            allAttendance:[],
-            studentID:['0001', '0002', '0003','0004', '0005','0006' ],
-            student:[],
-            // student:['Nimal Kumar', 'Pasan Bandara', 'Kasun kumar','Sunil sunil', 'Tharuni bandara','Kasun Vimal' ],
-            attendance:[1, 1, 1, 1, 0, 1],
+    // super(props);
+    //     this.state= {
+    //         isTrue: false,
+    //         rDate:'',
+    //         rClass:'',
+    //         rClassType:'',
+    //
+    //         allAttendance:[],
+    //         studentID:['0001', '0002', '0003','0004', '0005','0006' ],
+    //         student:[],
+    //         // student:['Nimal Kumar', 'Pasan Bandara', 'Kasun kumar','Sunil sunil', 'Tharuni bandara','Kasun Vimal' ],
+    //         attendance:[1, 1, 1, 1, 0, 1],
+    //
+    //         classTypes:[],
+    //         classes:[]
+    //     }
 
-            classTypes:[],
-            classes:[]
-        }
-    }
-    componentDidMount() {
-        ClassTypeService.getClassTypes()
-            .then(res =>{
-                this.setState({classTypes:res})
-            }).catch(err => {
-            console.error(err)
-        })
+    const [Date,setDate] = useState('');
+    const [Class,setClass] = useState('');
+    const [ClassType,setClassType] = useState('');
 
+    const [attendance,setAttendance] = useState([]);
+    const [student,setStudent] = useState([]);
+
+    const [classes,setClasses] = useState([]);
+    const [classTypes,setClassTypes] = useState([]);
+
+    useEffect(() =>{
+        componentDidMount();
+    },[]);
+
+
+    function componentDidMount() {
         ClassService.getClasses()
-            .then(res => {
-                this.setState({classes:res})
+            .then(classes => {
+                setClasses(classes);
+                console.log("fetch class",classes)
             }).catch(err => {
             console.error(err)
         })
 
-        if(this.state.rClass !== ''){
-            console.log("if ",this.state.rClass)
-        }else{
-            console.log("else ",this.state.rClass)
-        }
-
-    }
-
-    setDefaultValuesInState(){
-        this.setState({
-            rDate:'',
-            rClass:'',
-            rClassType:'',
+        ClassTypeService.getClassTypes()
+            .then(classTypes =>{
+                setClassTypes(classTypes);
+                console.log("fetch classTypes",classTypes)
+            }).catch(err => {
+            console.error(err)
         })
+
+        console.log("Class",classes);
+        console.log("Class Types",classTypes);
+
     }
 
-    restAllValuesInForm(){
-        this.setDefaultValuesInState()
+    // function componentWillMount() {
+    //     if(this.state.rClass !== ''){
+    //         console.log("if ",this.state.rClass)
+    //         const Class = this.state.rClass;
+    //         const classTypes = this.state.rClassType;
+    //         StudentService.getStudentByClass(Class,classTypes)
+    //                     .then(res => {
+    //                         this.setState({student: res.data})
+    //                         console.log("Student Array ",res.data);
+    //                     })
+    //                 console.log("Students",this.state.student);
+    //     }else{
+    //         console.log("else ",this.state.rClass)
+    //     }
+    // }
+
+    function setDefaultValuesInState(){
+        // this.setState({
+        //     rDate:'',
+        //     rClass:'',
+        //     rClassType:'',
+        // })
+        //
+        // Date
+        // Class : ;
+        // ClassType: '';
     }
 
-    onCheckBox(event){
+    function restAllValuesInForm(){
+        setDefaultValuesInState()
+    }
+
+    function onCheckBox(event){
         const{value} = event.target;
         console.log(value);
         // let {student} = students.Id;
@@ -108,14 +142,14 @@ class AddAttendance extends Component {
 
     }
 
-    storeAttendance(event){
+    function storeAttendance(event){
         event.preventDefault();
         let Att = {
-            date:this.state.rDate,
-            class:this.state.rClass,
-            classType: this.state.rClassType,
-            student:this.state.student,
-            attendance:this.state.attendance
+            date:Date,
+            class:Class,
+            classType: ClassType,
+            student:student,
+            attendance:attendance
         }
         if(Att.date === ''){
             toast.warn('Select a Date',options)
@@ -142,22 +176,67 @@ class AddAttendance extends Component {
     /**
      * this function is to capture data in the input fields
      */
-    onChange(event){
-        const { name, value } = event.target;
-        this.setState({ [name] : value });
+    // function onChange(event){
+    //     const { name, value } = event.target;
+    //     this.setState({ [name] : value });
+    // }
+
+    function fetchStudents(type){
+        console.log("class",Class)
+        console.log("type",type)
+        let ClassType = {
+            class:Class,
+            classType:type
+        }
+        StudentService.getStudentByClass(ClassType)
+            .then(student =>{
+            setStudent(student);
+                console.log("fetch student",student)
+        }).catch(err => {
+            console.error(err)
+        })
+        console.log("student",student)
     }
 
-    render() {
+    function handleDateChange(event){
+        setDate(event.target.value);
+    }
+    function handleClassChange(event){
+        setClass(event.target.value);
+    }
+    function handleClassTypeChange(event){
+        setClassType(event.target.value);
+        fetchStudents(event.target.value);
+    }
 
-        if(this.state.rClass !== '' && this.state.rClassType !== ''){
-            console.log("class",this.state.rClass);
-            console.log("class",this.state.rClassType);
-            StudentService.getStudentByClass(this.state.rClass,this.state.rClassType)
-                .then(res => {
-                    this.setState({student: res.data})
-                })
-            console.log("Students",this.state.student);
-        }
+
+    // render() {
+
+        // const onChangeHandling = (e) => {
+        //     if (this.state.rClass !== '' && this.state.rClassType !== '') {
+        //         console.log("class", this.state.rClass);
+        //         console.log("class", this.state.rClassType);
+        //         this.componentWillMount();
+        //         console.log("Students", this.state.student);
+        //     }
+        // // }
+
+        // const onChangeHandling = (e) =>{
+        //     const value = e.target.value;
+        //     const Class = this.state.rClass;
+        //     if(value){
+        //         console.log("class",Class);
+        //         console.log("class",value);
+        //         StudentService.getStudentByClass(Class,value)
+        //             .then(res => {
+        //                 this.setState({student: res.data})
+        //                 console.log("Student Array ",res.data);
+        //             })
+        //         console.log("Students",this.state.student);
+        //     }else{
+        //         console.log("No Student");
+        //     }
+        // }
 
         return <div className="attendance-section">
             <ToastContainer/>
@@ -179,8 +258,9 @@ class AddAttendance extends Component {
                                                 <label htmlFor={'date'} > Date </label>
                                             </Box>
                                             <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                                <TextField type={'date'} id="filled-basic"  name={'rDate'} value={this.state.rDate}
-                                                           onChange={event => this.onChange(event)} style={{ width: 220 }} />
+                                                <TextField type={'date'} id="filled-basic"  name={'Date'} value={Date}
+                                                           onChange={handleDateChange} style={{ width: 220 }} />
+                                                {/*onChange={event => onChange(event)}*/}
                                             </Box>
                                         </Grid>
                                     </div>
@@ -191,11 +271,11 @@ class AddAttendance extends Component {
                                                 <label htmlFor={'class'} > Class </label>
                                             </Box>
                                             <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                                <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'rClass'}
-                                                        value={this.state.rClass} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                                <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'Class'}
+                                                        value={Class} className={'classSize'} onChange={handleClassChange} displayEmpty>
                                                     <MenuItem value={''}> Select Class </MenuItem>
                                                     {
-                                                        this.state.classes.map(Class =>
+                                                        classes.map(Class =>
                                                             <MenuItem key={Class._id} value={Class._id}> {Class.class} </MenuItem>
                                                         )
                                                     }
@@ -210,11 +290,14 @@ class AddAttendance extends Component {
                                                 <label htmlFor={'classType'}> Class Type </label>
                                             </Box>
                                             <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                                <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'rClassType'}
-                                                        value={this.state.rClassType} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                                <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'ClassType'}
+                                                        value={ClassType} className={'classSize'}
+                                                        onChange={handleClassTypeChange}
+                                                        // onChange={(e)=>onChangeHandling(e)}
+                                                        displayEmpty>
                                                     <MenuItem value={''}> Select Class Type </MenuItem>
                                                     {
-                                                        this.state.classTypes.map(classType =>
+                                                        classTypes.map(classType =>
                                                             <MenuItem key={classType._id} value={classType._id}> {classType.name} </MenuItem>
                                                         )
                                                     }
@@ -233,22 +316,23 @@ class AddAttendance extends Component {
                                         <div className="attendance-form-div">
 
 
-                                            {this.state.rClassType === 'A' ?
+                                            {student.length > 0 ?
 
-                                                students.map(Stu => (
+                                                student.map(Stu => (
                                                     <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
                                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
                                                             <label htmlFor={'classType'}> {Stu.name} </label>
                                                         </Box>
                                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
                                                             <Checkbox name="checkedB" color="primary" //checked={this.state.isTrue}
-                                                                      value={Stu.Id} key={Stu.Id} onChange={event => this.onCheckBox(event) }
+                                                                      value={Stu.Id} key={Stu.Id} onChange={event => onCheckBox(event) }
                                                             />
                                                         </Box>
                                                     </Grid>
                                                 ))
 
-                                             : null}
+                                                : <div>No Data available</div>
+                                            }
 
                                         </div>
 
@@ -258,11 +342,11 @@ class AddAttendance extends Component {
                                     <Grid container item direction="row" justifyContent="flex-end" alignItems="baseline" >
 
                                         <Box ccomponent="div" display="inline" style={{ padding: 10 }} >
-                                            <input type={'reset'} className={'Btn-Att-reset'} value={'Reset'} onClick={this.restAllValuesInForm.bind(this)} />
+                                            <input type={'reset'} className={'Btn-Att-reset'} value={'Reset'} onClick={restAllValuesInForm.bind(this)} />
                                         </Box>
 
                                         <Box component="div" display="inline" style={{ padding: 10 }} >
-                                            <input type={'submit'} className={'Btn-Att-Sub'} value={'Store Attendance'} onClick={this.storeAttendance.bind(this)}/>
+                                            <input type={'submit'} className={'Btn-Att-Sub'} value={'Store Attendance'} onClick={storeAttendance.bind(this)}/>
                                         </Box>
 
                                     </Grid>
@@ -275,7 +359,7 @@ class AddAttendance extends Component {
 
             </div>
         </div>
-    }
+
 }
 
 export default AddAttendance;
