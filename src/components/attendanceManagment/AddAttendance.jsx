@@ -97,22 +97,6 @@ function AddAttendance(props){
         console.log("student",student)
     }
 
-    // function componentWillMount() {
-    //     if(this.state.rClass !== ''){
-    //         console.log("if ",this.state.rClass)
-    //         const Class = this.state.rClass;
-    //         const classTypes = this.state.rClassType;
-    //         StudentService.getStudentByClass(Class,classTypes)
-    //                     .then(res => {
-    //                         this.setState({student: res.data})
-    //                         console.log("Student Array ",res.data);
-    //                     })
-    //                 console.log("Students",this.state.student);
-    //     }else{
-    //         console.log("else ",this.state.rClass)
-    //     }
-    // }
-
     function setDefaultValuesInState(){
         // this.setState({
         //     rDate:'',
