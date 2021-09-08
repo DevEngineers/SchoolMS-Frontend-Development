@@ -161,155 +161,127 @@ function AddAttendance(){
     }
 
 
-    // render() {
+    return <div className="attendance-section">
+        <ToastContainer/>
+        <div className={"attendance-container"}>
 
-        // const onChangeHandling = (e) => {
-        //     if (this.state.rClass !== '' && this.state.rClassType !== '') {
-        //         console.log("class", this.state.rClass);
-        //         console.log("class", this.state.rClassType);
-        //         this.componentWillMount();
-        //         console.log("Students", this.state.student);
-        //     }
-        // // }
-
-        // const onChangeHandling = (e) =>{
-        //     const value = e.target.value;
-        //     const Class = this.state.rClass;
-        //     if(value){
-        //         console.log("class",Class);
-        //         console.log("class",value);
-        //         StudentService.getStudentByClass(Class,value)
-        //             .then(res => {
-        //                 this.setState({student: res.data})
-        //                 console.log("Student Array ",res.data);
-        //             })
-        //         console.log("Students",this.state.student);
-        //     }else{
-        //         console.log("No Student");
-        //     }
-        // }
-
-        return <div className="attendance-section">
-            <ToastContainer/>
-            <div className={"attendance-container"}>
-
-                <div className={"attendance-row"}>
-                    <div className={"attendance-section-title"}>
-                        <h2 className={"attendance-custom-underline"}> ADD ATTENDANCE </h2>
-                    </div>
+            <div className={"attendance-row"}>
+                <div className={"attendance-section-title"}>
+                    <h2 className={"attendance-custom-underline"}> ADD ATTENDANCE </h2>
                 </div>
+            </div>
 
-                <div className={"attendance-row"}>
-                    <div className={"attendance-item"}>
-                        <div className={"attendance-item-big-inner outer-shadow-attendance"}>
-                                <form>
-                                    <div className="attendance-form-div">
-                                        <Grid container direction="row" justifyContent="flex-start" alignItems="center" >
-                                            <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
-                                                <label htmlFor={"date"} > Date </label>
-                                            </Box>
-                                            <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                                <TextField type={"date"} id="filled-basic"  name={"Date"} value={Date}
-                                                           onChange={handleDateChange} style={{ width: 220 }} />
-                                                {/*onChange={event => onChange(event)}*/}
-                                            </Box>
-                                        </Grid>
-                                    </div>
-
-                                    <div className="attendance-form-div">
-                                        <Grid container direction="row" justifyContent="flex-start" alignItems="center" >
-                                            <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
-                                                <label htmlFor={"class"} > Class </label>
-                                            </Box>
-                                            <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                                <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'Class'}
-                                                        value={Class} className={"classSize"} onChange={handleClassChange} displayEmpty>
-                                                    <MenuItem value={''}> Select Class </MenuItem>
-                                                    {
-                                                        classes.map(Class =>
-                                                            <MenuItem key={Class._id} value={Class._id}> {Class.class} </MenuItem>
-                                                        )
-                                                    }
-                                                </Select>
-                                            </Box>
-                                        </Grid>
-                                    </div>
-
-                                    <div className="attendance-form-div" id="attendance-big-item-end">
-                                        <Grid container direction="row" justifyContent="flex-start" alignItems="center" >
-                                            <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
-                                                <label htmlFor={"classType"}> Class Type </label>
-                                            </Box>
-                                            <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                                <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'ClassType'}
-                                                        value={ClassType} className={"classSize"}
-                                                        onChange={handleClassTypeChange}
-                                                        // onChange={(e)=>onChangeHandling(e)}
-                                                        displayEmpty>
-                                                    <MenuItem value={''}> Select Class Type </MenuItem>
-                                                    {
-                                                        classTypes.map(classType =>
-                                                            <MenuItem key={classType._id} value={classType._id}> {classType.name} </MenuItem>
-                                                        )
-                                                    }
-                                                </Select>
-                                            </Box>
-                                        </Grid>
-                                    </div>
-
-                                </form>
-
-{/*--------------------------------------------------- Check box form ---------------------------------------------------*/}
-
+            <div className={"attendance-row"}>
+                <div className={"attendance-item"}>
+                    <div className={"attendance-item-big-inner outer-shadow-attendance"}>
                             <form>
-                                <div className={"attendance-item-inner outer-shadow-attendance"}>
-
-                                        <div className="attendance-form-div">
-
-
-                                            {student.length > 0 ?
-
-                                                student.map(Stu => (
-                                                    <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
-                                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
-                                                            <label htmlFor={"classType"}> {Stu.studentName} </label>
-                                                        </Box>
-                                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
-                                                            <Checkbox name="checkedB" color="primary" //checked={this.state.isTrue}
-                                                                      value={Stu._Id} key={Stu._Id} onChange={event => onCheckBox(event) }
-                                                            />
-                                                        </Box>
-                                                    </Grid>
-                                                ))
-
-                                                : <div>No Data available</div>
-                                            }
-
-                                        </div>
-
+                                <div className="attendance-form-div">
+                                    <Grid container direction="row" justifyContent="flex-start" alignItems="center" >
+                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
+                                            <label htmlFor={"date"} > Date </label>
+                                        </Box>
+                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
+                                            <TextField type={"date"} id="filled-basic"  name={"Date"} value={Date}
+                                                       onChange={handleDateChange} style={{ width: 220 }} />
+                                            {/*onChange={event => onChange(event)}*/}
+                                        </Box>
+                                    </Grid>
                                 </div>
 
                                 <div className="attendance-form-div">
-                                    <Grid container item direction="row" justifyContent="flex-end" alignItems="baseline" >
-
-                                        <Box ccomponent="div" display="inline" style={{ padding: 10 }} >
-                                            <input type={"reset"} className={"Btn-Att-reset"} value={"Reset"} onClick={restAllValuesInForm.bind(this)} />
+                                    <Grid container direction="row" justifyContent="flex-start" alignItems="center" >
+                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
+                                            <label htmlFor={"class"} > Class </label>
                                         </Box>
-
-                                        <Box component="div" display="inline" style={{ padding: 10 }} >
-                                            <input type={"submit"} className={"Btn-Att-Sub"} value={"Store Attendance"} onClick={storeAttendance.bind(this)}/>
+                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
+                                            <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'Class'}
+                                                    value={Class} className={"classSize"} onChange={handleClassChange} displayEmpty>
+                                                <MenuItem value={''}> Select Class </MenuItem>
+                                                {
+                                                    classes.map(Class =>
+                                                        <MenuItem key={Class._id} value={Class._id}> {Class.class} </MenuItem>
+                                                    )
+                                                }
+                                            </Select>
                                         </Box>
-
                                     </Grid>
                                 </div>
+
+                                <div className="attendance-form-div" id="attendance-big-item-end">
+                                    <Grid container direction="row" justifyContent="flex-start" alignItems="center" >
+                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
+                                            <label htmlFor={"classType"}> Class Type </label>
+                                        </Box>
+                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
+                                            <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'ClassType'}
+                                                    value={ClassType} className={"classSize"}
+                                                    onChange={handleClassTypeChange}
+                                                    // onChange={(e)=>onChangeHandling(e)}
+                                                    displayEmpty>
+                                                <MenuItem value={''}> Select Class Type </MenuItem>
+                                                {
+                                                    classTypes.map(classType =>
+                                                        <MenuItem key={classType._id} value={classType._id}> {classType.name} </MenuItem>
+                                                    )
+                                                }
+                                            </Select>
+                                        </Box>
+                                    </Grid>
+                                </div>
+
                             </form>
 
-                        </div>
+{/*--------------------------------------------------- Check box form ---------------------------------------------------*/}
+
+                        <form>
+                            <div className={"attendance-item-inner outer-shadow-attendance"}>
+
+                                    <div className="attendance-form-div">
+
+
+                                        {student.length > 0 ?
+
+                                            student.map(Stu => (
+                                                <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
+                                                    <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
+                                                        <label htmlFor={"classType"}> {Stu.studentName} </label>
+                                                    </Box>
+                                                    <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
+                                                        <Checkbox name="checkedB" color="primary" //checked={this.state.isTrue}
+                                                                  value={Stu._Id} key={Stu._Id} onChange={event => onCheckBox(event) }
+                                                        />
+                                                    </Box>
+                                                </Grid>
+                                            ))
+
+                                            : <div>No Data available</div>
+                                        }
+
+                                    </div>
+
+                            </div>
+
+                            <div className="attendance-form-div">
+                                <Grid container item direction="row" justifyContent="flex-end" alignItems="baseline" >
+
+                                    <Box ccomponent="div" display="inline" style={{ padding: 10 }} >
+                                        <input type={"reset"} className={"Btn-Att-reset"} value={"Reset"} onClick={restAllValuesInForm.bind(this)} />
+                                    </Box>
+
+                                    <Box component="div" display="inline" style={{ padding: 10 }} >
+                                        <input type={"submit"} className={"Btn-Att-Sub"} value={"Store Attendance"} onClick={storeAttendance.bind(this)}/>
+                                    </Box>
+
+                                </Grid>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
-
             </div>
+
         </div>
+    </div>
 
 }
 
