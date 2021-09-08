@@ -311,11 +311,11 @@ function AddAttendance(props){
                                                 student.map(Stu => (
                                                     <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
                                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
-                                                            <label htmlFor={'classType'}> {Stu.name} </label>
+                                                            <label htmlFor={'classType'}> {Stu.studentName} </label>
                                                         </Box>
                                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
                                                             <Checkbox name="checkedB" color="primary" //checked={this.state.isTrue}
-                                                                      value={Stu.Id} key={Stu.Id} onChange={event => onCheckBox(event) }
+                                                                      value={Stu._Id} key={Stu._Id} onChange={event => onCheckBox(event) }
                                                             />
                                                         </Box>
                                                     </Grid>
