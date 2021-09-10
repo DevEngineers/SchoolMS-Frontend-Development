@@ -82,13 +82,14 @@ class StudentService{
 
     }
 
-    async getStudentByClass(Class,classType){
+    async getStudentByClass(ClassType){
         return await fetch(STUDENT_API_BASE_URL+"/getStudent/search",{
-            method:'GET',
-            body:{
-                'class': Class,
-                'classType': classType
-            }
+            method:'POST',
+            headers:{
+                'content-Type':"application/json",
+                'Accept': 'application/json'
+            },
+            body:JSON.stringify(ClassType)
         }).then(response =>{
             return response.json();
         }).catch(reason => {
