@@ -64,8 +64,7 @@ class UserService {
     return await fetch(User_API_BASE_URI + "/login", {
       method: "POST",
       headers: {
-        "content-Type": "application/json",
-        Authorization: bearer,
+        "content-Type": "application/json"
       },
       body: JSON.stringify(User),
     })
@@ -83,6 +82,27 @@ class UserService {
   async updateUser(id, User) {
     const bearer = "Bearer " + localStorage.getItem("userToken");
     return await fetch(User_API_BASE_URI + "/" + id, {
+      method: "PUT",
+      headers: {
+        "content-Type": "application/json",
+        Authorization: bearer,
+      },
+      body: JSON.stringify(User),
+    })
+      .then((response) => {
+        return response;
+      })
+      .catch((reason) => {
+        return reason;
+      });
+  }
+
+  /**
+   *  This service function is to update stored User in backend
+   */
+  async updateUserProfile(id, User) {
+    const bearer = "Bearer " + localStorage.getItem("userToken");
+    return await fetch(User_API_BASE_URI + "/userProfile/" + id, {
       method: "PUT",
       headers: {
         "content-Type": "application/json",

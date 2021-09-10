@@ -25,7 +25,7 @@ const options = {
 
 function UserProfile() {
   const history = useHistory();
-  const [userid] = useState("61334e520114010f3c213334");
+  const [userid] = useState("6134acbdabd1441eac4f3760");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -65,7 +65,7 @@ function UserProfile() {
       password: password,
     };
 
-    UserService.updateUser(userid, user)
+    UserService.updateUserProfile(userid, user)
       .then((res) => {
         if (res.status === 200) {
           toast.success(`User ${changeType} Updated Successfully`, options);
