@@ -56,9 +56,6 @@ function AddAttendance(){
             console.error(err)
         })
 
-        console.log("Class",classes);
-        console.log("Class Types",classTypes);
-
     }
 
     function fetchStudents(type){
