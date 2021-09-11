@@ -43,7 +43,6 @@ function AddAttendance(){
         ClassService.getClasses()
             .then(classes => {
                 setClasses(classes);
-                console.log("fetch class",classes)
             }).catch(err => {
             console.error(err)
         })
