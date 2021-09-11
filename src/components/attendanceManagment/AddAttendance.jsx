@@ -62,8 +62,6 @@ function AddAttendance(){
     }
 
     function fetchStudents(type){
-        console.log("class",Class)
-        console.log("type",type)
         let ClassType = {
             class:Class,
             classType:type
@@ -75,7 +73,6 @@ function AddAttendance(){
             }).catch(err => {
             console.error(err)
         })
-        console.log("student",student)
     }
 
     function setDefaultValuesInState(){
@@ -93,6 +90,7 @@ function AddAttendance(){
     function onCheckBox(event){
         const{value} = event.target;
         console.log(value);
+        console.log("event",event);
         // let {student} = students.Id;
         // let {studentID} = this.state;
 
@@ -247,7 +245,7 @@ function AddAttendance(){
                                                         <label htmlFor={"classType"}> {Stu.studentName} </label>
                                                     </Box>
                                                     <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
-                                                        <Checkbox name="checkedB" color="primary" //checked={this.state.isTrue}
+                                                        <Checkbox name="checkedB" color="primary"
                                                                   value={Stu._Id} key={Stu._Id} onChange={event => onCheckBox(event) }
                                                         />
                                                     </Box>
