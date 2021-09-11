@@ -50,7 +50,6 @@ function AddAttendance(){
         ClassTypeService.getClassTypes()
             .then(classTypes =>{
                 setClassTypes(classTypes);
-                console.log("fetch classTypes",classTypes)
             }).catch(err => {
             console.error(err)
         })
