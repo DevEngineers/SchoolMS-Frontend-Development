@@ -5,15 +5,14 @@
 ************************************************************
 */
 
-#searchDiv {
-  width: 71%;
-  padding: 20px;
-  margin-left: 200px;
-}
-
 #searchInput {
   padding: 10px;
   width: 900px;
+}
+
+#searchDiv {
+  padding: 20px 20px 80px 20px;
+  margin-left: 150px;
 }
 
 #searchInputResult {
@@ -29,11 +28,10 @@
   background: #36988c;
   font-size: 16px;
   font-style: normal;
-  width: 14%;
+  width: 80%;
   border: 1px solid #36988c;
   border-radius: 3px;
-  float: right;
-  margin-right: 5px;
+  margin-right:35px;
 }
 
 #searchBtn:hover {
@@ -88,10 +86,6 @@
     For ManageResults Component
  */
 
-#searchResultDiv {
-  padding: 20px 20px 80px 20px;
-  margin-left: 150px;
-}
 
 #searchTypeDiv {
   width: 100px;
@@ -100,24 +94,6 @@
   margin-top: 5px;
 }
 
-#searchRBtn {
-  position: relative;
-  display: block;
-  padding: 10px 5px 10px 5px;
-  color: #fff;
-  background: #36988c;
-  font-size: 16px;
-  font-style: normal;
-  width: 80%;
-  border: 1px solid #36988c;
-  border-radius: 3px;
-  margin-right: 5px;
-}
-
-#searchRBtn:hover {
-  background: #359083;
-  cursor: pointer;
-}
 
 #searchTxtMRDiv {
   width: 780px;
