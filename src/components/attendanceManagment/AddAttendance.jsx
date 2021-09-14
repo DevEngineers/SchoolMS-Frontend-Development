@@ -36,14 +36,13 @@ function AddAttendance(){
     const [classTypes,setClassTypes] = useState([]);
 
     useEffect(() =>{
-        componentDidMount();
+        fetchData();
     },[]);
 
-    function componentDidMount() {
+    function fetchData() {
         ClassService.getClasses()
             .then(classes => {
                 setClasses(classes);
-                console.log("fetch class",classes)
             }).catch(err => {
             console.error(err)
         })
@@ -51,19 +50,13 @@ function AddAttendance(){
         ClassTypeService.getClassTypes()
             .then(classTypes =>{
                 setClassTypes(classTypes);
-                console.log("fetch classTypes",classTypes)
             }).catch(err => {
             console.error(err)
         })
 
-        console.log("Class",classes);
-        console.log("Class Types",classTypes);
-
     }
 
     function fetchStudents(type){
-        console.log("class",Class)
-        console.log("type",type)
         let ClassType = {
             class:Class,
             classType:type
@@ -75,7 +68,6 @@ function AddAttendance(){
             }).catch(err => {
             console.error(err)
         })
-        console.log("student",student)
     }
 
     function setDefaultValuesInState(){
@@ -93,6 +85,7 @@ function AddAttendance(){
     function onCheckBox(event){
         const{value} = event.target;
         console.log(value);
+        console.log("event",event);
         // let {student} = students.Id;
         // let {studentID} = this.state;
 
@@ -144,22 +137,12 @@ function AddAttendance(){
     /**
      * this function is to capture data in the input fields
      */
-    // function onChange(event){
-    //     const { name, value } = event.target;
-    //     this.setState({ [name] : value });
-    // }
-
-    function handleDateChange(event){
-        setDate(event.target.value);
-    }
-    function handleClassChange(event){
-        setClass(event.target.value);
-    }
     function handleClassTypeChange(event){
         setClassType(event.target.value);
-        fetchStudents(event.target.value);
+        if(Class !== ''){
+            fetchStudents(event.target.value);
+        }
     }
-
 
     return <div className="attendance-section">
         <ToastContainer/>
@@ -182,8 +165,7 @@ function AddAttendance(){
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
                                             <TextField type={"date"} id="filled-basic"  name={"Date"} value={Date}
-                                                       onChange={handleDateChange} style={{ width: 220 }} />
-                                            {/*onChange={event => onChange(event)}*/}
+                                                       onChange={event => setDate(event.target.value)} style={{ width: 220 }} />
                                         </Box>
                                     </Grid>
                                 </div>
@@ -195,7 +177,7 @@ function AddAttendance(){
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
                                             <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'Class'}
-                                                    value={Class} className={"classSize"} onChange={handleClassChange} displayEmpty>
+                                                    value={Class} className={"classSize"} onChange={event => setClass(event.target.value)} displayEmpty>
                                                 <MenuItem value={''}> Select Class </MenuItem>
                                                 {
                                                     classes.map(Class =>
@@ -247,7 +229,7 @@ function AddAttendance(){
                                                         <label htmlFor={"classType"}> {Stu.studentName} </label>
                                                     </Box>
                                                     <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
-                                                        <Checkbox name="checkedB" color="primary" //checked={this.state.isTrue}
+                                                        <Checkbox name="checkedB" color="primary"
                                                                   value={Stu._Id} key={Stu._Id} onChange={event => onCheckBox(event) }
                                                         />
                                                     </Box>

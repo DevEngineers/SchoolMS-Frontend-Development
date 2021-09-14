@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import StudentService from "../../services/StudentService";
+import ClassService from "../../services/ClassService";
 import '../../styles/TeacherStyles/Teacher.css';
+import ClassTypeService from "../../services/ClassTypeService";
 
 /*
 *  Registration number: IT 19167442
@@ -22,7 +24,10 @@ class CreateStudent extends Component {
             schoolBranch:'',
             class:'',
             classType:'',
-            gender:''
+            gender:'',
+            classes:[],
+            classTypes:[]
+
 
         }
         this.changeStudentNameHandler = this.changeStudentNameHandler.bind(this);
@@ -39,8 +44,20 @@ class CreateStudent extends Component {
     }
 
     componentDidMount(){
-
+        ClassService.getClasses()
+            .then(res => {
+                this.setState({classes:res})
+            }).catch(err => {
+            console.error(err)
+        })
+        ClassTypeService.getClassTypes()
+            .then(res => {
+                this.setState({classTypes:res})
+            }).catch(err => {
+            console.error(err)
+        })
     }
+
     saveStudent(e) {
         e.preventDefault();
         let student = {
@@ -164,32 +181,24 @@ class CreateStudent extends Component {
                                     <div className = "form-group">
                                         <label> Grade : </label>
                                         <select value={this.state.class} name="class" className="form-control" onChange={this.changeClassHandler}>
-                                            <option defaultValue>Grade</option>
-                                            <option value="Grade 01">Grade 01</option>
-                                            <option value="Grade 02">Grade 02</option>
-                                            <option value="Grade 03">Grade 03</option>
-                                            <option value="Grade 04">Grade 04</option>
-                                            <option value="Grade 05">Grade 05</option>
-                                            <option value="Grade 06">Grade 06</option>
-                                            <option value="Grade 07">Grade 07</option>
-                                            <option value="Grade 08">Grade 08</option>
-                                            <option value="Grade 09">Grade 09</option>
-                                            <option value="Grade 10">Grade 10</option>
-                                            <option value="Grade 11">Grade 11</option>
-                                            <option value="Grade 12">Grade 12</option>
-                                            <option value="Grade 13">Grade 13</option>
+                                            <option value=''>Select Class</option>
+                                            {
+                                                this.state.classes.map(Class =>
+                                                    <option key={Class._id} value={Class._id}> {Class.class} </option>
+                                                )
+                                            }
+
                                         </select>
                                     </div>
                                     <div className = "form-group">
                                         <label> Class Type: </label>
                                         <select value={this.state.classType} className="form-control" onChange={this.changeClassTypeHandler}>
-                                            <option defaultValue>Class</option>
-                                            <option value="Class A">Class A</option>
-                                            <option value="Class B">Class B</option>
-                                            <option value="Class C">Class C</option>
-                                            <option value="Class D">Class D</option>
-                                            <option value="Class E">Class E</option>
-
+                                            <option value=''>Select Class Type</option>
+                                            {
+                                                this.state.classTypes.map(type =>
+                                                    <option key={type._id} value={type._id}> {type.name} </option>
+                                                )
+                                            }
                                         </select>
                                     </div>
                                     <div className = "form-group" value={this.state.gender} onChange={this.changeGenderHandler} >
