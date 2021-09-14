@@ -137,17 +137,6 @@ function AddAttendance(){
     /**
      * this function is to capture data in the input fields
      */
-    // function onChange(event){
-    //     const { name, value } = event.target;
-    //     this.setState({ [name] : value });
-    // }
-
-    // function handleDateChange(event){
-    //     setDate(event.target.value);
-    // }
-    // function handleClassChange(event){
-    //     setClass(event.target.value);
-    // }
     function handleClassTypeChange(event){
         setClassType(event.target.value);
         if(Class !== ''){
