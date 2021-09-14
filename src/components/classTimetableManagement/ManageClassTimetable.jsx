@@ -130,11 +130,11 @@ function ManageClassTimetable() {
                                 <MenuItem value={"class"}>
                                     <span className={"selectRName"}>Class</span>
                                 </MenuItem>
-                                <MenuItem value={"studentName"}>
-                                    <span className={"selectRName"}>Student Name</span>
+                                <MenuItem value={"classType"}>
+                                    <span className={"selectRName"}>Class Type</span>
                                 </MenuItem>
-                                <MenuItem value={"studentID"}>
-                                    <span className={"selectRName"}>Student ID</span>
+                                <MenuItem value={"year"}>
+                                    <span className={"selectRName"}>Year</span>
                                 </MenuItem>
                             </Select>
                         </FormControl>
