@@ -36,10 +36,10 @@ function AddAttendance(){
     const [classTypes,setClassTypes] = useState([]);
 
     useEffect(() =>{
-        componentDidMount();
+        fetchData();
     },[]);
 
-    function componentDidMount() {
+    function fetchData() {
         ClassService.getClasses()
             .then(classes => {
                 setClasses(classes);
@@ -142,17 +142,18 @@ function AddAttendance(){
     //     this.setState({ [name] : value });
     // }
 
-    function handleDateChange(event){
-        setDate(event.target.value);
-    }
-    function handleClassChange(event){
-        setClass(event.target.value);
-    }
+    // function handleDateChange(event){
+    //     setDate(event.target.value);
+    // }
+    // function handleClassChange(event){
+    //     setClass(event.target.value);
+    // }
     function handleClassTypeChange(event){
         setClassType(event.target.value);
-        fetchStudents(event.target.value);
+        if(Class !== ''){
+            fetchStudents(event.target.value);
+        }
     }
-
 
     return <div className="attendance-section">
         <ToastContainer/>
@@ -175,8 +176,7 @@ function AddAttendance(){
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
                                             <TextField type={"date"} id="filled-basic"  name={"Date"} value={Date}
-                                                       onChange={handleDateChange} style={{ width: 220 }} />
-                                            {/*onChange={event => onChange(event)}*/}
+                                                       onChange={event => setDate(event.target.value)} style={{ width: 220 }} />
                                         </Box>
                                     </Grid>
                                 </div>
@@ -188,7 +188,7 @@ function AddAttendance(){
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
                                             <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'Class'}
-                                                    value={Class} className={"classSize"} onChange={handleClassChange} displayEmpty>
+                                                    value={Class} className={"classSize"} onChange={event => setClass(event.target.value)} displayEmpty>
                                                 <MenuItem value={''}> Select Class </MenuItem>
                                                 {
                                                     classes.map(Class =>
