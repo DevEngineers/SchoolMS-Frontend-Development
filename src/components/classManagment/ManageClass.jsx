@@ -83,7 +83,6 @@ function ManageClass(props){
      */
     function onSearchHandling(e){
         const search = e.target.value;
-        console.log("Search value",search)
         if(search){
             ClassService.getClassBySearch(search)
                 .then(Class =>{
