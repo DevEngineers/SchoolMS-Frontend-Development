@@ -88,7 +88,7 @@ class ClassService{
     }
 
     /**
-     *  This service function is to get a class from backend
+     *  This service function is to get class from backend
      */
     async getClassBySearch(Value){
         return await fetch(CLASS_BASE_URI+"/search/"+Value,{
