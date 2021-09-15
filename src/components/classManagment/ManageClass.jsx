@@ -78,6 +78,19 @@ function ManageClass(props){
             })
     }
 
+    /**
+     * handler to search classes
+     */
+    function onSearchHandling(e){
+        const search = e.target.value;
+        console.log("Search value",search)
+        if(search){
+
+        }else{
+            fetchClass().then();
+        }
+    }
+
     return <div className={"ManageClass-Section"}>
         <ToastContainer/>
         <div>
@@ -87,8 +100,8 @@ function ManageClass(props){
         </div>
         <div>
             <div id={'searchDiv'}>
-                <TextField type={'text'}  id={'searchInput'} variant="outlined"/>
-                <input type={'submit'} value={'Search'} id={'searchBtn'}/>
+                <TextField type={'text'}  id={'searchInput'} variant="outlined" onChange={(e)=>onSearchHandling(e)} />
+                <input type={'submit'} value={'Search'} id={'searchBtn'} />
             </div>
         </div>
         <div>
