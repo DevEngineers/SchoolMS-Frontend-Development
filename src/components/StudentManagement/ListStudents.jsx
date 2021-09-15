@@ -90,8 +90,8 @@ class ListStudents extends Component {
                                         <td> {student.dob}</td>
                                         <td> {student.address}</td>
                                         <td> {student.schoolBranch}</td>
-                                        <td> { student.class} </td>
-                                        <td> {student.classType}</td>
+                                        <td> { student.class.class} </td>
+                                        <td> {student.classType.name}</td>
                                         <td> {student.gender}</td>
                                         <td>
                                             <div className={'btn btn-infon'}>
