@@ -87,6 +87,19 @@ class ClassService{
         })
     }
 
+    /**
+     *  This service function is to get a class from backend
+     */
+    async getClassBySearch(Value){
+        return await fetch(CLASS_BASE_URI+"/"+Value,{
+            method:'GET',
+        }).then(response =>{
+            return response.json();
+        }).catch(error => {
+            console.log(error.message);
+        })
+    }
+
 }
 
 export default new ClassService();
