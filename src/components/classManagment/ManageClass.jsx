@@ -85,7 +85,12 @@ function ManageClass(props){
         const search = e.target.value;
         console.log("Search value",search)
         if(search){
-
+            ClassService.getClassBySearch(search)
+                .then(Class =>{
+                    setClass(Class);
+                }).catch(err =>{
+                    console.error(err)
+                })
         }else{
             fetchClass().then();
         }
