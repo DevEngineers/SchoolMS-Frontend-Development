@@ -96,6 +96,22 @@ class ExamTimetableService {
         return reason;
       });
   }
+
+  /**
+   *  This service function is to get exam timetables from backend
+   *  according to the user input
+   */
+  async searchExamTimetable(type,value) {
+    return await fetch(EXAM_TIMETABLE_API_BASE_URI + "/search/result?type="+type+'&value='+value , {
+      method: "GET",
+    })
+        .then((response) => {
+          return response.json();
+        })
+        .catch((reason) => {
+          return reason;
+        });
+  }
 }
 
 export default new ExamTimetableService();

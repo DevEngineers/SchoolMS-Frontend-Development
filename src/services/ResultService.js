@@ -96,6 +96,22 @@ class ResultService {
         return reason;
       });
   }
+
+  /**
+   *  This service function is to get results from backend
+   *  according to the user input
+   */
+  async searchResults(type,value) {
+    return await fetch(RESULT_API_BASE_URI + "/search/result?type="+type+'&value='+value , {
+      method: "GET",
+    })
+        .then((response) => {
+          return response.json();
+        })
+        .catch((reason) => {
+          return reason;
+        });
+  }
 }
 
 export default new ResultService();

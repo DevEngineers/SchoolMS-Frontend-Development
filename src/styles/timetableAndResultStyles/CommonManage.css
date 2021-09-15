@@ -10,7 +10,7 @@
   width: 900px;
 }
 
-#searchDiv {
+#searchMDiv {
   padding: 20px 20px 80px 20px;
   margin-left: 150px;
 }
@@ -78,6 +78,16 @@
 
 #termLabel {
   margin-left: 80px;
+}
+
+#resNotDiv{
+  width: 250px;
+  margin: 0 auto;
+  align: center;
+}
+
+#resNotLabel{
+  font-size: 20px;
 }
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */

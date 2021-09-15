@@ -96,6 +96,22 @@ class ClassTimetableService {
         return reason;
       });
   }
+
+  /**
+   *  This service function is to get class timetables from backend
+   *  according to the user input
+   */
+  async searchClassTimetable(type,value) {
+    return await fetch(CLASS_TIMETABLE_API_BASE_URI + "/search/result?type="+type+'&value='+value , {
+      method: "GET",
+    })
+        .then((response) => {
+          return response.json();
+        })
+        .catch((reason) => {
+          return reason;
+        });
+  }
 }
 
 export default new ClassTimetableService();

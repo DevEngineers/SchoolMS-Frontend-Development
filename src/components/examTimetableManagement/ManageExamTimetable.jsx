@@ -37,6 +37,8 @@ function ManageExamTimetable() {
     const [open, setOpen] = useState(false);
     const [deleteExamTimetableObj, setDeleteExamTimetableObj] = useState("");
     const [searchType, setSearchType] = useState("");
+    const [searchValue, setSearchValue] = useState("");
+
     /**
      * handler to open the alter dialog box and setting up the
      * relevant exam timetable that we going to remove in deleteExamTimetableObj state variable
@@ -66,6 +68,28 @@ function ManageExamTimetable() {
             .catch((err) => {
                 console.error(err);
             });
+    }
+
+    async function fetchSearchResult(event) {
+        event.preventDefault()
+        if (searchValue === '') {
+            toast.warning("Please enter search value", options);
+        } else if (searchType === '') {
+            toast.warning("Please select search type", options);
+        } else {
+            await ExamTimetableService.searchExamTimetable(searchType, searchValue)
+                .then((examTimetables) => {
+                    console.log(examTimetables)
+                    if (examTimetables.length === 0) {
+                        setExamTimetables([]);
+                    } else {
+                        setExamTimetables(examTimetables);
+                    }
+                })
+                .catch((err) => {
+                    console.error(err);
+                });
+        }
     }
 
     function updateExamTimetable(examTimetable) {
@@ -103,12 +127,13 @@ function ManageExamTimetable() {
                 </div>
             </div>
             <div>
-                <div id={"searchDiv"}>
+                <div id={"searchMDiv"}>
                     <div id={"searchTxtMRDiv"}>
                         <TextField
                             type={"text"}
                             id={"searchInputResult"}
                             variant="outlined"
+                            onChange={event => setSearchValue(event.target.value)}
                         />
                     </div>
                     <div id={"searchTypeDiv"}>
@@ -138,7 +163,8 @@ function ManageExamTimetable() {
                         </FormControl>
                     </div>
                     <div id={"searchBtnMRDiv"}>
-                        <input type={"submit"} value={"Search"} id={"searchBtn"}/>
+                        <input type={"submit"} value={"Search"} id={"searchBtn"}
+                               onClick={event => fetchSearchResult(event)}/>
                     </div>
                 </div>
             </div>
@@ -146,16 +172,25 @@ function ManageExamTimetable() {
                 {/*<div>
                 <label id={'headingLabel'}>{ExamTimetable.class.class}</label>
             </div>*/}
-                {examTimetables.map((examTimetable) => {
-                    return (
-                        <ExamTimetableListHolder
-                            ExamTimetable={examTimetable}
-                            handleOpenDeleteAlert={handleClickOpen}
-                            viewExamTimetable={viewExamTimetable}
-                            editExamTimetable={updateExamTimetable}
-                        />
-                    );
-                })}
+                {
+                    (examTimetables.length === 0 || examTimetables === []) && searchValue !== '' ?
+                        (
+                            <div id={'resNotDiv'}>
+                                <label id={'resNotLabel'}>Sorry No Results is Found....</label>
+                            </div>
+                        ) : (
+                            examTimetables.map((examTimetable) => {
+                                return (
+                                    <ExamTimetableListHolder
+                                        ExamTimetable={examTimetable}
+                                        handleOpenDeleteAlert={handleClickOpen}
+                                        viewExamTimetable={viewExamTimetable}
+                                        editExamTimetable={updateExamTimetable}
+                                    />
+                                );
+                            })
+                        )
+                }
             </div>
             <Dialog
                 open={open}

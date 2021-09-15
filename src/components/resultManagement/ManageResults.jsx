@@ -39,6 +39,7 @@ function ManageResults() {
     const [open, setOpen] = useState(false);
     const [deleteResultObj, setDeleteResultObj] = useState("");
     const [searchType, setSearchType] = useState("");
+    const [searchValue, setSearchValue] = useState("");
 
     /**
      * handler to open the alter dialog box and setting up the
@@ -68,6 +69,27 @@ function ManageResults() {
             .catch((err) => {
                 console.error(err);
             });
+    }
+
+    async function fetchSearchResult(event) {
+        event.preventDefault()
+        if (searchValue === '') {
+            toast.warning("Please enter search value", options);
+        } else if (searchType === '') {
+            toast.warning("Please select search type", options);
+        } else {
+            await ResultService.searchResults(searchType, searchValue)
+                .then((results) => {
+                    if (results.length === 0) {
+                        setResults([]);
+                    } else {
+                        setResults(results);
+                    }
+                })
+                .catch((err) => {
+                    console.error(err);
+                });
+        }
     }
 
     function updateResult(result) {
@@ -105,12 +127,13 @@ function ManageResults() {
                 </div>
             </div>
             <div>
-                <div id={"searchDiv"}>
+                <div id={"searchMDiv"}>
                     <div id={"searchTxtMRDiv"}>
                         <TextField
                             type={"text"}
                             id={"searchInputResult"}
                             variant="outlined"
+                            onChange={event => setSearchValue(event.target.value)}
                         />
                     </div>
                     <div id={"searchTypeDiv"}>
@@ -140,7 +163,8 @@ function ManageResults() {
                         </FormControl>
                     </div>
                     <div id={"searchBtnMRDiv"}>
-                        <input type={"submit"} value={"Search"} id={"searchBtn"}/>
+                        <input type={"submit"} value={"Search"} id={"searchBtn"}
+                               onClick={event => fetchSearchResult(event)}/>
                     </div>
                 </div>
             </div>
@@ -149,17 +173,26 @@ function ManageResults() {
                 <label id={'headingLabel'}>Student ID: ST0012</label><br/>
                 <label id={'headingLabel'}>Student Name: Nimal Kumara </label>
             </div>*/}
-                {results.map((result) => {
-                    return (
-                        <ResultListHolder
-                            key={result._id}
-                            Result={result}
-                            handleOpenDeleteAlert={handleClickOpen}
-                            viewResult={viewResult}
-                            editResult={updateResult}
-                        />
-                    );
-                })}
+                {
+                    (results.length === 0 || results === []) && searchValue !== '' ?
+                        (
+                            <div id={'resNotDiv'}>
+                                <label id={'resNotLabel'}>Sorry No Results is Found....</label>
+                            </div>
+                        ) : (
+                            results.map((result) => {
+                                return (
+                                    <ResultListHolder
+                                        key={result._id}
+                                        Result={result}
+                                        handleOpenDeleteAlert={handleClickOpen}
+                                        viewResult={viewResult}
+                                        editResult={updateResult}
+                                    />
+                                );
+                            })
+                        )
+                }
             </div>
             <Dialog
                 open={open}

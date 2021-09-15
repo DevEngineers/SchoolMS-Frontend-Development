@@ -37,6 +37,7 @@ function ManageClassTimetable() {
     const [open, setOpen] = useState(false);
     const [deleteClassTimetableObj, setDeleteClassTimetableObj] = useState("");
     const [searchType, setSearchType] = useState("");
+    const [searchValue, setSearchValue] = useState("");
     /**
      * handler to open the alter dialog box and setting up the
      * relevant class timetable that we going to remove in deleteClassTimetableObj state variable
@@ -69,6 +70,29 @@ function ManageClassTimetable() {
                 console.error(err);
             });
     }
+
+    async function fetchSearchResult(event) {
+        event.preventDefault()
+        if (searchValue === '') {
+            toast.warning("Please enter search value", options);
+        } else if (searchType === '') {
+            toast.warning("Please select search type", options);
+        } else {
+            await ClassTimetableService.searchClassTimetable(searchType, searchValue)
+                .then((classTimetable) => {
+                    if (classTimetable.length === 0) {
+                        setClassTimetables([]);
+                    } else {
+                        setClassTimetables(classTimetable);
+                    }
+                })
+                .catch((err) => {
+                    console.error(err);
+                });
+        }
+    }
+
+    console.log(classTimetables)
 
     function updateClassTimetable(classTimetable) {
         let id = classTimetable._id;
@@ -105,12 +129,13 @@ function ManageClassTimetable() {
                 </div>
             </div>
             <div>
-                <div id={"searchDiv"}>
+                <div id={"searchMDiv"}>
                     <div id={"searchTxtMRDiv"}>
                         <TextField
                             type={"text"}
                             id={"searchInputResult"}
                             variant="outlined"
+                            onChange={event => setSearchValue(event.target.value)}
                         />
                     </div>
                     <div id={"searchTypeDiv"}>
@@ -121,7 +146,7 @@ function ManageClassTimetable() {
                                 className={"seTypeSel"}
                                 name={"searchType"}
                                 value={searchType}
-                                onChange={(event) => setSearchType(event.target.value)}
+                                onChange={event => setSearchType(event.target.value)}
                                 displayEmpty
                             >
                                 <MenuItem value={""}>
@@ -140,7 +165,8 @@ function ManageClassTimetable() {
                         </FormControl>
                     </div>
                     <div id={"searchBtnMRDiv"}>
-                        <input type={"submit"} value={"Search"} id={"searchBtn"}/>
+                        <input type={"submit"} value={"Search"} id={"searchBtn"}
+                               onClick={event => fetchSearchResult(event)}/>
                     </div>
                 </div>
             </div>
@@ -157,17 +183,25 @@ function ManageClassTimetable() {
                     /*<div>
                               <label id={'headingLabel'}>{ClassTimetable.class.class}</label>
                           </div>*/
-                    classTimetables.map((classTimetable) => {
-                        return (
-                            <ClassTimetableListHolder
-                                key={classTimetable._id}
-                                ClassTimetable={classTimetable}
-                                handleOpenDeleteAlert={handleClickOpen}
-                                editClassTimetable={updateClassTimetable}
-                                viewClassTimetable={viewClassTimetable}
-                            />
-                        );
-                    })
+                    (classTimetables.length === 0 || classTimetables === []) && searchValue !== '' ?
+                        (
+                            <div id={'resNotDiv'}>
+                                <label id={'resNotLabel'}>Sorry No Results is Found....</label>
+                            </div>
+                        ) : (
+                            classTimetables.map((classTimetable) => {
+                                return (
+                                    <ClassTimetableListHolder
+                                        key={classTimetable._id}
+                                        ClassTimetable={classTimetable}
+                                        handleOpenDeleteAlert={handleClickOpen}
+                                        editClassTimetable={updateClassTimetable}
+                                        viewClassTimetable={viewClassTimetable}
+                                    />
+                                );
+                            })
+                        )
+
                 }
             </div>
             <Dialog
