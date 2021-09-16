@@ -1,4 +1,4 @@
-const CLASS_BASE_URI='http://localhost:5000/class';
+const CLASS_BASE_URI="http://localhost:5000/class";
 
 /**
  * @author : A.M Zumry
@@ -10,12 +10,12 @@ class ClassService{
      *  This service function is to send class details to backend
      */
     async createClass(Class){
-        const bearer = 'Bearer ' + localStorage.getItem('userToken');
+        const bearer = "Bearer " + localStorage.getItem("userToken");
         return await fetch(CLASS_BASE_URI,{
-            method:'POST',
+            method:"POST",
             headers:{
-                'content-Type':"application/json",
-                'Authorization': bearer
+                "content-Type":"application/json",
+                "Authorization": bearer
             },
             body:JSON.stringify(Class)
         }).then(response =>{
@@ -30,7 +30,7 @@ class ClassService{
      */
     async getClasses(){
         return await fetch(CLASS_BASE_URI,{
-            method:'GET',
+            method:"GET",
         }).then(response =>{
             return response.json();
         }).catch(reason => {
@@ -43,7 +43,7 @@ class ClassService{
      */
     async getClassByID(id){
         return await fetch(CLASS_BASE_URI+"/"+id,{
-            method:'GET',
+            method:"GET",
         }).then(response =>{
             return response.json();
         }).catch(error => {
@@ -55,12 +55,12 @@ class ClassService{
      *  This service function is to update stored class in backend
      */
     async updateClass(id,Class){
-        const bearer = 'Bearer ' + localStorage.getItem('userToken');
+        const bearer = "Bearer " + localStorage.getItem("userToken");
         return await fetch(CLASS_BASE_URI+"/"+id,{
-            method:'PUT',
+            method:"PUT",
             headers:{
-                'content-Type':"application/json",
-                'Authorization': bearer
+                "content-Type":"application/json",
+                "Authorization": bearer
             },
             body:JSON.stringify(Class)
         }).then(response =>{
@@ -74,12 +74,12 @@ class ClassService{
      *  This service function is to Remove stored class in backend
      */
     async removeClass(id){
-        const bearer = 'Bearer ' + localStorage.getItem('userToken');
+        const bearer = "Bearer " + localStorage.getItem("userToken");
         return await fetch(CLASS_BASE_URI+"/"+id,{
             headers:{
-                'Authorization': bearer
+                "Authorization": bearer
             },
-            method:'DELETE',
+            method:"DELETE",
         }).then(response =>{
             return response;
         }).catch(reason => {
@@ -93,7 +93,7 @@ class ClassService{
      */
     async getClassBySearch(Value){
         return await fetch(CLASS_BASE_URI+"/search/"+Value,{
-            method:'GET',
+            method:"GET",
         }).then(response =>{
             return response.json();
         }).catch(error => {
