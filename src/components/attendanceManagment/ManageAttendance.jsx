@@ -5,13 +5,22 @@ import AttendanceService from "../../services/AttendanceService";
 import AttendanceListHolder from "./AttendanceListHolder";
 import '../../styles/AttendanceManagment/ViewAttendance.css';
 import Button from "@material-ui/core/Button";
-import ClassService from "../../services/ClassService";
 import {toast} from "material-react-toastify";
 
 /**
  * @author : A.M Zumry
  * Registration Number : IT19175126
  */
+
+//Toast Message Configuration
+const options = {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: false
+}
 
 function ManageAttendance(props){
     const history = useHistory();
