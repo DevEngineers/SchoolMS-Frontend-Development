@@ -87,9 +87,9 @@ function ManageAttendance(props){
             </div>
         </div>
         <div>
-            <div id={'searchDiv'}>
-                <TextField type={'text'}  id={'searchInput'} variant="outlined"/>
-                <input type={'submit'} value={'Search'} id={'searchBtn'}/>
+            <div id={"searchDiv"}>
+                <TextField type={"text"}  id={"searchInput"} variant="outlined"/>
+                <input type={"submit"} value={"Search"} id={"searchBtn"}/>
             </div>
         </div>
         <div>
@@ -102,17 +102,17 @@ function ManageAttendance(props){
         </div>
 
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-            <DialogTitle id="form-dialog-title">Alert</DialogTitle>
+            <DialogTitle id="form-dialog-title">Remove Attendance</DialogTitle>
             <DialogContent>
                 <DialogContentText>
                     Are you sure to remove this record
                 </DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose} color="primary" style={{fontWeight:'bold'}}>
+                <Button onClick={handleClose} color="primary" style={{fontWeight:"bold"}}>
                     Cancel
                 </Button>
-                <Button onClick={deleteAttendance} color="secondary" style={{fontWeight:'bold'}}>
+                <Button onClick={deleteAttendance} color="secondary" style={{fontWeight:"bold"}}>
                     Proceed
                 </Button>
             </DialogActions>
