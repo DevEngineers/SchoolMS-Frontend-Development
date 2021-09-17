@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField} from "@material-ui/core";
 import ClassListHolder from "./ClassListHolder";
-import '../../styles/classManagment/ViewClass.css'
+import "../../styles/classManagment/ViewClass.css";
 import {useHistory} from "react-router-dom";
 import ClassService from "../../services/ClassService";
 import Button from "@material-ui/core/Button";
@@ -98,14 +98,14 @@ function ManageClass(props){
     return <div className={"ManageClass-Section"}>
         <ToastContainer/>
         <div>
-            <div className={'box'}>
-                <label className={'custom-underline'}> LIST OF CLASSES </label>
+            <div className={"box"}>
+                <label className={"custom-underline"}> LIST OF CLASSES </label>
             </div>
         </div>
         <div>
-            <div id={'searchDiv'}>
-                <TextField type={'text'}  id={'searchInput'} variant="outlined" onChange={(e)=>onSearchHandling(e)} />
-                <input type={'submit'} value={'Search'} id={'searchBtn'} />
+            <div id={"searchDiv"}>
+                <TextField type={"text"}  id={"searchInput"} variant="outlined" onChange={(e)=>onSearchHandling(e)} />
+                <input type={"submit"} value={"Search"} id={"searchBtn"} />
             </div>
         </div>
         <div>
@@ -118,7 +118,7 @@ function ManageClass(props){
         </div>
 
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-            <DialogTitle id="form-dialog-title">Alert</DialogTitle>
+            <DialogTitle id="form-dialog-title">Remove Class</DialogTitle>
             <DialogContent>
                 <DialogContentText>
                     Are you sure to remove this record
