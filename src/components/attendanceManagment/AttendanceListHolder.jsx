@@ -13,8 +13,8 @@ export default function SubjectListHolder(props){
 
             <div id={'viewDiv'}>
                 <div id={'viewSmall'}>
-                    <label id="ClassLabel">Class : {attendance.class.class} </label>
-                    <label id={'SubjectLabel'}>Class Type : {attendance.classType.name} </label>
+                    <label id="ClassLabel"> {attendance.class.class} </label>
+                    <label id={'SubjectLabel'}> {attendance.classType.name} </label>
                     <label id={'TeacherLabel'}>Date : {moment(attendance.date).format("DD/MM/YYYY")} </label>
                 </div>
                 <div className={'buttonDiv'}>
