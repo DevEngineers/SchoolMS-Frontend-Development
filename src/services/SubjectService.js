@@ -92,7 +92,13 @@ class SubjectService{
      *  according to the user input
      */
     async getSubjectBySearch(Value){
-
+        return await fetch(+"/search/"+Value,{
+            method:"GET",
+        }).then(response =>{
+            return response.json();
+        }).catch(error => {
+            console.log(error.message);
+        })
     }
 
 }
