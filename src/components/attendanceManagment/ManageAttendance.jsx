@@ -13,7 +13,26 @@ import Button from "@material-ui/core/Button";
 
 function ManageAttendance(props){
     const history = useHistory();
-    const [attendance,setAttendance] = useState([])
+    const [attendance,setAttendance] = useState([]);
+    const [open, setOpen] = useState(false);
+    const [deleteClassObj, setDeleteClassObj] = useState('');
+
+    /**
+     * handler to open the alter dialog box and setting up the
+     * relevant Class that we going to remove in deleteClassObj state variable
+     */
+    const handleClickOpen = (Class) => {
+        setOpen(true);
+        setDeleteClassObj(Class);
+    };
+
+    /**
+     * handler to close the alter dialog box
+     */
+    const handleClose = () => {
+        setOpen(false);
+    };
+
 
     useEffect(() =>{
         fetchAttendance();
