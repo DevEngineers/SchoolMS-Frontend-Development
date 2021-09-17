@@ -6,7 +6,7 @@ import moment from "moment"
 import '../../styles/AttendanceManagment/ViewAttendance.css';
 
 export default function SubjectListHolder(props){
-    const {attendance,editAttendance,deleteAttendance} = props
+    const {attendance,editAttendance,handleOpenDeleteAlert} = props
 
     return <div className="AttendanceListHolder">
         <div id={'viewMain'}>
@@ -19,7 +19,7 @@ export default function SubjectListHolder(props){
                 </div>
                 <div className={'buttonDiv'}>
                     <IconButton aria-label="delete" style={{backgroundColor:"transparent"}}
-                                onClick={() => deleteAttendance(attendance)}>
+                                onClick={() => handleOpenDeleteAlert(attendance)}>
                         <DeleteIcon/>
                     </IconButton>
                 </div>
