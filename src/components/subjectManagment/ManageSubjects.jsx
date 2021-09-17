@@ -6,7 +6,6 @@ import SubjectService from "../../services/SubjectService";
 import SubjectListHolder from "./SubjectListHolder";
 import {toast, ToastContainer} from "material-react-toastify";
 import Button from "@material-ui/core/Button";
-import ClassService from "../../services/ClassService";
 
 /**
  * @author : A.M Zumry
@@ -46,11 +45,11 @@ function ManageSubjects(props){
     };
 
     useEffect(() =>{
-        fetchSubject();
+        fetchSubject().then();
     },[]);
 
-    function fetchSubject(){
-        SubjectService.getSubjects()
+    async function fetchSubject(){
+        await SubjectService.getSubjects()
             .then(Subjects =>{
                 setSubject(Subjects);
             }).catch(err =>{
@@ -84,14 +83,14 @@ function ManageSubjects(props){
     function onSearchHandling(e){
         const search = e.target.value;
         if(search){
-            // ClassService.getClassBySearch(search)
-                .then(Class =>{
-                    setClass(Class);
+            SubjectService.getSubjectBySearch(search)
+                .then(Subject =>{
+                    setSubject(Subject);
                 }).catch(err =>{
                 console.error(err)
             })
         }else{
-            fetchClass().then();
+            fetchSubject().then();
         }
     }
 
