@@ -6,6 +6,7 @@ import SubjectService from "../../services/SubjectService";
 import SubjectListHolder from "./SubjectListHolder";
 import {toast, ToastContainer} from "material-react-toastify";
 import Button from "@material-ui/core/Button";
+import ClassService from "../../services/ClassService";
 
 /**
  * @author : A.M Zumry
@@ -75,6 +76,23 @@ function ManageSubjects(props){
                     toast.warning("Something went wrong!!,Try again.",options)
                 }
             })
+    }
+
+    /**
+     * handler to search classes
+     */
+    function onSearchHandling(e){
+        const search = e.target.value;
+        if(search){
+            // ClassService.getClassBySearch(search)
+                .then(Class =>{
+                    setClass(Class);
+                }).catch(err =>{
+                console.error(err)
+            })
+        }else{
+            fetchClass().then();
+        }
     }
 
     return <div className={"ManageSubject-Section"}>
