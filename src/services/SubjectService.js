@@ -87,6 +87,14 @@ class SubjectService{
         })
     }
 
+    /**
+     *  This service function is to get class Details from backend
+     *  according to the user input
+     */
+    async getSubjectBySearch(Value){
+
+    }
+
 }
 
 export default new SubjectService();
