@@ -83,23 +83,22 @@ function AddAttendance(){
     }
 
     function onCheckBox(event){
-        const{value} = event.target;
-        console.log(value);
-        console.log("event",event);
+        let value = event.target.value;
+        console.log("event value check box : ",value);
         // let {student} = students.Id;
-        // let {studentID} = this.state;
+        // let newStudent = [...student];
 
-        // if(student.includes(value) === true){
-        //     let index = student.indexOf(value);
-        //     student.splice(index,1)
-        //     console.log('true students',student);
-        //     return
-        // }
-        //
-        // if(student.includes(value) === false){
-        //     student.push(value);
-        //     console.log('false students',student);
-        // }
+        if(attendance.includes(value) === true){
+            let index = attendance.indexOf(value);
+            attendance.splice(index,1)
+            console.log('true students',attendance);
+            return
+        }
+
+        if(attendance.includes(value) === false){
+            attendance.push(value);
+            console.log('false students',attendance);
+        }
 
     }
 
@@ -230,7 +229,7 @@ function AddAttendance(){
                                                     </Box>
                                                     <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
                                                         <Checkbox name="checkedB" color="primary"
-                                                                  value={Stu._Id} key={Stu._Id} onChange={event => onCheckBox(event) }
+                                                                  value={Stu._id} key={Stu._id} onChange={event => onCheckBox(event) }
                                                         />
                                                     </Box>
                                                 </Grid>
