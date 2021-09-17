@@ -97,14 +97,14 @@ function ManageSubjects(props){
     return <div className={"ManageSubject-Section"}>
         <ToastContainer/>
         <div>
-            <div className={'box'}>
-                <label className={'custom-underline'}> LIST OF SUBJECTS </label>
+            <div className={"box"}>
+                <label className={"custom-underline"}> LIST OF SUBJECTS </label>
             </div>
         </div>
         <div>
-            <div id={'searchDiv'}>
-                <TextField type={'text'}  id={'searchInput'} variant="outlined" onChange={(e)=>onSearchHandling(e)} />
-                <input type={'submit'} value={'Search'} id={'searchBtn'}/>
+            <div id={"searchDiv"}>
+                <TextField type={"text"}  id={"searchInput"} variant="outlined" onChange={(e)=>onSearchHandling(e)} />
+                <input type={"submit"} value={"Search"} id={"searchBtn"}/>
             </div>
         </div>
         <div>
@@ -117,7 +117,7 @@ function ManageSubjects(props){
         </div>
 
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-            <DialogTitle id="form-dialog-title">Alert</DialogTitle>
+            <DialogTitle id="form-dialog-title">Remove Subject</DialogTitle>
             <DialogContent>
                 <DialogContentText>
                     Are you sure to remove this record
