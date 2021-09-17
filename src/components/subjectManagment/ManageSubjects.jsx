@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField} from "@material-ui/core";
-import '../../styles/classManagment/ViewClass.css'
+import "../../styles/classManagment/ViewClass.css"
 import {useHistory} from "react-router-dom";
 import SubjectService from "../../services/SubjectService";
 import SubjectListHolder from "./SubjectListHolder";
@@ -86,7 +86,7 @@ function ManageSubjects(props){
         </div>
         <div>
             <div id={'searchDiv'}>
-                <TextField type={'text'}  id={'searchInput'} variant="outlined"/>
+                <TextField type={'text'}  id={'searchInput'} variant="outlined" onChange={(e)=>onSearchHandling(e)} />
                 <input type={'submit'} value={'Search'} id={'searchBtn'}/>
             </div>
         </div>
