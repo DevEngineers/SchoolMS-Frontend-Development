@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
-import {TextField} from "@material-ui/core";
+import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField} from "@material-ui/core";
 import {useHistory} from "react-router-dom";
 import AttendanceService from "../../services/AttendanceService";
 import AttendanceListHolder from "./AttendanceListHolder";
 import '../../styles/AttendanceManagment/ViewAttendance.css';
+import Button from "@material-ui/core/Button";
 
 /**
  * @author : A.M Zumry
@@ -53,7 +54,22 @@ function ManageAttendance(props){
             }
         </div>
 
-
+        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+            <DialogTitle id="form-dialog-title">Alert</DialogTitle>
+            <DialogContent>
+                <DialogContentText>
+                    Are you sure to remove this record
+                </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+                <Button onClick={handleClose} color="primary" style={{fontWeight:'bold'}}>
+                    Cancel
+                </Button>
+                <Button onClick={deleteClass} color="secondary" style={{fontWeight:'bold'}}>
+                    Proceed
+                </Button>
+            </DialogActions>
+        </Dialog>
 
     </div>
 
