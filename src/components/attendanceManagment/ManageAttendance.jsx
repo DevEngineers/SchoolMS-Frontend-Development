@@ -5,6 +5,8 @@ import AttendanceService from "../../services/AttendanceService";
 import AttendanceListHolder from "./AttendanceListHolder";
 import '../../styles/AttendanceManagment/ViewAttendance.css';
 import Button from "@material-ui/core/Button";
+import ClassService from "../../services/ClassService";
+import {toast} from "material-react-toastify";
 
 /**
  * @author : A.M Zumry
@@ -52,6 +54,22 @@ function ManageAttendance(props){
         history.push(`/update-attendance/${id}`);
     }
 
+    function deleteAttendance(){
+        let id = deleteAttendanceObj._id;
+        AttendanceService.removeAttendance(id)
+            .then(res =>{
+                if(res.status === 200){
+                    handleClose();
+                    toast.error("Attendance Details is Removed",options)
+                    setTimeout(()=>{history.push("/view-attendance")},3000)
+                }else{
+                    handleClose();
+                    toast.warning("Something went wrong!!,Try again.",options)
+                }
+            })
+    }
+
+
     return <div className={"ManageAttendance-Section"}>
         <div>
             <div className={'box'}>
@@ -84,7 +102,7 @@ function ManageAttendance(props){
                 <Button onClick={handleClose} color="primary" style={{fontWeight:'bold'}}>
                     Cancel
                 </Button>
-                <Button onClick={deleteClass} color="secondary" style={{fontWeight:'bold'}}>
+                <Button onClick={deleteAttendance} color="secondary" style={{fontWeight:'bold'}}>
                     Proceed
                 </Button>
             </DialogActions>
