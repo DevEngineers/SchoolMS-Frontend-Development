@@ -3,7 +3,7 @@ import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Te
 import {useHistory} from "react-router-dom";
 import AttendanceService from "../../services/AttendanceService";
 import AttendanceListHolder from "./AttendanceListHolder";
-import '../../styles/AttendanceManagment/ViewAttendance.css';
+import "../../styles/AttendanceManagment/ViewAttendance.css";
 import Button from "@material-ui/core/Button";
 import {toast, ToastContainer} from "material-react-toastify";
 
