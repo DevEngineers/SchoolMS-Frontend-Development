@@ -5,7 +5,7 @@ import AttendanceService from "../../services/AttendanceService";
 import AttendanceListHolder from "./AttendanceListHolder";
 import '../../styles/AttendanceManagment/ViewAttendance.css';
 import Button from "@material-ui/core/Button";
-import {toast} from "material-react-toastify";
+import {toast, ToastContainer} from "material-react-toastify";
 
 /**
  * @author : A.M Zumry
@@ -80,6 +80,7 @@ function ManageAttendance(props){
 
 
     return <div className={"ManageAttendance-Section"}>
+        <ToastContainer/>
         <div>
             <div className={'box'}>
                 <label className={'custom-underline'}> LIST OF ATTENDANCE </label>
