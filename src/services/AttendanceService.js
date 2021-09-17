@@ -92,7 +92,7 @@ class AttendanceService{
      *  according to the user input
      */
     async getAttendanceBySearch(Value){
-        return await fetch(+"/search/"+Value,{
+        return await fetch(ATTENDANCE_BASE_URI+"/search/"+Value,{
             method:"GET",
         }).then(response =>{
             return response.json();
