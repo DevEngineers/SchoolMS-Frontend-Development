@@ -12,8 +12,8 @@ export default function ClassListHolder(props){
 
             <div id={'viewDiv'}>
                 <div id={'viewSmall'}>
-                    <label id="ClassLabel">Class : {Class.class} </label>
-                    <label id={'TypeLabel'}>Class Type : {Class.classType.name} </label>
+                    <label id="ClassLabel"> {Class.class} </label>
+                    <label id={'TypeLabel'}> {Class.classType.name} </label>
                     <label id={'TeacherLabel'}>Teacher : {Class.teacher.teacherName} </label>
                 </div>
                 <div className={'buttonDiv'}>
