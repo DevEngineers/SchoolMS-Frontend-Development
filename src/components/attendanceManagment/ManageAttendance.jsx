@@ -15,15 +15,15 @@ function ManageAttendance(props){
     const history = useHistory();
     const [attendance,setAttendance] = useState([]);
     const [open, setOpen] = useState(false);
-    const [deleteClassObj, setDeleteClassObj] = useState('');
+    const [deleteAttendanceObj, setDeleteAttendanceObj] = useState('');
 
     /**
      * handler to open the alter dialog box and setting up the
-     * relevant Class that we going to remove in deleteClassObj state variable
+     * relevant Class that we going to remove in delete Attendance Object state variable
      */
-    const handleClickOpen = (Class) => {
+    const handleClickOpen = (attendance) => {
         setOpen(true);
-        setDeleteClassObj(Class);
+        setDeleteAttendanceObj(attendance);
     };
 
     /**
