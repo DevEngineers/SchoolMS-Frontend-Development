@@ -87,6 +87,14 @@ class AttendanceService{
         })
     }
 
+    /**
+     *  This service function is to get Subject Details from backend
+     *  according to the user input
+     */
+    async getAttendanceBySearch(Value){
+
+    }
+
 }
 
 export default new AttendanceService();
