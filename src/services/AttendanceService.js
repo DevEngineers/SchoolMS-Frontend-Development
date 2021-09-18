@@ -87,6 +87,20 @@ class AttendanceService{
         })
     }
 
+    /**
+     *  This service function is to get attendance Details from backend
+     *  according to the user input
+     */
+    async getAttendanceBySearch(Value){
+        return await fetch(ATTENDANCE_BASE_URI+"/search/"+Value,{
+            method:"GET",
+        }).then(response =>{
+            return response.json();
+        }).catch(error => {
+            console.log(error.message);
+        })
+    }
+
 }
 
 export default new AttendanceService();

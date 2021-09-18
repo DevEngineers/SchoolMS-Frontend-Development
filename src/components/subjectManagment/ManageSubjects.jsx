@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField} from "@material-ui/core";
-import '../../styles/classManagment/ViewClass.css'
+import "../../styles/classManagment/ViewClass.css"
 import {useHistory} from "react-router-dom";
 import SubjectService from "../../services/SubjectService";
 import SubjectListHolder from "./SubjectListHolder";
@@ -45,11 +45,11 @@ function ManageSubjects(props){
     };
 
     useEffect(() =>{
-        fetchSubject();
+        fetchSubject().then();
     },[]);
 
-    function fetchSubject(){
-        SubjectService.getSubjects()
+    async function fetchSubject(){
+        await SubjectService.getSubjects()
             .then(Subjects =>{
                 setSubject(Subjects);
             }).catch(err =>{
@@ -77,17 +77,34 @@ function ManageSubjects(props){
             })
     }
 
+    /**
+     * handler to search classes
+     */
+    function onSearchHandling(e){
+        const search = e.target.value;
+        if(search){
+            SubjectService.getSubjectBySearch(search)
+                .then(Subject =>{
+                    setSubject(Subject);
+                }).catch(err =>{
+                console.error(err)
+            })
+        }else{
+            fetchSubject().then();
+        }
+    }
+
     return <div className={"ManageSubject-Section"}>
         <ToastContainer/>
         <div>
-            <div className={'box'}>
-                <label className={'custom-underline'}> LIST OF SUBJECTS </label>
+            <div className={"box"}>
+                <label className={"custom-underline"}> LIST OF SUBJECTS </label>
             </div>
         </div>
         <div>
-            <div id={'searchDiv'}>
-                <TextField type={'text'}  id={'searchInput'} variant="outlined"/>
-                <input type={'submit'} value={'Search'} id={'searchBtn'}/>
+            <div id={"searchDiv"}>
+                <TextField type={"text"}  id={"searchInput"} variant="outlined" onChange={(e)=>onSearchHandling(e)} />
+                <input type={"submit"} value={"Search"} id={"searchBtn"}/>
             </div>
         </div>
         <div>
@@ -100,7 +117,7 @@ function ManageSubjects(props){
         </div>
 
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-            <DialogTitle id="form-dialog-title">Alert</DialogTitle>
+            <DialogTitle id="form-dialog-title">Remove Subject</DialogTitle>
             <DialogContent>
                 <DialogContentText>
                     Are you sure to remove this record
