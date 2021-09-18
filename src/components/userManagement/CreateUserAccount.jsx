@@ -59,7 +59,7 @@ class CreateUserAccount extends React.Component {
 		}
 
 		/**
-		 * this function is to capture data in the input fields
+		 * this function is to capture data and validate email input
 		 */
 		onChangeEmail(event) {
 				const {name, value} = event.target;
@@ -74,6 +74,10 @@ class CreateUserAccount extends React.Component {
 				}
 		}
 
+		/**
+		 * this function is to capture password or re-enter password and validate password
+		 * and check the password enter match with re-enter password
+		 */
 		onChangePassword(event, type) {
 				const {name, value} = event.target;
 

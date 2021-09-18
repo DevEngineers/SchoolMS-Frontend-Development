@@ -301,6 +301,7 @@
 
 #viewDeUpDiv {
   width: 150px;
+  margin-left: -160px;
 }
 
 .upVal2Label {
@@ -332,6 +333,13 @@
 .textFieldUp {
   margin-top: 2px;
   margin-bottom: 16px;
+  width: 420px;
+  margin-left: -150px;
+}
+.textFieldUp2 {
+  width: 420px;
+  margin-left: -150px;
+  margin-top: -12px;
 }
 
 .UpLabel {
@@ -369,5 +377,17 @@
   font-size: 20px;
   margin-top: 10px;
   display: inline-block;
+  font-weight: bold;
+}
+
+.viewProDataDiv{
+  width: 300px;
+  padding: 5px;
+}
+
+.ULabel {
+  display: inline-block;
+  float: left;
+  padding: 13px;
   font-weight: bold;
 }
