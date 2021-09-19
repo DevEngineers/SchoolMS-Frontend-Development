@@ -109,7 +109,6 @@ function AddAttendance(){
             class:Class,
             classType: ClassType,
             student:attendance,
-            // attendance:'nilled'
         }
         console.log("Store Data",Att);
         console.log("Attendance",attendance);
