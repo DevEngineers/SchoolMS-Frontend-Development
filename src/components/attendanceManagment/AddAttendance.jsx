@@ -108,9 +108,11 @@ function AddAttendance(){
             date:Date,
             class:Class,
             classType: ClassType,
-            student:student,
-            attendance:attendance
+            student:attendance,
+            // attendance:'nilled'
         }
+        console.log("Store Data",Att);
+        console.log("Attendance",attendance);
         if(Att.date === ''){
             toast.warn("Select a Date",options)
         }else if(Att.class === ''){
