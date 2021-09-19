@@ -1,24 +1,25 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
 import {Box, Checkbox, Grid} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-import '../../styles/AttendanceManagment/Attendance.css';
+import "../../styles/AttendanceManagment/Attendance.css";
 import {toast, ToastContainer} from "material-react-toastify";
 import AttendanceService from "../../services/AttendanceService";
 import moment from "moment";
+import StudentService from "../../services/StudentService";
 
 /**
  * @author : A.M Zumry
  * Registration Number : IT19175126
  */
 
-const students =[
-    { Id: '0001', name: 'Nimal Kumar', class:'10' , classType:'A', Att:true },
-    { Id: '0002', name: 'Pasan Bandara', class:'10' , classType:'A', Att:true },
-    { Id: '0003', name: 'Kasun kumar', class:'10' , classType:'A', Att:true },
-    { Id: '0004', name: 'Sunil sunil', class:'10' , classType:'A', Att:true },
-    { Id: '0005', name: 'Tharuni bandara', class:'10' , classType:'A', Att:false },
-    { Id: '0006', name: 'Kasun Vimal', class:'10' , classType:'A', Att:true },
-]
+// const students =[
+//     { Id: '0001', name: 'Nimal Kumar', class:'10' , classType:'A', Att:true },
+//     { Id: '0002', name: 'Pasan Bandara', class:'10' , classType:'A', Att:true },
+//     { Id: '0003', name: 'Kasun kumar', class:'10' , classType:'A', Att:true },
+//     { Id: '0004', name: 'Sunil sunil', class:'10' , classType:'A', Att:true },
+//     { Id: '0005', name: 'Tharuni bandara', class:'10' , classType:'A', Att:false },
+//     { Id: '0006', name: 'Kasun Vimal', class:'10' , classType:'A', Att:true },
+// ]
 
 //Toast Message Configuration
 const options = {
@@ -44,7 +45,7 @@ class UpdateAttendance extends Component {
             rStudent:[],
 
             studentID:['0001', '0002', '0003','0004', '0005','0006' ],
-            student:['Nimal Kumar', 'Pasan Bandara', 'Kasun kumar','Sunil sunil', 'Tharuni bandara','Kasun Vimal' ],
+            students:[],
             attendance:[1, 1, 1, 1, 0, 1],
 
             classType:['A','B','C','D','E'],
@@ -61,16 +62,49 @@ class UpdateAttendance extends Component {
                     rClassType:res.classType.name,
                     rAttendance:res.attendance,
                     rStudent:res.student
+
                 })
+                if(this.state.rClass !== '' && this.state.rClassType !== ''){
+                    let ClassType = {
+                        class:this.state.rClass,
+                        classType:this.state.rClassType
+                    }
+                    StudentService.getStudentByClass(ClassType)
+                        .then(res =>{
+                            this.setState({students:res})
+                            console.log("fetch student",res)
+                        }).catch(err => {
+                        console.error(err)
+                    })
+                }
+
             }).catch(err => {
             console.error(err)
         })
+
+        console.log("rClass: ",this.state.rClass);
+        console.log("rClassType: ",this.state.rClassType);
+
+        // if(this.state.rClass !== '' && this.state.rClassType !== ''){
+        //     let ClassType = {
+        //         class:this.state.rClass,
+        //         classType:this.state.rClassType
+        //     }
+        //     StudentService.getStudentByClass(ClassType)
+        //         .then(res =>{
+        //             this.setState({students:res})
+        //             console.log("fetch student",res)
+        //         }).catch(err => {
+        //         console.error(err)
+        //     })
+        // }
+
     }
 
     onCheckBox(event){
         const{value} = event.target;
         console.log(value);
-        const student = students;
+        const student = this.state.students;
         console.log(' students',student);
         console.log(' students ID',student[0].Id);
         const iArr = ['1','2','3','4','5','6'];
@@ -89,7 +123,7 @@ class UpdateAttendance extends Component {
 
 
         if((student.Id).includes(value) === false){
-            students.push(value);
+            this.state.students.push(value);
             console.log('false students',student);
         }
 
@@ -102,7 +136,7 @@ class UpdateAttendance extends Component {
             class:this.state.rClass,
             classType: this.state.rClassType,
             student:this.state.student,
-            attendance:this.state.attendance
+            // attendance:this.state.attendance
         }
         if(Att.date === ''){
             toast.warn('Select a Date',options)
@@ -195,7 +229,7 @@ class UpdateAttendance extends Component {
                                     <div className="attendance-form-div">
 
                                         {
-                                            students.map(Stu => (
+                                            this.state.students.map(Stu => (
                                                 <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
                                                     <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
                                                         <label htmlFor={'classType'}> {Stu.name} </label>
