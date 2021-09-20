@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, useEffect, useState} from "react";
 import {Box, Checkbox, Grid} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import "../../styles/AttendanceManagment/Attendance.css";
@@ -31,59 +31,83 @@ const options = {
     draggable: false
 }
 
-class UpdateAttendance extends Component {
-    constructor(props){
-        super(props);
-        this.state= {
-            AttendanceID:this.props.match.params.id,
-            isCheck:false,
+function UpdateAttendance(props){
+    const [Date,setDate] = useState('');
+    const [Class,setClass] = useState([]);
+    const [ClassType,setClassType] = useState([]);
 
-            rDate:'',
-            rClass:'',
-            rClassType:'',
-            rAttendance:[],
-            rStudent:[],
+    // const [ClassID,setClassID] = useState('');
+    // const [ClassTypeID,setClassTypeID] = useState('');
 
-            studentID:['0001', '0002', '0003','0004', '0005','0006' ],
-            students:[],
-            attendance:[1, 1, 1, 1, 0, 1],
+    const [attendance,setAttendance] = useState([]);
+    const [student,setStudent] = useState([]);
 
-            classType:['A','B','C','D','E'],
-            class:['8', '9', '10', '11', '12']
-        }
-    }
+    const [classes,setClasses] = useState([]);
+    const [classTypes,setClassTypes] = useState([]);
+    // constructor(props){
+    //     super(props);
+    //     this.state= {
+    //         AttendanceID:this.props.match.params.id,
+    //         isCheck:false,
+    //
+    //         rDate:'',
+    //         rClass:'',
+    //         rClassType:'',
+    //         rAttendance:[],
+    //         rStudent:[],
+    //
+    //         studentID:['0001', '0002', '0003','0004', '0005','0006' ],
+    //         students:[],
+    //         attendance:[1, 1, 1, 1, 0, 1],
+    //
+    //         classType:['A','B','C','D','E'],
+    //         class:['8', '9', '10', '11', '12']
+    //     }
+    // }
 
-    componentDidMount(){
-        AttendanceService.getAttendanceByID(this.state.AttendanceID)
-            .then(res => {
-                this.setState({
-                    rDate:res.date,
-                    rClass:res.class.class,
-                    rClassType:res.classType.name,
-                    rAttendance:res.attendance,
-                    rStudent:res.student
+    useEffect(() =>{
+        componentDidMount();
+    },[]);
 
-                })
-                if(this.state.rClass !== '' && this.state.rClassType !== ''){
-                    let ClassType = {
-                        class:this.state.rClass,
-                        classType:this.state.rClassType
-                    }
-                    StudentService.getStudentByClass(ClassType)
-                        .then(res =>{
-                            this.setState({students:res})
-                            console.log("fetch student",res)
-                        }).catch(err => {
-                        console.error(err)
-                    })
-                }
-
+    function componentDidMount() {
+        AttendanceService.getAttendanceByID(props.match.params.id)
+            .then(stu => {
+                setStudent(stu);
+                setDate(stu.date);
+                setClass(stu.class);
+                setClassType(stu.classType);
+                // setClassID(stu.class._id);
+                // setClassTypeID(stu.classType._id);
+                let ClassID = stu.class._id;
+                let classTypeID = stu.classType._id;
+                fetchStudentByClassType(ClassID,classTypeID);
+                console.log("stu", stu);
             }).catch(err => {
             console.error(err)
         })
+    }
 
-        console.log("rClass: ",this.state.rClass);
-        console.log("rClassType: ",this.state.rClassType);
+    function fetchStudentByClassType(ClassID,classTypeID){
+        console.log("studetn", student);
+        console.log("student.class id : ",ClassID)
+        console.log("student.classType id : ",classTypeID)
+        if(Class !== [''] && ClassType !== ['']){
+            let ClassType = {
+                // class:Class._id,
+                // classType:ClassType._id
+            }
+            StudentService.getStudentByClass(ClassType)
+                .then(res =>{
+                    setAttendance(res)
+                    console.log("fetch student",res)
+                }).catch(err => {
+                console.error(err)
+            })
+        }
+    }
+
+        // console.log("rClass: ",this.state.rClass);
+        // console.log("rClassType: ",this.state.rClassType);
 
         // if(this.state.rClass !== '' && this.state.rClassType !== ''){
         //     let ClassType = {
@@ -99,76 +123,76 @@ class UpdateAttendance extends Component {
         //     })
         // }
 
+    // }
+
+    function onCheckBox(event){
+    //     const{value} = event.target;
+    //     console.log(value);
+    //     const student = students;
+    //     console.log(' students',student);
+    //     console.log(' students ID',student[0].Id);
+    //     const iArr = ['1','2','3','4','5','6'];
+    //
+    //     for(let i=0 ; i<6 ; i++){
+    //         if(student[i].Id.includes(value) === true){
+    //             let index = student.indexOf(value);
+    //             student.splice(index,1)
+    //             // student[i].Att.push("false");
+    //             console.log('true students',student[i].Att);
+    //             console.log('true index',index);
+    //             return
+    //         }
+    //     }
+    //
+    //
+    //
+    //     if((student.Id).includes(value) === false){
+    //         this.state.students.push(value);
+    //         console.log('false students',student);
+    //     }
+    //
     }
 
-    onCheckBox(event){
-        const{value} = event.target;
-        console.log(value);
-        const student = this.state.students;
-        console.log(' students',student);
-        console.log(' students ID',student[0].Id);
-        const iArr = ['1','2','3','4','5','6'];
-
-        for(let i=0 ; i<6 ; i++){
-            if(student[i].Id.includes(value) === true){
-                let index = student.indexOf(value);
-                student.splice(index,1)
-                // student[i].Att.push("false");
-                console.log('true students',student[i].Att);
-                console.log('true index',index);
-                return
-            }
-        }
-
-
-
-        if((student.Id).includes(value) === false){
-            this.state.students.push(value);
-            console.log('false students',student);
-        }
-
-    }
-
-    updateAttendance(event){
-        event.preventDefault();
-        let Att = {
-            date:this.state.rDate,
-            class:this.state.rClass,
-            classType: this.state.rClassType,
-            student:this.state.student,
-            // attendance:this.state.attendance
-        }
-        if(Att.date === ''){
-            toast.warn('Select a Date',options)
-        }else if(Att.class === ''){
-            toast.warn('Select the Class',options)
-        }else if(Att.classType === ''){
-            toast.warn('Select the Class Type',options)
-        }else{
-            AttendanceService.updateAttendance(this.state.AttendanceID,Att)
-                .then(res =>{
-                    if (res.status === 200) {
-                        toast.success("Attendance Update Successfully ", options)
-                        setTimeout(()=>{this.props.history.push("/view-attendance")},3000)
-                    } else {
-                        throw Error('Something went wrong!! Try again.' + res);
-                    }
-                })
-                .catch((error) => {
-                    toast.error(error.message, options)
-                })
-        }
+    function updateAttendance(event){
+    //     event.preventDefault();
+    //     let Att = {
+    //         date:this.state.rDate,
+    //         class:this.state.rClass,
+    //         classType: this.state.rClassType,
+    //         student:this.state.student,
+    //         // attendance:this.state.attendance
+    //     }
+    //     if(Att.date === ''){
+    //         toast.warn('Select a Date',options)
+    //     }else if(Att.class === ''){
+    //         toast.warn('Select the Class',options)
+    //     }else if(Att.classType === ''){
+    //         toast.warn('Select the Class Type',options)
+    //     }else{
+    //         AttendanceService.updateAttendance(this.state.AttendanceID,Att)
+    //             .then(res =>{
+    //                 if (res.status === 200) {
+    //                     toast.success("Attendance Update Successfully ", options)
+    //                     setTimeout(()=>{this.props.history.push("/view-attendance")},3000)
+    //                 } else {
+    //                     throw Error('Something went wrong!! Try again.' + res);
+    //                 }
+    //             })
+    //             .catch((error) => {
+    //                 toast.error(error.message, options)
+    //             })
+    //     }
     }
 
     /**
      * this function is to capture data in the input fields
      */
-    onChange(event){
-        const { name, value } = event.target;
-        this.setState({ [name] : value });
+    function onChange(event){
+        // const { name, value } = event.target;
+        // this.setState({ [name] : value });
     }
 
-    render() {
+
         return <div className="attendance-section">
             <ToastContainer/>
             <div className={"attendance-container"}>
@@ -189,8 +213,8 @@ class UpdateAttendance extends Component {
                                             <label htmlFor={'date'} > Date </label>
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                            <TextField type={'text'} id="filled-basic"  name={'rDate'} value={moment(this.state.rDate).format("YYYY-MM-DD")}
-                                                       onChange={event => this.onChange(event)} style={{ width: 220 }} disabled/>
+                                            <TextField type={'text'} id="filled-basic"  name={'rDate'} value={moment(Date).format("YYYY-MM-DD")}
+                                                       onChange={event => onChange(event)} style={{ width: 220 }} disabled/>
                                         </Box>
                                     </Grid>
                                 </div>
@@ -201,8 +225,8 @@ class UpdateAttendance extends Component {
                                             <label htmlFor={'class'} > Class </label>
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                            <TextField type={'text'} id="filled-basic"  name={'rClass'} value={this.state.rClass}
-                                                       onChange={event => this.onChange(event)} style={{ width: 220 }} disabled/>
+                                            <TextField type={'text'} id="filled-basic"  name={'rClass'} value={Class.class}
+                                                       onChange={event => onChange(event)} style={{ width: 220 }} disabled/>
                                         </Box>
                                     </Grid>
                                 </div>
@@ -213,8 +237,8 @@ class UpdateAttendance extends Component {
                                             <label htmlFor={'classType'}> Class Type </label>
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                            <TextField type={'text'} id="filled-basic"  name={'rClassType'} value={this.state.rClassType}
-                                                       onChange={event => this.onChange(event)} style={{ width: 220 }} disabled/>
+                                            <TextField type={'text'} id="filled-basic"  name={'rClassType'} value={ClassType.name}
+                                                       onChange={event => onChange(event)} style={{ width: 220 }} disabled/>
                                         </Box>
                                     </Grid>
                                 </div>
@@ -228,20 +252,20 @@ class UpdateAttendance extends Component {
 
                                     <div className="attendance-form-div">
 
-                                        {
-                                            this.state.students.map(Stu => (
-                                                <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
-                                                    <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
-                                                        <label htmlFor={'classType'}> {Stu.name} </label>
-                                                    </Box>
-                                                    <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
-                                                        <Checkbox name="checkedB" color="primary" checked={Stu.Att}
-                                                                  value={Stu.Id} key={Stu.Id} onChange={event => this.onCheckBox(event) }
-                                                        />
-                                                    </Box>
-                                                </Grid>
-                                            ))
-                                        }
+                                        {/*{*/}
+                                        {/*    student.map(Stu => (*/}
+                                        {/*        <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >*/}
+                                        {/*            <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >*/}
+                                        {/*                <label htmlFor={'classType'}> {Stu.name} </label>*/}
+                                        {/*            </Box>*/}
+                                        {/*            <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >*/}
+                                        {/*                <Checkbox name="checkedB" color="primary" checked={Stu.Att}*/}
+                                        {/*                          value={Stu.Id} key={Stu.Id} onChange={event => onCheckBox(event) }*/}
+                                        {/*                />*/}
+                                        {/*            </Box>*/}
+                                        {/*        </Grid>*/}
+                                        {/*    ))*/}
+                                        {/*}*/}
 
                                     </div>
 
@@ -256,7 +280,7 @@ class UpdateAttendance extends Component {
                                         </Box>
 
                                         <Box component="div" display="inline" style={{ padding: 10 }} >
-                                            <input type={'submit'} className={'Btn-Att-Sub'} value={'Update Attendance'} onClick={this.updateAttendance.bind(this)}/>
+                                            <input type={'submit'} className={'Btn-Att-Sub'} value={'Update Attendance'} onClick={updateAttendance.bind()}/>
                                         </Box>
 
                                     </Grid>
@@ -269,7 +293,7 @@ class UpdateAttendance extends Component {
 
             </div>
         </div>
-    }
+
 }
 
 export default UpdateAttendance;
