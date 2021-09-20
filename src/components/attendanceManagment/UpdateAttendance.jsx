@@ -44,26 +44,7 @@ function UpdateAttendance(props){
 
     const [classes,setClasses] = useState([]);
     const [classTypes,setClassTypes] = useState([]);
-    // constructor(props){
-    //     super(props);
-    //     this.state= {
-    //         AttendanceID:this.props.match.params.id,
-    //         isCheck:false,
-    //
-    //         rDate:'',
-    //         rClass:'',
-    //         rClassType:'',
-    //         rAttendance:[],
-    //         rStudent:[],
-    //
-    //         studentID:['0001', '0002', '0003','0004', '0005','0006' ],
-    //         students:[],
-    //         attendance:[1, 1, 1, 1, 0, 1],
-    //
-    //         classType:['A','B','C','D','E'],
-    //         class:['8', '9', '10', '11', '12']
-    //     }
-    // }
+
 
     useEffect(() =>{
         componentDidMount();
