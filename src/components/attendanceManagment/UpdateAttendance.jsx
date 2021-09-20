@@ -36,14 +36,12 @@ function UpdateAttendance(props){
     const [Class,setClass] = useState([]);
     const [ClassType,setClassType] = useState([]);
 
-    // const [ClassID,setClassID] = useState('');
-    // const [ClassTypeID,setClassTypeID] = useState('');
 
     const [attendance,setAttendance] = useState([]);
     const [student,setStudent] = useState([]);
 
-    const [classes,setClasses] = useState([]);
-    const [classTypes,setClassTypes] = useState([]);
+    // const [classes,setClasses] = useState([]);
+    // const [classTypes,setClassTypes] = useState([]);
 
 
     useEffect(() =>{
