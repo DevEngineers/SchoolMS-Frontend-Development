@@ -76,25 +76,22 @@ function UpdateAttendance(props){
                 setDate(stu.date);
                 setClass(stu.class);
                 setClassType(stu.classType);
-                // setClassID(stu.class._id);
-                // setClassTypeID(stu.classType._id);
                 let ClassID = stu.class._id;
-                let classTypeID = stu.classType._id;
-                fetchStudentByClassType(ClassID,classTypeID);
+                let ClassTypeID = stu.classType._id;
+                fetchStudentByClassType(ClassID,ClassTypeID);
                 console.log("stu", stu);
             }).catch(err => {
             console.error(err)
         })
     }
 
-    function fetchStudentByClassType(ClassID,classTypeID){
-        console.log("studetn", student);
+    function fetchStudentByClassType(ClassID,ClassTypeID){
         console.log("student.class id : ",ClassID)
-        console.log("student.classType id : ",classTypeID)
+        console.log("student.classType id : ",ClassTypeID)
         if(Class !== [''] && ClassType !== ['']){
             let ClassType = {
-                // class:Class._id,
-                // classType:ClassType._id
+                class:ClassID,
+                classType:ClassTypeID
             }
             StudentService.getStudentByClass(ClassType)
                 .then(res =>{
