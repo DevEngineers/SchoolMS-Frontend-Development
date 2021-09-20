@@ -50,15 +50,15 @@ function UpdateAttendance(props){
 
     function componentDidMount() {
         AttendanceService.getAttendanceByID(props.match.params.id)
-            .then(stu => {
-                setStudent(stu);
-                setDate(stu.date);
-                setClass(stu.class);
-                setClassType(stu.classType);
-                let ClassID = stu.class._id;
-                let ClassTypeID = stu.classType._id;
+            .then(Attendance => {
+                setStudent(Attendance);
+                setDate(Attendance.date);
+                setClass(Attendance.class);
+                setClassType(Attendance.classType);
+                let ClassID = Attendance.class._id;
+                let ClassTypeID = Attendance.classType._id;
                 fetchStudentByClassType(ClassID,ClassTypeID);
-                console.log("stu", stu);
+                console.log("stu", Attendance);
             }).catch(err => {
             console.error(err)
         })
@@ -82,24 +82,7 @@ function UpdateAttendance(props){
         }
     }
 
-        // console.log("rClass: ",this.state.rClass);
-        // console.log("rClassType: ",this.state.rClassType);
 
-        // if(this.state.rClass !== '' && this.state.rClassType !== ''){
-        //     let ClassType = {
-        //         class:this.state.rClass,
-        //         classType:this.state.rClassType
-        //     }
-        //     StudentService.getStudentByClass(ClassType)
-        //         .then(res =>{
-        //             this.setState({students:res})
-        //             console.log("fetch student",res)
-        //         }).catch(err => {
-        //         console.error(err)
-        //     })
-        // }
-
-    // }
 
     function onCheckBox(event){
     //     const{value} = event.target;
