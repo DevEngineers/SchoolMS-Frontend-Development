@@ -51,7 +51,7 @@ function UpdateAttendance(props){
     function componentDidMount() {
         AttendanceService.getAttendanceByID(props.match.params.id)
             .then(Attendance => {
-                setStudent(Attendance);
+                setAttendance(Attendance);
                 setDate(Attendance.date);
                 setClass(Attendance.class);
                 setClassType(Attendance.classType);
@@ -74,7 +74,8 @@ function UpdateAttendance(props){
             }
             StudentService.getStudentByClass(ClassType)
                 .then(res =>{
-                    setAttendance(res)
+                    setStudent(res);
+                    compareAttendanceStudent();
                     console.log("fetch student",res)
                 }).catch(err => {
                 console.error(err)
@@ -82,6 +83,11 @@ function UpdateAttendance(props){
         }
     }
 
+    function compareAttendanceStudent(){
+        if(attendance !== [''] && student !== [''] ){
+
+        }
+    }
 
 
     function onCheckBox(event){
