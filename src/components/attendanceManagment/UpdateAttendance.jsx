@@ -81,18 +81,18 @@ function UpdateAttendance(props){
         // console.log("hello loop 02 ",student)
         if(attendance !== [''] && student !== [''] ){
 
-            for(let i=0; i<student.length; i++){
+            for(let i=0; i<attendance.length; i++){
                 // console.log("for loop student"+[i]+":",student[i]._id)
                 // console.log("for loop attendance"+[i]+":",attendance[i]._id)
 
-                for(let j=0; j<attendance.length; j++){
-                    console.log("for loop attendance "+[j]+":",attendance[j].name)
-                        if(student[i] === attendance[j]){
-                            console.log("true "+[i]+":",attendance[j].name);
+                for(let j=0; j<student.length; j++){
+                    console.log("for loop student "+[j]+":",student[j]._id)
+                        if(student[j]._id === attendance[i]._id){
+                            console.log("true "+[j]+":",attendance[j]._id);
                         }
-                        // else{
-                        //     console.log("else",student[i]._id);
-                        // }
+                        else{
+                            console.log("else",student[j]._id);
+                        }
                 }
             }
 
