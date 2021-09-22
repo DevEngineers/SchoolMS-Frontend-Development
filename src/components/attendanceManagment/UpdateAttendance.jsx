@@ -27,7 +27,6 @@ function UpdateAttendance(props){
     const [Class,setClass] = useState([]);
     const [ClassType,setClassType] = useState([]);
 
-
     const [attendance,setAttendance] = useState([]);
     const [student,setStudent] = useState([]);
 
@@ -36,77 +35,87 @@ function UpdateAttendance(props){
 
 
     useEffect(() =>{
-        componentDidMount();
+        fetchAttendance();
     },[]);
 
-    function componentDidMount() {
+    function fetchAttendance() {
         AttendanceService.getAttendanceByID(props.match.params.id)
             .then(Attendance => {
-                setAttendance(Attendance);
+                setAttendance(Attendance.student);
                 setDate(Attendance.date);
                 setClass(Attendance.class);
                 setClassType(Attendance.classType);
                 let ClassID = Attendance.class._id;
                 let ClassTypeID = Attendance.classType._id;
-                fetchStudentByClassType(ClassID,ClassTypeID);
-                console.log("stu", Attendance);
+                let [attendance] = [Attendance.student];
+                fetchStudentByClassType(ClassID,ClassTypeID,attendance);
+                console.log("Attendance stu", Attendance.student);
             }).catch(err => {
             console.error(err)
         })
     }
 
-    function fetchStudentByClassType(ClassID,ClassTypeID){
-        console.log("student.class id : ",ClassID)
-        console.log("student.classType id : ",ClassTypeID)
+    function fetchStudentByClassType(ClassID,ClassTypeID,attendance){
+        // console.log("student.class id : ",ClassID)
+        // console.log("student.classType id : ",ClassTypeID)
+
         if(Class !== [''] && ClassType !== ['']){
             let ClassType = {
                 class:ClassID,
                 classType:ClassTypeID
             }
             StudentService.getStudentByClass(ClassType)
-                .then(res =>{
-                    setStudent(res);
-                    compareAttendanceStudent();
-                    console.log("fetch student",res)
+                .then(student =>{
+                    setStudent(student);
+                    compareAttendanceStudent(attendance,student);
+                    console.log("fetch all student",student)
                 }).catch(err => {
                 console.error(err)
             })
         }
     }
 
-    function compareAttendanceStudent(){
+    function compareAttendanceStudent(attendance,student){
+        console.log("hello compareAttendanceStudent function")
+        // console.log("hello loop 01 ",attendance)
+        // console.log("hello loop 02 ",student)
         if(attendance !== [''] && student !== [''] ){
+
+            for(let i=0; i<student.length; i++){
+                // console.log("for loop student"+[i]+":",student[i]._id)
+                // console.log("for loop attendance"+[i]+":",attendance[i]._id)
+
+                for(let j=0; j<attendance.length; j++){
+                    console.log("for loop attendance "+[j]+":",attendance[j].name)
+                        if(student[i] === attendance[j]){
+                            console.log("true "+[i]+":",attendance[j].name);
+                        }
+                        // else{
+                        //     console.log("else",student[i]._id);
+                        // }
+                }
+            }
+
 
         }
     }
 
 
     function onCheckBox(event){
-    //     const{value} = event.target;
-    //     console.log(value);
-    //     const student = students;
-    //     console.log(' students',student);
-    //     console.log(' students ID',student[0].Id);
-    //     const iArr = ['1','2','3','4','5','6'];
-    //
-    //     for(let i=0 ; i<6 ; i++){
-    //         if(student[i].Id.includes(value) === true){
-    //             let index = student.indexOf(value);
-    //             student.splice(index,1)
-    //             // student[i].Att.push("false");
-    //             console.log('true students',student[i].Att);
-    //             console.log('true index',index);
-    //             return
-    //         }
-    //     }
-    //
-    //
-    //
-    //     if((student.Id).includes(value) === false){
-    //         this.state.students.push(value);
-    //         console.log('false students',student);
-    //     }
-    //
+        // let value = event.target.value;
+        // console.log("event value check box : ",value);
+        //
+        // if(attendance.includes(value) === true){
+        //     let index = attendance.indexOf(value);
+        //     attendance.splice(index,1)
+        //     console.log('true students',attendance);
+        //     return
+        // }
+        //
+        // if(attendance.includes(value) === false){
+        //     attendance.push(value);
+        //     console.log('false students',attendance);
+        // }
     }
 
     function updateAttendance(event){
