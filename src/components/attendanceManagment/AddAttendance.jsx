@@ -85,8 +85,6 @@ function AddAttendance(){
     function onCheckBox(event){
         let value = event.target.value;
         console.log("event value check box : ",value);
-        // let {student} = students.Id;
-        // let newStudent = [...student];
 
         if(attendance.includes(value) === true){
             let index = attendance.indexOf(value);
