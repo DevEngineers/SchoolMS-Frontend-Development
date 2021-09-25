@@ -100,7 +100,11 @@ function ManageAttendance(props){
                                                  handleOpenDeleteAlert={handleClickOpen}/>
                 })
 
-                : <div>No Data available</div>
+                : <div id={"AttendanceNoRecord"}>
+                    <div id={"AttendanceNoRecordBody"}>
+                        <div id={"NoRecordLabel"}> No Record Found </div>
+                    </div>
+                </div>
             }
         </div>
 
