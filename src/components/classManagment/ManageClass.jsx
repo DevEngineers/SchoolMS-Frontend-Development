@@ -116,7 +116,11 @@ function ManageClass(props){
                                             handleOpenDeleteAlert={handleClickOpen}/>
                 })
 
-                : <div>No Data available</div>
+                : <div id={"ClassNoRecord"}>
+                    <div id={"ClassNoRecordBody"}>
+                        <div id={"NoRecordLabel"}> No Record Found </div>
+                    </div>
+                </div>
             }
         </div>
 
