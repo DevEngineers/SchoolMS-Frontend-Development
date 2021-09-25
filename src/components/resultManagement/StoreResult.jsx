@@ -10,6 +10,7 @@ import ResultService from "../../services/ResultService";
 import ClassTypeService from "../../services/ClassTypeService";
 import ClassService from "../../services/ClassService";
 import SubjectService from "../../services/SubjectService";
+import StudentService from "../../services/StudentService";
 
 /**
  * @author : M.N.M Akeel
@@ -111,6 +112,22 @@ class StoreResult extends React.Component {
         this.setState({[name]: value});
     }
 
+    onChangeClassType(event){
+        const {name, value} = event.target;
+        this.setState({[name]: value});
+
+        let classType ={
+            class:this.state.rClass._id,
+            classType:value
+        }
+
+        StudentService.getStudentByClass(classType)
+        .then((res) =>{
+            this.setState({students:res})
+        })
+
+    }
+
     handleChangeSubject(i, event) {
         let examSubjects = [...this.state.examSubjects];
         examSubjects[i] = event.target.value;
@@ -205,6 +222,7 @@ class StoreResult extends React.Component {
     }
 
     render() {
+        console.log(this.state.rClassType,this.state.studentID)
         return (
           <div>
               <div>
@@ -247,7 +265,7 @@ class StoreResult extends React.Component {
                                 name={"rClassType"}
                                 value={this.state.rClassType}
                                 className={"classSize"}
-                                onChange={(event) => this.onChange(event)}
+                                onChange={(event) => this.onChangeClassType(event)}
                                 displayEmpty
                               >
                                   <MenuItem value={""}>
@@ -308,8 +326,8 @@ class StoreResult extends React.Component {
                                       <span className={"selectRName"}>Select Student</span>
                                   </MenuItem>
                                   {this.state.students.map((student) => (
-                                    <MenuItem key={student} value={student}>
-                                        <span className={"selectRName"}>{student}</span>
+                                    <MenuItem key={student} value={student._id}>
+                                        <span className={"selectRName"}>{student.studentID}</span>
                                     </MenuItem>
                                   ))}
                               </Select>

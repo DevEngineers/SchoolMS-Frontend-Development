@@ -4,6 +4,7 @@ import Select from "@material-ui/core/Select";
 import "../../styles/timetableAndResultStyles/Results.css";
 import ClassService from "../../services/ClassService";
 import ClassTypeService from "../../services/ClassTypeService";
+import StudentService from "../../services/StudentService";
 
 const years = (new Date()).getFullYear();
 const yearArray = Array.from(new Array(30),( val, index) => index + years);
@@ -38,6 +39,20 @@ function GenerateResultReport() {
         .catch((err) => {
             console.error(err);
         });
+    }
+
+    const onChangeClassType = (value) =>{
+        setSClassType(value)
+        let classType ={
+            class:sClass,
+            classType:value
+        }
+
+        StudentService.getStudentByClass(classType)
+        .then((res) =>{
+            setStudentArray(res);
+        })
+
     }
 
     return (
@@ -80,7 +95,7 @@ function GenerateResultReport() {
                             id="demo-simple-select"
                             name={"uType"}
                             className={"reportSize"}
-                            onChange={(event) => setSClassType(event.target.value)}
+                            onChange={(event) => onChangeClassType(event.target.value)}
                             displayEmpty
                           >
                               <MenuItem value={""}>
@@ -102,9 +117,9 @@ function GenerateResultReport() {
                               <MenuItem value={""}>
                                   <span className={"selectRepName"}>Select Student</span>
                               </MenuItem>
-                              {/*this.state.userType.map(type =>
-                                        <MenuItem key={type} value={type}><span className={'selectUName'}>{type}</span></MenuItem>
-                                    )*/}
+                              {studentArray.map(student =>
+                                        <MenuItem key={student} value={student._id}><span className={'selectUName'}>{student.studentID}</span></MenuItem>
+                                    )}
                           </Select>
                           <Select
                             labelId="demo-simple-select-label"

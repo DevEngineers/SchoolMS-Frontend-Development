@@ -78,9 +78,8 @@ img{
     -webkit-box-shadow: 0px 9px 15px -11px rgba(88,54,114,1);
     -moz-box-shadow: 0px 9px 15px -11px rgba(88,54,114,1);
     box-shadow: 0px 9px 15px -11px rgba(88,54,114,1);
+    cursor: pointer;
 }
-
-
 
 .right {
     background-size: cover;
@@ -125,4 +124,15 @@ img{
     width: 28px;
     padding-right: 7px;
     margin-top: -3px;
+}
+
+.forgotText{
+    font-size: 14px;
+    font-family: "Raleway", sans-serif;
+}
+
+#aboutUsLink{
+    text-decoration: none;
+    color:blue;
+    font-family: "Raleway", sans-serif;
 }
