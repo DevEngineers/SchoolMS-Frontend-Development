@@ -72,6 +72,7 @@ No Record Found CSS
     width: 75%;
     margin-left: 220px;
 }
+
 #AttendanceNoRecordBody{
     width: 80%;
     height: 50px;
@@ -81,7 +82,8 @@ No Record Found CSS
     margin-left: 40px;
     margin-bottom: 15px;
 }
-#NoRecordLabel{
+
+#AttendanceNoRecordLabel{
     font-size: 25px;
     margin-top: 10px;
     padding-left: 35%;

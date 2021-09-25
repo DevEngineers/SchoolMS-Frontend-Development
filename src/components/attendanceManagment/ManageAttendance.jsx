@@ -102,7 +102,7 @@ function ManageAttendance(props){
 
                 : <div id={"AttendanceNoRecord"}>
                     <div id={"AttendanceNoRecordBody"}>
-                        <div id={"NoRecordLabel"}> No Record Found </div>
+                        <div id={"AttendanceNoRecordLabel"}> No Record Found </div>
                     </div>
                 </div>
             }
