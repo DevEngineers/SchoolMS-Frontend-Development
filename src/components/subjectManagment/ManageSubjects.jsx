@@ -115,7 +115,7 @@ function ManageSubjects(props){
                                               handleOpenDeleteAlert={handleClickOpen}/>
                 })
 
-                : <div>No Data available</div>
+                : <div> No Record Found </div>
             }
         </div>
 
