@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import TeacherService from "../../services/TeacherService";
 import '../../styles/TeacherStyles/Teacher.css';
+import BranchService from "../../services/BranchService";
 
 /*
 *  Registration number: IT 19167442
@@ -19,7 +20,8 @@ class UpdateTeacher extends Component {
             schoolBranch:'',
             qualification:'',
             maritalStatus:'',
-            gender:''
+            gender:'',
+            branches:[]
 
         }
         this.changeTeacherNameHandler = this.changeTeacherNameHandler.bind(this);
@@ -47,6 +49,13 @@ class UpdateTeacher extends Component {
                 gender : teacher.gender,
             });
         });
+
+        BranchService.getBranches()
+            .then(res => {
+                this.setState({branches:res})
+            }).catch(err => {
+            console.error(err)
+        })
     }
 
     updateTeacher = (e) => {
@@ -135,12 +144,12 @@ class UpdateTeacher extends Component {
                                     <div className = "form-group">
                                         <label> School Branch: </label>
                                         <select placeholder="Select School Branch" name="schoolBranch"  value={this.state.schoolBranch} className="form-control"  onChange ={event=>this.onChange(event)}>
-                                            <option defaultValue>School Branch:</option>
-                                            <option value="Colombo">Colombo</option>
-                                            <option value="Kandy">Kandy</option>
-                                            <option value="Dehiwala">Dehiwala</option>
-                                            <option value="Negambo">Negambo</option>
-                                            <option value="Ratmalana">Ratmalana</option>
+                                            <option value=''>{this.state.schoolBranch.branchName}</option>
+                                            {
+                                                this.state.branches.map(Branch =>
+                                                    <option key={Branch._id} value={Branch._id}> {Branch.branchName} </option>
+                                                )
+                                            }
                                         </select>
                                     </div>
                                     <div className = "form-group">
@@ -148,16 +157,16 @@ class UpdateTeacher extends Component {
                                         <input placeholder="Qualification" name="qualification" className="form-control"
                                                value={this.state.qualification} onChange ={event=>this.onChange(event)}/>
                                     </div>
-                                    <div className = "form-group" value={this.state.maritalStatus} onChange ={event=>this.onChange(event)}>
+                                    <div className = "form-group" >
                                         <label> Marital Status : </label>
-                                        <input type="radio" value="Single" name="maritalStatus" /> Single
-                                        <input type="radio" value="Married" name="maritalStatus" /> Married
+                                        <input type="text"  name="maritalStatus" className = "form-control"  value={this.state.maritalStatus} onChange ={event=>this.onChange(event)}/>
+
 
                                     </div>
-                                    <div className = "form-group" value={this.state.gender} onChange ={event=>this.onChange(event)} >
+                                    <div className = "form-group" >
                                         <label> Gender : </label>
-                                        <input type="radio" value="MALE" name="gender" /> Male
-                                        <input type="radio" value="FEMALE" name="gender" /> Female
+                                        <input type="text"  name="gender"  className = "form-control" value={this.state.gender} onChange ={event=>this.onChange(event)} />
+
 
                                     </div>
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} >Cancel</button>

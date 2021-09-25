@@ -3,13 +3,27 @@ import StudentService from "../../services/StudentService";
 import ClassService from "../../services/ClassService";
 import '../../styles/TeacherStyles/Teacher.css';
 import ClassTypeService from "../../services/ClassTypeService";
+import {toast, ToastContainer} from "material-react-toastify";
+import BranchService from "../../services/BranchService";
 
 /*
 *  Registration number: IT 19167442
 *
 *  @Author :Nusky M.A.M
 * */
+////////////
+//Toast Message Configuration
+/*const options = {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: false
+}*/
 
+
+///////////
 class CreateStudent extends Component {
     constructor(props) {
         super(props)
@@ -26,7 +40,9 @@ class CreateStudent extends Component {
             classType:'',
             gender:'',
             classes:[],
-            classTypes:[]
+            classTypes:[],
+            branches:[]
+
 
 
         }
@@ -56,6 +72,13 @@ class CreateStudent extends Component {
             }).catch(err => {
             console.error(err)
         })
+
+        BranchService.getBranches()
+            .then(res => {
+                this.setState({branches:res})
+            }).catch(err => {
+            console.error(err)
+        })
     }
 
     saveStudent(e) {
@@ -80,6 +103,79 @@ class CreateStudent extends Component {
             });
 
     }
+
+
+    //////////////////
+    setDefaultValuesInState(){
+        this.setState({
+            studentName:'',
+            guardian:'',
+            phone:'',
+            dob:'',
+            address:'',
+            schoolBranch:'',
+            class:'',
+            classType:'',
+            gender:'',
+        })
+    }
+
+    restAllValuesInForm(){
+        this.setDefaultValuesInState()
+    }
+    /*saveStudent(event) {
+        event.preventDefault();
+        let student = {
+            studentName: this.state.studentName,
+            guardian: this.state.guardian,
+            phone: this.state.phone,
+            dob: this.state.dob,
+            address: this.state.address,
+            schoolBranch: this.state.schoolBranch,
+            class: this.state.class,
+            classType: this.state.classType,
+            gender: this.state.gender
+        }
+        if(student.studentName === ''){
+            toast.warning('Enter Student Name',options)
+        }else if(student.guardian === ''){
+            toast.warning('Enter Student Guardian',options)
+        }else if(student.phone === ''){
+            toast.warning('Enter Student Phone',options)
+        }else if(student.dob === ''){
+            toast.warning('Enter Student Date of Birth',options)
+        }else if(student.address === ''){
+            toast.warning('Enter Student Address',options)
+        }else if(student.schoolBranch === ''){
+            toast.warning('Select School Branch',options)
+        }else if(student.class === ''){
+            toast.warning('Select Class ',options)
+        }else if(student.classType === ''){
+            toast.warning('Select Class Type',options)
+        }else if(student.gender === ''){
+            toast.warning('Select Student Gender',options)
+        }
+        else{
+            StudentService.createStudent(student)
+                .then(res =>{
+                    if (res.status === 200) {
+                        toast.success("Student Created Successfully", options)
+                        setTimeout(()=>{this.props.history.push("/students")},3000)
+                    } else {
+                        throw Error('Something went wrong!! Try again.' + res);
+                    }
+                })
+                .catch((error) => {
+                    toast.error(error.message, options)
+                })
+        }
+    }*/
+
+    onChange(event){
+        const { name, value } = event.target;
+        this.setState({ [name] : value });
+    }
+    //////////////////
 
     changeStudentNameHandler= (event) => {
         this.setState({studentName: event.target.value});
@@ -169,14 +265,23 @@ class CreateStudent extends Component {
                                     </div>
                                     <div className = "form-group">
                                     <label> School Branch : </label>
-                                    <select value={this.state.schoolBranch} name="schoolBranch" className="form-control" onChange={this.changeSchoolBranchHandler}>
-                                        <option defaultValue>School Branch:</option>
-                                        <option value="Colombo">Colombo</option>
-                                        <option value="Kandy">Kandy</option>
-                                        <option value="Dehiwala">Dehiwala</option>
-                                        <option value="Negambo">Negambo</option>
-                                        <option value="Ratmalana">Ratmalana</option>
-                                    </select>
+                                        <select value={this.state.schoolBranch} name="schoolBranch" className="form-control" onChange={this.changeSchoolBranchHandler}>
+                                            <option value=''>Select Branch</option>
+                                            {
+                                                this.state.branches.map(Branch =>
+                                                    <option key={Branch._id} value={Branch._id}> {Branch.branchName} </option>
+                                                )
+                                            }
+
+                                        </select>
+                                    {/*<select value={this.state.schoolBranch} name="schoolBranch" className="form-control" onChange={this.changeSchoolBranchHandler}>*/}
+                                    {/*    <option defaultValue>School Branch:</option>*/}
+                                    {/*    <option value="Colombo">Colombo</option>*/}
+                                    {/*    <option value="Kandy">Kandy</option>*/}
+                                    {/*    <option value="Dehiwala">Dehiwala</option>*/}
+                                    {/*    <option value="Negambo">Negambo</option>*/}
+                                    {/*    <option value="Ratmalana">Ratmalana</option>*/}
+                                    {/*</select>*/}
                                      </div>
                                     <div className = "form-group">
                                         <label> Grade : </label>

@@ -1,15 +1,17 @@
-import React, { Component } from 'react'
+import React, {Component, useEffect, useState} from 'react'
 import '../../styles/TeacherStyles/Teacher.css';
 import StudentService from "../../services/StudentService";
 import {IconButton, TextField} from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import PageViewIcon from "@material-ui/icons/Pageview";
+import {useHistory} from "react-router-dom";
+import ClassService from "../../services/ClassService";
+import BranchService from "../../services/BranchService";
 
 class ListStudents extends Component {
     constructor(props) {
         super(props)
-
         this.state = {
             students: []
         }
@@ -54,8 +56,8 @@ class ListStudents extends Component {
                 <h2 className="text-center">Students List</h2>
                 <div>
                     <div id={'searchDiv'}>
-                        <TextField type={'text'}  id={'searchInput'} variant="outlined"/>
-                        <input type={'submit'} value={'Search'} id={'searchBtn'}/>
+                        <TextField type={'text'}  id={'searchInput1'} variant="outlined"/>
+                        <input type={'submit'} value={'Search'} id={'searchBtn1'}/>
                     </div>
                 </div>
                 <div className = "row">
@@ -67,6 +69,7 @@ class ListStudents extends Component {
                         <thead>
                         <tr>
 
+                            <th> Student ID</th>
                             <th> Student Name</th>
                             <th> Guardian</th>
                             <th> Phone</th>
@@ -84,12 +87,13 @@ class ListStudents extends Component {
                             this.state.students.map(
                                 student =>
                                     <tr key = {student.id}>
+                                        <td> { student.studentID} </td>
                                         <td> { student.studentName} </td>
                                         <td> {student.guardian}</td>
                                         <td> {student.phone}</td>
                                         <td> {student.dob}</td>
                                         <td> {student.address}</td>
-                                        <td> {student.schoolBranch}</td>
+                                        <td> {student.schoolBranch.branchName}</td>
                                         <td> { student.class.class} </td>
                                         <td> {student.classType.name}</td>
                                         <td> {student.gender}</td>
