@@ -118,7 +118,7 @@ function ManageClass(props){
 
                 : <div id={"ClassNoRecord"}>
                     <div id={"ClassNoRecordBody"}>
-                        <div id={"NoRecordLabel"}> No Record Found </div>
+                        <div id={"ClassNoRecordLabel"}> No Record Found </div>
                     </div>
                 </div>
             }
