@@ -109,11 +109,14 @@ function ManageClass(props){
             </div>
         </div>
         <div>
-            {
+            {Classes.length > 0 ?
+
                 Classes.map(Class =>{
                     return <ClassListHolder key={Class._id} Class={Class} editClass={updateClass}
                                             handleOpenDeleteAlert={handleClickOpen}/>
                 })
+
+                : <div>No Data available</div>
             }
         </div>
 
