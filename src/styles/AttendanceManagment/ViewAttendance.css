@@ -63,6 +63,36 @@ Manage Attendance CSS
     cursor: pointer;
 }
 
+
+/* --------------------
+No Record Found CSS
+-------------------- */
+
+#AttendanceNoRecord{
+    width: 75%;
+    margin-left: 220px;
+}
+
+#AttendanceNoRecordBody{
+    width: 80%;
+    height: 50px;
+    background :#f2f2f2;
+    border-radius: 5px;
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-bottom: 15px;
+    /*box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.3);*/
+}
+
+#AttendanceNoRecordLabel{
+    font-size: 25px;
+    margin-top: 10px;
+    padding-left: 35%;
+    display: inline-block;
+    font-weight: bold;
+}
+
+
 /* --------------------
 Attendance List Holder CSS
 -------------------- */

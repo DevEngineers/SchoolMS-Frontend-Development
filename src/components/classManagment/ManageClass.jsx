@@ -109,11 +109,18 @@ function ManageClass(props){
             </div>
         </div>
         <div>
-            {
+            {Classes.length > 0 ?
+
                 Classes.map(Class =>{
                     return <ClassListHolder key={Class._id} Class={Class} editClass={updateClass}
                                             handleOpenDeleteAlert={handleClickOpen}/>
                 })
+
+                : <div id={"ClassNoRecord"}>
+                    <div id={"ClassNoRecordBody"}>
+                        <div id={"ClassNoRecordLabel"}> No Record Found </div>
+                    </div>
+                </div>
             }
         </div>
 

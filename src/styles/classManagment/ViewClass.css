@@ -62,6 +62,35 @@ Manage Class CSS
     cursor: pointer;
 }
 
+
+/* --------------------
+No Record Found CSS
+-------------------- */
+
+#ClassNoRecord{
+    width: 75%;
+    margin-left: 220px;
+}
+
+#ClassNoRecordBody{
+    width: 80%;
+    height: 50px;
+    background :#f2f2f2;
+    border-radius: 5px;
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-bottom: 15px;
+}
+
+#ClassNoRecordLabel{
+    font-size: 25px;
+    margin-top: 10px;
+    padding-left: 35%;
+    display: inline-block;
+    font-weight: bold;
+}
+
+
 /* --------------------
 Class List Holder CSS
 -------------------- */
@@ -112,64 +141,3 @@ Class List Holder CSS
     margin-left: 130px;
 }
 /* ---------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------- */
-
-
-/*+++++++++++++++++++++++++++++++++++++++++++++++++++++*//* ---------------------------------------------------------------------- */
-
-
-/*+++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-
-/*+++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-
-
-/*.btnEDiv{*/
-/*    padding: 20px;*/
-/*    width: 94%;*/
-/*    float: left;*/
-/*    margin-left: 28px;*/
-/*}*/
-
-/*#submitRBtn{*/
-/*    position: relative;*/
-/*    display: block;*/
-/*    padding: 10px 5px 10px 5px;*/
-/*    color: #FFF;*/
-/*    background: #36988c;*/
-/*    font-size: 16px;*/
-/*    font-style: normal;*/
-/*    width: 25%;*/
-/*    border: 1px solid #36988c;*/
-/*    border-radius: 3px;*/
-/*    float: right;*/
-/*    margin-right: 5px;*/
-
-/*}*/
-
-/*#submitRBtn:hover{*/
-/*    background: #359083;*/
-/*    cursor: pointer;*/
-/*}*/
-
-/*#restRBtn{*/
-/*    position: relative;*/
-/*    display: block;*/
-/*    padding: 10px 5px 10px 5px;*/
-/*    color: #FFF;*/
-/*    background: #f44336;*/
-/*    font-size: 16px;*/
-/*    font-style: normal;*/
-/*    width: 10%;*/
-/*    border: 1px solid #f44336;*/
-/*    border-radius: 3px;*/
-/*    float: right;*/
-/*    margin-right: 5px;*/
-/*}*/
-
-/*#restRBtn:hover{*/
-/*    background: #d32f2f;*/
-/*    cursor: pointer;*/
-/*}*/
-
-/* ---------------------------------------------------------------------- */
-

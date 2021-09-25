@@ -61,6 +61,34 @@ Manage Subject CSS
     cursor: pointer;
 }
 
+
+/* --------------------
+No Record Found CSS
+-------------------- */
+
+#SubjectNoRecord{
+    width: 75%;
+    margin-left: 220px;
+}
+
+#SubjectNoRecordBody{
+    width: 80%;
+    height: 50px;
+    background :#f2f2f2;
+    border-radius: 5px;
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-bottom: 15px;
+}
+
+#SubjectNoRecordLabel{
+    font-size: 25px;
+    margin-top: 10px;
+    padding-left: 35%;
+    display: inline-block;
+    font-weight: bold;
+}
+
 /* --------------------
 Subject List Holder CSS
 -------------------- */

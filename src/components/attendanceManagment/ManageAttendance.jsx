@@ -93,11 +93,18 @@ function ManageAttendance(props){
             </div>
         </div>
         <div>
-            {
+            {attendance.length > 0 ?
+
                 attendance.map(Atte =>{
                     return <AttendanceListHolder key={Atte._id} attendance={Atte} editAttendance={updateAttendance}
                                                  handleOpenDeleteAlert={handleClickOpen}/>
                 })
+
+                : <div id={"AttendanceNoRecord"}>
+                    <div id={"AttendanceNoRecordBody"}>
+                        <div id={"AttendanceNoRecordLabel"}> No Record Found </div>
+                    </div>
+                </div>
             }
         </div>
 
