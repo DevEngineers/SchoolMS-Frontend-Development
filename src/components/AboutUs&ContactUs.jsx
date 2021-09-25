@@ -159,6 +159,36 @@ class AboutUsContactUs extends Component {
                         Fax:081-2227878 -<br/>
                         Email: gris@gatewayworldwide.com<br/>
                     </div>
+                    <hr></hr>
+                    <div className={'form-style-about'}>
+                        <form>
+                            <div>
+                                <label htmlFor={'name'}>Your Name</label>
+                                <input type={'text'} name={'name'} id={'name'}
+                                       required onChange={event => this.onChange(event)} />
+                            </div>
+                            <div>
+                                <label htmlFor={'email'}>Your Email</label>
+                                <input type={'text'} name={'email'} id={'email'}
+                                       required onChange={event => this.onChange(event)} />
+                            </div>
+                            <div>
+                                <label htmlFor={'subject'}>Subject</label>
+                                <input type={'text'} name={'subject'} id={'subject'}
+                                       required onChange={event => this.onChange(event)} />
+                            </div>
+                            <div>
+                                <label htmlFor={'message'}>Message</label>
+                                <textarea name={'message'} id={'message'}
+                                          required onChange={event => this.onChange(event)} rows={6} />
+                            </div>
+                            <div>
+                                <input type={'submit'} value={'Submit'} onClick={event => this.submitContact(event)} />
+                            </div>
+                        </form>
+                    </div>
+                    <div id={'vl'}/>
+                    <div id={'divisionColor'} style={{height: '50px'}}/>
                 </div>
             </div>
 

@@ -163,3 +163,105 @@ header .logo span {
 .h3{
     font-weight: bold;
 }
+/* ------------------------- About Page Styling ------------------------------- */
+
+.form-style-about{
+    max-width: 500px;
+    padding: 20px;
+    /*margin: 0 auto 10px 30px;*/
+    font-family: Georgia, "Times New Roman", Times, serif;
+    float: left;
+    /*background: white;*/
+}
+.form-style-about fieldset{
+    border: none;
+}
+.form-style-about legend {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+.form-style-about label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+.form-style-about input[type="text"],
+.form-style-about textarea{
+    font-family: Georgia, "Times New Roman", Times, serif;
+    border-radius: 2px;
+    font-size: 15px;
+    outline: 0;
+    padding: 10px;
+    width: 400px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin: 0 0 30px;
+}
+
+
+.form-style-about input[type="submit"]
+{
+    position: relative;
+    display: block;
+    padding: 9px 9px 8px 9px;
+    color: #FFF;
+    background: #6dabe4;
+    font-size: 16px;
+    text-align: center;
+    font-style: normal;
+    width: 30%;
+    border: 1px solid #62a1e0;
+    border-width: 1px 1px 3px;
+    border-radius: 3px;
+    /*margin: -15px 0 15px;*/
+    margin-right: auto;
+}
+.form-style-about input[type="submit"]:hover
+{
+    background: #62a1e0;
+    cursor: pointer;
+}
+
+
+#contTitle{
+    font-size: 30px;
+    margin-bottom: 30px;
+    display: inline-block;
+}
+
+.footerCTextDe{
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 40px;
+}
+
+#contInfoTitleD{
+    margin-left: 100px;
+    margin-top: 30px;
+    width: 80%;
+    height: 30px;
+}
+
+#contInfoLabelD {
+    font-size: 24px;
+    display: inline-block;
+}
+
+#contactInfoD{
+    margin-left: 120px;
+    margin-top: 15px;
+    height: 500px;
+    float: left;
+}
+
+#uniTitleDe{
+    font-size: 25px;
+    margin-bottom: 20px;
+    display: inline-block;
+    font-family: "Raleway", sans-serif;
+}
+
