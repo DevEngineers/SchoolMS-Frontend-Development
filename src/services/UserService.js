@@ -61,7 +61,6 @@ class UserService {
    *  This service function is from user login
    */
   async userLogin(User) {
-    const bearer = "Bearer " + localStorage.getItem("userToken");
     return await fetch(User_API_BASE_URI + "/login", {
       method: "POST",
       headers: {

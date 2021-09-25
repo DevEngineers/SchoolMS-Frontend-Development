@@ -307,9 +307,6 @@ class Header extends Component {
                         (this.forExaminationStaffView())
                     :(this.forAdministratorView())
                 )
-
-
-
             }
         </div>
     }
