@@ -108,11 +108,14 @@ function ManageSubjects(props){
             </div>
         </div>
         <div>
-            {
+            {Subjects.length > 0 ?
+
                 Subjects.map(subject =>{
                     return <SubjectListHolder key={subject._id} subject={subject} editSubject={updateSubject}
                                               handleOpenDeleteAlert={handleClickOpen}/>
                 })
+
+                : <div>No Data available</div>
             }
         </div>
 
