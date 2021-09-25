@@ -82,6 +82,9 @@ function ManageUserAccounts() {
         .then(response => {
             if (response.status === 200) {
                 toast.success(`User Status Changed`, options);
+                setTimeout(() =>{
+                    window.location.reload();
+                },2500)
             } else {
                 throw Error("Something went wrong!! Try again.");
             }
@@ -97,6 +100,9 @@ function ManageUserAccounts() {
             if (response.status === 200) {
                 handleClose();
                 toast.success(`User Password Reset Successfully`, options);
+                setTimeout(() =>{
+                    window.location.reload();
+                },2500)
             } else {
                 throw Error("Something went wrong!! Try again.");
             }

@@ -10,6 +10,7 @@ function ViewResult(props) {
   const [examMarks, setExamMarks] = useState([]);
   const [examSubjects, setExamSubjects] = useState([]);
   const [sGrades, setSGrades] = useState([]);
+  const [student, setStudent] = useState("")
 
   useEffect(() => {
     fetchResult().then();
@@ -25,6 +26,7 @@ function ViewResult(props) {
         setExamMarks(result.examMarks);
         setSGrades(result.grades);
         setExamSubjects(result.examSubjects);
+        setStudent(result.studentID);
       })
       .catch((err) => {
         console.error(err);
@@ -46,9 +48,9 @@ function ViewResult(props) {
           </label>
         </div>
         <div id={"viewStudentDDiv"}>
-          <label id={"studentDID"}>StudentID: ST0012</label>
+          <label id={"studentDID"}>StudentID: {student.studentID}</label>
           <br />
-          <label id={"studentDID"}>Student Name:Nimal Kumara</label>
+          <label id={"studentDID"}>Student Name: {student.studentName}</label>
         </div>
         <div id={"secondRViewDiv"}>
           <div id={"ViewVResult"}>

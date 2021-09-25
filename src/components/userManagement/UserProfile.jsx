@@ -6,7 +6,6 @@ import CloseIcon from "@material-ui/icons/Close";
 import Button from "@material-ui/core/Button";
 import UserService from "../../services/UserService";
 import {toast, ToastContainer} from "material-react-toastify";
-import {useHistory} from "react-router-dom";
 
 /**
  * @author : M.N.M Akeel
@@ -24,8 +23,7 @@ const options = {
 };
 
 function UserProfile() {
-		const history = useHistory();
-		const [userid] = useState("6134acbdabd1441eac4f3760");
+		const [userid] = useState(localStorage.getItem("userID"));
 		const [email, setEmail] = useState("");
 		const [username, setUsername] = useState("");
 		const [password, setPassword] = useState("");
@@ -120,7 +118,7 @@ function UserProfile() {
 						if (res.status === 200) {
 								toast.success(`User ${changeType} Updated Successfully`, options);
 								setTimeout(() => {
-										history.push("/userProfile");
+										window.location.reload();
 								}, 3000);
 						} else {
 								throw Error("Something went wrong!! Try again.");

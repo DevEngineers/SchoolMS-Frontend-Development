@@ -37,9 +37,10 @@ function ManageResults() {
     const history = useHistory();
     const [results, setResults] = useState([]);
     const [open, setOpen] = useState(false);
-    const [deleteResultObj, setDeleteResultObj] = useState("");
-    const [searchType, setSearchType] = useState("");
-    const [searchValue, setSearchValue] = useState("");
+    const [deleteResultObj, setDeleteResultObj] = useState('');
+    const [searchType, setSearchType] = useState('');
+    const [searchValue, setSearchValue] = useState('');
+    const [visibility, setVisibility] = useState(false);
 
     /**
      * handler to open the alter dialog box and setting up the
@@ -109,7 +110,7 @@ function ManageResults() {
                 handleClose();
                 toast.error("Student Result is Removed", options);
                 setTimeout(() => {
-                    history.push("/manageResults");
+                    window.location.reload();
                 }, 3000);
             } else {
                 handleClose();
@@ -174,24 +175,30 @@ function ManageResults() {
                 <label id={'headingLabel'}>Student Name: Nimal Kumara </label>
             </div>*/}
                 {
-                    (results.length === 0 || results === []) && searchValue !== '' ?
+                    visibility === true?(
+                      results.length === 0 || results === []) && searchValue !== '' ?
                         (
-                            <div id={'resNotDiv'}>
-                                <label id={'resNotLabel'}>Sorry No Results is Found....</label>
-                            </div>
+                          <div id={'resNotDiv'}>
+                              <label id={'resNotLabel'}>Sorry No Results is Found....</label>
+                          </div>
                         ) : (
-                            results.map((result) => {
-                                return (
-                                    <ResultListHolder
-                                        key={result._id}
-                                        Result={result}
-                                        handleOpenDeleteAlert={handleClickOpen}
-                                        viewResult={viewResult}
-                                        editResult={updateResult}
-                                    />
-                                );
-                            })
-                        )
+                          results.map((result) => {
+                              return (
+                                <ResultListHolder
+                                  key={result._id}
+                                  Result={result}
+                                  handleOpenDeleteAlert={handleClickOpen}
+                                  viewResult={viewResult}
+                                  editResult={updateResult}
+                                />
+                              );
+                          })
+                    ):(
+                      <div id={"loadingButtonDiv"}>
+                          <Button id={"loadingButton"} onClick={() => setVisibility(true)}>Load All Student Results</Button>
+                      </div>
+                    )
+
                 }
             </div>
             <Dialog

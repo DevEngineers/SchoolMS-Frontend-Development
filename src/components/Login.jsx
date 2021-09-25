@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState,} from "react";
 import '../styles/Login.css';
 import {toast, ToastContainer} from "material-react-toastify";
 import UserService from "../services/UserService";
@@ -56,8 +56,8 @@ const Login = () => {
                           <h3>SIGN IN</h3>
                           <input type="text" placeholder="EMAIL" onChange={event => setEmail(event.target.value)}/>
                           <input type="password" placeholder="PASSWORD" onChange={event => setPassword(event.target.value)}/>
-                          <label>Forgot Password?</label><br/>
-                          <label>Please contact administrator via <a href={'#'}>About us</a></label>
+                          <label className={'forgotText'}>Forgot Password?</label><br/>
+                          <label className={'forgotText'}>Please Contact Administrator Through <a href={'#'} id={"aboutUsLink"}>About us</a></label>
                           <button className="submit" onClick={event => userLogin(event)}>LOGIN</button>
                       </form>
                   </div>

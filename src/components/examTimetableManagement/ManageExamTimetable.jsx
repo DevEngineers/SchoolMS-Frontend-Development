@@ -38,6 +38,7 @@ function ManageExamTimetable() {
     const [deleteExamTimetableObj, setDeleteExamTimetableObj] = useState("");
     const [searchType, setSearchType] = useState("");
     const [searchValue, setSearchValue] = useState("");
+    const [visibility, setVisibility] = useState(false);
 
     /**
      * handler to open the alter dialog box and setting up the
@@ -61,13 +62,13 @@ function ManageExamTimetable() {
 
     async function fetchExamTimetable() {
         await ExamTimetableService.getExamTimetable()
-            .then((examTimetable) => {
-                console.log(examTimetable);
-                setExamTimetables(examTimetable);
-            })
-            .catch((err) => {
-                console.error(err);
-            });
+        .then((examTimetable) => {
+            console.log(examTimetable);
+            setExamTimetables(examTimetable);
+        })
+        .catch((err) => {
+            console.error(err);
+        });
     }
 
     async function fetchSearchResult(event) {
@@ -78,17 +79,17 @@ function ManageExamTimetable() {
             toast.warning("Please select search type", options);
         } else {
             await ExamTimetableService.searchExamTimetable(searchType, searchValue)
-                .then((examTimetables) => {
-                    console.log(examTimetables)
-                    if (examTimetables.length === 0) {
-                        setExamTimetables([]);
-                    } else {
-                        setExamTimetables(examTimetables);
-                    }
-                })
-                .catch((err) => {
-                    console.error(err);
-                });
+            .then((examTimetables) => {
+                console.log(examTimetables)
+                if (examTimetables.length === 0) {
+                    setExamTimetables([]);
+                } else {
+                    setExamTimetables(examTimetables);
+                }
+            })
+            .catch((err) => {
+                console.error(err);
+            });
         }
     }
 
@@ -109,7 +110,7 @@ function ManageExamTimetable() {
                 handleClose();
                 toast.error("Exam Timetable is Removed", options);
                 setTimeout(() => {
-                    this.props.history.push("/manageExamTimetable");
+                    window.location.reload();
                 }, 3000);
             } else {
                 handleClose();
@@ -119,108 +120,116 @@ function ManageExamTimetable() {
     }
 
     return (
-        <div>
-            <ToastContainer/>
-            <div>
-                <div className={"box"}>
-                    <label className={"custom-underline"}>EXAM TIMETABLES</label>
-                </div>
-            </div>
-            <div>
-                <div id={"searchMDiv"}>
-                    <div id={"searchTxtMRDiv"}>
-                        <TextField
-                            type={"text"}
-                            id={"searchInputResult"}
-                            variant="outlined"
-                            onChange={event => setSearchValue(event.target.value)}
-                        />
-                    </div>
-                    <div id={"searchTypeDiv"}>
-                        <FormControl variant="outlined">
-                            <Select
-                                labelId="demo-simple-select-outlined-label"
-                                id="demo-simple-select-outlined"
-                                className={"seTypeSel"}
-                                name={"searchType"}
-                                value={searchType}
-                                onChange={(event) => setSearchType(event.target.value)}
-                                displayEmpty
-                            >
-                                <MenuItem value={""}>
-                                    <span className={"selectRName"}>Select Search Type</span>
-                                </MenuItem>
-                                <MenuItem value={"class"}>
-                                    <span className={"selectRName"}>Class</span>
-                                </MenuItem>
-                                <MenuItem value={"term"}>
-                                    <span className={"selectRName"}>Term</span>
-                                </MenuItem>
-                                <MenuItem value={"year"}>
-                                    <span className={"selectRName"}>Year</span>
-                                </MenuItem>
-                            </Select>
-                        </FormControl>
-                    </div>
-                    <div id={"searchBtnMRDiv"}>
-                        <input type={"submit"} value={"Search"} id={"searchBtn"}
-                               onClick={event => fetchSearchResult(event)}/>
-                    </div>
-                </div>
-            </div>
-            <div>
-                {/*<div>
+      <div>
+          <ToastContainer/>
+          <div>
+              <div className={"box"}>
+                  <label className={"custom-underline"}>EXAM TIMETABLES</label>
+              </div>
+          </div>
+          <div>
+              <div id={"searchMDiv"}>
+                  <div id={"searchTxtMRDiv"}>
+                      <TextField
+                        type={"text"}
+                        id={"searchInputResult"}
+                        variant="outlined"
+                        onChange={event => setSearchValue(event.target.value)}
+                      />
+                  </div>
+                  <div id={"searchTypeDiv"}>
+                      <FormControl variant="outlined">
+                          <Select
+                            labelId="demo-simple-select-outlined-label"
+                            id="demo-simple-select-outlined"
+                            className={"seTypeSel"}
+                            name={"searchType"}
+                            value={searchType}
+                            onChange={(event) => setSearchType(event.target.value)}
+                            displayEmpty
+                          >
+                              <MenuItem value={""}>
+                                  <span className={"selectRName"}>Select Search Type</span>
+                              </MenuItem>
+                              <MenuItem value={"class"}>
+                                  <span className={"selectRName"}>Class</span>
+                              </MenuItem>
+                              <MenuItem value={"term"}>
+                                  <span className={"selectRName"}>Term</span>
+                              </MenuItem>
+                              <MenuItem value={"year"}>
+                                  <span className={"selectRName"}>Year</span>
+                              </MenuItem>
+                          </Select>
+                      </FormControl>
+                  </div>
+                  <div id={"searchBtnMRDiv"}>
+                      <input type={"submit"} value={"Search"} id={"searchBtn"}
+                             onClick={event => fetchSearchResult(event)}/>
+                  </div>
+              </div>
+          </div>
+          <div>
+              {/*<div>
                 <label id={'headingLabel'}>{ExamTimetable.class.class}</label>
             </div>*/}
-                {
+              {
+                  visibility === true ? (
                     (examTimetables.length === 0 || examTimetables === []) && searchValue !== '' ?
-                        (
-                            <div id={'resNotDiv'}>
-                                <label id={'resNotLabel'}>Sorry No Results is Found....</label>
-                            </div>
-                        ) : (
-                            examTimetables.map((examTimetable) => {
-                                return (
-                                    <ExamTimetableListHolder
-                                        ExamTimetable={examTimetable}
-                                        handleOpenDeleteAlert={handleClickOpen}
-                                        viewExamTimetable={viewExamTimetable}
-                                        editExamTimetable={updateExamTimetable}
-                                    />
-                                );
-                            })
-                        )
-                }
-            </div>
-            <Dialog
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="form-dialog-title"
-            >
-                <DialogTitle id="form-dialog-title">Alert</DialogTitle>
-                <DialogContent>
-                    <DialogContentText>
-                        Are you sure to remove this record
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button
-                        onClick={handleClose}
-                        color="primary"
-                        style={{fontWeight: "bold"}}
-                    >
-                        Cancel
-                    </Button>
-                    <Button
-                        onClick={deleteExamTimetable}
-                        color="secondary"
-                        style={{fontWeight: "bold"}}
-                    >
-                        Proceed
-                    </Button>
-                </DialogActions>
-            </Dialog>
-        </div>
+                      (
+                        <div id={'resNotDiv'}>
+                            <label id={'resNotLabel'}>Sorry No Results is Found....</label>
+                        </div>
+                      ) : (
+                        examTimetables.map((examTimetable) => {
+                            return (
+                              <ExamTimetableListHolder
+                                ExamTimetable={examTimetable}
+                                handleOpenDeleteAlert={handleClickOpen}
+                                viewExamTimetable={viewExamTimetable}
+                                editExamTimetable={updateExamTimetable}
+                              />
+                            );
+                        })
+                      )
+                  ) : (
+                    <div id={"loadingButtonDiv"}>
+                        <Button id={"loadingButton"} onClick={() => setVisibility(true)}>Load All Exam
+                            Timetables</Button>
+                    </div>
+                  )
+
+              }
+          </div>
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="form-dialog-title"
+          >
+              <DialogTitle id="form-dialog-title">Alert</DialogTitle>
+              <DialogContent>
+                  <DialogContentText>
+                      Are you sure to remove this record
+                  </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                  <Button
+                    onClick={handleClose}
+                    color="primary"
+                    style={{fontWeight: "bold"}}
+                  >
+                      Cancel
+                  </Button>
+                  <Button
+                    onClick={deleteExamTimetable}
+                    color="secondary"
+                    style={{fontWeight: "bold"}}
+                  >
+                      Proceed
+                  </Button>
+              </DialogActions>
+          </Dialog>
+      </div>
     );
 }
 

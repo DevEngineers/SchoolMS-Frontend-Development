@@ -38,6 +38,7 @@ function ManageClassTimetable() {
     const [deleteClassTimetableObj, setDeleteClassTimetableObj] = useState("");
     const [searchType, setSearchType] = useState("");
     const [searchValue, setSearchValue] = useState("");
+    const [visibility , setVisibility] =useState(false);
     /**
      * handler to open the alter dialog box and setting up the
      * relevant class timetable that we going to remove in deleteClassTimetableObj state variable
@@ -111,7 +112,7 @@ function ManageClassTimetable() {
                 handleClose();
                 toast.error("Class Timetable is Removed", options);
                 setTimeout(() => {
-                    history.push("/manageClassTimetable");
+                    window.location.reload();
                 }, 2000);
             } else {
                 handleClose();
@@ -172,36 +173,41 @@ function ManageClassTimetable() {
             </div>
             <div>
                 {
-                    /*classTimetable.map(classT =>{
-                              let name = classT.class;
-                              classTimetable.map(classTimetable =>{
-                                  if(classTimetable.class === name){
-                                      return <ClassTimetableListHolder key={classTimetable._id} ClassTimetable={classTimetable}/>
-                                  }
-                              })
-                          })*/
-                    /*<div>
-                              <label id={'headingLabel'}>{ClassTimetable.class.class}</label>
-                          </div>*/
-                    (classTimetables.length === 0 || classTimetables === []) && searchValue !== '' ?
+                    visibility === true ?(
+                      /*classTimetable.map(classT =>{
+                        let name = classT.class;
+                        classTimetable.map(classTimetable =>{
+                            if(classTimetable.class === name){
+                                return <ClassTimetableListHolder key={classTimetable._id} ClassTimetable={classTimetable}/>
+                            }
+                        })
+                    })*/
+                      /*<div>
+                                <label id={'headingLabel'}>{ClassTimetable.class.class}</label>
+                            </div>*/
+                      (classTimetables.length === 0 || classTimetables === []) && searchValue !== '' ?
                         (
-                            <div id={'resNotDiv'}>
-                                <label id={'resNotLabel'}>Sorry No Results is Found....</label>
-                            </div>
+                          <div id={'resNotDiv'}>
+                              <label id={'resNotLabel'}>Sorry No Results is Found....</label>
+                          </div>
                         ) : (
-                            classTimetables.map((classTimetable) => {
-                                return (
-                                    <ClassTimetableListHolder
-                                        key={classTimetable._id}
-                                        ClassTimetable={classTimetable}
-                                        handleOpenDeleteAlert={handleClickOpen}
-                                        editClassTimetable={updateClassTimetable}
-                                        viewClassTimetable={viewClassTimetable}
-                                    />
-                                );
-                            })
+                          classTimetables.map((classTimetable) => {
+                              return (
+                                <ClassTimetableListHolder
+                                  key={classTimetable._id}
+                                  ClassTimetable={classTimetable}
+                                  handleOpenDeleteAlert={handleClickOpen}
+                                  editClassTimetable={updateClassTimetable}
+                                  viewClassTimetable={viewClassTimetable}
+                                />
+                              );
+                          })
                         )
-
+                    ):(
+                      <div id={"loadingButtonDiv"}>
+                          <Button id={"loadingButton"} onClick={() => setVisibility(true)}>Load All Class Timetables</Button>
+                      </div>
+                    )
                 }
             </div>
             <Dialog
