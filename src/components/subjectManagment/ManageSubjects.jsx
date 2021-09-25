@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField} from "@material-ui/core";
-import "../../styles/classManagment/ViewClass.css"
+import "../../styles/subjectManagment/ViewSubject.css"
 import {useHistory} from "react-router-dom";
 import SubjectService from "../../services/SubjectService";
 import SubjectListHolder from "./SubjectListHolder";
@@ -115,7 +115,11 @@ function ManageSubjects(props){
                                               handleOpenDeleteAlert={handleClickOpen}/>
                 })
 
-                : <div> No Record Found </div>
+                : <div id={"SubjectNoRecord"}>
+                    <div id={"SubjectNoRecordBody"}>
+                        <div id={"SubjectNoRecordLabel"}> No Record Found </div>
+                    </div>
+                </div>
             }
         </div>
 
