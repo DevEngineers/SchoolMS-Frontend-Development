@@ -217,35 +217,42 @@ function UpdateAttendance(props){
 
                                     <div className="attendance-form-div">
 
-                                        {
+                                        {student.length > 0 ?
+
                                             student.map((Stu,i) =>
 
                                                 // console.log("Stu ID" ,attendance[i].studentID),
 
                                                 Stu._id === attendance[i] ? (
                                                     <div>
-                                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
-                                                            <label htmlFor={'classType'}> {Stu.studentName} </label>
-                                                        </Box>
+                                                        <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
+                                                            <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
+                                                                <label htmlFor={'classType'}> {Stu.studentName} </label>
+                                                            </Box>
 
-                                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
-                                                            <Checkbox name="checkedB" color="primary" checked
-                                                                      value={Stu.Id} key={Stu.Id} onChange={event => onCheckBox(event) } />
-                                                        </Box>
+                                                            <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
+                                                                <Checkbox name="checkedB" color="primary" checked
+                                                                          value={Stu.Id} key={Stu.Id} onChange={event => onCheckBox(event) } />
+                                                            </Box>
+                                                        </Grid>
                                                     </div>
                                                 ) : (
                                                     <div>
-                                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
-                                                            <label htmlFor={'classType'}> {Stu.studentName} </label>
-                                                        </Box>
+                                                        <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
+                                                            <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
+                                                                <label htmlFor={'classType'}> {Stu.studentName} </label>
+                                                            </Box>
 
-                                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
-                                                            <Checkbox name="checkedB" color="primary" checked={Stu.Att}
-                                                                      value={Stu.Id} key={Stu.Id} onChange={event => onCheckBox(event) } />
-                                                        </Box>
+                                                            <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
+                                                                <Checkbox name="checkedB" color="primary" checked={Stu.Att}
+                                                                          value={Stu.Id} key={Stu.Id} onChange={event => onCheckBox(event) } />
+                                                            </Box>
+                                                        </Grid>
                                                     </div>
                                                 )
                                             )
+
+                                            : <div> No Data Found </div>
                                         }
 
                                     </div>
