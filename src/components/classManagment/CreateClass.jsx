@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import TextField from '@material-ui/core/TextField';
-import Select from '@material-ui/core/Select';
+import React, {Component} from "react";
+import TextField from "@material-ui/core/TextField";
+import Select from "@material-ui/core/Select";
 import {Box, Grid, MenuItem} from "@material-ui/core";
 import {toast, ToastContainer} from "material-react-toastify";
-import '../../styles/classManagment/Class.css';
+import "../../styles/classManagment/Class.css";
 import ClassService from "../../services/ClassService";
 import ClassTypeService from "../../services/ClassTypeService";
 import TeacherService from "../../services/TeacherService";
@@ -71,16 +71,16 @@ class CreateClass extends Component {
     insertClass(event) {
         event.preventDefault();
         let Class = {
-            class: 'Grade ' + this.state.rClass,
+            class: "Grade " + this.state.rClass,
             classType: this.state.rClassType,
             teacher: this.state.rTeacher
         }
         if(Class.class === ''){
-            toast.warn('Enter Class',options)
+            toast.warn("Enter Class",options)
         }else if(Class.classType === ''){
-            toast.warn('Select the Class Type',options)
+            toast.warn("Select the Class Type",options)
         }else if(Class.teacher === ''){
-            toast.warn('Select the Class Teacher',options)
+            toast.warn("Select the Class Teacher",options)
         }else{
             ClassService.createClass(Class)
                 .then(res =>{
@@ -88,7 +88,7 @@ class CreateClass extends Component {
                         toast.success("Class Created Successfully", options)
                         setTimeout(()=>{this.props.history.push("/view-class")},3000)
                     } else {
-                        throw Error('Something went wrong!! Try again.' + res);
+                        throw Error("Something went wrong!! Try again." + res);
                     }
                 })
                 .catch((error) => {
@@ -124,10 +124,10 @@ class CreateClass extends Component {
                                 <div className="class-form-div">
                                     <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
-                                            <label htmlFor={'class'} > Class </label>
+                                            <label htmlFor={"class"} > Class </label>
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                            <TextField type={'text'} id="filled-basic"  name={'rClass'} value={this.state.rClass}
+                                            <TextField type={"text"} id="filled-basic"  name={"rClass"} value={this.state.rClass}
                                                        placeholder={"Enter Class"} onChange={event => this.onChange(event)} style={{ width: 220 }} />
                                         </Box>
                                     </Grid>
@@ -136,11 +136,11 @@ class CreateClass extends Component {
                                 <div className="class-form-div">
                                     <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
-                                            <label htmlFor={'classType'}> Class Type </label>
+                                            <label htmlFor={"classType"}> Class Type </label>
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                            <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'rClassType'}
-                                                    value={this.state.rClassType} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                            <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={"rClassType"}
+                                                    value={this.state.rClassType} className={"classSize"} onChange={event => this.onChange(event)} displayEmpty>
                                                 <MenuItem value={''}> Select Class Type </MenuItem>
                                                 {
                                                     this.state.classTypes.map(classType =>
