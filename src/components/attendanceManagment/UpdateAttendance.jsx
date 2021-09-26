@@ -81,20 +81,20 @@ function UpdateAttendance(props){
         // console.log("hello loop 02 ",student)
         if(attendance !== [''] && student !== [''] ){
 
-            for(let i=0; i<attendance.length; i++){
-                // console.log("for loop student"+[i]+":",student[i]._id)
-                // console.log("for loop attendance"+[i]+":",attendance[i]._id)
-
-                for(let j=0; j<student.length; j++){
-                    console.log("for loop student "+[j]+":",student[j]._id)
-                        if(student[j]._id === attendance[i]._id){
-                            console.log("true "+[j]+":",attendance[j]._id);
-                        }
-                        else{
-                            console.log("else",student[j]._id);
-                        }
-                }
-            }
+            // for(let i=0; i<attendance.length; i++){
+            //     // console.log("for loop student"+[i]+":",student[i]._id)
+            //     // console.log("for loop attendance"+[i]+":",attendance[i]._id)
+            //
+            //     for(let j=0; j<student.length; j++){
+            //         console.log("for loop student "+[j]+":",student[j]._id)
+            //             if(student[j]._id === attendance[i]._id){
+            //                 console.log("true "+[j]+":",attendance[j]._id);
+            //             }
+            //             else{
+            //                 console.log("else",student[j]._id);
+            //             }
+            //     }
+            // }
 
 
         }
@@ -217,20 +217,18 @@ function UpdateAttendance(props){
 
                                     <div className="attendance-form-div">
 
-                                        {/*{*/}
-                                        {/*    student.map(Stu => (*/}
-                                        {/*        <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >*/}
-                                        {/*            <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >*/}
-                                        {/*                <label htmlFor={'classType'}> {Stu.name} </label>*/}
-                                        {/*            </Box>*/}
-                                        {/*            <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >*/}
-                                        {/*                <Checkbox name="checkedB" color="primary" checked={Stu.Att}*/}
-                                        {/*                          value={Stu.Id} key={Stu.Id} onChange={event => onCheckBox(event) }*/}
-                                        {/*                />*/}
-                                        {/*            </Box>*/}
-                                        {/*        </Grid>*/}
-                                        {/*    ))*/}
-                                        {/*}*/}
+                                        {
+                                            student.map((stu,i) =>
+
+                                                // console.log("Stu ID" ,attendance[i].studentID),
+
+                                                stu._id === attendance[i] ? (
+                                                    <div> {stu.studentID} </div>
+                                                ) : (
+                                                    <div> {stu.studentName} </div>
+                                                )
+                                            )
+                                        }
 
                                     </div>
 
