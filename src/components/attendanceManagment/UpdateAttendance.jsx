@@ -102,20 +102,20 @@ function UpdateAttendance(props){
 
 
     function onCheckBox(event){
-        // let value = event.target.value;
-        // console.log("event value check box : ",value);
-        //
-        // if(attendance.includes(value) === true){
-        //     let index = attendance.indexOf(value);
-        //     attendance.splice(index,1)
-        //     console.log('true students',attendance);
-        //     return
-        // }
-        //
-        // if(attendance.includes(value) === false){
-        //     attendance.push(value);
-        //     console.log('false students',attendance);
-        // }
+        let value = event.target.value;
+        console.log("event value check box : ",value);
+
+        if(attendance.includes(value) === true){
+            let index = attendance.indexOf(value);
+            attendance.splice(index,1)
+            console.log('true students',attendance);
+            return
+        }
+
+        if(attendance.includes(value) === false){
+            attendance.push(value);
+            console.log('false students',attendance);
+        }
     }
 
     function updateAttendance(event){
@@ -218,14 +218,32 @@ function UpdateAttendance(props){
                                     <div className="attendance-form-div">
 
                                         {
-                                            student.map((stu,i) =>
+                                            student.map((Stu,i) =>
 
                                                 // console.log("Stu ID" ,attendance[i].studentID),
 
-                                                stu._id === attendance[i] ? (
-                                                    <div> {stu.studentID} </div>
+                                                Stu._id === attendance[i] ? (
+                                                    <div>
+                                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
+                                                            <label htmlFor={'classType'}> {Stu.studentName} </label>
+                                                        </Box>
+
+                                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
+                                                            <Checkbox name="checkedB" color="primary" checked
+                                                                      value={Stu.Id} key={Stu.Id} onChange={event => onCheckBox(event) } />
+                                                        </Box>
+                                                    </div>
                                                 ) : (
-                                                    <div> {stu.studentName} </div>
+                                                    <div>
+                                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
+                                                            <label htmlFor={'classType'}> {Stu.studentName} </label>
+                                                        </Box>
+
+                                                        <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
+                                                            <Checkbox name="checkedB" color="primary" checked={Stu.Att}
+                                                                      value={Stu.Id} key={Stu.Id} onChange={event => onCheckBox(event) } />
+                                                        </Box>
+                                                    </div>
                                                 )
                                             )
                                         }
