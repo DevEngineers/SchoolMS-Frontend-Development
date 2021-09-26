@@ -1,0 +1,499 @@
+/* ************************************* */
+/*
+*  IT 19167442
+*  Author Nusky M.A.M
+* */
+
+/* ************************************* */
+
+
+body{
+    background: #FAF9F6;
+}
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+#navImg{
+    width: 100%;
+}
+
+.wrapperImg {
+    position:relative;
+    width:100%;
+    min-height:900px;
+}
+.divImage {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-image: url("../images/home/Home.jpg");
+    background-repeat: no-repeat;
+    background-size:100% auto;
+    filter: brightness(70%);
+
+}
+.divText {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    padding-top:13.5%;
+    text-align:center;
+    font-weight:bold;
+    font-size:5vw;
+    color:white;
+    font-family:arial;
+}
+
+.divText2 {
+    position:absolute;
+    top:0;
+    left:0;
+    margin-top: 150px;
+    width:100%;
+    padding-top:13.5%;
+    text-align:center;
+    font-weight:bold;
+    font-size:2.5vw;
+    color:white;
+    font-family: "Times New Roman", serif;
+}
+
+.divText3 {
+    position:absolute;
+    top:0;
+    left:0;
+    margin-top: 210px;
+    width:100%;
+    padding-top:13.5%;
+    text-align:center;
+    font-weight:bold;
+    font-size:2vw;
+    color:white;
+    font-family:arial;
+}
+
+@media (min-width: 1200px) {
+    .divText{
+        font-size:60px;
+    }
+}
+.aboutDiv{
+    width:60%;
+    height: 100%;
+    margin-left:22%;
+
+}
+
+#para{
+    text-align: center;
+    font-family: "Cambria Math", serif;
+    font-size: 20px;
+    line-height: 30px;
+    color: black;
+}
+
+#aboutCon{
+    display: inline-block;
+    margin-left: 230px;
+    font-family: "Raleway", sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+
+.cardImg{
+    border-radius: 5px;
+    width: 300px;
+    max-width: 100%;
+    min-height: 350px;
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0px 5px 8px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 14px 0px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    background-image: url("../images/home/Person1.jpg");
+    background-size: cover;
+    float: left;
+    margin: 0 auto 0 50px;
+}
+
+.info{
+    position: relative;
+    width: 100%;
+    height: 350px;
+    background-color: #fff;
+    transform: translateY(100%)
+    translateY(-88px)
+    translateZ(0);
+    transition: transform 0.5s ease-out;
+}
+
+.info:before {
+    z-index: -1;
+    display: block;
+    position: absolute;
+    content: ' ';
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-image: url('../images/home/Person1.jpg');
+    filter: blur(10px);
+    background-size: cover;
+    opacity: 0.25;
+    transform: translateY(-100%)
+    translateY(88px)
+    translateZ(0);
+    transition: transform 0.5s ease-out;
+}
+
+.cardImg:hover .info,
+.cardImg:hover .info:before {
+    transform: translateY(0) translateZ(0);
+}
+
+.cardImg2{
+    border-radius: 5px;
+    width: 300px;
+    max-width: 100%;
+    min-height: 350px;
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0px 5px 8px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 14px 0px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    background-image: url("../images/home/Person2.jpg");
+    background-size: cover;
+    float: left;
+    margin: 0 auto 0 50px;
+}
+
+.info2{
+    position: relative;
+    width: 100%;
+    height: 350px;
+    background-color: #fff;
+    transform: translateY(100%)
+    translateY(-88px)
+    translateZ(0);
+    transition: transform 0.5s ease-out;
+}
+
+.info2:before {
+    z-index: -1;
+    display: block;
+    position: absolute;
+    content: ' ';
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-image: url('../images/home/Person2.jpg');
+    filter: blur(10px);
+    background-size: cover;
+    opacity: 0.25;
+    transform: translateY(-100%)
+    translateY(88px)
+    translateZ(0);
+    transition: transform 0.5s ease-out;
+}
+
+.cardImg2:hover .info2,
+.cardImg2:hover .info2:before {
+    transform: translateY(0) translateZ(0);
+}
+
+.cardImg3{
+    border-radius: 5px;
+    width: 300px;
+    max-width: 100%;
+    min-height: 350px;
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0px 5px 8px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 14px 0px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    background-image: url("../images/home/Person3.jpg");
+    background-size: cover;
+    float: left;
+    margin: 0 auto 0 50px;
+}
+
+.info3{
+    position: relative;
+    width: 100%;
+    height: 350px;
+    background-color: #fff;
+    transform: translateY(100%)
+    translateY(-88px)
+    translateZ(0);
+    transition: transform 0.5s ease-out;
+}
+
+.info3:before {
+    z-index: -1;
+    display: block;
+    position: absolute;
+    content: ' ';
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-image: url('../images/home/Person3.jpg');
+    filter: blur(10px);
+    background-size: cover;
+    opacity: 0.25;
+    transform: translateY(-100%)
+    translateY(88px)
+    translateZ(0);
+    transition: transform 0.5s ease-out;
+}
+
+.cardImg3:hover .info3,
+.cardImg3:hover .info3:before {
+    transform: translateY(0) translateZ(0);
+}
+
+
+.title {
+    padding: 34px;
+    margin: 0 0 0 5px;
+    font-size: 25px;
+    line-height: 1;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.description {
+    margin: 0;
+    padding: 0 34px 24px;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+
+#cardDiv{
+    height:600px;
+    background: #F0F0F0;
+}
+
+#cardInsideDiv{
+    margin-left: 200px;
+}
+
+
+@media (min-width:800px) {
+    h1 {
+        font-size: 4.236em;
+        font-weight: 300
+    }
+}
+
+p {
+    margin-bottom: 1.3em;
+    line-height: 1.618
+}
+
+@media (min-width:800px) {
+    p {
+        font-size: 1.3em
+    }
+}
+
+a {
+    color: #e03616;
+    text-decoration: none
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+#venueTitle{
+    display: inline-block;
+    font-size: 30px;
+    margin:60px 0 50px 420px;
+}
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+.box {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.custom-underline {
+    position: relative;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Raleway", sans-serif;
+}
+
+.normal-underline:hover {
+    color: #444;
+    text-decoration: underline;
+}
+
+.custom-underline,
+.custom-underline:hover,
+.custom-underline:focus,
+.custom-underline:active {
+    color: black;
+    text-decoration: none;
+}
+
+.custom-underline::after {
+    content: "";
+    position: absolute;
+}
+
+.box{
+    height:125px;
+    display: inline-block;
+    font-size: 40px;
+    margin:10px 0 0 0px;
+    text-align: center;
+}
+
+.box .custom-underline::after {
+    top: 65%;
+    height: 2px !important;
+    width: 40%;
+    left: 31% ;
+    margin-top: 20px;
+    background-color: black;
+    transition: 0.4s ease-out all .1s;
+}
+
+.box:hover .custom-underline::after {
+    width: 90%;
+    left: 5%;
+    transition: 0.5s ease all;
+}
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+.crd {
+    margin: .1rem;
+    position: relative;
+    width: 560px;
+    height: 325px;
+    overflow: hidden;
+}
+
+.crd-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-repeat: no-repeat;
+    background-size: contain
+}
+
+.crd--effect {
+    position: relative;
+    color: hsla(0, 0%, 90%, .5);
+    float: left;
+}
+
+.crd--effect span {
+    color: hsl(0, 0%, 90%);
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    transform: scale(1.4);
+    transition: .5s;
+}
+
+.crd--effect:hover span {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.crd--effect {
+    text-align: right;
+    left: 200px;
+}
+
+.crd--effect {
+    padding-left: 0;
+    padding-right: 1rem;
+}
+
+.crd--effect .crd-img {
+    transition: .5s;
+}
+
+.crd--effect:hover .crd-img {
+    transform: scale(.95);
+}
+
+#imageTileDiv{
+    margin-left: 5px;
+    float: left;
+
+}
+#imageTileDiv2{
+    margin-left: 5px;
+    margin-top: .1rem;
+    float: left;
+    margin-bottom: 25px;
+}
+
+.imgDiv{
+    float: left;
+    margin-left: 5px;
+}
+
+#venueTile{
+    width: 60%;
+    height: 150px;
+    background: #F0F0F0;
+    margin-left: 320px;
+    margin-bottom: 20px;
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.12),
+    0px 1px 14px 0px rgba(0, 0, 0, 0.12);
+}
+
+#venueName{
+    width: 100%;
+    height: 100px;
+    float: left;
+    margin-left: 240px;
+    margin-top: 50px;
+}
+
+#venueDate{
+    width: 40%;
+    height: 150px;
+    float: left;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+.vNameTitle{
+    font-size: 28px;
+    font-weight: bold;
+    float: left;
+    font-family: "Times New Roman", serif;
+    text-decoration: underline;
+}
+
+#vNameCont{
+    font-size: 30px;
+    margin-top: 50px;
+    font-family: "Times New Roman", serif;
+
+}
+
+#vNameDate{
+    font-size: 24px;
+    float: left;
+    margin-top: 30px;
+    margin-left: -80px;
+    font-family: "Times New Roman", serif;
+
+}
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */

@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import TeacherService from "../../services/TeacherService";
 import '../../styles/TeacherStyles/Teacher.css';
+import ClassService from "../../services/ClassService";
+import ClassTypeService from "../../services/ClassTypeService";
+import BranchService from "../../services/BranchService";
 
 /*
 *  Registration number: IT 19167442
@@ -19,7 +22,8 @@ class CreateTeacher extends Component {
             schoolBranch:'',
             qualification:'',
             maritalStatus:'',
-            gender:''
+            gender:'',
+            branches:[]
 
         }
         this.changeTeacherNameHandler = this.changeTeacherNameHandler.bind(this);
@@ -33,6 +37,12 @@ class CreateTeacher extends Component {
     }
 
     componentDidMount(){
+        BranchService.getBranches()
+            .then(res => {
+                this.setState({branches:res})
+            }).catch(err => {
+            console.error(err)
+        })
     }
 
     saveOrUpdateTeacher = (e) => {
@@ -120,13 +130,22 @@ class CreateTeacher extends Component {
                                     </div>
                                     <div className = "form-group">
                                         <label> School Branch: </label>
-                                        <select value={this.state.schoolBranch} className="form-control" onChange={this.changeSchoolBranchHandler}>
-                                            <option defaultValue>School Branch:</option>
-                                            <option value="Colombo">Colombo</option>
-                                            <option value="Kandy">Kandy</option>
-                                            <option value="Dehiwala">Dehiwala</option>
-                                            <option value="Negambo">Negambo</option>
-                                            <option value="Ratmalana">Ratmalana</option>
+                                        {/*<select value={this.state.schoolBranch} className="form-control" onChange={this.changeSchoolBranchHandler}>*/}
+                                        {/*    <option defaultValue>School Branch:</option>*/}
+                                        {/*    <option value="Colombo">Colombo</option>*/}
+                                        {/*    <option value="Kandy">Kandy</option>*/}
+                                        {/*    <option value="Dehiwala">Dehiwala</option>*/}
+                                        {/*    <option value="Negambo">Negambo</option>*/}
+                                        {/*    <option value="Ratmalana">Ratmalana</option>*/}
+                                        {/*</select>*/}
+                                        <select value={this.state.schoolBranch} name="schoolBranch" className="form-control" onChange={this.changeSchoolBranchHandler}>
+                                            <option value=''>Select Branch</option>
+                                            {
+                                                this.state.branches.map(Branch =>
+                                                    <option key={Branch._id} value={Branch._id}> {Branch.branchName} </option>
+                                                )
+                                            }
+
                                         </select>
                                     </div>
                                     <div className = "form-group">

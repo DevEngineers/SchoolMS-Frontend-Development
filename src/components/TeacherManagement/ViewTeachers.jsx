@@ -36,10 +36,10 @@ class ViewTeachers extends Component {
                             <label> Teacher NIC: </label>
                             { this.state.teacher.nic }
                         </div>
-                        <div className = "row">
-                            <label> School Branch: </label>
-                          { this.state.teacher.schoolBranch }
-                        </div>
+                        {/*<div className = "row">*/}
+                        {/*    <label> School Branch: </label>*/}
+                        {/*  { this.state.teacher.schoolBranch.branchName }*/}
+                        {/*</div>*/}
                         <div className = "row">
                             <label> Qualification : </label>
                            { this.state.teacher.qualification }

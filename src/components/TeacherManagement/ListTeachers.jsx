@@ -47,8 +47,8 @@ class ListTeachers extends Component {
                 <h2 className="text-center">Teachers List</h2>
                 <div>
                     <div id={'searchDiv'}>
-                        <TextField type={'text'}  id={'searchInput'} variant="outlined"/>
-                        <input type={'submit'} value={'Search'} id={'searchBtn'}/>
+                        <TextField type={'text'}  id={'searchInput1'} variant="outlined"/>
+                        <input type={'submit'} value={'Search'} id={'searchBtn1'}/>
                     </div>
                 </div>
                 <div className = "row">
@@ -78,7 +78,7 @@ class ListTeachers extends Component {
                                         <td> { teacher.teacherName} </td>
                                         <td> {teacher.mobileNumber}</td>
                                         <td> {teacher.nic}</td>
-                                        <td> { teacher.schoolBranch} </td>
+                                        <td> { teacher.schoolBranch.branchName} </td>
                                         <td> {teacher.qualification}</td>
                                         <td> {teacher.maritalStatus}</td>
                                         <td> { teacher.gender} </td>

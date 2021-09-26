@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import StudentService from "../../services/StudentService";
 import '../../styles/TeacherStyles/Teacher.css';
+import ClassService from "../../services/ClassService";
+import ClassTypeService from "../../services/ClassTypeService";
+import BranchService from "../../services/BranchService";
 
 
 /*
@@ -22,7 +25,10 @@ class UpdateStudent extends Component {
             schoolBranch:'',
             class:'',
             classType:'',
-            gender:''
+            gender:'',
+            classes:[],
+            classTypes:[],
+            branches:[]
 
         }
         this.changeStudentNameHandler = this.changeStudentNameHandler.bind(this);
@@ -56,6 +62,26 @@ class UpdateStudent extends Component {
                 gender : student.gender,
             });
         });
+
+        ClassService.getClasses()
+            .then(res => {
+                this.setState({classes:res})
+            }).catch(err => {
+            console.error(err)
+        })
+        ClassTypeService.getClassTypes()
+            .then(res => {
+                this.setState({classTypes:res})
+            }).catch(err => {
+            console.error(err)
+        })
+
+        BranchService.getBranches()
+            .then(res => {
+                this.setState({branches:res})
+            }).catch(err => {
+            console.error(err)
+        })
     }
     updateStudent= (e) => {
         e.preventDefault();
@@ -147,50 +173,48 @@ class UpdateStudent extends Component {
                                     </div>
                                     <div className = "form-group">
                                     <label> School Branch : </label>
-                                        <select placeholder="Select School Branch" name="schoolBranch"  value={this.state.schoolBranch} className="form-control"  onChange ={event=>this.onChange(event)}>
-                                            <option defaultValue>School Branch:</option>
-                                            <option value="Colombo">Colombo</option>
-                                            <option value="Kandy">Kandy</option>
-                                            <option value="Dehiwala">Dehiwala</option>
-                                            <option value="Negambo">Negambo</option>
-                                            <option value="Ratmalana">Ratmalana</option>
+                                        <select placeholder="Select School Branch" name="schoolBranch"  value={this.state.branches} className="form-control"  onChange ={event=>this.onChange(event)}>
+                                            {/*<option defaultValue>School Branch:</option>*/}
+                                            {/*<option value="Colombo">Colombo</option>*/}
+                                            {/*<option value="Kandy">Kandy</option>*/}
+                                            {/*<option value="Dehiwala">Dehiwala</option>*/}
+                                            {/*<option value="Negambo">Negambo</option>*/}
+                                            {/*<option value="Ratmalana">Ratmalana</option>*/}
+                                            <option value=''>{this.state.schoolBranch.branchName}</option>
+                                            {
+                                                this.state.branches.map(Branch =>
+                                                    <option key={Branch._id} value={Branch._id}> {Branch.branchName} </option>
+                                                )
+                                            }
                                         </select>
                                 </div>
                                     <div className = "form-group">
                                         <label> Class : </label>
                                         <select placeholder="Select Class" name="class" value={this.state.class} className="form-control" onChange ={event=>this.onChange(event)}>
-                                            <option defaultValue>Grade</option>
-                                            <option value="Grade 01">Grade 01</option>
-                                            <option value="Grade 02">Grade 02</option>
-                                            <option value="Grade 03">Grade 03</option>
-                                            <option value="Grade 04">Grade 04</option>
-                                            <option value="Grade 05">Grade 05</option>
-                                            <option value="Grade 06">Grade 06</option>
-                                            <option value="Grade 07">Grade 07</option>
-                                            <option value="Grade 08">Grade 08</option>
-                                            <option value="Grade 09">Grade 09</option>
-                                            <option value="Grade 10">Grade 10</option>
-                                            <option value="Grade 11">Grade 11</option>
-                                            <option value="Grade 12">Grade 12</option>
-                                            <option value="Grade 13">Grade 13</option>
+                                            <option value=''>{this.state.class.class}</option>
+                                            {
+                                                this.state.classes.map(Class =>
+                                                    <option key={Class._id} value={Class._id}> {Class.class} </option>
+                                                )
+                                            }
                                         </select>
                                     </div>
                                     <div className = "form-group">
                                         <label> Class Type: </label>
                                         <select value={this.state.classType} name="classType" className="form-control" onChange ={event=>this.onChange(event)}>
-                                            <option defaultValue>Class</option>
-                                            <option value="Class A">Class A</option>
-                                            <option value="Class B">Class B</option>
-                                            <option value="Class C">Class C</option>
-                                            <option value="Class D">Class D</option>
-                                            <option value="Class E">Class E</option>
+                                            <option value=''>{this.state.classType.name}</option>
+                                            {
+                                                this.state.classTypes.map(type =>
+                                                    <option key={type._id} value={type._id}> {type.name} </option>
+                                                )
+                                            }
 
                                         </select>
                                     </div>
                                     <div className = "form-group" >
                                         <label> Gender : </label>
-                                        <input type="radio"  name="gender"  className = "form-group" value={this.state.gender} onChange ={event=>this.onChange(event)} /> Male
-                                        <input type="radio"  name="gender"  className = "form-group" value={this.state.gender} onChange ={event=>this.onChange(event)} /> Female
+                                        <input type="text"  name="gender"  className = "form-control" value={this.state.gender} onChange ={event=>this.onChange(event)} />
+
 
                                     </div>
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} >Cancel</button>

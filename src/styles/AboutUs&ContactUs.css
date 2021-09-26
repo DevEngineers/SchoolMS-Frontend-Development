@@ -1,0 +1,267 @@
+
+/* ************************************* */
+/*
+*  IT 19167442
+*  Author Nusky M.A.M
+* */
+
+/* ************************************* */
+@import 'https://fonts.googleapis.com/css?family=Lato:300,400';
+
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.aDLink{
+    color: #fff;
+    text-decoration:none;
+    font-size: 18px;
+    alignment: center;
+}
+
+.nav-btn {
+    width: 100% ;
+    height: 35px ;
+    padding-top: 4px ;
+    color: #D5D3D3 ;
+    background-color: #212121 ;			 ;
+    text-align: center ;
+    cursor: pointer ;
+    display: none ;
+}
+.nav-btn:active {
+    background-color: #090909;
+}
+
+#dashName{
+    margin-left: 30px;
+    font-size: 35px;
+}
+
+header .logo span {
+    font-weight: 300;
+}
+
+.admin-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+
+
+.main-content {
+
+    width: 95%;
+    height: 100%;
+    margin-left: 20px;
+    padding: 10px 20px;
+}
+.main-content .panel-wrapper {
+    margin: 20px 0;
+    box-shadow: 0px 1px 5px #777;
+}
+
+.main-content .panel-wrapper .panel-head {
+    background-color: #2980b9;
+    color: #fff;
+    padding: 10px 10px;
+    border: 1px solid #2980b9;
+}
+.main-content .panel-wrapper .panel-body {
+    padding: 20px 10px;
+    font-size: 80%;
+}
+
+
+@media only screen and (max-width: 420px){
+    header {
+        display: block;
+    }
+    .navDivDiv-btn {
+        display: block;
+    }
+    .sidebar {
+        position: relative;
+        height: 378px;
+        width: 100%;
+        display: none;
+        margin-bottom: 40px;
+        z-index: 1000;
+    }
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+        z-index: -1;
+        position: relative;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    header {
+        display: block;
+    }
+    .navDiv-btn {
+        display: block;
+    }
+    .sidebar {
+        position: relative;
+        height: 378px;
+        width: 100%;
+        display: none;
+        margin-bottom: 40px;
+        z-index: 1000;
+    }
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+        z-index: -1;
+        position: relative;
+    }
+
+
+}
+#logOutAdmin{
+    width: 230px;
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    margin-top: 210px;
+    margin-left: 10px;
+    font-size: 16px;
+    padding: 8px 8px 8px 8px;
+
+
+}
+.h2{
+    margin-left: 100px;
+}
+.main-content .panel-wrapperabout .panel-headabout {
+    background-color: #5B5A4D;
+    color: #fff;
+    padding: 10px 10px;
+    border: 1px solid #5B5A4D;
+}
+.box{
+    height:125px;
+    display: inline-block;
+    font-size: 40px;
+    margin:10px 0 0 0px;
+    text-align: center;
+}
+.custom-underline {
+    position: relative;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Raleway", sans-serif;
+}
+.h3{
+    font-weight: bold;
+}
+/* ------------------------- About Page Styling ------------------------------- */
+
+.form-style-about{
+    max-width: 500px;
+    padding: 20px;
+    /*margin: 0 auto 10px 30px;*/
+    font-family: Georgia, "Times New Roman", Times, serif;
+    float: left;
+    /*background: white;*/
+}
+.form-style-about fieldset{
+    border: none;
+}
+.form-style-about legend {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+.form-style-about label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+.form-style-about input[type="text"],
+.form-style-about textarea{
+    font-family: Georgia, "Times New Roman", Times, serif;
+    border-radius: 2px;
+    font-size: 15px;
+    outline: 0;
+    padding: 10px;
+    width: 400px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin: 0 0 30px;
+}
+
+
+.form-style-about input[type="submit"]
+{
+    position: relative;
+    display: block;
+    padding: 9px 9px 8px 9px;
+    color: #FFF;
+    background: #6dabe4;
+    font-size: 16px;
+    text-align: center;
+    font-style: normal;
+    width: 30%;
+    border: 1px solid #62a1e0;
+    border-width: 1px 1px 3px;
+    border-radius: 3px;
+    /*margin: -15px 0 15px;*/
+    margin-right: auto;
+}
+.form-style-about input[type="submit"]:hover
+{
+    background: #62a1e0;
+    cursor: pointer;
+}
+
+
+#contTitle{
+    font-size: 30px;
+    margin-bottom: 30px;
+    display: inline-block;
+}
+
+.footerCTextDe{
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 40px;
+}
+
+#contInfoTitleD{
+    margin-left: 100px;
+    margin-top: 30px;
+    width: 80%;
+    height: 30px;
+}
+
+#contInfoLabelD {
+    font-size: 24px;
+    display: inline-block;
+}
+
+#contactInfoD{
+    margin-left: 120px;
+    margin-top: 15px;
+    height: 500px;
+    float: left;
+}
+
+#uniTitleDe{
+    font-size: 25px;
+    margin-bottom: 20px;
+    display: inline-block;
+    font-family: "Raleway", sans-serif;
+}
+
