@@ -232,7 +232,7 @@ function AddAttendance(){
                                                 </Grid>
                                             ))
 
-                                            : <div>No Data available</div>
+                                            : <div> No Data Found </div>
                                         }
 
                                     </div>
