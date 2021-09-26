@@ -89,13 +89,13 @@ function AddAttendance(){
         if(attendance.includes(value) === true){
             let index = attendance.indexOf(value);
             attendance.splice(index,1)
-            console.log('true students',attendance);
+            console.log("true students",attendance);
             return
         }
 
         if(attendance.includes(value) === false){
             attendance.push(value);
-            console.log('false students',attendance);
+            console.log("false students",attendance);
         }
 
     }
