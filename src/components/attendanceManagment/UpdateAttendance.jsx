@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Box, Checkbox, Grid} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import "../../styles/AttendanceManagment/Attendance.css";
@@ -26,13 +26,8 @@ function UpdateAttendance(props){
     const [Date,setDate] = useState('');
     const [Class,setClass] = useState([]);
     const [ClassType,setClassType] = useState([]);
-
     const [attendance,setAttendance] = useState([]);
     const [student,setStudent] = useState([]);
-
-    // const [classes,setClasses] = useState([]);
-    // const [classTypes,setClassTypes] = useState([]);
-
 
     useEffect(() =>{
         fetchAttendance();
@@ -47,15 +42,14 @@ function UpdateAttendance(props){
                 setClassType(Attendance.classType);
                 let ClassID = Attendance.class._id;
                 let ClassTypeID = Attendance.classType._id;
-                let [attendance] = [Attendance.student];
-                fetchStudentByClassType(ClassID,ClassTypeID,attendance);
+                fetchStudentByClassType(ClassID,ClassTypeID);
                 console.log("Attendance stu", Attendance.student);
             }).catch(err => {
             console.error(err)
         })
     }
 
-    function fetchStudentByClassType(ClassID,ClassTypeID,attendance){
+    function fetchStudentByClassType(ClassID,ClassTypeID){
         // console.log("student.class id : ",ClassID)
         // console.log("student.classType id : ",ClassTypeID)
 
@@ -67,39 +61,11 @@ function UpdateAttendance(props){
             StudentService.getStudentByClass(ClassType)
                 .then(student =>{
                     setStudent(student);
-                    compareAttendanceStudent(attendance,student);
-                    console.log("fetch all student",student)
                 }).catch(err => {
                 console.error(err)
             })
         }
     }
-
-    function compareAttendanceStudent(attendance,student){
-        console.log("hello compareAttendanceStudent function")
-        // console.log("hello loop 01 ",attendance)
-        // console.log("hello loop 02 ",student)
-        if(attendance !== [''] && student !== [''] ){
-
-            // for(let i=0; i<attendance.length; i++){
-            //     // console.log("for loop student"+[i]+":",student[i]._id)
-            //     // console.log("for loop attendance"+[i]+":",attendance[i]._id)
-            //
-            //     for(let j=0; j<student.length; j++){
-            //         console.log("for loop student "+[j]+":",student[j]._id)
-            //             if(student[j]._id === attendance[i]._id){
-            //                 console.log("true "+[j]+":",attendance[j]._id);
-            //             }
-            //             else{
-            //                 console.log("else",student[j]._id);
-            //             }
-            //     }
-            // }
-
-
-        }
-    }
-
 
     function onCheckBox(event){
         let value = event.target.value;
