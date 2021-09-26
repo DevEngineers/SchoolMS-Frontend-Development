@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Box, Grid, MenuItem} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
-import '../../styles/classManagment/Class.css';
+import "../../styles/classManagment/Class.css";
 import {toast, ToastContainer} from "material-react-toastify";
 import ClassService from "../../services/ClassService";
 import TeacherService from "../../services/TeacherService";
@@ -70,11 +70,11 @@ class UpdateClass extends Component {
             teacher: this.state.rTeacher
         }
         if(Classes.class === ''){
-            toast.warn('Enter Class',options)
+            toast.warn("Enter Class",options)
         }else if(Classes.classType === ''){
-            toast.warn('Select the Class type',options)
+            toast.warn("Select the Class type",options)
         }else if(Classes.teacher === ''){
-            toast.warn('Select the Subject Teacher',options)
+            toast.warn("Select the Subject Teacher",options)
         }else{
             ClassService.updateClass(this.state.classID,Classes)
                 .then(res =>{
@@ -82,7 +82,7 @@ class UpdateClass extends Component {
                         toast.success("Class Update Successfully", options)
                         setTimeout(()=>{this.props.history.push("/view-class")},3000)
                     } else {
-                        throw Error('Something went wrong!! Try again.' + res);
+                        throw Error("Something went wrong!! Try again." + res);
                     }
                 })
                 .catch((error) => {
@@ -118,10 +118,10 @@ class UpdateClass extends Component {
                                 <div className="class-form-div">
                                     <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
-                                            <label htmlFor={'class'} > Class </label>
+                                            <label htmlFor={"class"} > Class </label>
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                            <TextField type={'text'} id="filled-basic"  name={'rClass'} value={this.state.rClass}
+                                            <TextField type={"text"} id="filled-basic"  name={"rClass"} value={this.state.rClass}
                                                        placeholder={"Enter Class"} onChange={event => this.onChange(event)} style={{ width: 220 }} />
                                         </Box>
                                     </Grid>
@@ -130,11 +130,11 @@ class UpdateClass extends Component {
                                 <div className="class-form-div">
                                     <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
-                                            <label htmlFor={'classType'}> Class Type </label>
+                                            <label htmlFor={"classType"}> Class Type </label>
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                            <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'rClassType'}
-                                                    value={this.state.rClassType} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                            <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={"rClassType"}
+                                                    value={this.state.rClassType} className={"classSize"} onChange={event => this.onChange(event)} displayEmpty>
                                                 <MenuItem value={this.state.rClassType}> {this.state.rClassType} </MenuItem>
                                                 {
                                                     this.state.classTypeN.map(type =>
@@ -149,11 +149,11 @@ class UpdateClass extends Component {
                                 <div className="class-form-div">
                                     <Grid container direction="row" justifyContent="space-evenly" alignItems="center" >
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 100 }} >
-                                            <label htmlFor={'teacher'}> Teacher  </label>
+                                            <label htmlFor={"teacher"}> Teacher  </label>
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                            <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={'rTeacher'}
-                                                    value={this.state.rTeacher} className={'classSize'} onChange={event => this.onChange(event)} displayEmpty>
+                                            <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={"rTeacher"}
+                                                    value={this.state.rTeacher} className={"classSize"} onChange={event => this.onChange(event)} displayEmpty>
                                                 <MenuItem value={this.state.rTeacher} > {this.state.rTeacher} </MenuItem>
                                                 {
                                                     this.state.teachers.map(Teacher =>
@@ -169,11 +169,11 @@ class UpdateClass extends Component {
                                     <Grid container item direction="row" justifyContent="flex-end" alignItems="baseline" >
 
                                         <Box ccomponent="div" display="inline" style={{ padding: 10 }} >
-                                            <input type={'reset'} className={'Btn-Class-reset'} value={'Reset'} onClick={this.restAllValuesInForm.bind(this)} />
+                                            <input type={"reset"} className={"Btn-Class-reset"} value={"Reset"} onClick={this.restAllValuesInForm.bind(this)} />
                                         </Box>
 
                                         <Box component="div" display="inline" style={{ padding: 10 }} >
-                                            <input type={'submit'} className={'Btn-Class-Sub'} value={'Update Class'} onClick={this.updateClass.bind(this)}/>
+                                            <input type={"submit"} className={"Btn-Class-Sub"} value={"Update Class"} onClick={this.updateClass.bind(this)}/>
                                         </Box>
 
                                     </Grid>
