@@ -5,6 +5,7 @@ import Select from "@material-ui/core/Select";
 import SubjectService from "../../services/SubjectService";
 import {toast, ToastContainer} from "material-react-toastify";
 import TeacherService from "../../services/TeacherService";
+import ClassService from "../../services/ClassService";
 
 /**
  * @author : A.M Zumry
@@ -28,10 +29,10 @@ class UpdateSubject extends Component {
             subjectID:this.props.match.params.id,
 
             rSubject:'',
-            rClass:'',
-            rTeacher:'',
+            rClass:[],
+            rTeacher:[],
 
-            grade:['9','10','11','12'],
+            classes:[],
             teachers:[]
         }
     }
@@ -41,9 +42,16 @@ class UpdateSubject extends Component {
             .then(res => {
                 this.setState({
                     rSubject:res.subject,
-                    rClass:res.class.class,
-                    rTeacher:res.teacher.teacherName
+                    rClass:res.class,
+                    rTeacher:res.teacher
                 })
+            }).catch(err => {
+            console.error(err)
+        })
+
+        ClassService.getClasses()
+            .then(res => {
+                this.setState({classes:res})
             }).catch(err => {
             console.error(err)
         })
@@ -135,10 +143,10 @@ class UpdateSubject extends Component {
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
                                             <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={"rClass"}
                                                     value={this.state.rClass} className={"classSize"} onChange={event => this.onChange(event)} displayEmpty>
-                                                <MenuItem value={this.state.rClass}> {this.state.rClass} </MenuItem>
+                                                <MenuItem value={this.state.rClass}> {this.state.rClass.class} </MenuItem>
                                                 {
-                                                    this.state.grade.map(Class =>
-                                                        <MenuItem key={Class} value={Class}> {Class} </MenuItem>
+                                                    this.state.classes.map(Class =>
+                                                        <MenuItem key={Class._id} value={Class._id}> {Class.class} </MenuItem>
                                                     )
                                                 }
                                             </Select>
@@ -154,7 +162,7 @@ class UpdateSubject extends Component {
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
                                             <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={"rTeacher"}
                                                     value={this.state.rTeacher} className={"classSize"} onChange={event => this.onChange(event)} displayEmpty>
-                                                <MenuItem value={this.state.rTeacher} > {this.state.rTeacher} </MenuItem>
+                                                <MenuItem value={this.state.rTeacher} > {this.state.rTeacher.teacherName} </MenuItem>
                                                 {
                                                     this.state.teachers.map(Teacher =>
                                                         <MenuItem key={Teacher._id} value={Teacher._id}> {Teacher.teacherName} </MenuItem>

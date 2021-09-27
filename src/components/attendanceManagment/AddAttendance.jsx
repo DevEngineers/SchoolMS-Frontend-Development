@@ -8,6 +8,7 @@ import AttendanceService from "../../services/AttendanceService";
 import ClassTypeService from "../../services/ClassTypeService";
 import ClassService from "../../services/ClassService";
 import StudentService from "../../services/StudentService";
+import {useHistory} from "react-router-dom";
 
 /**
  * @author : A.M Zumry
@@ -25,13 +26,12 @@ const options = {
 }
 
 function AddAttendance(){
+    const history = useHistory();
     const [Date,setDate] = useState('');
     const [Class,setClass] = useState('');
     const [ClassType,setClassType] = useState('');
-
     const [attendance,setAttendance] = useState([]);
     const [student,setStudent] = useState([]);
-
     const [classes,setClasses] = useState([]);
     const [classTypes,setClassTypes] = useState([]);
 
@@ -119,7 +119,7 @@ function AddAttendance(){
                 .then(res =>{
                     if (res.status === 200) {
                         toast.success("Attendance store Successfully ", options)
-                        setTimeout(()=>{this.props.history.push("/view-attendance")},3000)
+                        setTimeout(()=>{history.push("/view-attendance")},3000)
                     } else {
                         throw Error("Something went wrong!! Try again." + res);
                     }
