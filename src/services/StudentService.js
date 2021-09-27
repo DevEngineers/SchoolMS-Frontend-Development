@@ -97,6 +97,16 @@ class StudentService{
         })
     }
 
+    async getStudentBySearch(Value){
+        return await fetch(STUDENT_API_BASE_URL+"/search/"+Value,{
+            method:"GET",
+        }).then(response =>{
+            return response.json();
+        }).catch(error => {
+            console.log(error.message);
+        })
+    }
+
 }
 
 export default new StudentService();

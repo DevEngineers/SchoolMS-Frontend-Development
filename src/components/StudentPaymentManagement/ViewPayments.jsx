@@ -24,26 +24,26 @@ class ViewPayments extends Component {
                 <div className = "card col-md-6 offset-md-3">
                     <h3 className = "text-center"> View Student Payment Details</h3>
                     <div className = "card-body">
-                        <div className = "row">
-                            <label> Student School Branch: </label>
-                             { this.state.payments.schoolBranch }
-                        </div>
-                        <div className = "row">
-                            <label> Student Class: </label>
-                          { this.state.payments.class }
-                        </div>
-                        <div className = "row">
-                            <label> Student Class Type: </label>
-                           { this.state.payments.classType }
-                        </div>
-                        <div className = "row">
-                            <label> Student ID: </label>
-                            { this.state.payments.studentId }
-                        </div>
-                        <div className = "row">
-                            <label> Student Name: </label>
-                           { this.state.payments.studentName }
-                        </div>
+                        {/*<div className = "row">*/}
+                        {/*    <label> Student School Branch: </label>*/}
+                        {/*     { this.state.payments.schoolBranch.branchName }*/}
+                        {/*</div>*/}
+                        {/*<div className = "row">*/}
+                        {/*    <label> Student Class: </label>*/}
+                        {/*  { this.state.payments.class.class }*/}
+                        {/*</div>*/}
+                        {/*<div className = "row">*/}
+                        {/*    <label> Student Class Type: </label>*/}
+                        {/*   { this.state.payments.classType.name }*/}
+                        {/*</div>*/}
+                        {/*<div className = "row">*/}
+                        {/*    <label> Student ID: </label>*/}
+                        {/*    { this.state.payments.studentId.studentID }*/}
+                        {/*</div>*/}
+                        {/*<div className = "row">*/}
+                        {/*    <label> Student Name: </label>*/}
+                        {/*   { this.state.payments.studentId.studentName }*/}
+                        {/*</div>*/}
                         <div className = "row">
                             <label> Payment Type : </label>
                            { this.state.payments.paymentType }

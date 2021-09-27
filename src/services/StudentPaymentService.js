@@ -82,6 +82,16 @@ class StudentPaymentService{
 
     }
 
+    async getPaymentBySearch(Value){
+        return await fetch(STUDENTPAYMENT_API_BASE_URL+"/search/"+Value,{
+            method:"GET",
+        }).then(response =>{
+            return response.json();
+        }).catch(error => {
+            console.log(error.message);
+        })
+    }
+
 
 }
 

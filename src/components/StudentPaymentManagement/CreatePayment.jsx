@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import StudentPaymentService from "../../services/StudentPaymentService";
 import '../../styles/TeacherStyles/Teacher.css';
+import ClassService from "../../services/ClassService";
+import ClassTypeService from "../../services/ClassTypeService";
+import BranchService from "../../services/BranchService";
+import StudentService from "../../services/StudentService";
 
 /*
 *  Registration number: IT 19167442
@@ -20,7 +24,12 @@ class CreatePayment extends Component {
             studentName: '',
             paymentType: '',
             paidAmount: '',
-            dateOfPayment:''
+            dateOfPayment:'',
+            classes:[],
+            classTypes:[],
+            branches:[],
+            studentIds:[],
+            studentNames:[]
 
         }
         this.changeSchoolBranchHandler = this.changeSchoolBranchHandler.bind(this);
@@ -37,6 +46,39 @@ class CreatePayment extends Component {
     }
 
     componentDidMount(){
+        ClassService.getClasses()
+            .then(res => {
+                this.setState({classes:res})
+            }).catch(err => {
+            console.error(err)
+        })
+        ClassTypeService.getClassTypes()
+            .then(res => {
+                this.setState({classTypes:res})
+            }).catch(err => {
+            console.error(err)
+        })
+
+        BranchService.getBranches()
+            .then(res => {
+                this.setState({branches:res})
+            }).catch(err => {
+            console.error(err)
+        })
+        StudentService.getStudents()
+            .then(res => {
+                this.setState({studentIds:res})
+            }).catch(err => {
+            console.error(err)
+        })
+
+        StudentService.getStudents()
+            .then(res => {
+                this.setState({studentNames:res})
+            }).catch(err => {
+            console.error(err)
+        })
+
 
     }
     saveOrUpdatePayment = (e) => {
@@ -118,58 +160,103 @@ class CreatePayment extends Component {
                             <div className = "card-body">
                                 <form>
                                     <div className = "form-group">
+                                        <label> Student ID: </label>
+                                        {/*<input placeholder="Student ID" name="studentId" className="form-control"*/}
+                                        {/*       value={this.state.studentId} onChange={this.changeStudentIdHandler}/>*/}
+                                        <select value={this.state.studentId} className="form-control" onChange={this.changeStudentIdHandler}>
+                                            <option value=''>Select Student ID</option>
+                                            {
+                                                this.state.studentIds.map(name =>
+                                                    <option key={name._id} value={name._id}> {name.studentID} </option>
+                                                )
+                                            }
+                                        </select>
+                                    </div>
+                                    <div className = "form-group">
+                                        <label> Student Name : </label>
+                                        {/*<input placeholder="Student Name" name="studentName" className="form-control"*/}
+                                        {/*       value={this.state.studentName} onChange={this.changeStudentNameHandler}/>*/}
+                                        <select value={this.state.studentName} className="form-control" onChange={this.changeStudentNameHandler}>
+                                            <option value=''>Select Student Name</option>
+                                            {
+                                                this.state.studentNames.map(name =>
+                                                    <option key={name._id} value={name._id}> {name.studentName} </option>
+                                                )
+                                            }
+                                        </select>
+                                    </div>
+                                    <div className = "form-group">
                                         <label> School Branch: </label>
-                                        <select value={this.state.schoolBranch} className="form-control" onChange={this.changeSchoolBranchHandler}>
-                                            <option defaultValue>School Branch:</option>
-                                            <option value="Colombo">Colombo</option>
-                                            <option value="Kandy">Kandy</option>
-                                            <option value="Dehiwala">Dehiwala</option>
-                                            <option value="Negambo">Negambo</option>
-                                            <option value="Ratmalana">Ratmalana</option>
+                                        {/*<select value={this.state.schoolBranch} className="form-control" onChange={this.changeSchoolBranchHandler}>*/}
+                                        {/*    <option defaultValue>School Branch:</option>*/}
+                                        {/*    <option value="Colombo">Colombo</option>*/}
+                                        {/*    <option value="Kandy">Kandy</option>*/}
+                                        {/*    <option value="Dehiwala">Dehiwala</option>*/}
+                                        {/*    <option value="Negambo">Negambo</option>*/}
+                                        {/*    <option value="Ratmalana">Ratmalana</option>*/}
+                                        {/*</select>*/}
+                                        <select value={this.state.schoolBranch} name="schoolBranch" className="form-control" onChange={this.changeSchoolBranchHandler}>
+                                            <option value=''>Select Branch</option>
+                                            {
+                                                this.state.branches.map(Branch =>
+                                                    <option key={Branch._id} value={Branch._id}> {Branch.branchName} </option>
+                                                )
+                                            }
+
                                         </select>
                                     </div>
                                     <div className = "form-group">
                                         <label> Select Grade: </label>
-                                        <select value={this.state.class} className="form-control" onChange={this.changeClassHandler}>
-                                            <option defaultValue>Grade</option>
-                                            <option value="Grade 01">Grade 01</option>
-                                            <option value="Grade 02">Grade 02</option>
-                                            <option value="Grade 03">Grade 03</option>
-                                            <option value="Grade 04">Grade 04</option>
-                                            <option value="Grade 05">Grade 05</option>
-                                            <option value="Grade 06">Grade 06</option>
-                                            <option value="Grade 07">Grade 07</option>
-                                            <option value="Grade 08">Grade 08</option>
-                                            <option value="Grade 09">Grade 09</option>
-                                            <option value="Grade 10">Grade 10</option>
-                                            <option value="Grade 11">Grade 11</option>
-                                            <option value="Grade 12">Grade 12</option>
-                                            <option value="Grade 13">Grade 13</option>
+                                        {/*<select value={this.state.class} className="form-control" onChange={this.changeClassHandler}>*/}
+                                        {/*    <option defaultValue>Grade</option>*/}
+                                        {/*    <option value="Grade 01">Grade 01</option>*/}
+                                        {/*    <option value="Grade 02">Grade 02</option>*/}
+                                        {/*    <option value="Grade 03">Grade 03</option>*/}
+                                        {/*    <option value="Grade 04">Grade 04</option>*/}
+                                        {/*    <option value="Grade 05">Grade 05</option>*/}
+                                        {/*    <option value="Grade 06">Grade 06</option>*/}
+                                        {/*    <option value="Grade 07">Grade 07</option>*/}
+                                        {/*    <option value="Grade 08">Grade 08</option>*/}
+                                        {/*    <option value="Grade 09">Grade 09</option>*/}
+                                        {/*    <option value="Grade 10">Grade 10</option>*/}
+                                        {/*    <option value="Grade 11">Grade 11</option>*/}
+                                        {/*    <option value="Grade 12">Grade 12</option>*/}
+                                        {/*    <option value="Grade 13">Grade 13</option>*/}
+                                        {/*</select>*/}
+
+                                        <select value={this.state.class} name="class" className="form-control" onChange={this.changeClassHandler}>
+                                            <option value=''>Select Class</option>
+                                            {
+                                                this.state.classes.map(Class =>
+                                                    <option key={Class._id} value={Class._id}> {Class.class} </option>
+                                                )
+                                            }
+
                                         </select>
                                     </div>
                                     <div className = "form-group">
                                         <label> Select Class Type: </label>
-                                        <select value={this.state.classType} name="classType" className="form-control" onChange={this.changeClassTypeHandler}>
-                                            <option defaultValue>Class</option>
-                                            <option value="Class A">Class A</option>
-                                            <option value="Class B">Class B</option>
-                                            <option value="Class C">Class C</option>
-                                            <option value="Class D">Class D</option>
-                                            <option value="Class E">Class E</option>
+                                        {/*<select value={this.state.classType} name="classType" className="form-control" onChange={this.changeClassTypeHandler}>*/}
+                                        {/*    <option defaultValue>Class</option>*/}
+                                        {/*    <option value="Class A">Class A</option>*/}
+                                        {/*    <option value="Class B">Class B</option>*/}
+                                        {/*    <option value="Class C">Class C</option>*/}
+                                        {/*    <option value="Class D">Class D</option>*/}
+                                        {/*    <option value="Class E">Class E</option>*/}
 
+                                        {/*</select>*/}
+                                        <select value={this.state.classType} className="form-control" onChange={this.changeClassTypeHandler}>
+                                            <option value=''>Select Class Type</option>
+                                            {
+                                                this.state.classTypes.map(type =>
+                                                    <option key={type._id} value={type._id}> {type.name} </option>
+                                                )
+                                            }
                                         </select>
 
+
                                     </div>
-                                    <div className = "form-group">
-                                        <label> Student ID: </label>
-                                        <input placeholder="Student ID" name="studentId" className="form-control"
-                                               value={this.state.studentId} onChange={this.changeStudentIdHandler}/>
-                                    </div>
-                                    <div className = "form-group">
-                                        <label> Student Name : </label>
-                                        <input placeholder="Student Name" name="studentName" className="form-control"
-                                               value={this.state.studentName} onChange={this.changeStudentNameHandler}/>
-                                    </div>
+
                                     <div className = "form-group">
                                     <label> Payment Type : </label>
                                     <select value={this.state.paymentType} className="form-control" onChange={this.changePaymentTypeHandler}>

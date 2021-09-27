@@ -82,6 +82,16 @@ class TeacherService{
 
     }
 
+    async getTeacherBySearch(Value){
+        return await fetch(TEACHER_API_BASE_URL+"/search/"+Value,{
+            method:"GET",
+        }).then(response =>{
+            return response.json();
+        }).catch(error => {
+            console.log(error.message);
+        })
+    }
+
 
 }
 

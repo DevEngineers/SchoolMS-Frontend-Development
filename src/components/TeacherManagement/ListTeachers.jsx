@@ -4,6 +4,7 @@ import {IconButton, TextField} from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import PageViewIcon from "@material-ui/icons/Pageview";
+import StudentService from "../../services/StudentService";
 
 class ListTeachers extends Component {
     constructor(props) {
@@ -42,12 +43,29 @@ class ListTeachers extends Component {
 
 
     render() {
+        const onSearchHandling = (e) => {
+
+            const search = e.target.value;
+            if(search){
+                TeacherService.getTeacherBySearch(search)
+                    .then(res =>{
+                        this.setState({teachers: res});
+                    }).catch(err =>{
+                    console.error(err)
+                })
+
+            } else{
+                TeacherService.getTeachers().then((res) => {
+                    this.setState({ teachers: res});
+                });
+            }
+        }
         return (
             <div>
                 <h2 className="text-center">Teachers List</h2>
                 <div>
                     <div id={'searchDiv'}>
-                        <TextField type={'text'}  id={'searchInput1'} variant="outlined"/>
+                        <TextField type={'text'}  id={'searchInput1'} variant="outlined" onChange={(e)=>onSearchHandling(e)}/>
                         <input type={'submit'} value={'Search'} id={'searchBtn1'}/>
                     </div>
                 </div>

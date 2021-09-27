@@ -4,6 +4,7 @@ import {IconButton, TextField} from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import PageViewIcon from "@material-ui/icons/Pageview";
+import StudentService from "../../services/StudentService";
 
 class ListPayments extends Component {
     constructor(props) {
@@ -12,6 +13,7 @@ class ListPayments extends Component {
         this.state = {
             payments: []
         }
+
         this.addPayment = this.addPayment.bind(this);
         this.editPayment = this.editPayment.bind(this);
         this.deletePayment = this.deletePayment.bind(this);
@@ -42,13 +44,30 @@ class ListPayments extends Component {
 
 
     render() {
+        const onSearchHandling = (e) => {
+
+            const search = e.target.value;
+            if(search){
+                StudentPaymentService.getPaymentBySearch(search)
+                    .then(res =>{
+                        this.setState({payments: res});
+                    }).catch(err =>{
+                    console.error(err)
+                })
+
+            } else{
+                StudentPaymentService.getPayments().then((res) => {
+                    this.setState({ payments: res});
+                });
+            }
+        }
         return (
             <div>
                 <h2 className="text-center">Payments List</h2>
                 <div>
                     <div id={'searchDiv'}>
-                        <TextField type={'text'}  id={'searchInput'} variant="outlined"/>
-                        <input type={'submit'} value={'Search'} id={'searchBtn'}/>
+                        <TextField type={'text'}  id={'searchInput1'} variant="outlined" onChange={(e)=>onSearchHandling(e)}/>
+                        <input type={'submit'} value={'Search'} id={'searchBtn1'}/>
                     </div>
                 </div>
                 <div className = "row">
@@ -60,6 +79,7 @@ class ListPayments extends Component {
 
                         <thead>
                         <tr>
+                            <th> Student ID</th>
                             <th> Student Name</th>
                             <th> School Branch</th>
                             <th> Payment Type</th>
@@ -75,12 +95,13 @@ class ListPayments extends Component {
                             this.state.payments.map(
                                 payment =>
                                     <tr key = {payment.id}>
-                                        <td> { payment.studentName} </td>
-                                        <td> { payment.schoolBranch} </td>
+                                        <td> { payment.studentId.studentID} </td>
+                                        <td> { payment.studentId.studentName} </td>
+                                        <td> {payment.schoolBranch.branchName}</td>
                                         <td> {payment.paymentType}</td>
                                         <td> {payment.paidAmount}</td>
-                                        <td> { payment.class} </td>
-                                        <td> { payment.classType} </td>
+                                        <td> { payment.class.class} </td>
+                                        <td> {payment.classType.name}</td>
                                         <td> {payment.dateOfPayment}</td>
                                         <td>
                                             <div className={'btn btn-infon'}>

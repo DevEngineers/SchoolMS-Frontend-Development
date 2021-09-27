@@ -10,19 +10,19 @@ import ClassService from "../../services/ClassService";
 import BranchService from "../../services/BranchService";
 
 class ListStudents extends Component {
+
     constructor(props) {
+        // const [Students,setStudent] = useState([]);
         super(props)
         this.state = {
             students: []
+
+
         }
         this.addStudent = this.addStudent.bind(this);
         this.editStudent = this.editStudent.bind(this);
         this.deleteStudent = this.deleteStudent.bind(this);
-
-
-    }
-
-
+  }
 
     deleteStudent(id){
         StudentService.deleteStudent(id).then( res => {
@@ -41,22 +41,42 @@ class ListStudents extends Component {
             console.log(res);
             this.setState({ students: res});
         });
-
     }
 
     addStudent(){
         this.props.history.push('/add-student/_add');
     }
 
-    render() {
+    // onSearchHandling(e){
+    //
+    // }
 
-        console.log(this.state.students);
+    render() {
+        const onSearchHandling = (e) => {
+
+            const search = e.target.value;
+            if(search){
+                StudentService.getStudentBySearch(search)
+                    .then(res =>{
+                        this.setState({students: res});
+                    }).catch(err =>{
+                    console.error(err)
+                })
+
+            } else{
+                StudentService.getStudents().then((res) => {
+                    this.setState({ students: res});
+                });
+            }
+        }
+
+
         return (
             <div>
                 <h2 className="text-center">Students List</h2>
                 <div>
                     <div id={'searchDiv'}>
-                        <TextField type={'text'}  id={'searchInput1'} variant="outlined"/>
+                        <TextField type={'text'}  id={'searchInput1'} variant="outlined" onChange={(e)=>onSearchHandling(e)}/>
                         <input type={'submit'} value={'Search'} id={'searchBtn1'}/>
                     </div>
                 </div>
@@ -74,11 +94,11 @@ class ListStudents extends Component {
                             <th> Guardian</th>
                             <th> Phone</th>
                             <th> Date Of Birth</th>
-                            <th> Address</th>
+                            {/*<th> Address</th>*/}
                             <th> School Branch</th>
                             <th> Class</th>
                             <th> Class Type</th>
-                            <th> Gender</th>
+                            {/*<th> Gender</th>*/}
                             <th> Actions</th>
                         </tr>
                         </thead>
@@ -92,11 +112,11 @@ class ListStudents extends Component {
                                         <td> {student.guardian}</td>
                                         <td> {student.phone}</td>
                                         <td> {student.dob}</td>
-                                        <td> {student.address}</td>
+                                        {/*<td> {student.address}</td>*/}
                                         <td> {student.schoolBranch.branchName}</td>
                                         <td> { student.class.class} </td>
                                         <td> {student.classType.name}</td>
-                                        <td> {student.gender}</td>
+                                        {/*<td> {student.gender}</td>*/}
                                         <td>
                                             <div className={'btn btn-infon'}>
                                                 <IconButton aria-label="edit" style={{backgroundColor:"transparent"}}
