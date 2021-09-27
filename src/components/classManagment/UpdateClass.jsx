@@ -132,8 +132,12 @@ class UpdateClass extends Component {
                                             <label htmlFor={"class"} > Class </label>
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
-                                            <TextField type={"text"} id="filled-basic"  name={"rClass"} value={this.state.rClass}
-                                                       placeholder={"Enter Class"} onChange={event => this.onChange(event)} style={{ width: 220 }} />
+                                            {/*<TextField type={"text"} id="filled-basic"  name={"rClass"} value={this.state.rClass}*/}
+                                            {/*           placeholder={"Enter Class"} onChange={event => this.onChange(event)} style={{ width: 220 }} disabled />*/}
+                                            <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={"rClass"}
+                                                    value={this.state.rClass} className={"classSize"} onChange={event => this.onChange(event)} >
+                                                <MenuItem value={this.state.rClass}> {this.state.rClass} </MenuItem>
+                                            </Select>
                                         </Box>
                                     </Grid>
                                 </div>
@@ -145,11 +149,11 @@ class UpdateClass extends Component {
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
                                             <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={"rClassType"}
-                                                    value={this.state.rClassType._id} className={"classSize"} onChange={event => this.onChange(event)} displayEmpty>
-                                                <MenuItem value={this.state.rClassType._id}> {this.state.rClassType.name} </MenuItem>
+                                                    value={this.state.rClassType} className={"classSize"} onChange={event => this.onChange(event)} >
+                                                <MenuItem value={this.state.rClassType}> {this.state.rClassType.name} </MenuItem>
                                                 {
                                                     this.state.classTypes.map(type =>
-                                                        <MenuItem key={type._id} value={type._id}> {type.name} </MenuItem>
+                                                        <MenuItem key={type} value={type._id}> {type.name} </MenuItem>
                                                     )
                                                 }
                                             </Select>
@@ -164,8 +168,8 @@ class UpdateClass extends Component {
                                         </Box>
                                         <Box ccomponent="div" display="inline" style={{ padding: 2, width: 250 }} >
                                             <Select labelId="demo-simple-select-label" id="demo-simple-select" style={{ width: 220 }} name={"rTeacher"}
-                                                    value={this.state.rTeacher._id} className={"classSize"} onChange={event => this.onChange(event)} displayEmpty>
-                                                <MenuItem value={this.state.rTeacher._id} > {this.state.rTeacher.name} </MenuItem>
+                                                    value={this.state.rTeacher} className={"classSize"} onChange={event => this.onChange(event)} >
+                                                <MenuItem value={this.state.rTeacher} > {this.state.rTeacher.teacherName} </MenuItem>
                                                 {
                                                     this.state.teachers.map(Teacher =>
                                                         <MenuItem key={Teacher._id} value={Teacher._id}> {Teacher.teacherName} </MenuItem>
