@@ -6,6 +6,7 @@ import {toast, ToastContainer} from "material-react-toastify";
 import AttendanceService from "../../services/AttendanceService";
 import moment from "moment";
 import StudentService from "../../services/StudentService";
+import {useHistory} from "react-router-dom";
 
 /**
  * @author : A.M Zumry
@@ -23,6 +24,7 @@ const options = {
 }
 
 function UpdateAttendance(props){
+    const history = useHistory();
     const [Date,setDate] = useState('');
     const [Class,setClass] = useState([]);
     const [ClassType,setClassType] = useState([]);
@@ -74,7 +76,6 @@ function UpdateAttendance(props){
         if(attendance.includes(value) === true){
             let index = attendance.indexOf(value);
             attendance.splice(index,1)
-            console.log('true index',index);
             console.log('true students',attendance);
             return
         }
@@ -86,34 +87,38 @@ function UpdateAttendance(props){
     }
 
     function updateAttendance(event){
-    //     event.preventDefault();
-    //     let Att = {
-    //         date:this.state.rDate,
-    //         class:this.state.rClass,
-    //         classType: this.state.rClassType,
-    //         student:this.state.student,
-    //         // attendance:this.state.attendance
-    //     }
-    //     if(Att.date === ''){
-    //         toast.warn('Select a Date',options)
-    //     }else if(Att.class === ''){
-    //         toast.warn('Select the Class',options)
-    //     }else if(Att.classType === ''){
-    //         toast.warn('Select the Class Type',options)
-    //     }else{
-    //         AttendanceService.updateAttendance(this.state.AttendanceID,Att)
-    //             .then(res =>{
-    //                 if (res.status === 200) {
-    //                     toast.success("Attendance Update Successfully ", options)
-    //                     setTimeout(()=>{this.props.history.push("/view-attendance")},3000)
-    //                 } else {
-    //                     throw Error('Something went wrong!! Try again.' + res);
-    //                 }
-    //             })
-    //             .catch((error) => {
-    //                 toast.error(error.message, options)
-    //             })
-    //     }
+        event.preventDefault();
+
+        let AttendanceID= props.match.params.id;
+
+        let Att = {
+            date:Date,
+            class:Class._id,
+            classType: ClassType._id,
+            student:attendance,
+        }
+        if(Att.date === ''){
+            toast.warn("Select a Date",options)
+        }else if(Att.class === ''){
+            toast.warn("Select the Class",options)
+        }else if(Att.classType === ''){
+            toast.warn("Select the Class Type",options)
+        }else{
+            AttendanceService.updateAttendance(AttendanceID,Att)
+                .then(res =>{
+                    if (res.status === 200) {
+                        toast.success("Attendance Update Successfully ", options);
+                        setTimeout(()=>{
+                            history.push("/view-attendance")},
+                            3000)
+                    } else {
+                        throw Error('Something went wrong!! Try again.' + res);
+                    }
+                })
+                .catch((error) => {
+                    toast.error(error.message, options)
+                })
+        }
     }
 
     /**
