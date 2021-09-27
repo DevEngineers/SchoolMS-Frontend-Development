@@ -74,6 +74,7 @@ function UpdateAttendance(props){
         if(attendance.includes(value) === true){
             let index = attendance.indexOf(value);
             attendance.splice(index,1)
+            console.log('true index',index);
             console.log('true students',attendance);
             return
         }
@@ -198,7 +199,7 @@ function UpdateAttendance(props){
 
                                                             <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
                                                                 <Checkbox name="checkedB" color="primary" checked
-                                                                          value={Stu.Id} key={Stu.Id} onChange={event => onCheckBox(event) } />
+                                                                          value={Stu._id} key={Stu._id} onChange={event => onCheckBox(event) } />
                                                             </Box>
                                                         </Grid>
                                                     </div>
@@ -211,7 +212,7 @@ function UpdateAttendance(props){
 
                                                             <Box ccomponent="div" display="inline" style={{ padding: 2, width: 135 }} >
                                                                 <Checkbox name="checkedB" color="primary" checked={Stu.Att}
-                                                                          value={Stu.Id} key={Stu.Id} onChange={event => onCheckBox(event) } />
+                                                                          value={Stu._id} key={Stu._id} onChange={event => onCheckBox(event) } />
                                                             </Box>
                                                         </Grid>
                                                     </div>
