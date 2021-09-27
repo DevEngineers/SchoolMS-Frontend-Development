@@ -72,9 +72,6 @@ class UpdateClass extends Component {
 
     updateClass(event){
         event.preventDefault();
-        console.log("Teacher",this.state.rTeacher)
-        console.log("rClassType",this.state.rClassType)
-        console.log("rClass",this.state.rClass)
         let Classes = {
             class: this.state.rClass,
             classType: this.state.rClassType,
