@@ -38,7 +38,7 @@ class Header extends Component {
                     <input type={"checkbox"} id={"drop"}/>
                     <ul className={"menu"}>
                         <li id={"homeID"}>
-                            <a href="#"><HomeIcon id={'homeIcon'}/></a>
+                            <a href="/home"><HomeIcon id={'homeIcon'}/></a>
                         </li>
                         <li>
                             {/*First Tier Drop Down*/}
