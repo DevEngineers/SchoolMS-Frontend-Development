@@ -121,6 +121,14 @@ function ManageClassTimetable() {
         });
     }
 
+    function getClassNames(timetableArr){
+        let nameArr = []
+        for (let i=0;i<timetableArr;i++){
+            nameArr[i] = timetableArr[i].class.class
+        }
+        return nameArr;
+    }
+
     return (
         <div>
             <ToastContainer/>
@@ -238,6 +246,7 @@ function ManageClassTimetable() {
                     </Button>
                 </DialogActions>
             </Dialog>
+            <div style={{'margin-top':'290px'}}/>
         </div>
     );
 }

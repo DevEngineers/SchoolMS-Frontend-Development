@@ -7,13 +7,15 @@
 
 #largeResultDiv {
   width: 51%;
+  height: 680px;
   padding: 20px;
-  float: left;
   box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
   font-family: Georgia, "Times New Roman", Times, serif;
-  margin-left: 350px;
   background-color: #f4f7f8;
-  margin-bottom: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  margin-top: 20px;
 }
 
 #form-style-marksR {
