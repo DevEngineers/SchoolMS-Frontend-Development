@@ -161,6 +161,8 @@ class AboutUsContactUs extends Component {
                     </div>
                     <hr></hr>
                     <div className={'form-style-about'}>
+                        {/*<h1>Stay Connected...</h1>*/}
+                        {/*<label  className={'custom-underline'}>Stay Connected</label>*/}
                         <form>
                             <div>
                                 <label htmlFor={'name'}>Your Name</label>

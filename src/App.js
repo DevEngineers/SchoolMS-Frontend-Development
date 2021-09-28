@@ -44,6 +44,9 @@ import ManageUserAccounts from "./components/userManagement/ManageUserAccounts";
 import ViewClassTimetable from "./components/classTimetableManagement/ViewClassTimetable";
 import ViewExamTimetable from "./components/examTimetableManagement/ViewExamTimetable";
 import ViewResult from "./components/resultManagement/ViewResult";
+import Home from "./components/Home";
+import AboutUsContactUs from "./components/AboutUs&ContactUs";
+
 
 function App() {
   return (
@@ -51,6 +54,7 @@ function App() {
       <Header />
       <Switch>
         <Route path="/login" component={Login} />
+        <Route path="/home" component={Home} />
         <Route path="/createClassTimetable" component={CreateClassTimetable} />
         <Route
           path="/updateClassTimetable/:id"
@@ -98,6 +102,10 @@ function App() {
         <Route path="/view-payment/:id" component={ViewPayments} />
         <Route path="/payments" component={ListPayments} />
         <Route path="/payment-report" component={GeneratePaymentReport} />
+        <Route path="/about-us" component={AboutUsContactUs} />
+
+
+
       </Switch>
       <Footer />
     </Router>

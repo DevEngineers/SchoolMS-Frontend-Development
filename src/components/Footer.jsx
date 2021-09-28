@@ -37,7 +37,9 @@ class Footer extends Component {
                                     {/*<hr/>*/}
                                 </div>
                                 <div id="about-footer">
+                                    <a href="/about-us">
                                     <Button variant="contained" color="primary"> About US</Button>
+                                    </a>
                                 </div>
                             </div>)
                     )

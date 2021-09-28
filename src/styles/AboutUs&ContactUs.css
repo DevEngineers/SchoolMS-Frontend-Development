@@ -146,19 +146,18 @@ header .logo span {
     border: 1px solid #5B5A4D;
 }
 .box{
-    height:125px;
+    height:50px;
     display: inline-block;
     font-size: 40px;
     margin:10px 0 0 0px;
     text-align: center;
 }
 .custom-underline {
-    position: relative;
-    display: inline-block;
     font-size: 24px;
     font-weight: bold;
     text-align: center;
     font-family: "Raleway", sans-serif;
+   text-decoration: underline;
 }
 .h3{
     font-weight: bold;
@@ -217,7 +216,7 @@ header .logo span {
     border: 1px solid #62a1e0;
     border-width: 1px 1px 3px;
     border-radius: 3px;
-    /*margin: -15px 0 15px;*/
+    /**/
     margin-right: auto;
 }
 .form-style-about input[type="submit"]:hover
