@@ -19,6 +19,7 @@ function ViewResult(props) {
   async function fetchResult() {
     await ResultService.getResultsByID(resultID)
       .then((result) => {
+        console.log(result)
         setEClass(result.class.class);
         setEClassType(result.classType.name);
         setYear(result.year);
