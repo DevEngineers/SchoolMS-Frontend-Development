@@ -62,7 +62,7 @@ class ListTeachers extends Component {
         }
         return (
             <div>
-                <h2 className="text-center">Teachers List</h2>
+                <h2 className="text-center2">Teachers List</h2>
                 <div>
                     <div id={'searchDiv'}>
                         <TextField type={'text'}  id={'searchInput1'} variant="outlined" onChange={(e)=>onSearchHandling(e)}/>

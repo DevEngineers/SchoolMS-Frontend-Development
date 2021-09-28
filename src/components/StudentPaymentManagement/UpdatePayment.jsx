@@ -33,6 +33,7 @@ class UpdatePayment extends Component {
             studentNames:[],
             paymentTypes:[]
 
+
         }
         this.changeSchoolBranchHandler = this.changeSchoolBranchHandler.bind(this);
         this.changeClassHandler = this.changeClassHandler.bind(this);

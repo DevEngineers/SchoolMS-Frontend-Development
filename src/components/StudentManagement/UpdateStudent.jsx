@@ -213,7 +213,7 @@ class UpdateStudent extends Component {
                                     </div>
                                     <div className = "form-group" >
                                         <label> Gender : </label>
-                                        <input type="text"  name="gender"  className = "form-control" value={this.state.gender} onChange ={event=>this.onChange(event)} />
+                                        <input disabled type="text"  name="gender"  className = "form-control" value={this.state.gender} onChange ={event=>this.onChange(event)} />
 
 
                                     </div>

@@ -63,7 +63,7 @@ class ListPayments extends Component {
         }
         return (
             <div>
-                <h2 className="text-center">Payments List</h2>
+                <h2 className="text-center2">Payments List</h2>
                 <div>
                     <div id={'searchDiv'}>
                         <TextField type={'text'}  id={'searchInput1'} variant="outlined" onChange={(e)=>onSearchHandling(e)}/>
