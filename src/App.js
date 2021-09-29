@@ -45,7 +45,7 @@ import ViewClassTimetable from "./components/classTimetableManagement/ViewClassT
 import ViewExamTimetable from "./components/examTimetableManagement/ViewExamTimetable";
 import ViewResult from "./components/resultManagement/ViewResult";
 import Home from "./components/Home";
-import AboutUsContactUs from "./components/AboutUs&ContactUs";
+import AboutUs from "./components/AboutUs";
 
 
 function App() {
@@ -53,7 +53,7 @@ function App() {
     <Router>
       <Header />
       <Switch>
-        <Route path="/login" component={Login} />
+        <Route exact path="/" component={Login} />
         <Route path="/home" component={Home} />
         <Route path="/createClassTimetable" component={CreateClassTimetable} />
         <Route
@@ -102,7 +102,7 @@ function App() {
         <Route path="/view-payment/:id" component={ViewPayments} />
         <Route path="/payments" component={ListPayments} />
         <Route path="/payment-report" component={GeneratePaymentReport} />
-        <Route path="/about-us" component={AboutUsContactUs} />
+        <Route path="/about-us" component={AboutUs} />
 
 
 

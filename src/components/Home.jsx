@@ -16,6 +16,7 @@ class AHome extends React.Component{
     render() {
 
         return <div id="bodyDiv">
+
             <h2>Welcome to Gateway Collage  </h2>
             <div className="divB">
                 <div className="icondiv">
@@ -70,6 +71,12 @@ class AHome extends React.Component{
                     <a href="/payments">
                         <img className={'functionlogo'} src={require('../images/home/Fees.png')} />
                         Fees Management
+                    </a>
+                </div>
+                <div className="icondiv">
+                    <a href="/payments">
+                        <img className={'functionlogo'} src={require('../images/home/user.jpg')} />
+                        User Management
                     </a>
                 </div>
             </div>

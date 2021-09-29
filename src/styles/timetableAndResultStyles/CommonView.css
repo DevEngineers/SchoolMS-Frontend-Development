@@ -49,14 +49,15 @@
 
 #largeViewDiv {
   width: 91%;
+  height: 560px;
   padding: 20px;
-  float: left;
   box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
   font-family: Georgia, "Times New Roman", Times, serif;
-  margin-left: 50px;
   background-color: #f4f7f8;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  margin-top: 20px;
 }
 
 #viewCTTimeSlot {
@@ -142,12 +143,15 @@
 
 #largeVExamDiv {
   width: 45%;
+  height: 480px;
   padding: 20px;
-  float: left;
   box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
   font-family: Georgia, "Times New Roman", Times, serif;
   background-color: #f4f7f8;
-  margin: 40px 0 40px 400px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  margin-top: 20px;
 }
 
 #secondEViewDiv {
@@ -201,12 +205,15 @@
 
 #largeVResultDiv {
   width: 42%;
+  height: 540px;
   padding: 20px;
-  float: left;
   box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
   font-family: Georgia, "Times New Roman", Times, serif;
   background-color: #f4f7f8;
-  margin: 40px 0 40px 420px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  margin-top: 20px;
 }
 
 #secondRViewDiv {

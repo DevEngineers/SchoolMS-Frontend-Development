@@ -344,7 +344,7 @@ li > a:only-child:after { content: ''; }
     background: #0B172A;
     width: 100%;
     height: 80px;
-    margin-top: 250px;
+    margin-top: 50px;
 }
 
 #copyright{

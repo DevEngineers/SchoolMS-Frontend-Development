@@ -229,6 +229,7 @@ function ManageResults() {
                     </Button>
                 </DialogActions>
             </Dialog>
+            <div style={{'margin-top':'290px'}}/>
         </div>
     );
 }
