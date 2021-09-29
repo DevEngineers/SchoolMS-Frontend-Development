@@ -13,6 +13,14 @@ class AHome extends React.Component{
 
     }
 
+    componentDidMount() {
+        localStorage.setItem("homeValue", "value");
+    }
+
+    componentWillUnmount() {
+        localStorage.removeItem('homeValue');
+    }
+
     render() {
 
         return <div id="bodyDiv">
