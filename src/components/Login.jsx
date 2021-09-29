@@ -1,4 +1,4 @@
-import React, {useState,} from "react";
+import React, {useEffect, useState,} from "react";
 import '../styles/Login.css';
 import {toast, ToastContainer} from "material-react-toastify";
 import UserService from "../services/UserService";
@@ -23,6 +23,21 @@ const Login = () => {
     const history = useHistory();
     const [email,setEmail] = useState('');
     const [password ,setPassword] = useState('');
+
+    useEffect(() =>{
+        localStorage.setItem('headerValue', 'value');
+        localStorage.setItem('footerValue', 'value');
+
+        return () => {
+            localStorage.removeItem('headerValue');
+            localStorage.removeItem('footerValue');
+        }
+    },[]);
+
+    // function fetchAttendance() {
+    //     localStorage.setItem('headerValue', 'value');
+    //     localStorage.setItem('footerValue', 'value');
+    // }
 
     const userLogin = (event) =>{
         event.preventDefault()

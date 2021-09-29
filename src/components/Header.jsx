@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import HomeIcon from '@material-ui/icons/Home';
+import HomeIcon from "@material-ui/icons/Home";
 import "../styles/HeaderFooter.css";
 
 /**
@@ -16,10 +16,18 @@ class Header extends Component {
         }
     }
 
+    componentDidMount() {
+        this.setState({type:localStorage.getItem("type")})
+    }
+
+    componentWillUnmount() {
+        localStorage.removeItem("headerValue")
+    }
+
     logout(event){
         event.preventDefault()
         localStorage.clear();
-        this.props.history.push('/');
+        this.props.history.push("/login");
     }
 
     forAdministratorView(){
@@ -299,15 +307,19 @@ class Header extends Component {
     render() {
         return <div>
             {
+                localStorage.getItem("headerValue") !== "value" ?
                 (
-                    this.state.type === "Administrator"?
-                        (this.forAdministratorView())
-                    :this.state.type === "AdministratorStaff"?
-                        (this.forAdministratorStaffView())
-                    :this.state.type === "ExaminationStaff"?
-                        (this.forExaminationStaffView())
-                    :(this.forAdministratorView())
-                )
+                    (
+                        this.state.type === "Administrator"?
+                            (this.forAdministratorView())
+                        :this.state.type === "AdministratorStaff"?
+                            (this.forAdministratorStaffView())
+                        :this.state.type === "ExaminationStaff"?
+                            (this.forExaminationStaffView())
+                        :(this.forAdministratorView())
+                    )
+                ):(localStorage.removeItem("headerValue"))
+
             }
         </div>
     }
