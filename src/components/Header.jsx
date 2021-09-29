@@ -35,7 +35,6 @@ class Header extends Component {
             <div  id={"HeadDiv"}>
                 <label id={"HeadTitle"}>𝙂𝙖𝙩𝙚𝙬𝙖𝙮 𝙄𝙣𝙩𝙚𝙧𝙣𝙖𝙩𝙞𝙤𝙣𝙖𝙡 𝙎𝙘𝙝𝙤𝙤𝙡</label>
                 <div id={"logRDiv"}>
-                    <a href={"#"} id={"regLink"}>Manage Users</a>
                     <a href={"/userProfile"} id={"regLink"}>User Profile</a>
                     <a href={"#"} id={"logLink"} onClick={event => this.logout(event)} >Logout</a>
                 </div>
