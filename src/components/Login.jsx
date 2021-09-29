@@ -34,10 +34,6 @@ const Login = () => {
         }
     },[]);
 
-    // function fetchAttendance() {
-    //     localStorage.setItem('headerValue', 'value');
-    //     localStorage.setItem('footerValue', 'value');
-    // }
 
     const userLogin = (event) =>{
         event.preventDefault()
