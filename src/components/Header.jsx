@@ -18,7 +18,8 @@ class Header extends Component {
     }
 
     componentDidMount() {
-        this.setState({type:localStorage.getItem("type")})
+        this.setState({type:localStorage.getItem("userType")})
+        console.log("type",localStorage.getItem("userType"))
     }
 
     componentWillUnmount() {
@@ -324,11 +325,11 @@ class Header extends Component {
                 localStorage.getItem("headerValue") !== "value" ?
                 (
                     (
-                        this.state.type === "Administrator"?
+                        this.state.type === 'Administrator'?
                             (this.forAdministratorView())
-                        :this.state.type === "AdministratorStaff"?
+                        :this.state.type === 'AdministratorStaff'?
                             (this.forAdministratorStaffView())
-                        :this.state.type === "ExaminationStaff"?
+                        :this.state.type === 'ExaminationStaff'?
                             (this.forExaminationStaffView())
                         :(this.forAdministratorView())
                     )
