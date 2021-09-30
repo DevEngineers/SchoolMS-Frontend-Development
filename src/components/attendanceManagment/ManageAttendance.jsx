@@ -72,12 +72,12 @@ function ManageAttendance(){
     function onSearchHandling(e){
         const search = e.target.value;
         if(search){
-            AttendanceService.getAttendanceBySearch(search)
-                .then(attendance =>{
-                    setAttendance(attendance);
-                }).catch(err =>{
-                console.error(err)
-            })
+            // AttendanceService.getAttendanceBySearch(search)
+            //     .then(Att =>{
+            //         setAttendance(Att);
+            //     }).catch(err =>{
+            //     console.error(err)
+            // })
         }else{
             fetchAttendance();
         }
