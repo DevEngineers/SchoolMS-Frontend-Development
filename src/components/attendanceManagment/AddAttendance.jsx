@@ -102,11 +102,18 @@ function AddAttendance(){
 
     function storeAttendance(event){
         event.preventDefault();
+
+        let SplitDate = Date.split("-");
+        let Month = SplitDate[1]
+
+        console.log("Moth : ", Month);
+
         let Att = {
             date:Date,
             class:Class,
             classType: ClassType,
             student:attendance,
+            month:Month,
         }
         if(Att.date === ''){
             toast.warn("Select a Date",options)
