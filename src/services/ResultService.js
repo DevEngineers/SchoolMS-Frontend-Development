@@ -112,6 +112,25 @@ class ResultService {
           return reason;
         });
   }
+
+  async generateResultReport(result) {
+    console.log(result)
+    const bearer = "Bearer " + localStorage.getItem("userToken");
+    return await fetch(RESULT_API_BASE_URI + "/generate/report", {
+      method: "POST",
+      headers: {
+        "content-Type": "application/json",
+        /*'Authorization': bearer*/
+      },
+      body:JSON.stringify(result)
+    })
+    .then((response) => {
+      return response;
+    })
+    .catch((reason) => {
+      return reason;
+    });
+  }
 }
 
 export default new ResultService();

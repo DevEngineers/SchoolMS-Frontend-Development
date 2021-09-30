@@ -49,7 +49,8 @@ const Login = () => {
                     localStorage.setItem("branch",response.branch)
                     localStorage.setItem("userID",response.userID)
                     localStorage.setItem("userToken",response.token);
-                    history.push("/manageClassTimetable");
+                    localStorage.setItem("userToken",response.userType);
+                    history.push("/home");
                 }else{
                     toast.warning(`Username or Password Incorrect`, options);
                 }
@@ -68,7 +69,7 @@ const Login = () => {
                           <input type="text" placeholder="EMAIL" onChange={event => setEmail(event.target.value)}/>
                           <input type="password" placeholder="PASSWORD" onChange={event => setPassword(event.target.value)}/>
                           <label className={'forgotText'}>Forgot Password?</label><br/>
-                          <label className={'forgotText'}>Please Contact Administrator Through <a href={'#'} id={"aboutUsLink"}>About us</a></label>
+                          <label className={'forgotText'}>Please Contact Administrator Through <a href={'/about-us'} id={"aboutUsLink"}>About us</a></label>
                           <button className="submit" onClick={event => userLogin(event)}>LOGIN</button>
                       </form>
                   </div>

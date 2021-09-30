@@ -22,68 +22,66 @@ class AHome extends React.Component{
     }
 
     render() {
-
         return <div id="bodyDiv">
-
-            <h2>Welcome to Gateway Collage  </h2>
+            <h2 id={"head2"}>Welcome to Gateway Collage</h2>
             <div className="divB">
                 <div className="icondiv">
-                    <a href="/students">
-                        <img className={'functionlogo'} src={require('../images/home/student.jpg')} />
+                    <a href={"/students"}>
+                        <img className={'functionlogo'} alt={'homeIcons'} src={require('../images/home/student.jpg')} />
                         <label>Student Management </label>
                     </a>
                 </div>
                 <div className="icondiv">
-                    <a href="/teachers">
-                        <img className={'functionlogo'} src={require('../images/home/teacher.png')} />
+                    <a href={"/teachers"}>
+                        <img className={'functionlogo'} alt={'homeIcons'} src={require('../images/home/teacher.png')} />
                         Teacher Management
                     </a>
                 </div>
                 <div className="icondiv">
-                    <a href="/view-class">
-                        <img className={'functionlogo'} src={require('../images/home/class.jpg')} />
+                    <a href={"/view-class"}>
+                        <img className={'functionlogo'} alt={'homeIcons'} src={require('../images/home/class.jpg')} />
                         Class Management
                     </a>
                 </div>
                 <div className="icondiv">
-                    <a href="/view-subject">
-                        <img className={'functionlogo'} src={require('../images/home/subject.jpg')} />
+                    <a href={"/view-subject"}>
+                        <img className={'functionlogo'} alt={'homeIcons'} src={require('../images/home/subject.jpg')} />
                         Subject Management
                     </a>
                 </div>
                 <div className="icondiv">
-                    <a href="/manageClassTimetable">
-                        <img className={'functionlogo'} src={require('../images/home/timetable.jpg')} />
+                    <a href={"/manageClassTimetable"}>
+                        <img className={'functionlogo'} alt={'homeIcons'} src={require('../images/home/timetable.jpg')} />
                         Class Timetable Management
                     </a>
                 </div>
                 <div className="icondiv">
-                    <a href="/manageExamTimetable">
-                        <img className={'functionlogo'} src={require('../images/home/exam.jpg')} />
+                    <a href={"/manageExamTimetable"}>
+                        <img className={'functionlogo'} alt={'homeIcons'} src={require('../images/home/exam.jpg')} />
                         Exam Timetable Management
                     </a>
                 </div>
                 <div className="icondiv">
-                    <a href="/manageResults">
-                        <img className={'functionlogo'} src={require('../images/home/results.jpg')} />
+                    <a href={"/manageResults"}>
+                        <img className={'functionlogo'} alt={'homeIcons'} src={require('../images/home/results.jpg')} />
                         Results Management
                     </a>
                 </div>
                 <div className="icondiv">
-                    <a href="/view-attendance">
-                        <img className={'functionlogo'} src={require('../images/home/attendance.jpg')} />
+                    <a href={"/view-attendance"}>
+                        <img className={'functionlogo'} alt={'homeIcons'} src={require('../images/home/attendance.jpg')} />
                         Attendance Management
                     </a>
                 </div>
                 <div className="icondiv">
-                    <a href="/payments">
-                        <img className={'functionlogo'} src={require('../images/home/Fees.png')} />
+                    <a href={"/payments"}>
+                        <img className={'functionlogo'} alt={'homeIcons'} src={require('../images/home/Fees.png')} />
                         Fees Management
                     </a>
                 </div>
                 <div className="icondiv">
-                    <a href="/payments">
-                        <img className={'functionlogo'} src={require('../images/home/user.jpg')} />
+                    <a href={"/manageUserAccount"}>
+                        <img className={'functionlogo'} alt={'homeIcons'} src={require('../images/home/user.jpg')} />
                         User Management
                     </a>
                 </div>

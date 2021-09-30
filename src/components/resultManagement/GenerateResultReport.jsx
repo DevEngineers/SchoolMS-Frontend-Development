@@ -5,6 +5,25 @@ import "../../styles/timetableAndResultStyles/Results.css";
 import ClassService from "../../services/ClassService";
 import ClassTypeService from "../../services/ClassTypeService";
 import StudentService from "../../services/StudentService";
+import {toast, ToastContainer} from "material-react-toastify";
+import "material-react-toastify/dist/ReactToastify.css";
+import ResultService from "../../services/ResultService";
+
+/**
+ * @author : M.N.M Akeel
+ * Registration Number : IT19153414
+ */
+
+//Toast Message Configuration
+const options = {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: false,
+};
+
 
 const years = (new Date()).getFullYear();
 const yearArray = Array.from(new Array(30),( val, index) => index + years);
@@ -52,11 +71,48 @@ function GenerateResultReport() {
         .then((res) =>{
             setStudentArray(res);
         })
+    }
 
+    const generateReport = (event) =>{
+        event.preventDefault();
+        if ( sClass === "") {
+            toast.warn("Select the Class", options);
+        } else if (sClassType === "") {
+            toast.warn("Select the ClassType", options);
+        } else if (studentID === "") {
+            toast.warn("Select Student", options);
+        } else if (year === "") {
+            toast.warn("Select Year", options);
+        } else if ( term === "") {
+            toast.warn("Select Term", options);
+        } else {
+            let report={
+                class:sClass,
+                classType:sClassType,
+                studentID:studentID,
+                year:year,
+                term:term
+            }
+            ResultService.generateResultReport(report)
+            .then((res) => {
+                if (res.status === 200) {
+                    toast.success("Report Successfully Generated", options);
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 3000);
+                } else {
+                    throw Error("Something went wrong!! Try again.");
+                }
+            })
+            .catch((error) => {
+                toast.error(error.message, options);
+            });
+        }
     }
 
     return (
       <div>
+          <ToastContainer/>
           <div>
               <div className={"box"}>
                   <label className={"custom-underline"}>
@@ -164,6 +220,7 @@ function GenerateResultReport() {
                         type={"submit"}
                         id={"submitUBtn"}
                         value={"Generate Report"}
+                        onClick={event => generateReport(event)}
                       />
                       <input type={"reset"} id={"restUBtn"} value={"Reset"}/>
                   </div>
