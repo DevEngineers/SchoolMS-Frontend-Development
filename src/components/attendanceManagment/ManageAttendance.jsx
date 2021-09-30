@@ -22,7 +22,7 @@ const options = {
     draggable: false
 }
 
-function ManageAttendance(props){
+function ManageAttendance(){
     const history = useHistory();
     const [attendance,setAttendance] = useState([]);
     const [open, setOpen] = useState(false);
@@ -46,6 +46,9 @@ function ManageAttendance(props){
 
 
     useEffect(() =>{
+        if(localStorage.getItem('userToken') === null){
+            history.push('/');
+        }
         fetchAttendance();
     },[]);
 

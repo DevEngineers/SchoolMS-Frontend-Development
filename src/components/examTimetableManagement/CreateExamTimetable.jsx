@@ -52,6 +52,9 @@ class CreateExamTimetable extends React.Component {
     }
 
     componentDidMount() {
+        if(localStorage.getItem('userToken') === null){
+            this.props.history.push('/');
+        }
         this.setDefaultValuesInState();
 
         ClassService.getClasses()

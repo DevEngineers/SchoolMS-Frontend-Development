@@ -51,6 +51,10 @@ class UpdateResult extends React.Component {
   }
 
   componentDidMount() {
+    if(localStorage.getItem('userToken') === null){
+      this.props.history.push('/');
+    }
+
     ResultService.getResultsByID(this.state.resultID).then((res) => {
       this.setState({
         rClass: res.class,

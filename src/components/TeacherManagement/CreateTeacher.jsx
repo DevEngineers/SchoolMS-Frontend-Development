@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import TeacherService from "../../services/TeacherService";
 import '../../styles/TeacherStyles/Teacher.css';
-import ClassService from "../../services/ClassService";
-import ClassTypeService from "../../services/ClassTypeService";
 import BranchService from "../../services/BranchService";
 
 /*
@@ -37,6 +35,10 @@ class CreateTeacher extends Component {
     }
 
     componentDidMount(){
+        if(localStorage.getItem('userToken') === null){
+            this.props.history.push('/');
+        }
+
         BranchService.getBranches()
             .then(res => {
                 this.setState({branches:res})
@@ -104,7 +106,7 @@ class CreateTeacher extends Component {
     render() {
         return (
             <div>
-                <br></br>
+                <br/>
                 <div className = "container">
                     <div className = "row">
                         <div className = "card col-md-6 offset-md-3 offset-md-3">
@@ -166,7 +168,7 @@ class CreateTeacher extends Component {
 
                                     </div>
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} >Cancel</button>
-                                    <button className="btn btn-success" onClick={this.saveOrUpdateTeacher}style={{marginLeft: "10px"}}>Save</button>
+                                    <button className="btn btn-success" onClick={this.saveOrUpdateTeacher} style={{marginLeft: "10px"}}>Save</button>
 
 
 

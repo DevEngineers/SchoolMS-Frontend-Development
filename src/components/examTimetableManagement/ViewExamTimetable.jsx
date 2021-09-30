@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ExamTimetableService from "../../services/ExamTimetableService";
 import "../../styles/timetableAndResultStyles/CommonView.css";
+import {useHistory} from "react-router-dom"
 
 function ViewExamTimetable(props) {
+  const history = useHistory();
   const examID = props.match.params.id;
   const [eClass, setEClass] = useState("");
   const [year, setYear] = useState("");
@@ -13,6 +15,9 @@ function ViewExamTimetable(props) {
   const [examSubjects, setExamSubjects] = useState([]);
 
   useEffect(() => {
+    if(localStorage.getItem('userToken') === null){
+      history.push('/');
+    }
     fetchExamTimetable().then();
   }, []);
 

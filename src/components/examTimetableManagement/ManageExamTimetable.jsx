@@ -57,6 +57,9 @@ function ManageExamTimetable() {
     };
 
     useEffect(() => {
+        if(localStorage.getItem('userToken') === null){
+            history.push('/');
+        }
         fetchExamTimetable().then();
     }, []);
 

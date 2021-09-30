@@ -41,6 +41,10 @@ class CreateUserAccount extends React.Component {
     }
 
     componentDidMount() {
+        if(localStorage.getItem('userToken') === null){
+            this.props.history.push('/');
+        }
+
         BranchService.getBranches()
         .then((res) => {
             this.setState({sBranch: res});

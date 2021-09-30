@@ -22,7 +22,7 @@ const options = {
     draggable: false
 }
 
-function ManageSubjects(props){
+function ManageSubjects(){
     const history = useHistory();
     const [Subjects,setSubject] = useState([])
     const [open, setOpen] = useState(false);
@@ -45,6 +45,9 @@ function ManageSubjects(props){
     };
 
     useEffect(() =>{
+        if(localStorage.getItem('userToken') === null){
+            history.push('/');
+        }
         fetchSubject().then();
     },[]);
 

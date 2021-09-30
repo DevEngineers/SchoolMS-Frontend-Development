@@ -3,7 +3,6 @@ import StudentService from "../../services/StudentService";
 import ClassService from "../../services/ClassService";
 import '../../styles/TeacherStyles/Teacher.css';
 import ClassTypeService from "../../services/ClassTypeService";
-import {toast, ToastContainer} from "material-react-toastify";
 import BranchService from "../../services/BranchService";
 
 /*
@@ -58,6 +57,9 @@ class CreateStudent extends Component {
     }
 
     componentDidMount(){
+        if(localStorage.getItem('userToken') === null){
+            this.props.history.push('/');
+        }
         ClassService.getClasses()
             .then(res => {
                 this.setState({classes:res})
@@ -284,7 +286,7 @@ class CreateStudent extends Component {
 
                                     </div>
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} >Cancel</button>
-                                    <button className="btn btn-success" onClick={this.saveStudent}style={{marginLeft: "10px"}}>Save</button>
+                                    <button className="btn btn-success" onClick={this.saveStudent} style={{marginLeft: "10px"}}>Save</button>
                                 </form>
                             </div>
                         </div>

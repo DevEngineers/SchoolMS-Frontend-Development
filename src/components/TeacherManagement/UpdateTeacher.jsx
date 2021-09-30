@@ -38,6 +38,9 @@ class UpdateTeacher extends Component {
         this.setState({ [name] : value });
     }
     componentDidMount(){
+        if(localStorage.getItem('userToken') === null){
+            this.props.history.push('/');
+        }
         TeacherService.getTeacherById(this.state.id).then( (res) =>{
             let teacher = res;
             this.setState({teacherName: teacher.teacherName,
@@ -170,7 +173,7 @@ class UpdateTeacher extends Component {
 
                                     </div>
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} >Cancel</button>
-                                    <button className="btn btn-success" onClick={this.updateTeacher}style={{marginLeft: "10px"}}>Update</button>
+                                    <button className="btn btn-success" onClick={this.updateTeacher} style={{marginLeft: "10px"}}>Update</button>
 
 
 

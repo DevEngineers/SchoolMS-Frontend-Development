@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
 import ClassTimetableService from "../../services/ClassTimetableService";
 import "../../styles/timetableAndResultStyles/CommonView.css";
+import {useHistory} from "react-router-dom";
 
 function ViewClassTimetable(props) {
+    const history = useHistory();
     const classTID = props.match.params.id;
     const [startSlot, setStartSlot] = useState([]);
     const [endSlot, setEndSlot] = useState([]);
@@ -16,6 +18,10 @@ function ViewClassTimetable(props) {
     const [year, setYear] = useState("");
 
     useEffect(() => {
+        if(localStorage.getItem('userToken') === null){
+            history.push('/');
+        }
+
         fetchClassTimetable().then();
     }, []);
 

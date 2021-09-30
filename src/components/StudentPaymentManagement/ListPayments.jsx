@@ -4,7 +4,6 @@ import {IconButton, TextField} from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import PageViewIcon from "@material-ui/icons/Pageview";
-import StudentService from "../../services/StudentService";
 
 class ListPayments extends Component {
     constructor(props) {
@@ -33,6 +32,10 @@ class ListPayments extends Component {
     }
 
     componentDidMount(){
+        if(localStorage.getItem('userToken') === null){
+            this.props.history.push('/');
+        }
+
         StudentPaymentService.getPayments().then((res) => {
             this.setState({ payments: res});
         });
@@ -73,7 +76,7 @@ class ListPayments extends Component {
                 <div className = "row">
 
                 </div>
-                <br></br>
+                <br/>
                 <div className = "row">
                     <table className = "table table-striped table-bordered">
 

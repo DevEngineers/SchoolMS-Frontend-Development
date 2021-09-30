@@ -56,6 +56,9 @@ function ManageClassTimetable() {
     };
 
     useEffect(() => {
+        if(localStorage.getItem('userToken') === null){
+            history.push('/');
+        }
         fetchClassTimetable().then();
     }, []);
 
@@ -119,14 +122,6 @@ function ManageClassTimetable() {
                 toast.warning("Something went wrong!!,Try again.", options);
             }
         });
-    }
-
-    function getClassNames(timetableArr){
-        let nameArr = []
-        for (let i=0;i<timetableArr;i++){
-            nameArr[i] = timetableArr[i].class.class
-        }
-        return nameArr;
     }
 
     return (

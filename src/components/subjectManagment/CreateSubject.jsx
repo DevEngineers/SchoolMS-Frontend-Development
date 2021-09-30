@@ -37,6 +37,10 @@ class CreateSubject extends Component {
     }
 
     componentDidMount(){
+        if(localStorage.getItem('userToken') === null){
+            this.props.history.push('/');
+        }
+
         TeacherService.getTeachers()
             .then(res => {
                 this.setState({teachers:res})
