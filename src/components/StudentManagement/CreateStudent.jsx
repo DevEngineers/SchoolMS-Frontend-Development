@@ -13,14 +13,14 @@ import BranchService from "../../services/BranchService";
 * */
 ////////////
 //Toast Message Configuration
-/*const options = {
-    position: "top-center",
-    autoClose: 2000,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: false,
-    draggable: false
-}*/
+// const options = {
+//     position: "top-center",
+//     autoClose: 2000,
+//     hideProgressBar: true,
+//     closeOnClick: true,
+//     pauseOnHover: false,
+//     draggable: false
+// }
 
 
 ///////////
@@ -42,8 +42,6 @@ class CreateStudent extends Component {
             classes:[],
             classTypes:[],
             branches:[]
-
-
 
         }
         this.changeStudentNameHandler = this.changeStudentNameHandler.bind(this);
@@ -206,28 +204,9 @@ class CreateStudent extends Component {
         this.setState({gender: event.target.value});
     }
 
-
     cancel(){
         this.props.history.push('/add-student/_add');
     }
-
-    /*getTitle(){
-
-        if(this.state.id === '_add'){
-            return <h3 className="text-center">Add Student</h3>
-        }else{
-            return <h3 className="text-center">Add Student</h3>
-        }
-    }*/
-    /*addTeacher(){
-        this.props.history.push('/add-teacher/_add');
-    }
-
-    addPayment(){
-        this.props.history.push('/add-payment/_add');
-    }*/
-
-
     render() {
         return (
             <div>
@@ -274,14 +253,6 @@ class CreateStudent extends Component {
                                             }
 
                                         </select>
-                                    {/*<select value={this.state.schoolBranch} name="schoolBranch" className="form-control" onChange={this.changeSchoolBranchHandler}>*/}
-                                    {/*    <option defaultValue>School Branch:</option>*/}
-                                    {/*    <option value="Colombo">Colombo</option>*/}
-                                    {/*    <option value="Kandy">Kandy</option>*/}
-                                    {/*    <option value="Dehiwala">Dehiwala</option>*/}
-                                    {/*    <option value="Negambo">Negambo</option>*/}
-                                    {/*    <option value="Ratmalana">Ratmalana</option>*/}
-                                    {/*</select>*/}
                                      </div>
                                     <div className = "form-group">
                                         <label> Grade : </label>
@@ -314,9 +285,6 @@ class CreateStudent extends Component {
                                     </div>
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} >Cancel</button>
                                     <button className="btn btn-success" onClick={this.saveStudent}style={{marginLeft: "10px"}}>Save</button>
-
-
-
                                 </form>
                             </div>
                         </div>
@@ -327,5 +295,4 @@ class CreateStudent extends Component {
         )
     }
 }
-
 export default CreateStudent
