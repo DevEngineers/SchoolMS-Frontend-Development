@@ -325,11 +325,11 @@ class Header extends Component {
                 localStorage.getItem("headerValue") !== "value" ?
                 (
                     (
-                        this.state.type === 'Administrator'?
+                        this.state.type === "Administrator"?
                             (this.forAdministratorView())
-                        :this.state.type === 'AdministratorStaff'?
+                        :this.state.type === "AdministratorStaff"?
                             (this.forAdministratorStaffView())
-                        :this.state.type === 'ExaminationStaff'?
+                        :this.state.type === "ExaminationStaff"?
                             (this.forExaminationStaffView())
                         :(this.forAdministratorView())
                     )
