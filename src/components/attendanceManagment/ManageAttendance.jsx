@@ -66,6 +66,23 @@ function ManageAttendance(){
         history.push(`/update-attendance/${id}`);
     }
 
+    /**
+     * handler to search attendance
+     */
+    function onSearchHandling(e){
+        const search = e.target.value;
+        if(search){
+            // AttendanceService.getAttendanceBySearch(search)
+            //     .then(Att =>{
+            //         setAttendance(Att);
+            //     }).catch(err =>{
+            //     console.error(err)
+            // })
+        }else{
+            fetchAttendance();
+        }
+    }
+
     function deleteAttendance(){
         let id = deleteAttendanceObj._id;
         AttendanceService.removeAttendance(id)
@@ -81,7 +98,6 @@ function ManageAttendance(){
             })
     }
 
-
     return <div className={"ManageAttendance-Section"}>
         <ToastContainer/>
         <div>
@@ -91,7 +107,7 @@ function ManageAttendance(){
         </div>
         <div>
             <div id={"searchDiv"}>
-                <TextField type={"text"}  id={"searchInput"} variant="outlined"/>
+                <TextField type={"text"}  id={"searchInput"} variant="outlined" onChange={(e)=>onSearchHandling(e)} />
                 <input type={"submit"} value={"Search"} id={"searchBtn"}/>
             </div>
         </div>

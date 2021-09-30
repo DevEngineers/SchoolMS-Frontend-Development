@@ -13,12 +13,13 @@ class Header extends Component {
         super(props);
 
         this.state = {
-            type:"Administrator",
+            type:'',
         }
     }
 
     componentDidMount() {
-        this.setState({type:localStorage.getItem("type")})
+        this.setState({type:localStorage.getItem("userType")})
+        console.log("type",localStorage.getItem("userType"))
     }
 
     componentWillUnmount() {
@@ -124,12 +125,12 @@ class Header extends Component {
                                 </li>
                                 <li>
                                     {/*First Tier Drop Down*/}
-                                    <label htmlFor={"drop-8"} className={"toggle"}>Manage Users</label>
-                                    <a href="#">Attendance</a>
+                                    <label htmlFor={"drop-8"} className={"toggle"}>Users</label>
+                                    <a href="#">Users</a>
                                     <input type={"checkbox"} id={"drop-8"}/>
                                     <ul>
-                                        <li><a href={"/store-attendance"}>Add User</a></li>
-                                        <li><a href={"/view-attendance"}>View Attendance</a></li>
+                                        <li><a href={"/createUsers"}>Add User</a></li>
+                                        <li><a href={"/manageUserAccount"}>View Users</a></li>
                                     </ul>
                                 </li>
                                 <li>
