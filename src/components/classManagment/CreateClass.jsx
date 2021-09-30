@@ -37,6 +37,10 @@ class CreateClass extends Component {
     }
 
     componentDidMount() {
+        if(localStorage.getItem('userToken') === null){
+            this.props.history.push('/');
+        }
+
         ClassTypeService.getClassTypes()
             .then(res =>{
                 this.setState({classTypes:res})

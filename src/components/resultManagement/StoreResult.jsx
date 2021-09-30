@@ -222,7 +222,6 @@ class StoreResult extends React.Component {
     }
 
     render() {
-        console.log(this.state.rClassType,this.state.studentID)
         return (
           <div>
               <div>

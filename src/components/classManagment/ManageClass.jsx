@@ -46,6 +46,10 @@ function ManageClass(props){
 
 
     useEffect(() =>{
+        if(localStorage.getItem('userToken') === null){
+            props.history.push('/');
+        }
+
         fetchClass().then();
     },[]);
 

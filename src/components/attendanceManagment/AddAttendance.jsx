@@ -36,6 +36,9 @@ function AddAttendance(){
     const [classTypes,setClassTypes] = useState([]);
 
     useEffect(() =>{
+        if(localStorage.getItem('userToken') === null){
+            history.push('/');
+        }
         fetchData();
     },[]);
 

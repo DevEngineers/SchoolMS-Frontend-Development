@@ -4,6 +4,7 @@ import "../../styles/usersStyles/Users.css";
 import UserService from "../../services/UserService";
 import {toast, ToastContainer} from "material-react-toastify";
 import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from "@material-ui/core";
+import {useHistory} from "react-router-dom";
 
 /**
  * @author : M.N.M Akeel
@@ -21,11 +22,16 @@ const options = {
 };
 
 function ManageUserAccounts() {
+    const history = useHistory();
     const [users, setUsers] = useState([]);
     const [open, setOpen] = useState(false);
     const [deleteResultObj, setDeleteResultObj] = useState("");
 
     useEffect(() => {
+        if(localStorage.getItem('userToken') === null){
+            history.push('/');
+        }
+
         fetchUsers().then();
     }, []);
 

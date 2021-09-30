@@ -49,6 +49,10 @@ class UpdateStudent extends Component {
         this.setState({ [name] : value });
     }
     componentDidMount(){
+        if(localStorage.getItem('userToken') === null){
+            this.props.history.push('/');
+        }
+
         StudentService.getStudentById(this.state.id).then( (res) =>{
             let student = res;
             this.setState({studentName: student.studentName,
@@ -138,7 +142,7 @@ class UpdateStudent extends Component {
     render() {
         return (
             <div>
-                <br></br>
+                <br/>
                 <div className = "container">
                     <div className = "row">
 
@@ -218,7 +222,7 @@ class UpdateStudent extends Component {
 
                                     </div>
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} >Cancel</button>
-                                    <button className="btn btn-success" onClick={this.updateStudent}style={{marginLeft: "10px"}}>Update</button>
+                                    <button className="btn btn-success" onClick={this.updateStudent} style={{marginLeft: "10px"}}>Update</button>
 
 
 

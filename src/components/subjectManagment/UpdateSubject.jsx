@@ -38,6 +38,9 @@ class UpdateSubject extends Component {
     }
 
     componentDidMount(){
+        if(localStorage.getItem('userToken') === null){
+            this.props.history.push('/');
+        }
         SubjectService.getSubjectByID(this.state.subjectID)
             .then(res => {
                 this.setState({

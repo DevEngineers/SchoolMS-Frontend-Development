@@ -46,6 +46,10 @@ class CreatePayment extends Component {
     }
 
     componentDidMount(){
+        if(localStorage.getItem('userToken') === null){
+            this.props.history.push('/');
+        }
+
         ClassService.getClasses()
             .then(res => {
                 this.setState({classes:res})
@@ -149,7 +153,7 @@ class CreatePayment extends Component {
     render() {
         return (
             <div>
-                <br></br>
+                <br/>
                 <div className = "container">
                     <div className = "row">
 
@@ -280,7 +284,7 @@ class CreatePayment extends Component {
                                     </div>
 
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} >Cancel</button>
-                                    <button className="btn btn-success" onClick={this.saveOrUpdatePayment}style={{marginLeft: "10px"}}>Save</button>
+                                    <button className="btn btn-success" onClick={this.saveOrUpdatePayment} style={{marginLeft: "10px"}}>Save</button>
 
 
 

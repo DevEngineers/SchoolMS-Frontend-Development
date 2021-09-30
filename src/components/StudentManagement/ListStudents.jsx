@@ -1,13 +1,10 @@
-import React, {Component, useEffect, useState} from 'react'
+import React, {Component} from 'react'
 import '../../styles/TeacherStyles/Teacher.css';
 import StudentService from "../../services/StudentService";
 import {IconButton, TextField} from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import PageViewIcon from "@material-ui/icons/Pageview";
-import {useHistory} from "react-router-dom";
-import ClassService from "../../services/ClassService";
-import BranchService from "../../services/BranchService";
 
 class ListStudents extends Component {
 
@@ -37,6 +34,10 @@ class ListStudents extends Component {
     }
 
     componentDidMount(){
+        if(localStorage.getItem('userToken') === null){
+            this.props.history.push('/');
+        }
+
         StudentService.getStudents().then((res) => {
             console.log(res);
             this.setState({ students: res});
@@ -82,7 +83,7 @@ class ListStudents extends Component {
                 </div>
                 <div className = "row">
                 </div>
-                <br></br>
+                <br/>
                 <div className = "row">
                     <table className = "table table-striped table-bordered">
 

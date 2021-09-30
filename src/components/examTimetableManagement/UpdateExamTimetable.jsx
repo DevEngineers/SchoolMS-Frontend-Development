@@ -45,6 +45,10 @@ class UpdateExamTimetable extends React.Component {
   }
 
   componentDidMount() {
+    if(localStorage.getItem('userToken') === null){
+      this.props.history.push('/');
+    }
+
     ExamTimetableService.getExamTimetableByID(this.state.timetableID).then(
       (res) => {
         this.setState({

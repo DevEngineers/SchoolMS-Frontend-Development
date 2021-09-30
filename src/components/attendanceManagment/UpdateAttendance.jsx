@@ -32,6 +32,9 @@ function UpdateAttendance(props){
     const [student,setStudent] = useState([]);
 
     useEffect(() =>{
+        if(localStorage.getItem('userToken') === null){
+            history.push('/');
+        }
         fetchAttendance();
     },[]);
 

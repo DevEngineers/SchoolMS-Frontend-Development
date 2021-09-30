@@ -12,6 +12,10 @@ class ViewTeachers extends Component {
     }
 
     componentDidMount(){
+        if(localStorage.getItem('userToken') === null){
+            this.props.history.push('/');
+        }
+
         TeacherService.getTeacherById(this.state.id).then( res => {
             this.setState({teacher: res});
         })
@@ -20,7 +24,7 @@ class ViewTeachers extends Component {
     render() {
         return (
             <div>
-                <br></br>
+                <br/>
                 <div className = "card col-md-6 offset-md-3">
                     <h3 className = "text-center"> View Teacher Details</h3>
                     <div className = "card-body">

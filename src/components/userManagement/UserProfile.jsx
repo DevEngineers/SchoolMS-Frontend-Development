@@ -6,6 +6,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import Button from "@material-ui/core/Button";
 import UserService from "../../services/UserService";
 import {toast, ToastContainer} from "material-react-toastify";
+import {useHistory} from "react-router-dom";
 
 /**
  * @author : M.N.M Akeel
@@ -23,6 +24,7 @@ const options = {
 };
 
 function UserProfile() {
+		const history = useHistory();
 		const [userid] = useState(localStorage.getItem("userID"));
 		const [email, setEmail] = useState("");
 		const [username, setUsername] = useState("");
@@ -36,6 +38,9 @@ function UserProfile() {
 		const [checkRePassword, setCheckRePassword] = useState(false);
 
 		useEffect(() => {
+				if(localStorage.getItem('userToken') === null){
+						history.push('/');
+				}
 				fetchUser().then();
 		}, []);
 

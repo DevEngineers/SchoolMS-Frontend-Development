@@ -14,6 +14,9 @@ class AHome extends React.Component{
     }
 
     componentDidMount() {
+        if(localStorage.getItem('userToken') === null){
+            this.props.history.push('/');
+        }
         localStorage.setItem("homeValue", "value");
     }
 

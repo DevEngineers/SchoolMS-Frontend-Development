@@ -8,6 +8,7 @@ import StudentService from "../../services/StudentService";
 import {toast, ToastContainer} from "material-react-toastify";
 import "material-react-toastify/dist/ReactToastify.css";
 import ResultService from "../../services/ResultService";
+import {useHistory} from "react-router-dom";
 
 /**
  * @author : M.N.M Akeel
@@ -29,6 +30,7 @@ const years = (new Date()).getFullYear();
 const yearArray = Array.from(new Array(30),( val, index) => index + years);
 
 function GenerateResultReport() {
+    const history = useHistory();
     const [sClass, setSClass] = useState("");
     const [sClassType, setSClassType] = useState("");
     const [studentID, setStudentID] = useState("");
@@ -39,6 +41,9 @@ function GenerateResultReport() {
     const [studentArray, setStudentArray] = useState([]);
 
     useEffect(() => {
+        if(localStorage.getItem('userToken') === null){
+            history.push('/');
+        }
         fetchClassAndClassType();
     },[])
 

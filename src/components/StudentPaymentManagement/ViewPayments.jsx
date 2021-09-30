@@ -13,6 +13,10 @@ class ViewPayments extends Component {
     }
 
     componentDidMount(){
+        if(localStorage.getItem('userToken') === null){
+            this.props.history.push('/');
+        }
+
         StudentPaymentService.getPaymentById(this.state.id).then( res => {
             this.setState({payments: res});
         })

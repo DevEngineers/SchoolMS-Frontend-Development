@@ -53,6 +53,10 @@ class UpdatePayment extends Component {
     }
 
     componentDidMount(){
+        if(localStorage.getItem('userToken') === null){
+            this.props.history.push('/');
+        }
+
         StudentPaymentService.getPaymentById(this.state.id).then( (res) =>{
             let payment = res;
             this.setState({
@@ -156,7 +160,7 @@ class UpdatePayment extends Component {
     render() {
         return (
             <div>
-                <br></br>
+                <br/>
                 <div className = "container">
                     <div className = "row">
 
@@ -248,7 +252,7 @@ class UpdatePayment extends Component {
                                     </div>
 
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} >Cancel</button>
-                                    <button className="btn btn-success" onClick={this.UpdatePayment}style={{marginLeft: "10px"}}>Update</button>
+                                    <button className="btn btn-success" onClick={this.UpdatePayment} style={{marginLeft: "10px"}}>Update</button>
 
 
 

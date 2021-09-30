@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Box, Grid, MenuItem} from "@material-ui/core";
-import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import "../../styles/classManagment/Class.css";
 import {toast, ToastContainer} from "material-react-toastify";
@@ -39,6 +38,10 @@ class UpdateClass extends Component {
     }
 
     componentDidMount(){
+        if(localStorage.getItem('userToken') === null){
+            this.props.history.push('/');
+        }
+
         ClassService.getClassByID(this.state.classID)
             .then(res => {
                 this.setState({
