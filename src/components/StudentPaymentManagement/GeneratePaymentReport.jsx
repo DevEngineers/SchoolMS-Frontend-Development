@@ -9,12 +9,6 @@ import {toast} from "material-react-toastify";
 import ResultService from "../../services/ResultService";
 import StudentPaymentService from "../../services/StudentPaymentService";
 
-/**
- * @author : M.A.M Nusky
- * Registration Number : IT19167442
- */
-
-//Toast Message Configuration
 const options = {
     position: "top-center",
     autoClose: 2000,
@@ -23,7 +17,6 @@ const options = {
     pauseOnHover: false,
     draggable: false,
 };
-
 const years = (new Date()).getFullYear();
 const yearArray = Array.from(new Array(30),( val, index) => index + years);
 
@@ -33,7 +26,7 @@ function GenaratePaymentReport() {
     const [studentID, setStudentID] = useState("");
     const [year, setYear] = useState("");
     const [term, setTerm] = useState("");
-    const [paymentType, setpaymentType] = useState("");
+    const [type, setType] = useState("");
     const [sClassArray, setSClassArray] = useState([]);
     const [sClassTypeArray, setSClassTypeArray] = useState([]);
     const [studentArray, setStudentArray] = useState([]);
@@ -82,7 +75,7 @@ function GenaratePaymentReport() {
             toast.warn("Select the ClassType", options);
         } else if (studentID === "") {
             toast.warn("Select Student", options);
-        }  else if ( paymentType === "") {
+        }  else if ( type === "") {
             toast.warn("Select Payment Type", options);
         } else {
             let report={
@@ -91,7 +84,7 @@ function GenaratePaymentReport() {
                 studentID:studentID,
                 // year:year,
                 // term:term,
-                paymentType:paymentType
+                type:type
             }
             StudentPaymentService.generatePaymentReport(report)
                 .then((res) => {
@@ -196,7 +189,7 @@ function GenaratePaymentReport() {
                                 id="demo-simple-select"
                                 name={"uType"}
                                 className={"reportSize"}
-                                onChange={(event) => setpaymentType(event.target.value)}
+                                onChange={(event) => setType(event.target.value)}
                                 displayEmpty
                             >
                                 <MenuItem value={""}>
