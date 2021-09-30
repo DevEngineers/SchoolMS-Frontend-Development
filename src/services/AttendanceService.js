@@ -101,6 +101,25 @@ class AttendanceService{
         })
     }
 
+    async generateAttendanceReport(attendance) {
+        console.log(attendance)
+        const bearer = "Bearer " + localStorage.getItem("userToken");
+        return await fetch(ATTENDANCE_BASE_URI + "/generate/report", {
+            method: "POST",
+            headers: {
+                "content-Type": "application/json",
+                /*'Authorization': bearer*/
+            },
+            body:JSON.stringify(attendance)
+        })
+            .then((response) => {
+                return response;
+            })
+            .catch((reason) => {
+                return reason;
+            });
+    }
+
 }
 
 export default new AttendanceService();
