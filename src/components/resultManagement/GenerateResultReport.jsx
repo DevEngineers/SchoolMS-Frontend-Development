@@ -72,6 +72,7 @@ function GenerateResultReport() {
             classType:value
         }
 
+        console.log(classType);
         StudentService.getStudentByClass(classType)
         .then((res) =>{
             setStudentArray(res);
