@@ -29,6 +29,8 @@ class Header extends Component {
     logout(event){
         event.preventDefault()
         localStorage.clear();
+        localStorage.setItem('headerValue', 'value');
+        localStorage.setItem('footerValue', 'value');
         this.props.history.push("/");
     }
 
