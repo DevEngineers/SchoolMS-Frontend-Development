@@ -6,7 +6,6 @@ import ClassService from "../../services/ClassService";
 import ClassTypeService from "../../services/ClassTypeService";
 import StudentService from "../../services/StudentService";
 import {toast} from "material-react-toastify";
-import ResultService from "../../services/ResultService";
 import StudentPaymentService from "../../services/StudentPaymentService";
 
 const options = {
@@ -81,10 +80,10 @@ function GenaratePaymentReport() {
             let report={
                 class:sClass,
                 classType:sClassType,
-                studentID:studentID,
+                studentId:studentID,
                 // year:year,
                 // term:term,
-                type:type
+                paymentType:type
             }
             StudentPaymentService.generatePaymentReport(report)
                 .then((res) => {
