@@ -90,7 +90,7 @@ function ManageAttendance(){
                 if(res.status === 200){
                     handleClose();
                     toast.error("Attendance Details is Removed",options)
-                    setTimeout(()=>{history.push("/view-attendance")},3000)
+                    setTimeout(()=>{window.location.reload()},3000)
                 }else{
                     handleClose();
                     toast.warning("Something went wrong!!,Try again.",options)
