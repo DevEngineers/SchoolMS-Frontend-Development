@@ -50,6 +50,9 @@ const Login = () => {
                     localStorage.setItem("userID",response.userID)
                     localStorage.setItem("userToken",response.token);
                     localStorage.setItem("userType",response.userType);
+                    localStorage.removeItem("headerValue");
+                    localStorage.removeItem("footerValue");
+                    localStorage.setItem("homeValue", "value");
                     history.push("/home");
                 }else{
                     toast.warning(`Username or Password Incorrect`, options);
